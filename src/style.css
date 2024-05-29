@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#main {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Page1 start */
+
+#page1 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page1 end */
+
+/* Page2 start */
+
+#page2 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page2 end */
+
+/* Page3 start */
+
+#page3 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page3 end */
+
+/* Page4 start */
+
+#page4 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page4 end */
+
+/* Page5 start */
+
+#page5 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page5 end */
+
+/* Page6 start */
+
+#page6 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page6 end */
+
+/* Page7 start */
+
+#page7 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page7 end */
+
+/* Page8 start */
+
+#page8 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Page8 end */
