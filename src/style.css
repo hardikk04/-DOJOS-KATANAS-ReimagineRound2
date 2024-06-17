@@ -10,6 +10,74 @@ html {
   height: 100%;
 }
 
+/* Fonts */
+
+@font-face {
+  font-family: tesla;
+  src: url("/fonts/TESLA.ttf");
+}
+
+@font-face {
+  font-family: title;
+  src: url("/fonts/pigarnos-neue-regular.ttf");
+}
+
+@font-face {
+  font-family: boldFont;
+  src: url("/fonts/DarkerGrotesque-Bold.ttf");
+}
+
+@font-face {
+  font-family: lightFont;
+  src: url("/fonts/DarkerGrotesque-Light.ttf");
+}
+
+@font-face {
+  font-family: mediumFont;
+  src: url("/fonts/DarkerGrotesque-Medium.ttf");
+}
+
+@font-face {
+  font-family: regularFont;
+  src: url("/fonts/DarkerGrotesque-Regular.ttf");
+}
+
+/* Hide the default scrollbar */
+body::-webkit-scrollbar {
+  width: 0px; /* Width of the scrollbar */
+}
+
+/* Customize scrollbar track */
+body::-webkit-scrollbar-track {
+  background-color: transparent; /* Set to the desired background color */
+}
+
+/* Customize scrollbar handle */
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust handle color and transparency */
+  border-radius: 3px; /* Adjust border radius to match the design */
+}
+
+/* Optionally, add hover and active styles */
+body::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(35, 35, 35, 0.7); /* Adjust handle color on hover */
+}
+
+body::-webkit-scrollbar-thumb:active {
+  background-color: rgba(0, 0, 0, 1); /* Adjust handle color on active state */
+}
+
+.inline-block {
+  display: inline-block;
+}
+
+/* Main css start */
+
 #main {
   position: relative;
   height: 100%;
@@ -22,6 +90,139 @@ html {
   position: relative;
   height: 100vh;
   width: 100%;
+  font-family: regularFont;
+}
+
+.webgl {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+nav {
+  position: fixed;
+  top: 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2vw 3vw;
+  padding-top: 1vw;
+  z-index: 9;
+}
+
+nav > h1 {
+  font-family: tesla;
+  font-weight: 100;
+  font-size: 1.4vw;
+  letter-spacing: 6px;
+}
+
+.tesla-title {
+  position: relative;
+  height: 1vw;
+}
+
+.nav-right {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2vw;
+  letter-spacing: 1px;
+  background-color: #fff;
+  padding: 0.5vw 1.5vw;
+  border-radius: 2vw;
+  line-height: 1;
+}
+
+.nav-right > h3 {
+  margin-bottom: 0.2vw;
+}
+
+.nav-right > button {
+  padding: 0.5vw 1vw;
+  border-radius: 2vw;
+  border: none;
+  color: #fff;
+  background-color: #000;
+}
+
+.page1-overlay {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  background-color: #0000003d;
+}
+
+.page1-overlay > video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+
+.page1-hero {
+  position: relative;
+  height: 100%;
+  width: calc(100% / 3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page1-hero-text-vehicle {
+  position: relative;
+  overflow: hidden;
+}
+
+.page1-hero-text-vehicle > h1 {
+  color: #fff;
+  font-family: title;
+  font-size: 3.6vw;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.page1-hero-text-energy {
+  position: relative;
+  overflow: hidden;
+}
+
+.page1-hero-text-energy > h1 {
+  color: #fff;
+  font-family: title;
+  font-size: 3.6vw;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.page1-hero-text-charging {
+  position: relative;
+  overflow: hidden;
+}
+
+.page1-hero-text-charging > h1 {
+  color: #fff;
+  font-family: title;
+  font-size: 3.6vw;
+  font-weight: 100;
+  letter-spacing: 5px;
+}
+
+.page1-vehicle {
+  border-right: 2px solid #ffffff2c;
+  backdrop-filter: blur(10px);
+}
+
+.page1-charging {
+  border-left: 2px solid #ffffff2c;
 }
 
 /* Page1 end */
