@@ -83,6 +83,7 @@ const imageTransitionAnimation = () => {
   allHeroSections.forEach((hero, index) => {
     hero.addEventListener("mouseenter", () => {
       if (index === 0) {
+        // Random displacement texture
         plane.material.uniforms.uDisplacmentTexture.value =
           displacmentTexture[Math.floor(Math.random() * 3)];
         // Text animation
@@ -105,18 +106,11 @@ const imageTransitionAnimation = () => {
         });
 
         // Blur animation
-        gsap.to(".page1-energy", {
-          backdropFilter: "blur(0px)",
+        gsap.to(".page1-blur", {
+          left: "0%",
         });
-        gsap.to(".page1-charging", {
-          backdropFilter: "blur(0px)",
-        });
-        setTimeout(() => {
-          gsap.to(".page1-vehicle", {
-            backdropFilter: "blur(10px)",
-          });
-        }, 500);
       } else if (index === 1) {
+        // Random displacement texture
         plane.material.uniforms.uDisplacmentTexture.value =
           displacmentTexture[Math.floor(Math.random() * 3)];
 
@@ -140,18 +134,11 @@ const imageTransitionAnimation = () => {
         });
 
         // Blur animation
-        gsap.to(".page1-charging", {
-          backdropFilter: "blur(0px)",
+        gsap.to(".page1-blur", {
+          left: "33.3333%",
         });
-        gsap.to(".page1-vehicle", {
-          backdropFilter: "blur(0px)",
-        });
-        setTimeout(() => {
-          gsap.to(".page1-energy", {
-            backdropFilter: "blur(10px)",
-          });
-        }, 500);
       } else {
+        // Random displacement texture
         plane.material.uniforms.uDisplacmentTexture.value =
           displacmentTexture[Math.floor(Math.random() * 3)];
 
@@ -175,19 +162,18 @@ const imageTransitionAnimation = () => {
         });
 
         // Blur animation
-        gsap.to(".page1-vehicle", {
-          backdropFilter: "blur(0px)",
+        gsap.to(".page1-blur", {
+          left: "66.6666%",
         });
-        gsap.to(".page1-energy", {
-          backdropFilter: "blur(0px)",
-        });
-        setTimeout(() => {
-          gsap.to(".page1-charging", {
-            backdropFilter: "blur(10px)",
-          });
-        }, 500);
       }
       prevIndex = index;
+    });
+    hero.addEventListener("mouseleave", () => {
+      // video playing from over
+      video1.currentTime = 0;
+      video2.currentTime = 0;
+      video3.currentTime = 0;
+      plane.material.uniforms.uOffset.value = 0;
     });
   });
 };
