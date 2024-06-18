@@ -34,8 +34,16 @@ const video2 = document.querySelector(".page1-video2");
 const video3 = document.querySelector(".page1-video3");
 
 const videoTextures = [video2, video3, video1];
+const allDisplacment = [
+  "images/displacement-map.jpg",
+  "images/d2.avif",
+  "images/d3.jpg",
+];
 
-const displacmentTexture = textureLoader.load("images/displacement-map.jpg");
+const displacmentTexture = allDisplacment.map((texture) => {
+  const t = textureLoader.load(texture);
+  return t;
+});
 
 const loadedHeroTextures = videoTextures.map((texture) => {
   const t = new THREE.VideoTexture(texture);
@@ -53,7 +61,7 @@ const plane = new THREE.Mesh(
     uniforms: {
       uTexture1: new THREE.Uniform(loadedHeroTextures[0]),
       uTexture2: new THREE.Uniform(loadedHeroTextures[1]),
-      uDisplacmentTexture: new THREE.Uniform(displacmentTexture),
+      uDisplacmentTexture: new THREE.Uniform(displacmentTexture[0]),
       uOffset: new THREE.Uniform(0),
     },
   })
@@ -75,12 +83,14 @@ const imageTransitionAnimation = () => {
   allHeroSections.forEach((hero, index) => {
     hero.addEventListener("mouseenter", () => {
       if (index === 0) {
+        plane.material.uniforms.uDisplacmentTexture.value =
+          displacmentTexture[Math.floor(Math.random() * 3)];
         // Text animation
         gsap.from(".page1-hero-text-vehicle>h1>span", {
           opacity: 0,
-          y: 60,
+          y: 90,
           stagger: {
-            amount: 0.5,
+            amount: 0.4,
             from: "random",
           },
         });
@@ -95,22 +105,27 @@ const imageTransitionAnimation = () => {
         });
 
         // Blur animation
-        gsap.to(".page1-vehicle", {
-          backdropFilter: "blur(10px)",
-        });
         gsap.to(".page1-energy", {
           backdropFilter: "blur(0px)",
         });
         gsap.to(".page1-charging", {
           backdropFilter: "blur(0px)",
         });
+        setTimeout(() => {
+          gsap.to(".page1-vehicle", {
+            backdropFilter: "blur(10px)",
+          });
+        }, 500);
       } else if (index === 1) {
+        plane.material.uniforms.uDisplacmentTexture.value =
+          displacmentTexture[Math.floor(Math.random() * 3)];
+
         // Text animation
         gsap.from(".page1-hero-text-energy>h1>span", {
           opacity: 0,
-          y: 60,
+          y: 90,
           stagger: {
-            amount: 0.5,
+            amount: 0.4,
             from: "random",
           },
         });
@@ -125,22 +140,27 @@ const imageTransitionAnimation = () => {
         });
 
         // Blur animation
-        gsap.to(".page1-vehicle", {
-          backdropFilter: "blur(0px)",
-        });
-        gsap.to(".page1-energy", {
-          backdropFilter: "blur(10px)",
-        });
         gsap.to(".page1-charging", {
           backdropFilter: "blur(0px)",
         });
+        gsap.to(".page1-vehicle", {
+          backdropFilter: "blur(0px)",
+        });
+        setTimeout(() => {
+          gsap.to(".page1-energy", {
+            backdropFilter: "blur(10px)",
+          });
+        }, 500);
       } else {
+        plane.material.uniforms.uDisplacmentTexture.value =
+          displacmentTexture[Math.floor(Math.random() * 3)];
+
         // Text animation
         gsap.from(".page1-hero-text-charging>h1>span", {
           opacity: 0,
-          y: 80,
+          y: 90,
           stagger: {
-            amount: 0.5,
+            amount: 0.4,
             from: "random",
           },
         });
@@ -161,9 +181,11 @@ const imageTransitionAnimation = () => {
         gsap.to(".page1-energy", {
           backdropFilter: "blur(0px)",
         });
-        gsap.to(".page1-charging", {
-          backdropFilter: "blur(10px)",
-        });
+        setTimeout(() => {
+          gsap.to(".page1-charging", {
+            backdropFilter: "blur(10px)",
+          });
+        }, 500);
       }
       prevIndex = index;
     });
