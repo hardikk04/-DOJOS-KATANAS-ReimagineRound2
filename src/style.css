@@ -358,7 +358,7 @@ nav > h1 {
   display: flex;
   align-items: center;
   gap: 1vw;
-  animation: anime 2s linear infinite;
+  animation: anime 5s linear infinite;
 }
 
 @keyframes anime {
@@ -391,10 +391,8 @@ nav > h1 {
 
 #page6 {
   position: relative;
-  height: 130vh;
+  height: 140vh;
   width: 100%;
-  background-image: url(./images/page6_main.jpg);
-  background-size: cover;
 }
 
 #page6 #section1 
@@ -423,6 +421,94 @@ nav > h1 {
   text-align: center;
 }
 
+#page6 #section2 
+{
+  width: 100%;
+  height: 100vh;
+  background-image: url(./images/page6_main.jpg);
+  background-size: cover;
+  padding: 2vw 3vw; 
+}
+
+#page6 #section2 #left
+{
+  width: 65%;
+  display: flex;
+  flex-direction: column;
+  gap: 2vw;
+}
+
+#page6 #section2 #left #heading h1
+{
+  font-size: 5.5vw;
+  font-family: title;
+  font-weight: 500;
+  color: #fff;
+}
+
+#page6 #section2 #left #heading-3
+{
+  display: flex;
+  align-items: center;
+}
+
+#page6 #section2 #left #heading-3 #line
+{
+  width: 20vw;
+  height: 0.1vw;
+  background-color: #fff;
+}
+
+#page6 #section2 #left h3
+{
+  font-family: lightfont;
+  font-weight: 600;
+  color: #fff;
+  font-size: 2.6vw;
+  line-height: 1;
+}
+
+#page6 #section2 #left #button
+{
+  width: 18vw;
+  height: 4vw;
+  border-radius: 5px;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+}
+
+#page6 #section2 #left #button:hover
+{
+  cursor: pointer;
+}
+
+#page6 #section2 #left #button h5
+{
+  font-size: 2vw;
+  font-family: regularFont;
+  color: #fff;
+}
+
+#page6 #section2 #left #button #text 
+{
+  height: 3vw;
+}
+
+
+#page6 #section2 #left #button #arrow
+{
+  height: 1.8vw;
+} 
+
+
+#page6 #section2 #left #button #arrow i
+{
+  font-size: 2vw;
+  color: #fff;
+}
 
 /* Page6 end */
 
