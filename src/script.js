@@ -3,6 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger);
@@ -23,10 +24,6 @@ const lenisJs = () => {
   gsap.ticker.lagSmoothing(0);
 };
 lenisJs();
-
-
-
-
 
 
 
@@ -70,3 +67,18 @@ const page7Animation = ()=>{
   })
 }
 page7Animation()
+
+document.querySelectorAll(".text-animation").forEach(function(parent){
+  gsap.from(parent.children[0],{
+    y:100,
+    scrollTrigger:{
+      trigger:parent,
+      scroller:"body",
+      start:"top 80%",
+      end:"top 70%",
+      scrub:1,
+      markers:true
+    }
+  })
+})
+
