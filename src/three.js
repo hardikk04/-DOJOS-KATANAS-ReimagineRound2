@@ -78,93 +78,134 @@ clutterAnimation(".page1-hero-text-energy>h1");
 clutterAnimation(".page1-hero-text-charging>h1");
 
 let prevIndex = 0;
+let vehicleTextAnimation = true;
+let energyTextAnimation = true;
+let chargingTextAnimation = true;
+
+// Vehicle Video Transition
+const vehicleVideoAnimation = () => {
+  // Random displacement texture
+  plane.material.uniforms.uDisplacmentTexture.value =
+    displacmentTexture[Math.floor(Math.random() * 3)];
+  // Text animation
+  if (vehicleTextAnimation) {
+    vehicleTextAnimation = false;
+    gsap.from(".page1-hero-text-vehicle>h1>span", {
+      opacity: 0,
+      y: 90,
+      transform: "scaleY(3)",
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
+      onComplete: () => {
+        vehicleTextAnimation = true;
+      },
+    });
+  }
+
+  // Changing the textures
+  plane.material.uniforms.uTexture1.value = loadedHeroTextures[0];
+  plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
+  gsap.from(plane.material.uniforms.uOffset, {
+    value: 1,
+    duration: 0.5,
+    ease: "favEase",
+  });
+
+  // Blur animation
+  gsap.to(".page1-blur", {
+    left: "0%",
+  });
+};
+
+// Energy Video Transition
+const energyVideoAnimation = () => {
+  // Random displacement texture
+  plane.material.uniforms.uDisplacmentTexture.value =
+    displacmentTexture[Math.floor(Math.random() * 3)];
+
+  // Text animation
+  if (energyTextAnimation) {
+    energyTextAnimation = false;
+    gsap.from(".page1-hero-text-energy>h1>span", {
+      opacity: 0,
+      y: 90,
+      transform: "scaleY(3)",
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
+      onComplete: () => {
+        energyTextAnimation = true;
+      },
+    });
+  }
+
+  // Changing the textures
+  plane.material.uniforms.uTexture1.value = loadedHeroTextures[1];
+  plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
+  gsap.from(plane.material.uniforms.uOffset, {
+    value: 1,
+    duration: 0.5,
+    ease: "favEase",
+  });
+
+  // Blur animation
+  gsap.to(".page1-blur", {
+    left: "33.3333%",
+  });
+};
+
+// Charging Video Transition
+const chargingVideoAnimation = () => {
+  // Random displacement texture
+  plane.material.uniforms.uDisplacmentTexture.value =
+    displacmentTexture[Math.floor(Math.random() * 3)];
+
+  // Text animation
+  if (chargingTextAnimation) {
+    chargingTextAnimation = false;
+    gsap.from(".page1-hero-text-charging>h1>span", {
+      opacity: 0,
+      y: 90,
+      transform: "scaleY(3)",
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
+      onComplete: () => {
+        chargingTextAnimation = true;
+      },
+    });
+  }
+
+  // Changing the textures
+  plane.material.uniforms.uTexture1.value = loadedHeroTextures[2];
+  plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
+  gsap.from(plane.material.uniforms.uOffset, {
+    value: 1,
+    duration: 0.5,
+    ease: "favEase",
+  });
+
+  // Blur animation
+  gsap.to(".page1-blur", {
+    left: "66.6666%",
+  });
+};
+
+// Event listener on vehicle,energy and charging
 const imageTransitionAnimation = () => {
   const allHeroSections = document.querySelectorAll(".page1-hero");
   allHeroSections.forEach((hero, index) => {
     hero.addEventListener("mouseenter", () => {
       if (index === 0) {
-        // Random displacement texture
-        plane.material.uniforms.uDisplacmentTexture.value =
-          displacmentTexture[Math.floor(Math.random() * 3)];
-        // Text animation
-        gsap.from(".page1-hero-text-vehicle>h1>span", {
-          opacity: 0,
-          y: 90,
-          stagger: {
-            amount: 0.4,
-            from: "random",
-          },
-        });
-
-        // Changing the textures
-        plane.material.uniforms.uTexture1.value = loadedHeroTextures[0];
-        plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
-        gsap.from(plane.material.uniforms.uOffset, {
-          value: 1,
-          duration: 0.5,
-          ease: "favEase",
-        });
-
-        // Blur animation
-        gsap.to(".page1-blur", {
-          left: "0%",
-        });
+        vehicleVideoAnimation();
       } else if (index === 1) {
-        // Random displacement texture
-        plane.material.uniforms.uDisplacmentTexture.value =
-          displacmentTexture[Math.floor(Math.random() * 3)];
-
-        // Text animation
-        gsap.from(".page1-hero-text-energy>h1>span", {
-          opacity: 0,
-          y: 90,
-          stagger: {
-            amount: 0.4,
-            from: "random",
-          },
-        });
-
-        // Changing the textures
-        plane.material.uniforms.uTexture1.value = loadedHeroTextures[1];
-        plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
-        gsap.from(plane.material.uniforms.uOffset, {
-          value: 1,
-          duration: 0.5,
-          ease: "favEase",
-        });
-
-        // Blur animation
-        gsap.to(".page1-blur", {
-          left: "33.3333%",
-        });
+        energyVideoAnimation();
       } else {
-        // Random displacement texture
-        plane.material.uniforms.uDisplacmentTexture.value =
-          displacmentTexture[Math.floor(Math.random() * 3)];
-
-        // Text animation
-        gsap.from(".page1-hero-text-charging>h1>span", {
-          opacity: 0,
-          y: 90,
-          stagger: {
-            amount: 0.4,
-            from: "random",
-          },
-        });
-
-        // Changing the textures
-        plane.material.uniforms.uTexture1.value = loadedHeroTextures[2];
-        plane.material.uniforms.uTexture2.value = loadedHeroTextures[prevIndex];
-        gsap.from(plane.material.uniforms.uOffset, {
-          value: 1,
-          duration: 0.5,
-          ease: "favEase",
-        });
-
-        // Blur animation
-        gsap.to(".page1-blur", {
-          left: "66.6666%",
-        });
+        chargingVideoAnimation();
       }
       prevIndex = index;
     });
