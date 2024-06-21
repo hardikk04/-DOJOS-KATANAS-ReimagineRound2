@@ -23,3 +23,16 @@ const lenisJs = () => {
   gsap.ticker.lagSmoothing(0);
 };
 lenisJs();
+
+const page5Animation = () => {
+  const container = document.querySelectorAll(".container")
+  container.forEach( (con) => {
+    gsap.to(con, {
+      x: calc("100%" - "20vw"),
+      duration: 5,
+      ease: "linear",
+      repeat: Infinity,
+    })
+  })
+};
+page5Animation();

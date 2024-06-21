@@ -274,14 +274,49 @@ nav > h1 {
   width: 100%;
   height: 20%;
   padding: 0vw 3vw;
-  text-transform: capitalize;
   display: flex;
   align-items: center;
+  border-bottom: 0.5px solid #6A6A6A;
+  position: relative;
+}
+
+#page4 #left .section #innerleft 
+{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#page4 #left .section #innerleft #heading {
+  width: 30vw;
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+#page4 #left .section #innerleft #heading h3
+{
+  font-size: 2.8vw;
+  color:  #6A6A6A;
+  font-family: regularFont;
+  text-transform: capitalize;
+}
+
+#page4 #left .section #innerleft #diamond{
+  width: 0.9vw;
+  height: 0.9vw;
+  rotate: 45deg;
+  margin-top: 0.5vw;
+  background-color: #31A93E;
 }
 
 #page4 #right {
   width: 50%;
   height: 100%;
+  background-image: url(./images/page4_1.png);
+  background-size: cover;
+  display: flex;
+  align-items: end;
 }
 
 /* Page4 end */
@@ -292,6 +327,57 @@ nav > h1 {
   position: relative;
   height: 100vh;
   width: 100%;
+  margin-top: 2vw;
+  background-image: url(./images/page5.jpg);
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page5::-webkit-scrollbar {
+  display: none !important;
+  opacity: 0;
+}
+
+#page5 #marquee{
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  white-space: nowrap;
+}
+
+#page5 #marquee .container {
+  display: flex;
+  align-items: center;
+  gap: 1vw;
+  animation: anime 2s linear infinite;
+}
+
+@keyframes anime {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(calc(-100% - 4px - 1vw ));
+  }
+}
+
+#page5 #marquee .container h1
+{
+  font-size: 5.5vw;
+  font-weight: 500;
+  font-family: title;
+  color: #fff;
+}
+
+#page5 #marquee .container #square {
+  width: 1vw;
+  height: 1vw;
+  background-color: #fff;
 }
 
 /* Page5 end */
@@ -300,9 +386,38 @@ nav > h1 {
 
 #page6 {
   position: relative;
-  height: 100vh;
+  height: 130vh;
   width: 100%;
+  background-image: url(./images/page6_main.jpg);
+  background-size: cover;
 }
+
+#page6 #section1 
+{
+  width: 100%;
+  height: 40vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0vw 4vw;
+}
+
+#page6 #section1 h1 {
+  font-size: 5.5vw;
+  font-weight: 500;
+  font-family: heading;
+  font-family: title;
+}
+
+#page6 #section1 h3 {
+  font-size: 3.5vw;
+  line-height: 3.5vw;
+  font-family: lightFont;
+  text-align: center;
+}
+
 
 /* Page6 end */
 
