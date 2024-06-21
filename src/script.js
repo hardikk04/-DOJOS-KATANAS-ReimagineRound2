@@ -30,6 +30,7 @@ lenisJs();
 
 
 
+
 // page7Animation
 const page7Animation = ()=>{
   var tl7 = gsap.timeline({
