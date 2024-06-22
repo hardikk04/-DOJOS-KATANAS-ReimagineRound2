@@ -25,10 +25,62 @@ const lenisJs = () => {
 lenisJs();
 
 
+// page6Animation
+const page6LeftBtnHover = () => {
+  var btn = document.querySelector("#page6 #button");
+  var heads = document.querySelectorAll("#page6 #button h5"); 
+  var arrows = document.querySelectorAll("#page6 #button #arrow i"); 
+  
+  heads.forEach(function(head) {
+    btn.addEventListener("mouseenter", function(){
+      gsap.to(head, {
+        y: "-33",
+        duration: 0.3
+      })
+    })
+    btn.addEventListener("mouseleave", function(){
+      gsap.to(head, {
+        y: "0",
+        duration: 0.3
+      })
+    })
+  })
+  arrows.forEach(function(arrow) {
+    btn.addEventListener("mouseenter", function(){
+      gsap.to(arrow, {
+        y: "-30",
+        duration: 0.3
+      })
+    })
+    btn.addEventListener("mouseleave", function(){
+      gsap.to(arrow, {
+        y: "0",
+        duration: 0.3
+      })
+    })
+  })
+}
+page6LeftBtnHover();
 
+const page6ScrollAnimation = () => {
+  var tl6 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page6",
+      scroller: "body",
+      start: "64.4% 50%",
+      end: "250% 50%",
+      pin: true,
+      scrub: 1,
+      // markers: true
+    }
+  })
 
-
-
+  tl6
+  .to("#page6 #section2 #right", {
+    y: "-168%"
+  })
+}
+page6ScrollAnimation()
 
 
 // page7Animation
