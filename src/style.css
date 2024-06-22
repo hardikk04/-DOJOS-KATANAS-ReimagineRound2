@@ -317,7 +317,7 @@ nav > h1 {
   transform: translate(-50%, -50%);
   height: 100%;
   transform: translate(-50%, -50%) rotate(40deg);
-  animation: page3-rotation 13s 6s linear infinite both;
+  animation: page3-rotation 13s -6s linear infinite both;
 }
 
 .page3-second-ball {
@@ -347,7 +347,7 @@ nav > h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 100%;
-  animation: page3-rotation 13s 16s linear infinite both;
+  animation: page3-rotation 13s -16s linear infinite both;
 }
 
 .page3-third-ball {
