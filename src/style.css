@@ -253,6 +253,130 @@ nav > h1 {
   position: relative;
   height: 100vh;
   width: 100%;
+  background-image: url("/images/page3.png");
+  background-position: center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+.page3-overlay {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: #00000039;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page3-first-circle {
+  position: relative;
+  height: 70vw;
+  width: 70vw;
+  border: 1px solid #ffffff7e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page3-first-circle-rotation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  animation: page3-rotation 13s linear infinite both;
+}
+
+.page3-first-ball {
+  position: absolute;
+  height: 2vw;
+  width: 2vw;
+  border-radius: 50%;
+  background-color: #fff;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.page3-second-circle {
+  position: relative;
+  height: 45vw;
+  width: 45vw;
+  border: 1px solid #ffffff7e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page3-second-circle-rotation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  transform: translate(-50%, -50%) rotate(40deg);
+  animation: page3-rotation 13s -6s linear infinite both;
+}
+
+.page3-second-ball {
+  position: absolute;
+  height: 1.5vw;
+  width: 1.5vw;
+  border-radius: 50%;
+  background-color: #31a93e;
+  top: 0;
+  transform: translate(-50%, -50%);
+}
+
+.page3-third-circle {
+  position: relative;
+  height: 25vw;
+  width: 25vw;
+  border: 1px solid #ffffff7e;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page3-third-circle-rotation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 100%;
+  animation: page3-rotation 13s -16s linear infinite both;
+}
+
+.page3-third-ball {
+  position: absolute;
+  height: 1vw;
+  width: 1vw;
+  border-radius: 50%;
+  background-color: #31a93e;
+  top: 0;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.page3-heading {
+  position: relative;
+  font-family: title;
+  color: #fff;
+  font-weight: 100;
+  letter-spacing: 6px;
+  font-size: 2.8vw;
+}
+
+@keyframes page3-rotation {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
 }
 
 /* Page3 end */
