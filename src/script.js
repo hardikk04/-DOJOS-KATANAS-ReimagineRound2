@@ -28,25 +28,32 @@ lenisJs();
 
 
 
+
+
 // page7Animation
 const page7Animation = ()=>{
   var tl7 = gsap.timeline({
     scrollTrigger:{
-      trigger:"#page7",
+      trigger:"#discovery",
       scroller:"body",
-      start:"25% 40%",
-      end:"25% -20%",
+      start:"top 40%",
+      end:"top -15%",
       scrub:1,
       // markers:true
     }
   })
-  
   tl7
   .to("#discovery #dis-text",{
     scale:1,
     clipPath:"polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
     duration: 2, 
-    ease: "linear"
+    ease: "linear",
+   
+  })
+  .from(".ig7",{
+    y:10,
+    opacity:0,
+    stagger:0.3
   })
   
   var tl72 = gsap.timeline({
@@ -56,29 +63,86 @@ const page7Animation = ()=>{
       start:"bottom bottom",
       end:"bottom -50%",
       pin:true,
-      scrub:2,
+      scrub:1,
       // markers:true
     }
   })
-  .to("#discovery #dis-text h1",{
-    x:"-72%",
+  .to("#discovery #dis-text #container7",{
+    x:"-71%",
     duration: 3, 
-    ease: "linear"
-  })
+    ease: "power1.out",
+  },"a")
+  .to(".ig7",{
+    x:-200,
+    duration:4
+  },"a")
 }
 page7Animation()
 
 document.querySelectorAll(".text-animation").forEach(function(parent){
   gsap.from(parent.children[0],{
     y:100,
+    duration:0.5,
     scrollTrigger:{
       trigger:parent,
       scroller:"body",
       start:"top 80%",
-      end:"top 70%",
+      end:"top 79%",
       scrub:1,
-      markers:true
+      // markers:true
     }
   })
 })
 
+// textEffect animation
+// can be used by giving class .text-effect to parent , which has two childern
+const textEffect = () => {
+  // Splitting the text content into individual letters and wrapping each in a span with a class
+  document.querySelectorAll(".text-effect").forEach(function(e){
+    [...e.children].forEach(function(h){
+      var clutter = "";
+      h.textContent.split("").forEach(function (l) {
+        clutter += `<span>${l}</span>`;
+      });
+      h.innerHTML = clutter;
+    })
+  })
+  //animation for mousemove
+  document.querySelectorAll(".text-effect").forEach(function (e) {
+    e.addEventListener("mouseenter", function () {
+      console.log(e.children[0]);
+      gsap.to(e.children[0].querySelectorAll("span"), {
+        y: "-106%",
+        stagger: {
+          amount: 0.2,
+        },
+        duration: 0.4,
+      });
+      gsap.to(e.children[1].querySelectorAll("span"), {
+        y: "-100%",
+        stagger: {
+          amount: 0.2,
+        },
+        duration: 0.4,
+      });
+    });
+  });
+  //animation for mouseleave
+  document.querySelectorAll(".text-effect").forEach(function (e) {
+    e.addEventListener("mouseleave", function () {
+      gsap.to(e.children[0].querySelectorAll("span"), {
+        y: "0%",
+        stagger: {
+          amount: 0.2,
+        },
+      });
+      gsap.to(e.children[1].querySelectorAll("span"), {
+        y: "0%",
+        stagger: {
+          amount: 0.2,
+        },
+      });
+    });
+  });
+};
+textEffect();

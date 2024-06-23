@@ -442,17 +442,21 @@ nav > h1 {
 #pg7-text-container .tx-lf #head-wrap7{
   height: 6vw;
   overflow: hidden;
+  margin-bottom: 1vw;
 }
 #pg7-text-container .tx-lf h1{
   font-family: title;
   font-size: 5.5vw;
   font-weight: 500;
 }
+#pg7-text-container .tx-lf .para-wrap7{
+  height: 2.6vw;
+  overflow: hidden;
+}
 #pg7-text-container .tx-lf p{
   font-family: regularfont;
   font-size: 2.6vw;
   line-height: 1;
-  margin-top: 1vw;
 }
 #pg7-text-container .tx-rt{
   width: 30%;
@@ -490,7 +494,10 @@ nav > h1 {
   transform: scale(.36);
   clip-path: polygon(13% 0, 87% 0, 87% 100%, 13% 100%);
 }
-#page7 #discovery #dis-text h1{
+#discovery #dis-text #container7{
+  position: relative;
+}
+#discovery #dis-text #container7 h1{
   font-family: title;
   font-size: 50vw;
   font-weight: 500;
@@ -498,6 +505,61 @@ nav > h1 {
   line-height: 1;
   margin-left: 5vw;
   margin-bottom: 2vw;
+}
+#container7 .ig7{
+  position: absolute;
+  height:21vw;
+  width: 28vw;
+}
+#container7 .ig7 .overlay7{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.325);
+  transition: all ease 0.5s;
+}
+#container7 .ig7:hover .overlay7{
+  backdrop-filter: blur(5px);
+}
+#container7 .ig7 .overlay7 h4{
+  color: #fff;
+  font-size: 2vw;
+  font-family: mediumfont;
+  text-transform: capitalize;
+  font-weight: 500;
+}
+#container7 .ig7 img{
+  object-fit: cover;
+  object-position: center;
+  height: 100%;
+  width: 100%;
+}
+
+#container7 #ig71{
+  top: 13%;
+  left: .5%;
+}
+#container7 #ig72{
+  top: 50%;
+  left: 21%;
+}
+#container7 #ig73{
+  top: 13%;
+  left: 45%;
+}
+#container7 #ig74{
+  top: 50%;
+  left: 75%;
+}
+#container7 #ig75{
+  top: 13%;
+  left: 95%;
 }
 /* Page7 end */
 
@@ -517,12 +579,21 @@ nav > h1 {
   justify-content: space-between;
   padding-left: 3vw;
 }
+#footer-pt1 .foottxt-wrap{
+  height: 2.2vw;
+  overflow: hidden;
+  cursor: pointer;
+}
+#footer-pt1 .foottxt-wrap span{
+  display: inline-block;
+}
 #footer-pt1 h4{
   font-family: regularfont;
   font-size: 2.2vw;
   font-weight: 500;
   white-space: nowrap;
   color: #fff;
+  line-height: 1;
 }
 #footer #line-ft{
   background-color: #fff;
