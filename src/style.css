@@ -393,6 +393,7 @@ nav > h1 {
 #page4 #left {
   width: 50%;
   height: 100%;
+  position: relative;
 }
 
 #page4 #left .section {
@@ -403,6 +404,16 @@ nav > h1 {
   align-items: center;
   border-bottom: 0.5px solid #6a6a6a;
   position: relative;
+}
+
+#page4 #left .section :hover
+{}
+
+#page4 #left .section .section-overlay{
+  width: 110%;
+  height: 100%;
+  position: absolute;
+  left: 0%;
 }
 
 #page4 #left .section #innerleft {
@@ -431,6 +442,32 @@ nav > h1 {
   rotate: 45deg;
   margin-top: 0.5vw;
   background-color: #31a93e;
+  scale: 0;
+}
+
+#page4 #left .section #innerright #button
+{
+  width: 14vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  border-radius: 10px;
+  background-color: #000;
+  color: #fff;
+  padding: 1vw 0vw;
+}
+
+#page4 #left .section #innerright #button h3
+{
+  font-family: regularFont;
+  font-size: 1.5vw;
+  line-height: 1.5vw;
+}
+
+#page4 #left .section #innerright #button i
+{
+  font-size: 1.5vw;
 }
 
 #page4 #right {
@@ -450,7 +487,6 @@ nav > h1 {
   position: relative;
   height: 100vh;
   width: 100%;
-  margin-top: 2vw;
   background-image: url(./images/page5.jpg);
   background-size: cover;
   display: flex;
@@ -652,8 +688,7 @@ nav > h1 {
   gap: 2vw;
   position: relative;
   background: linear-gradient (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(30px);
   border-radius: 20px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
 }
@@ -677,6 +712,7 @@ nav > h1 {
   height: 2.6vw;
   display: flex;
   align-items: center;
+  padding-left: 1vw;
 }
 
 #page6 #section2 #right .card #heading h3
@@ -691,6 +727,7 @@ nav > h1 {
 {
   height: 4vw;
   margin-top: -1.5vw;
+  padding-left: 1vw;
 }
 
 #page6 #section2 #right .card #description h5
