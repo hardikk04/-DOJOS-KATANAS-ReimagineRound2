@@ -406,80 +406,78 @@ nav > h1 {
   position: relative;
 }
 
-#page4 #left .section :hover
-{}
-
 #page4 #left .section .section-overlay{
   width: 110%;
   height: 100%;
   position: absolute;
   left: 0%;
+  display: flex;
+  align-items: center;
+  gap: 20vw;
+  background: linear-gradient (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
+  backdrop-filter: blur(30px);
+  /* z-index: 1; */
+  opacity: 0;
+  padding-left: 15vw;
 }
 
-#page4 #left .section :hover
-{}
-
-#page4 #left .section .section-overlay{
-  width: 110%;
-  height: 100%;
-  position: absolute;
-  left: 0%;
+#page4 #left .section .section-overlay #diamond{
+  width: 1.2vw;
+  height: 1.2vw;
+  rotate: 45deg;
+  background-color: #31a93e;
+  margin-top: 0.5vw;
+  scale: 0;
 }
 
-#page4 #left .section #innerleft 
+#page4 #left #section1 .section-overlay #diamond {
+  margin-left: 0.5vw;
+}
+
+#page4 #left .section .section-overlay #button
 {
+  width: 0vw;
+  height: 3vw;
+  padding: 0.7vw 0vw;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  background-color: #000;
+  border-top-right-radius: 0.5vw;
 }
 
-#page4 #left .section #innerleft #heading {
-  width: 30vw;
-  display: flex;
-  align-items: center;
-  gap: 2vw;
+#page4 #left .section .section-overlay #button:hover
+{
+  cursor: pointer;
+}
+
+#page4 #left .section .section-overlay #button h3
+{
+  font-size: 1.4vw;
+  font-family: regularFont;
+  color: #fff;
+  opacity: 0;
+}
+
+#page4 #left .section #innerleft
+{
+  height: 4vw;
+  z-index: 2;
+  overflow: hidden;
 }
 
 #page4 #left .section #innerleft #heading h3
 {
-  font-size: 2.8vw;
-  color:  #6A6A6A;
+  font-size: 3vw;
+  font-weight: 600;
+  color: rgb(106, 106, 106);
   font-family: regularFont;
-  text-transform: capitalize;
 }
 
-#page4 #left .section #innerleft #diamond{
-  width: 0.9vw;
-  height: 0.9vw;
-  rotate: 45deg;
-  margin-top: 0.5vw;
-  background-color: #31A93E;
-  scale: 0;
-}
-
-#page4 #left .section #innerright #button
+#page4 #left .section #innerleft #heading h3 span
 {
-  width: 14vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1vw;
-  border-radius: 10px;
-  background-color: #000;
-  color: #fff;
-  padding: 1vw 0vw;
-}
-
-#page4 #left .section #innerright #button h3
-{
-  font-family: regularFont;
-  font-size: 1.5vw;
-  line-height: 1.5vw;
-}
-
-#page4 #left .section #innerright #button i
-{
-  font-size: 1.5vw;
+  display: inline-block;
 }
 
 #page4 #right {

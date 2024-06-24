@@ -25,6 +25,86 @@ const lenisJs = () => {
 };
 lenisJs();
 
+//page4Animation
+
+const page4HoverAnimation = () => {
+  const sections = document.querySelectorAll("#page4 #left .section")
+  const heads = document.querySelectorAll("#page4 #left .section #innerleft h3")
+
+  heads.forEach(function(head) {
+    var headText = head.textContent;
+    var splittedText = headText.split("");
+  
+    var clutter = "";
+    splittedText.forEach(function (elem) {
+      if (elem === " ") {
+        clutter += elem;
+      } else {
+        clutter += `<span>${elem}</span>`;
+      }
+    });
+    head.innerHTML = clutter;
+  });
+
+  sections.forEach(function(section) {
+    section.addEventListener("mouseenter", function() {
+      gsap.to(section.querySelectorAll("#heading h3 span"), {
+        y: -63,
+        stagger: 0.025,
+        ease: "elastic.in",
+        duration: 0.15
+      })
+
+      gsap.to(section.querySelector(".section-overlay"), {
+        opacity: 1
+      })
+
+      gsap.to(section.querySelector(".section-overlay #diamond"), {
+        scale: 1,
+        rotate: "45deg"
+      })
+
+      gsap.to(section.querySelector(".section-overlay #button"), {
+        width: "12vw"
+      })
+
+      gsap.to(section.querySelector(".section-overlay #button h3"), {
+        opacity: 1,
+        delay: 0.3
+      })
+    })
+
+    section.addEventListener("mouseleave", function() {
+      gsap.to(section.querySelectorAll("#heading h3 span"), {
+        y: 0,
+        stagger: -0.025,
+        ease: "elastic.out",
+        duration: 0.15
+      });
+    
+      gsap.to(section.querySelector(".section-overlay"), {
+        opacity: 0
+      });
+    
+      gsap.to(section.querySelector(".section-overlay #diamond"), {
+        scale: 0,
+        rotate: "0deg"
+      }, "<"); // This makes the rotation animation start immediately
+    
+      gsap.to(section.querySelector(".section-overlay #button"), {
+        width: "auto"
+      });
+    
+      gsap.to(section.querySelector(".section-overlay #button h3"), {
+        opacity: 0,
+        delay: 0.3
+      });
+    });
+    
+  })
+}
+page4HoverAnimation()
+
 
 // page6Animation
 const page6LeftBtnHover = () => {
