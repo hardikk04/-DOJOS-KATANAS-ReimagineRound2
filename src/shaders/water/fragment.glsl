@@ -8,7 +8,7 @@ varying vec2 vUv;
 
 void main()
 {
-    float pixel = 100.0;
+    float pixel = 200.0;
     vec2 gridUV = floor(vUv * vec2(pixel,pixel)) / vec2(pixel,pixel);
     vec2 centerOfPixel = gridUV + vec2(1.0/pixel,1.0/pixel);
 
@@ -16,7 +16,7 @@ void main()
 
     vec2 pixelToMouseDirection = centerOfPixel - uMouse;
     float pixelDistanceToMouse = length(pixelToMouseDirection);
-    float strength = smoothstep(0.4,0.0,pixelDistanceToMouse);
+    float strength = smoothstep(0.2,0.0,pixelDistanceToMouse);
 
     vec2 uvOffset = strength * - mouseDirection * 0.25;
     vec2 uv = vUv - uvOffset;
