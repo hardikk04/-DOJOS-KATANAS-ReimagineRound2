@@ -64,9 +64,32 @@ const page2Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page2-img1",
-      start: "top 90%",
-      end: "top -200%",
-      scrub: 1,
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
+    },
+  });
+
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page2-img2",
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
+    },
+  });
+
+  const t3 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page2-img3",
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
     },
   });
 
@@ -74,10 +97,12 @@ const page2Animation = () => {
     text: "",
     x: 30,
     opacity: 0,
+    delay: 2,
   });
 
   t1.from(".page2-text>p", {
     text: "",
+    delay: 2,
   });
 
   t1.from(".page2-text>button", {
@@ -117,61 +142,61 @@ const page2Animation = () => {
 
   // Model 2
 
-  t1.to(".page2-text>h1", {
+  t2.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t1.to(".page2-text>p", {
+  t2.to(".page2-text>p", {
     text: paragraphText[1],
   });
 
-  t1.to(".page2-circle>h1", {
+  t2.to(".page2-circle>h1", {
     text: "2.89s",
   });
 
-  t1.to(".page2-elem1>h1", {
+  t2.to(".page2-elem1>h1", {
     text: "580 mi",
   });
 
-  t1.to(".page2-elem2>h1", {
+  t2.to(".page2-elem2>h1", {
     text: "400 mph",
   });
 
-  t1.to(".page2-elem3>h1", {
+  t2.to(".page2-elem3>h1", {
     text: "8 Year",
   });
 
-  t1.to(".page2-elem4>h1", {
+  t2.to(".page2-elem4>h1", {
     text: "2040 hp",
   });
 
   // Model 2
 
-  t1.to(".page2-text>h1", {
+  t3.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t1.to(".page2-text>p", {
+  t3.to(".page2-text>p", {
     text: paragraphText[2],
   });
 
-  t1.to(".page2-circle>h1", {
+  t3.to(".page2-circle>h1", {
     text: "3.89s",
   });
 
-  t1.to(".page2-elem1>h1", {
+  t3.to(".page2-elem1>h1", {
     text: "680 mi",
   });
 
-  t1.to(".page2-elem2>h1", {
+  t3.to(".page2-elem2>h1", {
     text: "600 mph",
   });
 
-  t1.to(".page2-elem3>h1", {
+  t3.to(".page2-elem3>h1", {
     text: "10 Year",
   });
 
-  t1.to(".page2-elem4>h1", {
+  t3.to(".page2-elem4>h1", {
     text: "3040 hp",
   });
 };
