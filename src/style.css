@@ -243,30 +243,91 @@ nav > h1 {
   position: relative;
   min-height: 100vh;
   width: 100%;
-}
-
-.page2-part1 {
-  position: relative;
-  height: 100vh;
-  width: 100%;
   display: flex;
 }
 
-.page2-part1-model {
+.page2-imgs {
   position: relative;
-  height: 100%;
+  height: 300vh;
   width: 45%;
+  overflow: hidden;
 }
 
-.modelS {
+.page2-img1 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page2-img1 > img {
   position: relative;
   height: 100%;
   width: 100%;
-  cursor: grab;
+  object-fit: cover;
+  scale: 1.2;
+  opacity: 0;
 }
 
-.page2-part1-content {
+.page2-img1 > canvas {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.page2-img2 {
   position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page2-img2 > img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  scale: 1.2;
+  opacity: 0;
+}
+
+.page2-img2 > canvas {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.page2-img3 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.page2-img3 > img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  scale: 1.2;
+  opacity: 0;
+}
+
+.page2-img3 > canvas {
+  position: absolute;
+  top: 0%;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.page2-content {
+  position: sticky;
+  top: 0;
   height: 100%;
   width: 55%;
   padding-top: 2vw;
@@ -279,21 +340,21 @@ nav > h1 {
   font-family: mediumFont;
 }
 
-.page2-part1-text > h1 {
+.page2-text > h1 {
   font-size: 1.8vw;
   font-family: tesla;
   letter-spacing: 6px;
   font-weight: 100;
 }
 
-.page2-part1-text > p {
+.page2-text > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
   margin-top: 5vw;
 }
 
-.page2-part1-text > button {
+.page2-text > button {
   position: relative;
   padding: 0.8vw 2vw;
   border: none;
@@ -308,7 +369,7 @@ nav > h1 {
   gap: 0.5vw;
 }
 
-.page2-part1-speed {
+.page2-speed {
   position: relative;
   width: 100%;
   display: flex;
@@ -317,7 +378,7 @@ nav > h1 {
   flex-direction: column;
 }
 
-.page1-part1-circle {
+.page2-circle {
   position: relative;
   height: 12vw;
   width: 12vw;
@@ -330,22 +391,22 @@ nav > h1 {
   color: #31a93e;
 }
 
-.page1-part1-circle > h1 {
+.page2-circle > h1 {
   font-size: 3vw;
   font-weight: 500;
 }
 
-.page1-part1-circle > h3 {
+.page2-circle > h3 {
   font-weight: 100;
 }
 
-.page2-part1-speed > h3 {
+.page2-speed > h3 {
   margin-top: 1vw;
   font-size: 1.4vw;
   letter-spacing: 1px;
 }
 
-.page2-part1-box {
+.page2-box {
   position: relative;
   width: 100%;
   padding: 3vw 0;
@@ -358,12 +419,12 @@ nav > h1 {
   text-align: center;
 }
 
-.page-2part1-box-elem > h1 {
+.page2-box-elem > h1 {
   font-size: 2vw;
   font-weight: 500;
 }
 
-.page-2part1-box-elem > h3 {
+.page2-box-elem > h3 {
   font-size: 1.2vw;
   font-weight: 100;
 }
@@ -530,7 +591,7 @@ nav > h1 {
   position: relative; 
 }
 
-#page4 #left .section .section-overlay{
+#page4 #left .section .section-overlay {
   width: 110%;
   height: 100%;
   position: absolute;
@@ -547,7 +608,7 @@ nav > h1 {
   z-index: 2;
 }
 
-#page4 #left .section .section-overlay #diamond{
+#page4 #left .section .section-overlay #diamond {
   width: 1.2vw;
   height: 1.2vw;
   rotate: 45deg;
@@ -582,23 +643,20 @@ nav > h1 {
 }
 
 
-#page4 #left .section #innerleft
-{
+#page4 #left .section #innerleft {
   height: 4vw;
   z-index: 3;
   overflow: hidden;
 }
 
-#page4 #left .section #innerleft #heading h3
-{
+#page4 #left .section #innerleft #heading h3 {
   font-size: 3vw;
   font-weight: 600;
   color: rgb(106, 106, 106);
   font-family: regularFont;
 }
 
-#page4 #left .section #innerleft #heading h3 span
-{
+#page4 #left .section #innerleft #heading h3 span {
   display: inline-block;
 }
 
@@ -745,13 +803,12 @@ nav > h1 {
   text-align: center;
 }
 
-#page6 #section2 
-{
+#page6 #section2 {
   width: 100%;
   height: 100.2vh;
   background-image: url(./images/page6_main.jpg);
   background-size: cover;
-  padding: 2vw 3vw; 
+  padding: 2vw 3vw;
   display: flex;
 }
 
@@ -778,16 +835,14 @@ nav > h1 {
   gap: 2vw;
 }
 
-#page6 #section2 #left #heading h1
-{
+#page6 #section2 #left #heading h1 {
   font-size: 5.5vw;
   font-family: title;
   font-weight: 500;
   color: #fff;
 }
 
-#page6 #section2 #left #heading-3
-{
+#page6 #section2 #left #heading-3 {
   display: flex;
   align-items: center;
   gap: 1vw;
@@ -801,8 +856,7 @@ nav > h1 {
   margin-top: 0.8vw;
 }
 
-#page6 #section2 #left h3
-{
+#page6 #section2 #left h3 {
   font-family: lightfont;
   font-weight: 500;
   color: #fff;
@@ -810,8 +864,7 @@ nav > h1 {
   line-height: 1;
 }
 
-#page6 #section2 #left #button
-{
+#page6 #section2 #left #button {
   width: 14vw;
   height: 4vw;
   border-radius: 10px;
@@ -822,41 +875,34 @@ nav > h1 {
   gap: 1vw;
 }
 
-#page6 #section2 #left #button:hover
-{
+#page6 #section2 #left #button:hover {
   cursor: pointer;
 }
 
-#page6 #section2 #left #button #text 
-{
+#page6 #section2 #left #button #text {
   height: 2vw;
   overflow: hidden;
 }
 
-#page6 #section2 #left #button #text h5
-{
+#page6 #section2 #left #button #text h5 {
   font-size: 1.5vw;
   font-family: regularFont;
   color: #fff;
 }
 
-#page6 #section2 #left #button #arrow
-{
+#page6 #section2 #left #button #arrow {
   width: 1.5vw;
   height: 1.5vw;
   overflow: hidden;
-} 
+}
 
-
-#page6 #section2 #left #button #arrow i
-{
+#page6 #section2 #left #button #arrow i {
   font-size: 1.8vw;
   color: #fff;
   display: inline-block;
 }
 
-#page6 #section2 #right
-{
+#page6 #section2 #right {
   width: 38%;
   height: 100%;
   position: relative;
@@ -866,59 +912,53 @@ nav > h1 {
   padding-top: 8vw;
 }
 
-#page6 #section2 #right .card 
-{
+#page6 #section2 #right .card {
   width: 100%;
   height: 70vh;
   display: flex;
   flex-direction: column;
   gap: 2vw;
   position: relative;
-  background: linear-gradient (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
+  background: linear-gradient
+    (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
   backdrop-filter: blur(30px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   padding-bottom: 2vw;
 }
 
-#page6 #section2 #right .card #image
-{
+#page6 #section2 #right .card #image {
   width: 100%;
   height: 28vw;
   position: relative;
 }
 
-#page6 #section2 #right .card #image img
-{
+#page6 #section2 #right .card #image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#page6 #section2 #right .card #heading
-{
+#page6 #section2 #right .card #heading {
   height: 2.6vw;
   display: flex;
   align-items: center;
   padding-left: 1vw;
 }
 
-#page6 #section2 #right .card #heading h3
-{
+#page6 #section2 #right .card #heading h3 {
   font-size: 2.6vw;
   line-height: 1;
   font-family: regularFont;
   color: #fff;
 }
 
-#page6 #section2 #right .card #description
-{
+#page6 #section2 #right .card #description {
   height: 4vw;
   margin-top: -1.5vw;
   padding-left: 1vw;
 }
 
-#page6 #section2 #right .card #description h5
-{
+#page6 #section2 #right .card #description h5 {
   font-size: 1.8vw;
   line-height: 1;
   font-family: lightFont;

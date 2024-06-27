@@ -10,10 +10,6 @@
       type="image/x-icon"
     />
     <link rel="stylesheet" href="style.css" />
-    <link
-    href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
-    rel="stylesheet"
-/>
   </head>
 
   <body>
@@ -70,44 +66,50 @@
         </div>
       </div>
       <div id="page2">
-        <div class="page2-part1">
-          <div class="page2-part1-model">
-            <canvas class="modelS"></canvas>
+        <div class="page2-imgs">
+          <div class="page2-img1">
+            <img src="/images/page2_1.png" alt="" />
           </div>
-          <div class="page2-part1-content">
-            <div class="page2-part1-text">
-              <h1>TESLA</h1>
-              <p>
-                Model S Plaid has the quickest acceleration of any vehicle in
-                production. Updated battery architecture for all Model S
-              </p>
-              <button>Explore more <i class="ri-arrow-right-line"></i></button>
+          <div class="page2-img2">
+            <img src="/images/page2_2.png" alt="" />
+          </div>
+          <div class="page2-img3">
+            <img src="/images/page2_3.png" alt="" />
+          </div>
+        </div>
+        <div class="page2-content">
+          <div class="page2-text">
+            <h1>TESLA</h1>
+            <p>
+              Model S Plaid has the quickest acceleration of any vehicle in
+              production. Updated battery architecture for all Model S
+            </p>
+            <button>Explore more <i class="ri-arrow-right-line"></i></button>
+          </div>
+          <div class="page2-speed">
+            <div class="page2-circle">
+              <h1>1.99s</h1>
+              <h3>0-60 Mph</h3>
             </div>
-            <div class="page2-part1-speed">
-              <div class="page1-part1-circle">
-                <h1>1.99s</h1>
-                <h3>0-60 Mph</h3>
-              </div>
-              <h3>The riding future</h3>
-            </div>
+            <h3>The riding future</h3>
+          </div>
 
-            <div class="page2-part1-box">
-              <div class="page-2part1-box-elem">
-                <h1>359 mi</h1>
-                <h3>range (EPA est.)</h3>
-              </div>
-              <div class="page-2part1-box-elem">
-                <h1>200 mph</h1>
-                <h3>Top speed</h3>
-              </div>
-              <div class="page-2part1-box-elem">
-                <h1>5 Year</h1>
-                <h3>Battery warranty</h3>
-              </div>
-              <div class="page-2part1-box-elem">
-                <h1>1020 hp</h1>
-                <h3>Peak power</h3>
-              </div>
+          <div class="page2-box">
+            <div class="page2-box-elem page2-elem1">
+              <h1>359 mi</h1>
+              <h3>range (EPA est.)</h3>
+            </div>
+            <div class="page2-box-elem page2-elem2">
+              <h1>200 mph</h1>
+              <h3>Top speed</h3>
+            </div>
+            <div class="page2-box-elem page2-elem3">
+              <h1>5 Year</h1>
+              <h3>Battery warranty</h3>
+            </div>
+            <div class="page2-box-elem page2-elem4">
+              <h1>1020 hp</h1>
+              <h3>Peak power</h3>
             </div>
           </div>
         </div>
@@ -157,8 +159,7 @@
                 <h3>Solar Roof</h3> 
               </div>
             </div>
-            <div id="innerright">
-            </div>
+            <div id="innerright"></div>
           </div>
           <div id="section3" class="section">
             <div class="section-overlay">
@@ -170,8 +171,7 @@
                 <h3>Powerwall</h3>
               </div>
             </div>
-            <div id="innerright">
-            </div>
+            <div id="innerright"></div>
           </div>
           <div id="section4" class="section">
             <div class="section-overlay">
@@ -183,8 +183,7 @@
                 <h3>Megapack</h3>
               </div>
             </div>
-            <div id="innerright">
-            </div>
+            <div id="innerright"></div>
           </div>
           <div id="section5" class="section">
             <div class="section-overlay">
@@ -196,8 +195,7 @@
                 <h3>Why Solar</h3>
               </div>
             </div>
-            <div id="innerright">
-            </div>
+            <div id="innerright"></div>
           </div>
         </div>
         <div id="right">
@@ -432,6 +430,7 @@
       </div>
     </div>
     <script type="module" src="script.js"></script>
+    <script type="module" src="webgl.js"></script>
     <script type="module" src="three.js"></script>
     <script type="module" src="modelS.js"></script>
   </body>

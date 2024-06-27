@@ -4,9 +4,37 @@ import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { log } from "three/examples/jsm/nodes/Nodes.js";
+import { TextPlugin } from "gsap/TextPlugin";
 
 // Scroll Trigger
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, TextPlugin);
+
+// Clutter Animation
+const clutterAnimation = (element) => {
+  const htmlTag = document.querySelector(element);
+  let clutter = "";
+
+  // Splitting the text content into individual letters and wrapping each in a span with a class
+  htmlTag.textContent.split("").forEach((word) => {
+    clutter += `<span class="inline-block">${word}</span>`;
+  });
+
+  // Updating the HTML content of the element with the animated spans
+  htmlTag.innerHTML = clutter;
+};
+
+const clutterWordAnimation = (element) => {
+  const htmlTag = document.querySelector(element);
+  let clutter = "";
+
+  // Splitting the text content into individual letters and wrapping each in a span with a class
+  htmlTag.textContent.split(" ").forEach((word) => {
+    clutter += `<span>${word + " "}</span>`;
+  });
+
+  // Updating the HTML content of the element with the animated spans
+  htmlTag.innerHTML = clutter;
+};
 
 // Lenis js
 
@@ -24,6 +52,132 @@ const lenisJs = () => {
   gsap.ticker.lagSmoothing(0);
 };
 lenisJs();
+
+// Page2 Animation
+const page2Animation = () => {
+  const paragraphText = [
+    "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S",
+    "The Tesla Model 3 is a groundbreaking electric vehicle that has set new standards for performance, efficiency, and accessibility in the automotive industry. Launched in 2017.",
+    "The Tesla Model X is a high-performance electric SUV that combines impressive range, cutting-edge technology, and unparalleled acceleration. Available in Long Range and Plaid variants.",
+  ];
+
+  const t1 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page2-img1",
+      start: "top 90%",
+      end: "top -200%",
+      scrub: 1,
+    },
+  });
+
+  t1.from(".page2-text>h1", {
+    text: "",
+    x: 30,
+    opacity: 0,
+  });
+
+  t1.from(".page2-text>p", {
+    text: "",
+  });
+
+  t1.from(".page2-text>button", {
+    opacity: 0,
+    x: 30,
+  });
+
+  t1.from(".page2-speed", {
+    opacity: 0,
+    x: 30,
+  });
+
+  t1.from(".page2-circle>h1", {
+    text: "0.00s",
+  });
+
+  t1.from(".page2-speed>h3", {
+    opacity: 0,
+    x: 30,
+  });
+
+  t1.from(".page2-elem1>h1", {
+    text: "000 mi",
+  });
+
+  t1.from(".page2-elem2>h1", {
+    text: "000 mph",
+  });
+
+  t1.from(".page2-elem3>h1", {
+    text: "0 Year",
+  });
+
+  t1.from(".page2-elem4>h1", {
+    text: "0000 hp",
+  });
+
+  // Model 2
+
+  t1.to(".page2-text>h1", {
+    text: "TESLA",
+  });
+
+  t1.to(".page2-text>p", {
+    text: paragraphText[1],
+  });
+
+  t1.to(".page2-circle>h1", {
+    text: "2.89s",
+  });
+
+  t1.to(".page2-elem1>h1", {
+    text: "580 mi",
+  });
+
+  t1.to(".page2-elem2>h1", {
+    text: "400 mph",
+  });
+
+  t1.to(".page2-elem3>h1", {
+    text: "8 Year",
+  });
+
+  t1.to(".page2-elem4>h1", {
+    text: "2040 hp",
+  });
+
+  // Model 2
+
+  t1.to(".page2-text>h1", {
+    text: "TESLA",
+  });
+
+  t1.to(".page2-text>p", {
+    text: paragraphText[2],
+  });
+
+  t1.to(".page2-circle>h1", {
+    text: "3.89s",
+  });
+
+  t1.to(".page2-elem1>h1", {
+    text: "680 mi",
+  });
+
+  t1.to(".page2-elem2>h1", {
+    text: "600 mph",
+  });
+
+  t1.to(".page2-elem3>h1", {
+    text: "10 Year",
+  });
+
+  t1.to(".page2-elem4>h1", {
+    text: "3040 hp",
+  });
+};
+
+page2Animation();
 
 //page4Animation
 
@@ -43,8 +197,8 @@ const page4HoverAnimation = () => {
 
       gsap.to(section.querySelector(".section-overlay #diamond"), {
         scale: 1,
-        rotate: "45deg"
-      })
+        rotate: "45deg",
+      });
 
       gsap.to(section.querySelector(".section-overlay button"), {
         opacity: 1,
@@ -56,7 +210,7 @@ const page4HoverAnimation = () => {
       sectionOverlay.style.pointerEvents = "none";
 
       gsap.to(section.querySelector(".section-overlay"), {
-        opacity: 0
+        opacity: 0,
       });
     
       gsap.to(section.querySelector(".section-overlay #diamond"), {
@@ -149,38 +303,38 @@ page5MarqueeAnimation();
 // page6Animation
 const page6LeftBtnHover = () => {
   var btn = document.querySelector("#page6 #button");
-  var heads = document.querySelectorAll("#page6 #button h5"); 
-  var arrows = document.querySelectorAll("#page6 #button #arrow i"); 
-  
-  heads.forEach(function(head) {
-    btn.addEventListener("mouseenter", function(){
+  var heads = document.querySelectorAll("#page6 #button h5");
+  var arrows = document.querySelectorAll("#page6 #button #arrow i");
+
+  heads.forEach(function (head) {
+    btn.addEventListener("mouseenter", function () {
       gsap.to(head, {
         y: "-33",
-        duration: 0.3
-      })
-    })
-    btn.addEventListener("mouseleave", function(){
+        duration: 0.3,
+      });
+    });
+    btn.addEventListener("mouseleave", function () {
       gsap.to(head, {
         y: "0",
-        duration: 0.3
-      })
-    })
-  })
-  arrows.forEach(function(arrow) {
-    btn.addEventListener("mouseenter", function(){
+        duration: 0.3,
+      });
+    });
+  });
+  arrows.forEach(function (arrow) {
+    btn.addEventListener("mouseenter", function () {
       gsap.to(arrow, {
         y: "-30",
-        duration: 0.3
-      })
-    })
-    btn.addEventListener("mouseleave", function(){
+        duration: 0.3,
+      });
+    });
+    btn.addEventListener("mouseleave", function () {
       gsap.to(arrow, {
         y: "0",
-        duration: 0.3
-      })
-    })
-  })
-}
+        duration: 0.3,
+      });
+    });
+  });
+};
 page6LeftBtnHover();
 
 const page6ScrollAnimation = () => {
@@ -193,16 +347,14 @@ const page6ScrollAnimation = () => {
       pin: true,
       scrub: 1,
       // markers: true
-    }
-  })
+    },
+  });
 
-  tl6
-  .to("#page6 #section2 #right", {
-    y: "-168%"
-  })
-}
-page6ScrollAnimation()
-
+  tl6.to("#page6 #section2 #right", {
+    y: "-168%",
+  });
+};
+page6ScrollAnimation();
 
 // page7Animation
 const page7Animation = ()=>{
