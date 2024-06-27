@@ -83,7 +83,7 @@ let energyTextAnimation = true;
 let chargingTextAnimation = true;
 
 // Vehicle Video Transition
-const vehicleVideoAnimation = () => {
+const vehicleVideoAnimation = (index, prevIndex) => {
   // Random displacement texture
   plane.material.uniforms.uDisplacmentTexture.value =
     displacmentTexture[Math.floor(Math.random() * 3)];
@@ -95,7 +95,7 @@ const vehicleVideoAnimation = () => {
       y: 90,
       transform: "scaleY(3)",
       stagger: {
-        amount: 0.5,
+        amount: prevIndex <= 0 ? 0.5 : -0.5,
         from: "x",
       },
       onComplete: () => {
@@ -120,7 +120,7 @@ const vehicleVideoAnimation = () => {
 };
 
 // Energy Video Transition
-const energyVideoAnimation = () => {
+const energyVideoAnimation = (index, prevIndex) => {
   // Random displacement texture
   plane.material.uniforms.uDisplacmentTexture.value =
     displacmentTexture[Math.floor(Math.random() * 3)];
@@ -133,7 +133,7 @@ const energyVideoAnimation = () => {
       y: 90,
       transform: "scaleY(3)",
       stagger: {
-        amount: 0.5,
+        amount: prevIndex <= 1 ? 0.5 : -0.5,
         from: "x",
       },
       onComplete: () => {
@@ -201,11 +201,11 @@ const imageTransitionAnimation = () => {
   allHeroSections.forEach((hero, index) => {
     hero.addEventListener("mouseenter", () => {
       if (index === 0) {
-        vehicleVideoAnimation();
+        vehicleVideoAnimation(index, prevIndex);
       } else if (index === 1) {
-        energyVideoAnimation();
+        energyVideoAnimation(index, prevIndex);
       } else {
-        chargingVideoAnimation();
+        chargingVideoAnimation(index, prevIndex);
       }
       prevIndex = index;
     });
