@@ -228,7 +228,7 @@ const page4HoverAnimation = () => {
 }
 page4HoverAnimation()
 
-const page4ClickAnimation = () => {
+const page4LeftAnimation = () => {
   const sections = document.querySelectorAll("#page4 #left .section")
   const but1 = document.getElementById("button1")
   const but2 = document.getElementById("button2")
@@ -264,7 +264,106 @@ const page4ClickAnimation = () => {
     })
   })
 }
-page4ClickAnimation()
+page4LeftAnimation()
+
+const page4RightAnimation = () => {
+  // section 1 & 3
+  const sections = document.querySelectorAll("#page4 #right .section");
+
+  sections.forEach(function(section) {
+    const subsecs1 = section.querySelectorAll("#overlay #sub-sec1");
+    const hoverDivsPart1 = section.querySelectorAll("#hover-divs #hover-1");
+    const parts = section.querySelectorAll("#hover-divs #hover-1 .parts");
+
+    const subsecs2 = section.querySelectorAll("#overlay #sub-sec2");
+    const hoverDivsPart2 = section.querySelectorAll("#hover-divs #hover-2");
+    const parts2 = section.querySelectorAll("#hover-divs #hover-2 .parts");
+
+    const subsecs3 = section.querySelectorAll("#overlay #sub-sec3");
+    const hoverDivsPart3 = section.querySelectorAll("#hover-divs #hover-3");
+    const parts3 = section.querySelectorAll("#hover-divs #hover-3 .parts");
+
+    subsecs1.forEach(function(subsec1) {
+      subsec1.addEventListener("mouseenter", function() {
+        hoverDivsPart1.forEach(function(hoverDivPart1) {
+          hoverDivPart1.style.height = "38.5vw";
+        });
+
+        parts.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
+      });
+    });
+
+    subsecs2.forEach(function(subsec2) {
+      subsec2.addEventListener("mouseenter", function() {
+        hoverDivsPart2.forEach(function(hoverDivPart2) {
+          hoverDivPart2.style.height = "38.5vw";
+        });
+
+        parts2.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
+      });
+    });
+
+    subsecs3.forEach(function(subsec3) {
+      subsec3.addEventListener("mouseenter", function() {
+        hoverDivsPart3.forEach(function(hoverDivPart3) {
+          hoverDivPart3.style.height = "38.5vw";
+        });
+
+        parts3.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
+      });
+    });
+  });
+
+  // section 2
+const subsections = document.querySelectorAll("#page4 #right #section2 [id^=sub-sec]");
+const videos = document.querySelectorAll("#page4 #right #section2 #videos [id^=video]");
+
+function showVideo(index) {
+  videos.forEach((video, idx) => {
+    if (idx === index) {
+      video.style.opacity = "1";
+      video.currentTime = 0;
+      video.play();
+    } else {
+      video.style.opacity = "0";
+    }
+  });
+}
+
+subsections.forEach((subsec, idx) => {
+  subsec.addEventListener("mouseenter", () => showVideo(idx));
+});
+
+};
+page4RightAnimation();
+
 
 // page5Animation
 
