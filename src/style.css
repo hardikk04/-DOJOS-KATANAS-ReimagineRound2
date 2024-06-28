@@ -163,10 +163,7 @@ nav > h1 {
   pointer-events: none;
 }
 
-.icey_active{
-  opacity: 1;
-  pointer-events: all;
-}
+
 
 #menu-page{
   height: 100vh;
@@ -186,6 +183,7 @@ nav > h1 {
   align-items: center;
   justify-content: space-between;
   padding: 2vw 3vw;
+  padding-top: 1vw;
 }
 #menu-nav h1 {
   font-family: tesla;
