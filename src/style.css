@@ -50,6 +50,10 @@ html {
 body::-webkit-scrollbar {
   width: 0px; /* Width of the scrollbar */
 }
+body:has(.icey_modal.icey_active) {
+  overflow-y: hidden;
+  padding-right: var(--scrollbar_width);
+}
 
 /* Customize scrollbar track */
 body::-webkit-scrollbar-track {
@@ -126,17 +130,152 @@ nav > h1 {
 }
 
 .nav-right {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   gap: 2vw;
-  background-color: #fff;
   height: 3vw;
   width: 3vw;
   padding: .4vw;
 }
+#open-container{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: .5vw;
+}
+#open-container .op-line{
+  width: 100%;
+  height: 10%;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
 
+#cursor{
+  position: fixed;
+  z-index: 999;
+  width: 3vw;
+  height: 3vw;
+  background-color: #ffffff;
+  border-radius: 50%;
+  mix-blend-mode: difference;
+  transform: translate(-50%,-50%) scale(0);
+  pointer-events: none;
+}
+
+.icey_active{
+  opacity: 1;
+  pointer-events: all;
+}
+
+#menu-page{
+  height: 100vh;
+  width: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  overflow: hidden;
+  display: none;
+  opacity: 0;
+}
+#menu-nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2vw 3vw;
+}
+#menu-nav h1 {
+  font-family: tesla;
+  font-weight: 100;
+  font-size: 1.4vw;
+  letter-spacing: 6px;
+  color: #fff;
+}
+
+#menu-nav-rt{
+  height: 3vw;
+  width: 3vw;
+  padding: .4vw;
+}
+#close-container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+#close-container #cl-line1{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: center;
+  transform: translate(-50%,-50%) rotate(45deg);
+  height: 100%;
+  width: 10%;
+  background-color: #fff;
+}
+#close-container #cl-line2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%) rotate(-45deg);
+  height: 100%;
+  width: 10%;
+  background-color: #fff;
+}
+
+#wheel{
+  position: absolute;
+  left: 50%;
+  transform-origin: center;
+  transform: translateX(-50%) rotate(0) scale(1.2);
+  bottom: -65vh;
+  height: 110vh;
+  width: 110vh;
+}
+#wheel #tier{
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  opacity: .3;
+}
+
+#wheel #contact{
+  position: absolute;
+  top: -12%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 92%;
+  opacity: 1;
+}
+#wheel #event{
+  position: absolute;
+  bottom: -12%;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 92%;
+}
+#wheel #contact1{
+  position: absolute;
+  top: 50%;
+  left: -45%;
+  transform: translateY(-50%) rotate(-90deg);
+  width: 90%;
+}
+#wheel #event2{
+  position: absolute;
+  right: -45%;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  width: 92%;
+}
+
+#wheel .mtxt{
+  position: relative;
+  opacity: .1;
+}
 
 .page1-overlay {
   position: relative;
