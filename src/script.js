@@ -5,6 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { log } from "three/examples/jsm/nodes/Nodes.js";
 import { TextPlugin } from "gsap/TextPlugin";
+import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -41,7 +42,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => {});
+  lenis.on("scroll", (e) => { });
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -52,6 +53,104 @@ const lenisJs = () => {
   gsap.ticker.lagSmoothing(0);
 };
 lenisJs();
+
+
+// magneticEffect animation
+// can be used by giving class .magnet-effect to parent 
+const magneticEffect = () => {
+  window.addEventListener("mousemove", function (dets) {
+    gsap.to("#cursor", {
+      top: dets.y,
+      left: dets.x,
+    });
+  });
+  document.querySelectorAll(".magnet-effect").forEach(function (e) {
+    e.addEventListener("mouseenter", function () {
+      gsap.to("#cursor", {
+        scale: 1,
+      });
+    });
+    e.addEventListener("mousemove", function (dets) {
+      // for value of x
+      var xStart = e.getBoundingClientRect().x;
+      var xEnd = e.getBoundingClientRect().x + e.getBoundingClientRect().width;
+      var valx = gsap.utils.mapRange(xStart, xEnd, -12, 12, dets.x);
+      // for value of y
+      var yStart = e.getBoundingClientRect().y;
+      var yEnd = e.getBoundingClientRect().y + e.getBoundingClientRect().height;
+      var valy = gsap.utils.mapRange(yStart, yEnd, -12, 12, dets.y);
+      gsap.to(e.children[0], {
+        x: valx,
+        y: valy,
+        duration: 0.5,
+      });
+    });
+    e.addEventListener("mouseleave", function (dets) {
+      gsap.to(e.children[0], {
+        x: 0,
+        y: 0,
+        duration: 0.5,
+      });
+    });
+  });
+  document.querySelectorAll(".magnet-effect").forEach(function (e) {
+    e.addEventListener("mouseleave", function () {
+      gsap.to("#cursor", {
+        scale: 0,
+      });
+    });
+  });
+
+};
+magneticEffect();
+
+//menu animation
+const menuAnimation = () => {
+  let rotationAngle = 0;
+  document.querySelector(".menu-open").addEventListener("click", function () {
+    rotationAngle = 0
+    document.querySelector('#wheel').style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector("#contact").style.opacity = 1
+    gsap.to("#menu-page", {
+      display: "block",
+      opacity: 1,
+      duration: .5
+    })
+  })
+  document.querySelector(".menu-close").addEventListener("click", function () {
+   window.scrollTo(0,0)
+    gsap.to("#menu-page", {
+      display: "none",
+      opacity: 0,
+      duration: .5
+
+    })
+  })
+  window.addEventListener('wheel', function (event) {
+    // Getting the amount of scroll from the events
+    let delta = event.deltaY;
+    // Increase or decrease the rotation angle by the scroll amount
+    rotationAngle += delta;
+
+    let circle = document.querySelector('#wheel');
+    circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+
+    document.querySelectorAll(".mtxt").forEach(function (txt) {
+      // center value of text in x-axis with respect to window
+      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
+      // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
+      if ((window.innerWidth / 2 - 300) < txtCenter && (window.innerWidth / 2 + 300) > txtCenter) {
+        txt.style.opacity = 1
+      }
+      else {
+        txt.style.opacity = 0.2
+
+      }
+    })
+
+  });
+}
+menuAnimation()
 
 // Page2 Animation
 const page2Animation = () => {
@@ -65,9 +164,32 @@ const page2Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page2-img1",
-      start: "top 90%",
-      end: "top -200%",
-      scrub: 1,
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
+    },
+  });
+
+  const t2 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page2-img2",
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
+    },
+  });
+
+  const t3 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page2-img3",
+      start: "top 100%",
+      end: "top 0%",
+      scrub: 2,
+      // markers: true,
     },
   });
 
@@ -75,10 +197,12 @@ const page2Animation = () => {
     text: "",
     x: 30,
     opacity: 0,
+    delay: 2,
   });
 
   t1.from(".page2-text>p", {
     text: "",
+    delay: 2,
   });
 
   t1.from(".page2-text>button", {
@@ -118,61 +242,61 @@ const page2Animation = () => {
 
   // Model 2
 
-  t1.to(".page2-text>h1", {
+  t2.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t1.to(".page2-text>p", {
+  t2.to(".page2-text>p", {
     text: paragraphText[1],
   });
 
-  t1.to(".page2-circle>h1", {
+  t2.to(".page2-circle>h1", {
     text: "2.89s",
   });
 
-  t1.to(".page2-elem1>h1", {
+  t2.to(".page2-elem1>h1", {
     text: "580 mi",
   });
 
-  t1.to(".page2-elem2>h1", {
+  t2.to(".page2-elem2>h1", {
     text: "400 mph",
   });
 
-  t1.to(".page2-elem3>h1", {
+  t2.to(".page2-elem3>h1", {
     text: "8 Year",
   });
 
-  t1.to(".page2-elem4>h1", {
+  t2.to(".page2-elem4>h1", {
     text: "2040 hp",
   });
 
   // Model 2
 
-  t1.to(".page2-text>h1", {
+  t3.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t1.to(".page2-text>p", {
+  t3.to(".page2-text>p", {
     text: paragraphText[2],
   });
 
-  t1.to(".page2-circle>h1", {
+  t3.to(".page2-circle>h1", {
     text: "3.89s",
   });
 
-  t1.to(".page2-elem1>h1", {
+  t3.to(".page2-elem1>h1", {
     text: "680 mi",
   });
 
-  t1.to(".page2-elem2>h1", {
+  t3.to(".page2-elem2>h1", {
     text: "600 mph",
   });
 
-  t1.to(".page2-elem3>h1", {
+  t3.to(".page2-elem3>h1", {
     text: "10 Year",
   });
 
-  t1.to(".page2-elem4>h1", {
+  t3.to(".page2-elem4>h1", {
     text: "3040 hp",
   });
 };
