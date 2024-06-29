@@ -474,9 +474,9 @@ const page7Animation = () => {
         trigger: "#page7",
         scroller: "body",
         start: "bottom bottom",
-        end: "bottom -50%",
+        end: "bottom -150%",
         pin: true,
-        scrub: 1,
+        scrub: 2,
         // markers:true
       },
     })
@@ -484,8 +484,8 @@ const page7Animation = () => {
       "#discovery #dis-text #container7",
       {
         x: "-71%",
-        duration: 3,
-        ease: "power1.out",
+        duration: 4,
+        ease: "linear",
       },
       "a"
     )
