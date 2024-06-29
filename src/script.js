@@ -498,27 +498,27 @@ const page5MarqueeAnimation = () => {
     ease: "linear"
   });
 
-  // window.addEventListener("wheel", function (dets) {
-  //   if (dets.deltaY > 0) {
-  //     // Animation when scrolling up
-  //     gsap.to("#slide1 h2", {
-  //       transform: "translateX(-100%)",
-  //       duration: 10,
-  //       repeat: -1,
-  //       ease: "linear"
-  //     });
-  //   } else {
-  //     // Animation when scrolling down
-  //     gsap.to("#slide1 h2", {
-  //       transform: "translateX(0%)",
-  //       duration: 10,
-  //       repeat: -1,
-  //       ease: "linear"
-  //     });
-  //   }
-  // });
+  window.addEventListener("wheel", function (dets) {
+    if (dets.deltaY > 0) {
+      // Animation when scrolling up
+      gsap.to("#slide1 h2", {
+        transform: "translateX(-100%)",
+        duration: 10,
+        repeat: -1,
+        ease: "linear"
+      });
+    } else {
+      // Animation when scrolling down
+      gsap.to("#slide1 h2", {
+        transform: "translateX(0%)",
+        duration: 10,
+        repeat: -1,
+        ease: "linear"
+      });
+    }
+  });
 }
-// page5MarqueeAnimation();
+page5MarqueeAnimation();
 
 
 // page6Animation
@@ -608,7 +608,7 @@ const page7Animation = ()=>{
       trigger:"#page7",
       scroller:"body",
       start:"bottom bottom",
-      end:"bottom -50%",
+      end:"bottom -150%",
       pin:true,
       scrub:1,
       // markers:true
@@ -617,11 +617,11 @@ const page7Animation = ()=>{
   .to("#discovery #dis-text #container7",{
     x:"-71%",
     duration: 3, 
-    ease: "power1.out",
+    ease: "linear",
   },"a")
   .to(".ig7",{
     x:-200,
-    duration:4
+    duration:3
   },"a")
 }
 page7Animation()
