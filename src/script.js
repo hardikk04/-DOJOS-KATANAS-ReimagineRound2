@@ -4,7 +4,6 @@ import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { TextPlugin } from "gsap/TextPlugin";
-import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -305,87 +304,222 @@ page2Animation();
 //page4Animation
 
 const page4HoverAnimation = () => {
-  const sections = document.querySelectorAll("#page4 #left .section");
-  const heads = document.querySelectorAll(
-    "#page4 #left .section #innerleft h3"
-  );
+  const sections = document.querySelectorAll("#page4 #left .section")
 
-  heads.forEach(function (head) {
-    var headText = head.textContent;
-    var splittedText = headText.split("");
+  sections.forEach(function(section) {
+    const sectionOverlay = section.querySelector(".section-overlay")
 
-    var clutter = "";
-    splittedText.forEach(function (elem) {
-      if (elem === " ") {
-        clutter += elem;
-      } else {
-        clutter += `<span>${elem}</span>`;
-      }
-    });
-    head.innerHTML = clutter;
-  });
-
-  sections.forEach(function (section) {
-    section.addEventListener("mouseenter", function () {
-      gsap.to(section.querySelectorAll("#heading h3 span"), {
-        y: -63,
-        stagger: 0.025,
-        ease: "elastic.in",
-        duration: 0.15,
-      });
+    section.addEventListener("mouseenter", function() {
+        sectionOverlay.style.pointerEvents = "all";
 
       gsap.to(section.querySelector(".section-overlay"), {
         opacity: 1,
-      });
+        ease: "power4"
+      })
 
       gsap.to(section.querySelector(".section-overlay #diamond"), {
         scale: 1,
         rotate: "45deg",
       });
 
-      gsap.to(section.querySelector(".section-overlay #button"), {
-        width: "12vw",
-      });
-
-      gsap.to(section.querySelector(".section-overlay #button h3"), {
+      gsap.to(section.querySelector(".section-overlay button"), {
         opacity: 1,
-        delay: 0.3,
-      });
-    });
+        ease: "power4"
+      })
+    })
 
-    section.addEventListener("mouseleave", function () {
-      gsap.to(section.querySelectorAll("#heading h3 span"), {
-        y: 0,
-        stagger: -0.025,
-        ease: "elastic.out",
-        duration: 0.15,
-      });
+    section.addEventListener("mouseleave", function() {
+      sectionOverlay.style.pointerEvents = "none";
 
       gsap.to(section.querySelector(".section-overlay"), {
         opacity: 0,
       });
-
-      gsap.to(
-        section.querySelector(".section-overlay #diamond"),
-        {
-          scale: 0,
-          rotate: "0deg",
-        },
-        "<"
-      ); // This makes the rotation animation start immediately
-
-      gsap.to(section.querySelector(".section-overlay #button"), {
-        width: "auto",
+    
+      gsap.to(section.querySelector(".section-overlay #diamond"), {
+        scale: 0,
+        rotate: "0deg"
+      }, "<"); 
+    
+      gsap.to(section.querySelector(".section-overlay button"), {
+        opacity: 0
       });
 
-      gsap.to(section.querySelector(".section-overlay #button h3"), {
-        opacity: 0,
-        delay: 0.3,
+    });
+    
+  })
+}
+page4HoverAnimation()
+
+const page4LeftAnimation = () => {
+  const sections = document.querySelectorAll("#page4 #left .section")
+  const but1 = document.getElementById("button1")
+  const but2 = document.getElementById("button2")
+  const but3 = document.getElementById("button3")
+  const but4 = document.getElementById("button4")
+  const but5 = document.getElementById("button5")
+
+  sections.forEach(function(section) {
+    but1.addEventListener("click", function() {
+      gsap.to("#page4 #right #main", {
+        transform: "translateX(0%)"
+      })
+    })
+    but2.addEventListener("click", function() {
+      gsap.to("#page4 #right #main", {
+        transform: "translateX(-20%)"
+      })
+    })
+    but3.addEventListener("click", function() {
+      gsap.to("#page4 #right #main", {
+        transform: "translateX(-40%)"
+      })
+    })
+    but4.addEventListener("click", function() {
+      gsap.to("#page4 #right #main", {
+        transform: "translateX(-60%)"
+      })
+    })
+    but5.addEventListener("click", function() {
+      gsap.to("#page4 #right #main", {
+        transform: "translateX(-80%)"
+      })
+    })
+  })
+}
+page4LeftAnimation()
+
+const page4RightAnimation = () => {
+  // section 1 & 3
+  const sections = document.querySelectorAll("#page4 #right .section");
+
+  sections.forEach(function(section) {
+    const subsecs1 = section.querySelectorAll("#overlay #sub-sec1");
+    const hoverDivsPart1 = section.querySelectorAll("#hover-divs #hover-1");
+    const parts = section.querySelectorAll("#hover-divs #hover-1 .parts");
+
+    const subsecs2 = section.querySelectorAll("#overlay #sub-sec2");
+    const hoverDivsPart2 = section.querySelectorAll("#hover-divs #hover-2");
+    const parts2 = section.querySelectorAll("#hover-divs #hover-2 .parts");
+
+    const subsecs3 = section.querySelectorAll("#overlay #sub-sec3");
+    const hoverDivsPart3 = section.querySelectorAll("#hover-divs #hover-3");
+    const parts3 = section.querySelectorAll("#hover-divs #hover-3 .parts");
+
+    subsecs1.forEach(function(subsec1) {
+      subsec1.addEventListener("mouseenter", function() {
+        hoverDivsPart1.forEach(function(hoverDivPart1) {
+          hoverDivPart1.style.height = "38.5vw";
+        });
+
+        parts.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
+      });
+    });
+
+    subsecs2.forEach(function(subsec2) {
+      subsec2.addEventListener("mouseenter", function() {
+        hoverDivsPart2.forEach(function(hoverDivPart2) {
+          hoverDivPart2.style.height = "38.5vw";
+        });
+
+        parts2.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
+      });
+    });
+
+    subsecs3.forEach(function(subsec3) {
+      subsec3.addEventListener("mouseenter", function() {
+        hoverDivsPart3.forEach(function(hoverDivPart3) {
+          hoverDivPart3.style.height = "38.5vw";
+        });
+
+        parts3.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.5,
+            display: "block",
+          }),
+          gsap.to(part, {
+            opacity: 1,
+            duration: 0.5,
+          });
+        });
       });
     });
   });
+
+  // section 2
+const subsections = document.querySelectorAll("#page4 #right #section2 [id^=sub-sec]");
+const videos = document.querySelectorAll("#page4 #right #section2 #videos [id^=video]");
+
+function showVideo(index) {
+  videos.forEach((video, idx) => {
+    if (idx === index) {
+      video.style.opacity = "1";
+      video.currentTime = 0;
+      video.play();
+    } else {
+      video.style.opacity = "0";
+    }
+  });
+}
+
+subsections.forEach((subsec, idx) => {
+  subsec.addEventListener("mouseenter", () => showVideo(idx));
+});
+
 };
-page4HoverAnimation();
+page4RightAnimation();
+
+
+// page5Animation
+
+const page5MarqueeAnimation = () => {
+  // Initial animation setup
+  gsap.to("#slide1 h2", {
+    transform: "translateX(-100%)",
+    duration: 10,
+    repeat: -1,
+    ease: "linear"
+  });
+
+  // window.addEventListener("wheel", function (dets) {
+  //   if (dets.deltaY > 0) {
+  //     // Animation when scrolling up
+  //     gsap.to("#slide1 h2", {
+  //       transform: "translateX(-100%)",
+  //       duration: 10,
+  //       repeat: -1,
+  //       ease: "linear"
+  //     });
+  //   } else {
+  //     // Animation when scrolling down
+  //     gsap.to("#slide1 h2", {
+  //       transform: "translateX(0%)",
+  //       duration: 10,
+  //       repeat: -1,
+  //       ease: "linear"
+  //     });
+  //   }
+  // });
+}
+// page5MarqueeAnimation();
+
 
 // page6Animation
 const page6LeftBtnHover = () => {
@@ -444,90 +578,82 @@ const page6ScrollAnimation = () => {
 page6ScrollAnimation();
 
 // page7Animation
-const page7Animation = () => {
+const page7Animation = ()=>{
   var tl7 = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#discovery",
-      scroller: "body",
-      start: "top 40%",
-      end: "top -15%",
-      scrub: 1,
+    scrollTrigger:{
+      trigger:"#discovery",
+      scroller:"body",
+      start:"top 40%",
+      end:"top -15%",
+      scrub:1,
       // markers:true
-    },
-  });
+    }
+  })
   tl7
-    .to("#discovery #dis-text", {
-      scale: 1,
-      clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
-      duration: 2,
-      ease: "linear",
-    })
-    .from(".ig7", {
-      y: 10,
-      opacity: 0,
-      stagger: 0.3,
-    });
-
-  var tl72 = gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: "#page7",
-        scroller: "body",
-        start: "bottom bottom",
-        end: "bottom -150%",
-        pin: true,
-        scrub: 2,
-        // markers:true
-      },
-    })
-    .to(
-      "#discovery #dis-text #container7",
-      {
-        x: "-71%",
-        duration: 4,
-        ease: "linear",
-      },
-      "a"
-    )
-    .to(
-      ".ig7",
-      {
-        x: -200,
-        duration: 4,
-      },
-      "a"
-    );
-};
-page7Animation();
-
-document.querySelectorAll(".text-animation").forEach(function (parent) {
-  gsap.from(parent.children[0], {
-    y: 100,
-    duration: 0.5,
-    scrollTrigger: {
-      trigger: parent,
-      scroller: "body",
-      start: "top 80%",
-      end: "top 79%",
-      scrub: 1,
+  .to("#discovery #dis-text",{
+    scale:1,
+    clipPath:"polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
+    duration: 2, 
+    ease: "linear",
+   
+  })
+  .from(".ig7",{
+    y:10,
+    opacity:0,
+    stagger:0.3
+  })
+  
+  var tl72 = gsap.timeline({
+    scrollTrigger:{
+      trigger:"#page7",
+      scroller:"body",
+      start:"bottom bottom",
+      end:"bottom -50%",
+      pin:true,
+      scrub:1,
       // markers:true
-    },
-  });
-});
+    }
+  })
+  .to("#discovery #dis-text #container7",{
+    x:"-71%",
+    duration: 3, 
+    ease: "power1.out",
+  },"a")
+  .to(".ig7",{
+    x:-200,
+    duration:4
+  },"a")
+}
+page7Animation()
+
+document.querySelectorAll(".text-animation").forEach(function(parent){
+  gsap.from(parent.children[0],{
+    y:100,
+    duration:0.5,
+    scrollTrigger:{
+      trigger:parent,
+      scroller:"body",
+      start:"top 80%",
+      end:"top 79%",
+      scrub:1,
+      // markers:true
+    }
+  })
+})
 
 // textEffect animation
 // can be used by giving class .text-effect to parent , which has two childern
 const textEffect = () => {
   // Splitting the text content into individual letters and wrapping each in a span with a class
-  document.querySelectorAll(".text-effect").forEach(function (e) {
-    [...e.children].forEach(function (h) {
+  document.querySelectorAll(".text-effect").forEach(function(e){
+    [...e.children].forEach(function(h){
       var clutter = "";
       h.textContent.split("").forEach(function (l) {
         clutter += `<span>${l}</span>`;
       });
       h.innerHTML = clutter;
-    });
-  });
+    })
+  })
   //animation for mousemove
   document.querySelectorAll(".text-effect").forEach(function (e) {
     e.addEventListener("mouseenter", function () {
