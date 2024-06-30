@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { log } from "three/examples/jsm/nodes/Nodes.js";
+// import { log } from "three/examples/jsm/nodes/Nodes.js";
 import { TextPlugin } from "gsap/TextPlugin";
 import { log } from "three/examples/jsm/nodes/Nodes.js";
 
@@ -353,42 +353,50 @@ const page4HoverAnimation = () => {
 page4HoverAnimation()
 
 const page4LeftAnimation = () => {
-  const sections = document.querySelectorAll("#page4 #left .section")
-  const but1 = document.getElementById("button1")
-  const but2 = document.getElementById("button2")
-  const but3 = document.getElementById("button3")
-  const but4 = document.getElementById("button4")
-  const but5 = document.getElementById("button5")
+  const sections = document.querySelectorAll("#page4 #left .section");
+  const but1 = document.getElementById("button1");
+  const but2 = document.getElementById("button2");
+  const but3 = document.getElementById("button3");
+  const but4 = document.getElementById("button4");
+  const but5 = document.getElementById("button5");
 
-  sections.forEach(function(section) {
-    but1.addEventListener("click", function() {
-      gsap.to("#page4 #right #main", {
-        transform: "translateX(0%)"
-      })
-    })
-    but2.addEventListener("click", function() {
-      gsap.to("#page4 #right #main", {
-        transform: "translateX(-20%)"
-      })
-    })
-    but3.addEventListener("click", function() {
-      gsap.to("#page4 #right #main", {
-        transform: "translateX(-40%)"
-      })
-    })
-    but4.addEventListener("click", function() {
-      gsap.to("#page4 #right #main", {
-        transform: "translateX(-60%)"
-      })
-    })
-    but5.addEventListener("click", function() {
-      gsap.to("#page4 #right #main", {
-        transform: "translateX(-80%)"
-      })
-    })
-  })
-}
-page4LeftAnimation()
+  let previousButton = null;
+
+  const moveButtonAndContent = (button, translateX) => {
+    if (previousButton && previousButton !== button) {
+      gsap.to(previousButton, { x: 0 });
+    }
+    
+    gsap.to(button, { x: 60 });
+    gsap.to("#page4 #right #main", {
+      transform: `translateX(${translateX}%)`,
+      ease: "sine.inOut"
+    });
+
+    previousButton = button;
+  };
+
+  but1.addEventListener("click", function() {
+    moveButtonAndContent(but1, 0);
+  });
+  
+  but2.addEventListener("click", function() {
+    moveButtonAndContent(but2, -20);
+  });
+  
+  but3.addEventListener("click", function() {
+    moveButtonAndContent(but3, -40);
+  });
+  
+  but4.addEventListener("click", function() {
+    moveButtonAndContent(but4, -60);
+  });
+  
+  but5.addEventListener("click", function() {
+    moveButtonAndContent(but5, -80);
+  });
+};
+page4LeftAnimation();
 
 const page4RightAnimation = () => {
   // section 1 & 3
@@ -396,73 +404,155 @@ const page4RightAnimation = () => {
 
   sections.forEach(function(section) {
     const subsecs1 = section.querySelectorAll("#overlay #sub-sec1");
-    const hoverDivsPart1 = section.querySelectorAll("#hover-divs #hover-1");
-    const parts = section.querySelectorAll("#hover-divs #hover-1 .parts");
-
     const subsecs2 = section.querySelectorAll("#overlay #sub-sec2");
-    const hoverDivsPart2 = section.querySelectorAll("#hover-divs #hover-2");
-    const parts2 = section.querySelectorAll("#hover-divs #hover-2 .parts");
-
     const subsecs3 = section.querySelectorAll("#overlay #sub-sec3");
+
+    const hoverDivsPart1 = section.querySelectorAll("#hover-divs #hover-1");
+    const hoverDivsPart2 = section.querySelectorAll("#hover-divs #hover-2");
     const hoverDivsPart3 = section.querySelectorAll("#hover-divs #hover-3");
+    const parts = section.querySelectorAll("#hover-divs #hover-1 .parts");
+    const parts2 = section.querySelectorAll("#hover-divs #hover-2 .parts");
     const parts3 = section.querySelectorAll("#hover-divs #hover-3 .parts");
 
     subsecs1.forEach(function(subsec1) {
       subsec1.addEventListener("mouseenter", function() {
+        gsap.killTweensOf(parts);
+        gsap.killTweensOf(hoverDivsPart1);
+    
         hoverDivsPart1.forEach(function(hoverDivPart1) {
           hoverDivPart1.style.height = "38.5vw";
         });
-
+    
         parts.forEach((part) => {
           gsap.to(part, {
             duration: 0.5,
             display: "block",
-          }),
+            delay: 0.25
+          });
           gsap.to(part, {
             opacity: 1,
             duration: 0.5,
+            delay: 0.25
           });
         });
       });
-    });
-
+    
+      subsec1.addEventListener("mouseleave", function() {
+        gsap.killTweensOf(parts);
+        gsap.killTweensOf(hoverDivsPart1);
+    
+        parts.forEach((part) => {
+          gsap.to(part, {
+            duration: 0.3,
+            display: "none",
+            clearProps: "all"
+          });
+          gsap.to(part, {
+            opacity: 0,
+            duration: 0.3,
+            clearProps: "all"
+          });
+        });
+    
+        hoverDivsPart1.forEach(function(hoverDivPart1) {
+          hoverDivPart1.style.height = "0vw";
+        });
+      });
+    }); 
+    
     subsecs2.forEach(function(subsec2) {
       subsec2.addEventListener("mouseenter", function() {
+        gsap.killTweensOf(parts2);
+        gsap.killTweensOf(hoverDivsPart2);
+    
         hoverDivsPart2.forEach(function(hoverDivPart2) {
           hoverDivPart2.style.height = "38.5vw";
         });
-
-        parts2.forEach((part) => {
-          gsap.to(part, {
+    
+        parts2.forEach((part2) => {
+          gsap.to(part2, {
             duration: 0.5,
             display: "block",
-          }),
-          gsap.to(part, {
+            delay: 0.25
+          });
+          gsap.to(part2, {
             opacity: 1,
             duration: 0.5,
+            delay: 0.25
           });
         });
       });
+    
+      subsec2.addEventListener("mouseleave", function() {
+        gsap.killTweensOf(parts2);
+        gsap.killTweensOf(hoverDivsPart2);
+    
+        parts2.forEach((part2) => {
+          gsap.to(part2, {
+            duration: 0.3,
+            display: "none",
+            clearProps: "all"
+          });
+          gsap.to(part2, {
+            opacity: 0,
+            duration: 0.3,
+            clearProps: "all"
+          });
+        });
+    
+        hoverDivsPart2.forEach(function(hoverDivPart2) {
+          hoverDivPart2.style.height = "0vw";
+        });
+      });
     });
-
+    
     subsecs3.forEach(function(subsec3) {
       subsec3.addEventListener("mouseenter", function() {
+        gsap.killTweensOf(parts3);
+        gsap.killTweensOf(hoverDivsPart3);
+    
         hoverDivsPart3.forEach(function(hoverDivPart3) {
           hoverDivPart3.style.height = "38.5vw";
         });
-
-        parts3.forEach((part) => {
-          gsap.to(part, {
+    
+        parts3.forEach((part3) => {
+          gsap.to(part3, {
             duration: 0.5,
             display: "block",
-          }),
-          gsap.to(part, {
+            delay: 0.25
+          });
+          gsap.to(part3, {
             opacity: 1,
             duration: 0.5,
+            delay: 0.25
+          });
+        });
+      });
+    
+      subsec3.addEventListener("mouseleave", function() {
+        gsap.killTweensOf(parts3);
+        gsap.killTweensOf(hoverDivsPart3);
+    
+        hoverDivsPart3.forEach(function(hoverDivPart3) {
+          hoverDivPart3.style.height = "0vw";
+        });
+    
+        parts3.forEach((part3) => {
+          gsap.to(part3, {
+            duration: 0.3,
+            display: "none",
+            clearProps: "all"
+          });
+          gsap.to(part3, {
+            opacity: 0,
+            duration: 0.3,
+            clearProps: "all"
           });
         });
       });
     });
+    
+    
   });
 
   // section 2
@@ -487,7 +577,6 @@ subsections.forEach((subsec, idx) => {
 
 };
 page4RightAnimation();
-
 
 // page5Animation
 
