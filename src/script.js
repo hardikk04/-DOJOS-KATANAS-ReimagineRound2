@@ -3,9 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-// import { log } from "three/examples/jsm/nodes/Nodes.js";
 import { TextPlugin } from "gsap/TextPlugin";
-import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin);
@@ -699,7 +697,7 @@ const page7Animation = ()=>{
       trigger:"#page7",
       scroller:"body",
       start:"bottom bottom",
-      end:"bottom -50%",
+      end:"bottom -150%",
       pin:true,
       scrub:1,
       // markers:true
@@ -708,11 +706,11 @@ const page7Animation = ()=>{
   .to("#discovery #dis-text #container7",{
     x:"-71%",
     duration: 3, 
-    ease: "power1.out",
+    ease: "linear",
   },"a")
   .to(".ig7",{
     x:-200,
-    duration:4
+    duration:3
   },"a")
 }
 page7Animation()

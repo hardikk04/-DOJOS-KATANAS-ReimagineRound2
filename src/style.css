@@ -550,6 +550,33 @@ nav > h1 {
 
 /* Page2 end */
 
+/* Threejs model page start */
+
+.threejs-models {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  background-color: #fff;
+}
+
+.threejs-models > h1 {
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  color: #666666;
+  font-family: title;
+  z-index: 1;
+  font-size: 3vw;
+}
+
+.modelS {
+  position: relative;
+  height: 100%;
+  width: 100%;
+}
+
+/* Threejs model page end */
+
 /* Page3 start */
 
 #page3 {
