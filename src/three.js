@@ -34,16 +34,8 @@ const video2 = document.querySelector(".page1-video2");
 const video3 = document.querySelector(".page1-video3");
 
 const videoTextures = [video2, video3, video1];
-const allDisplacment = [
-  "images/displacement-map.jpg",
-  "images/d2.avif",
-  "images/d3.jpg",
-];
 
-const displacmentTexture = allDisplacment.map((texture) => {
-  const t = textureLoader.load(texture);
-  return t;
-});
+const displacmentTexture = textureLoader.load("images/d3.jpg");
 
 const loadedHeroTextures = videoTextures.map((texture) => {
   const t = new THREE.VideoTexture(texture);
@@ -61,7 +53,7 @@ const plane = new THREE.Mesh(
     uniforms: {
       uTexture1: new THREE.Uniform(loadedHeroTextures[0]),
       uTexture2: new THREE.Uniform(loadedHeroTextures[1]),
-      uDisplacmentTexture: new THREE.Uniform(displacmentTexture[0]),
+      uDisplacmentTexture: new THREE.Uniform(displacmentTexture),
       uOffset: new THREE.Uniform(0),
     },
   })
@@ -85,8 +77,7 @@ let chargingTextAnimation = true;
 // Vehicle Video Transition
 const vehicleVideoAnimation = (index, prevIndex) => {
   // Random displacement texture
-  plane.material.uniforms.uDisplacmentTexture.value =
-    displacmentTexture[Math.floor(Math.random() * 3)];
+  plane.material.uniforms.uDisplacmentTexture.value = displacmentTexture;
   // Text animation
   if (vehicleTextAnimation) {
     vehicleTextAnimation = false;
@@ -122,8 +113,7 @@ const vehicleVideoAnimation = (index, prevIndex) => {
 // Energy Video Transition
 const energyVideoAnimation = (index, prevIndex) => {
   // Random displacement texture
-  plane.material.uniforms.uDisplacmentTexture.value =
-    displacmentTexture[Math.floor(Math.random() * 3)];
+  plane.material.uniforms.uDisplacmentTexture.value = displacmentTexture;
 
   // Text animation
   if (energyTextAnimation) {
@@ -160,8 +150,7 @@ const energyVideoAnimation = (index, prevIndex) => {
 // Charging Video Transition
 const chargingVideoAnimation = () => {
   // Random displacement texture
-  plane.material.uniforms.uDisplacmentTexture.value =
-    displacmentTexture[Math.floor(Math.random() * 3)];
+  plane.material.uniforms.uDisplacmentTexture.value = displacmentTexture;
 
   // Text animation
   if (chargingTextAnimation) {

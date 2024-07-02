@@ -198,7 +198,7 @@ const page2Animation = () => {
     delay: 2,
   });
 
-  t1.from(".page2-text>p", {
+  t1.from(".page2-text-para>p", {
     text: "",
     delay: 2,
   });
@@ -244,7 +244,7 @@ const page2Animation = () => {
     text: "TESLA",
   });
 
-  t2.to(".page2-text>p", {
+  t2.to(".page2-text-para>p", {
     text: paragraphText[1],
   });
 
@@ -274,7 +274,7 @@ const page2Animation = () => {
     text: "TESLA",
   });
 
-  t3.to(".page2-text>p", {
+  t3.to(".page2-text-para>p", {
     text: paragraphText[2],
   });
 
