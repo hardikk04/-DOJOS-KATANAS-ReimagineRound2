@@ -718,7 +718,6 @@ nav > h1 {
   height: 100vh;
   width: 100%;
   display: flex;
-  /* overflow-x: auto; */
 }
 
 #page4 #left {
@@ -738,21 +737,23 @@ nav > h1 {
 }
 
 #page4 #left .section .section-overlay {
-  width: 110%;
+  width: 115%;
   height: 100%;
   position: absolute;
   left: 0%;
-  gap: 20vw; 
-  background: linear-gradient (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
-  backdrop-filter: blur(30px); 
+  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(135, 135, 135, 0.452) 150%);
+  backdrop-filter: blur(25px); 
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
   display: none;
   padding-left: 15vw;
   display: flex;
   align-items: center;
+  gap: 20vw; 
   opacity: 0;
   pointer-events: none;
   z-index: 2;
 }
+
 
 #page4 #left .section .section-overlay #diamond {
   width: 1.2vw;
@@ -788,11 +789,8 @@ nav > h1 {
   cursor: pointer;
 }
 
-
 #page4 #left .section #innerleft {
-  height: 4vw;
-  z-index: 3;
-  overflow: hidden;
+  z-index: 3; 
 }
 
 #page4 #left .section #innerleft #heading h3 {
@@ -802,18 +800,13 @@ nav > h1 {
   font-family: regularFont;
 }
 
-#page4 #left .section #innerleft #heading h3 span {
-  display: inline-block;
-}
-
 #page4 #right {
   width: 50%;
   height: 100%;
   overflow: hidden;  
 }
 
-#page4 #right #main
-{
+#page4 #right #main {
   width: 250vw;
   height: 100%;
   display: flex;
@@ -829,7 +822,12 @@ nav > h1 {
   display: flex;
   flex-direction: column;
   justify-content: end;
+  align-items: center;
   color: #fff;
+}
+
+#page4 #right #main .section #hover-div h3>.bold {
+  font-family: gilroy;
 }
 
 #page4 #right #main .section #main-overlay {
@@ -840,9 +838,8 @@ nav > h1 {
 }
 
 #page4 #right #main .section #hover-divs {
-  width: 100%;
+  width: 99%;
   height: 38.45vw;
-  position: relative;
   position: absolute;
   top: 23%;
   display: flex;
@@ -857,10 +854,10 @@ nav > h1 {
 #page4 #right #main .section #hover-divs .hover-div {
   width: 32.7%;
   height: 0vw;
-  transition: all ease 0.5s;
   position: relative;
   padding: 0vw 1vw;
   font-size: 1.4vw;
+  transition: all ease 0.4s;
   background-color: rgb(255, 255, 255);
 }
 
@@ -895,7 +892,7 @@ nav > h1 {
 }
 
 #page4 #right #main .section #overlay {
-  width: 100%;
+  width: 99%;
   height: 6vh;
   position: relative;
   display: flex;
@@ -944,17 +941,9 @@ nav > h1 {
   padding-top: 4vw;
 }
 
-#page4 #right #main #section1 #hover-divs #hover-3 #part-1 {
-  margin-top: 10vw;
-}
-
-#page4 #right #main #section1 #hover-divs #hover-3 #part-1, 
-#page4 #right #main #section1 #hover-divs #hover-3 #part-2 {
+#page4 #right #main .section #hover-divs #hover-3 #part-1, 
+#page4 #right #main .section #hover-divs #hover-3 #part-2 {
   height: 10vw;
-}
-
-#page4 #right #main #section2 {
-  background-image: url(/images/page4_2.png);
 }
 
 #page4 #right #main #section2 #videos {
@@ -971,6 +960,10 @@ nav > h1 {
   top: 0%;
   left: 0%;
   object-fit: cover;
+}
+
+#page4 #right #main #section2 #videos #video1 {
+  z-index: 1;
 }
 
 #page4 #right #main #section2 #main-overlay {
@@ -1284,16 +1277,21 @@ nav > h1 {
   line-height: 1;
 }
 
-#page6 #section2 #left #button {
-  width: 14vw;
-  height: 4vw;
-  border-radius: 10px;
+#page6 #section2 #left button {
+  width: 13vw;
+  height: 3vw;
+  position: relative;
+  padding: 0.8vw 2vw;
+  border: none;
   background-color: #000;
+  color: #fff;
+  border-radius: 0.45vw;
+  font-size: 1vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1vw;
-}
+  gap: 0.5vw;
+  }
 
 #page6 #section2 #left #button:hover {
   cursor: pointer;
