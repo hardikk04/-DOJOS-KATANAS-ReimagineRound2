@@ -3,10 +3,11 @@ import "remixicon/fonts/remixicon.css";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { TextPlugin } from "gsap/TextPlugin";
 
 // Scroll Trigger
-gsap.registerPlugin(ScrollTrigger, TextPlugin);
+gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
 
 // Clutter Animation
 const clutterAnimation = (element) => {
@@ -116,22 +117,32 @@ const menuAnimation = () => {
     })
   })
   document.querySelector(".menu-close").addEventListener("click", function () {
-   window.scrollTo(0,0)
-    gsap.to("#menu-page", {
+    var mn = gsap.timeline()
+    mn
+    .to(window, {
+      scrollTo: 0,
+      duration: 1,
+      ease: "power1.inOut",
+    })
+    .to("#menu-page", {
       display: "none",
       opacity: 0,
-      duration: .5
-
+      duration:.2
     })
   })
+  //wheel movement
   window.addEventListener('wheel', function (event) {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta;
+    rotationAngle += delta/5;
 
     let circle = document.querySelector('#wheel');
-    circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    gsap.to(circle,{
+      rotate:rotationAngle,
+      scale:1.2
+    })
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
@@ -306,11 +317,11 @@ page2Animation();
 const page4HoverAnimation = () => {
   const sections = document.querySelectorAll("#page4 #left .section")
 
-  sections.forEach(function(section) {
+  sections.forEach(function (section) {
     const sectionOverlay = section.querySelector(".section-overlay")
 
-    section.addEventListener("mouseenter", function() {
-        sectionOverlay.style.pointerEvents = "all";
+    section.addEventListener("mouseenter", function () {
+      sectionOverlay.style.pointerEvents = "all";
 
       gsap.to(section.querySelector(".section-overlay"), {
         opacity: 1,
@@ -328,24 +339,24 @@ const page4HoverAnimation = () => {
       })
     })
 
-    section.addEventListener("mouseleave", function() {
+    section.addEventListener("mouseleave", function () {
       sectionOverlay.style.pointerEvents = "none";
 
       gsap.to(section.querySelector(".section-overlay"), {
         opacity: 0,
       });
-    
+
       gsap.to(section.querySelector(".section-overlay #diamond"), {
         scale: 0,
         rotate: "0deg"
-      }, "<"); 
-    
+      }, "<");
+
       gsap.to(section.querySelector(".section-overlay button"), {
         opacity: 0
       });
 
     });
-    
+
   })
 }
 page4HoverAnimation()
@@ -364,7 +375,7 @@ const page4LeftAnimation = () => {
     if (previousButton && previousButton !== button) {
       gsap.to(previousButton, { x: 0 });
     }
-    
+
     gsap.to(button, { x: 60 });
     gsap.to("#page4 #right #main", {
       transform: `translateX(${translateX}%)`,
@@ -374,23 +385,23 @@ const page4LeftAnimation = () => {
     previousButton = button;
   };
 
-  but1.addEventListener("click", function() {
+  but1.addEventListener("click", function () {
     moveButtonAndContent(but1, 0);
   });
-  
-  but2.addEventListener("click", function() {
+
+  but2.addEventListener("click", function () {
     moveButtonAndContent(but2, -20);
   });
-  
-  but3.addEventListener("click", function() {
+
+  but3.addEventListener("click", function () {
     moveButtonAndContent(but3, -40);
   });
-  
-  but4.addEventListener("click", function() {
+
+  but4.addEventListener("click", function () {
     moveButtonAndContent(but4, -60);
   });
-  
-  but5.addEventListener("click", function() {
+
+  but5.addEventListener("click", function () {
     moveButtonAndContent(but5, -80);
   });
 };
@@ -400,7 +411,7 @@ const page4RightAnimation = () => {
   // section 1 & 3
   const sections = document.querySelectorAll("#page4 #right .section");
 
-  sections.forEach(function(section) {
+  sections.forEach(function (section) {
     const subsecs1 = section.querySelectorAll("#overlay #sub-sec1");
     const subsecs2 = section.querySelectorAll("#overlay #sub-sec2");
     const subsecs3 = section.querySelectorAll("#overlay #sub-sec3");
@@ -412,15 +423,15 @@ const page4RightAnimation = () => {
     const parts2 = section.querySelectorAll("#hover-divs #hover-2 .parts");
     const parts3 = section.querySelectorAll("#hover-divs #hover-3 .parts");
 
-    subsecs1.forEach(function(subsec1) {
-      subsec1.addEventListener("mouseenter", function() {
+    subsecs1.forEach(function (subsec1) {
+      subsec1.addEventListener("mouseenter", function () {
         gsap.killTweensOf(parts);
         gsap.killTweensOf(hoverDivsPart1);
-    
-        hoverDivsPart1.forEach(function(hoverDivPart1) {
+
+        hoverDivsPart1.forEach(function (hoverDivPart1) {
           hoverDivPart1.style.height = "38.5vw";
         });
-    
+
         parts.forEach((part) => {
           gsap.to(part, {
             duration: 0.5,
@@ -434,11 +445,11 @@ const page4RightAnimation = () => {
           });
         });
       });
-    
-      subsec1.addEventListener("mouseleave", function() {
+
+      subsec1.addEventListener("mouseleave", function () {
         gsap.killTweensOf(parts);
         gsap.killTweensOf(hoverDivsPart1);
-    
+
         parts.forEach((part) => {
           gsap.to(part, {
             duration: 0.3,
@@ -451,22 +462,22 @@ const page4RightAnimation = () => {
             clearProps: "all"
           });
         });
-    
-        hoverDivsPart1.forEach(function(hoverDivPart1) {
+
+        hoverDivsPart1.forEach(function (hoverDivPart1) {
           hoverDivPart1.style.height = "0vw";
         });
       });
-    }); 
-    
-    subsecs2.forEach(function(subsec2) {
-      subsec2.addEventListener("mouseenter", function() {
+    });
+
+    subsecs2.forEach(function (subsec2) {
+      subsec2.addEventListener("mouseenter", function () {
         gsap.killTweensOf(parts2);
         gsap.killTweensOf(hoverDivsPart2);
-    
-        hoverDivsPart2.forEach(function(hoverDivPart2) {
+
+        hoverDivsPart2.forEach(function (hoverDivPart2) {
           hoverDivPart2.style.height = "38.5vw";
         });
-    
+
         parts2.forEach((part2) => {
           gsap.to(part2, {
             duration: 0.5,
@@ -480,11 +491,11 @@ const page4RightAnimation = () => {
           });
         });
       });
-    
-      subsec2.addEventListener("mouseleave", function() {
+
+      subsec2.addEventListener("mouseleave", function () {
         gsap.killTweensOf(parts2);
         gsap.killTweensOf(hoverDivsPart2);
-    
+
         parts2.forEach((part2) => {
           gsap.to(part2, {
             duration: 0.3,
@@ -497,22 +508,22 @@ const page4RightAnimation = () => {
             clearProps: "all"
           });
         });
-    
-        hoverDivsPart2.forEach(function(hoverDivPart2) {
+
+        hoverDivsPart2.forEach(function (hoverDivPart2) {
           hoverDivPart2.style.height = "0vw";
         });
       });
     });
-    
-    subsecs3.forEach(function(subsec3) {
-      subsec3.addEventListener("mouseenter", function() {
+
+    subsecs3.forEach(function (subsec3) {
+      subsec3.addEventListener("mouseenter", function () {
         gsap.killTweensOf(parts3);
         gsap.killTweensOf(hoverDivsPart3);
-    
-        hoverDivsPart3.forEach(function(hoverDivPart3) {
+
+        hoverDivsPart3.forEach(function (hoverDivPart3) {
           hoverDivPart3.style.height = "38.5vw";
         });
-    
+
         parts3.forEach((part3) => {
           gsap.to(part3, {
             duration: 0.5,
@@ -526,15 +537,15 @@ const page4RightAnimation = () => {
           });
         });
       });
-    
-      subsec3.addEventListener("mouseleave", function() {
+
+      subsec3.addEventListener("mouseleave", function () {
         gsap.killTweensOf(parts3);
         gsap.killTweensOf(hoverDivsPart3);
-    
-        hoverDivsPart3.forEach(function(hoverDivPart3) {
+
+        hoverDivsPart3.forEach(function (hoverDivPart3) {
           hoverDivPart3.style.height = "0vw";
         });
-    
+
         parts3.forEach((part3) => {
           gsap.to(part3, {
             duration: 0.3,
@@ -549,29 +560,29 @@ const page4RightAnimation = () => {
         });
       });
     });
-    
-    
+
+
   });
 
   // section 2
-const subsections = document.querySelectorAll("#page4 #right #section2 [id^=sub-sec]");
-const videos = document.querySelectorAll("#page4 #right #section2 #videos [id^=video]");
+  const subsections = document.querySelectorAll("#page4 #right #section2 [id^=sub-sec]");
+  const videos = document.querySelectorAll("#page4 #right #section2 #videos [id^=video]");
 
-function showVideo(index) {
-  videos.forEach((video, idx) => {
-    if (idx === index) {
-      video.style.opacity = "1";
-      video.currentTime = 0;
-      video.play();
-    } else {
-      video.style.opacity = "0";
-    }
+  function showVideo(index) {
+    videos.forEach((video, idx) => {
+      if (idx === index) {
+        video.style.opacity = "1";
+        video.currentTime = 0;
+        video.play();
+      } else {
+        video.style.opacity = "0";
+      }
+    });
+  }
+
+  subsections.forEach((subsec, idx) => {
+    subsec.addEventListener("mouseenter", () => showVideo(idx));
   });
-}
-
-subsections.forEach((subsec, idx) => {
-  subsec.addEventListener("mouseenter", () => showVideo(idx));
-});
 
 };
 page4RightAnimation();
@@ -667,64 +678,64 @@ const page6ScrollAnimation = () => {
 page6ScrollAnimation();
 
 // page7Animation
-const page7Animation = ()=>{
+const page7Animation = () => {
   var tl7 = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#discovery",
-      scroller:"body",
-      start:"top 40%",
-      end:"top -15%",
-      scrub:1,
+    scrollTrigger: {
+      trigger: "#discovery",
+      scroller: "body",
+      start: "top 40%",
+      end: "top -15%",
+      scrub: 1,
       // markers:true
     }
   })
   tl7
-  .to("#discovery #dis-text",{
-    scale:1,
-    clipPath:"polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
-    duration: 2, 
-    ease: "linear",
-   
-  })
-  .from(".ig7",{
-    y:10,
-    opacity:0,
-    stagger:0.3
-  })
-  
+    .to("#discovery #dis-text", {
+      scale: 1,
+      clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
+      duration: 2,
+      ease: "linear",
+
+    })
+    .from(".ig7", {
+      y: 10,
+      opacity: 0,
+      stagger: 0.3
+    })
+
   var tl72 = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#page7",
-      scroller:"body",
-      start:"bottom bottom",
-      end:"bottom -150%",
-      pin:true,
-      scrub:1,
+    scrollTrigger: {
+      trigger: "#page7",
+      scroller: "body",
+      start: "bottom bottom",
+      end: "bottom -150%",
+      pin: true,
+      scrub: 1,
       // markers:true
     }
   })
-  .to("#discovery #dis-text #container7",{
-    x:"-71%",
-    duration: 3, 
-    ease: "linear",
-  },"a")
-  .to(".ig7",{
-    x:-200,
-    duration:3
-  },"a")
+    .to("#discovery #dis-text #container7", {
+      x: "-71%",
+      duration: 3,
+      ease: "linear",
+    }, "a")
+    .to(".ig7", {
+      x: -200,
+      duration: 3
+    }, "a")
 }
 page7Animation()
 
-document.querySelectorAll(".text-animation").forEach(function(parent){
-  gsap.from(parent.children[0],{
-    y:100,
-    duration:0.5,
-    scrollTrigger:{
-      trigger:parent,
-      scroller:"body",
-      start:"top 80%",
-      end:"top 79%",
-      scrub:1,
+document.querySelectorAll(".text-animation").forEach(function (parent) {
+  gsap.from(parent.children[0], {
+    y: 100,
+    duration: 0.5,
+    scrollTrigger: {
+      trigger: parent,
+      scroller: "body",
+      start: "top 80%",
+      end: "top 79%",
+      scrub: 1,
       // markers:true
     }
   })
@@ -734,8 +745,8 @@ document.querySelectorAll(".text-animation").forEach(function(parent){
 // can be used by giving class .text-effect to parent , which has two childern
 const textEffect = () => {
   // Splitting the text content into individual letters and wrapping each in a span with a class
-  document.querySelectorAll(".text-effect").forEach(function(e){
-    [...e.children].forEach(function(h){
+  document.querySelectorAll(".text-effect").forEach(function (e) {
+    [...e.children].forEach(function (h) {
       var clutter = "";
       h.textContent.split("").forEach(function (l) {
         clutter += `<span>${l}</span>`;
