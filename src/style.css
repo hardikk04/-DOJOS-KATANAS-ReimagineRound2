@@ -1278,8 +1278,6 @@ nav > h1 {
 }
 
 #page6 #section2 #left button {
-  width: 13vw;
-  height: 3vw;
   position: relative;
   padding: 0.8vw 2vw;
   border: none;
@@ -1291,11 +1289,10 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
-  }
-
-#page6 #section2 #left #button:hover {
+  width: fit-content;
   cursor: pointer;
 }
+
 
 #page6 #section2 #left #button #text {
   height: 2vw;
@@ -1426,16 +1423,19 @@ nav > h1 {
   display: flex;
   align-items: center;
 }
-#pg7-text-container .tx-rt #pg7-btn {
+#pg7-text-container .tx-rt button {
+  position: relative;
+  padding: 0.8vw 2vw;
+  border: none;
+  background-color: #000;
   color: #fff;
-  background-color: black;
-  font-family: mediumfont;
-  text-transform: capitalize;
-  padding: 0.8vw 2.5vw;
-  font-size: 1.2vw;
-  letter-spacing: 1px;
-  border-radius: 5px;
-  margin-left: 5vw;
+  border-radius: 0.45vw;
+  font-size: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+  cursor: pointer;
 }
 #page7 #discovery {
   position: relative;
