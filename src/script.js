@@ -109,7 +109,7 @@ const menuAnimation = () => {
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0
     document.querySelector('#wheel').style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    document.querySelector("#contact").style.opacity = 1
+    // document.querySelector("#contact").style.opacity = 1
     gsap.to("#menu-page", {
       display: "block",
       opacity: 1,
@@ -143,20 +143,6 @@ const menuAnimation = () => {
       rotate:rotationAngle,
       scale:1.2
     })
-
-    document.querySelectorAll(".mtxt").forEach(function (txt) {
-      // center value of text in x-axis with respect to window
-      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
-      // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
-      if ((window.innerWidth / 2 - 300) < txtCenter && (window.innerWidth / 2 + 300) > txtCenter) {
-        txt.style.opacity = 1
-      }
-      else {
-        txt.style.opacity = 0.2
-
-      }
-    })
-
   });
 }
 menuAnimation()
@@ -726,20 +712,7 @@ const page7Animation = () => {
 }
 page7Animation()
 
-document.querySelectorAll(".text-animation").forEach(function (parent) {
-  gsap.from(parent.children[0], {
-    y: 100,
-    duration: 0.5,
-    scrollTrigger: {
-      trigger: parent,
-      scroller: "body",
-      start: "top 80%",
-      end: "top 79%",
-      scrub: 1,
-      // markers:true
-    }
-  })
-})
+
 
 // textEffect animation
 // can be used by giving class .text-effect to parent , which has two childern
@@ -793,3 +766,74 @@ const textEffect = () => {
   });
 };
 textEffect();
+
+const textAnimation = ()=>{
+  
+var tl61 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page6 #section1",
+    scroller:"body",
+    start:"top 85%",
+    end:"top 60%",
+    scrub:1,
+  }
+})
+tl61
+.from("#page6 #section1 h1",{
+  y:100,
+  duration:1,
+})
+.from(".section1-dis h3",{
+  y:100,
+  stagger:0.4,
+  duration:1,
+
+})
+
+var tl62 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page6 #section2",
+    scroller:"body",
+    start:"top 70%",
+    end:"top 30%",
+    scrub:1,
+  }
+})
+tl62
+.from("#page6 #section2 h1",{
+  y:100,
+  stagger:0.6,
+  duration:2,
+})
+.from("#page6 #section2 #line",{
+  width:0,
+  duration:2,
+  delay:.8
+})
+.from("#page6 #section2 .description h3",{
+  y:100,
+  stagger:0.4,
+  duration:2,
+})
+
+var tl63 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page7",
+    scroller:"body",
+    start:"top 80%",
+    end:"top 45%",
+    scrub:1,
+  }
+})
+tl63
+.from("#page7 #head-wrap7 h1",{
+  y:100,
+  duration:1,
+})
+.from("#page7 .para-wrap7 p",{
+  y:100,
+  stagger:0.6,
+  duration:2,
+})
+}
+textAnimation()

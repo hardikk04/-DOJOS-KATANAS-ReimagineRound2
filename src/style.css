@@ -221,12 +221,16 @@ nav > h1 {
   background-color: #fff;
 }
 
+#wheel svg{
+  opacity: .9;
+}
+
 #wheel{
   position: absolute;
   left: 50%;
   transform-origin: center;
   transform: translateX(-50%) rotate(0) scale(1.2);
-  bottom: -65vh;
+  bottom:-65vh;
   height: 110vh;
   width: 110vh;
 }
@@ -238,41 +242,37 @@ nav > h1 {
   opacity: .3;
 }
 
-#wheel #contact{
+#Layer_1{
+  width: 100%;
   position: absolute;
-  top: -12%;
+  top: -8%;
   left: 50%;
   transform: translateX(-50%);
-  width: 92%;
-  opacity: 1;
 }
-#wheel #event{
+#Layer_2{
+  width: 100%;
   position: absolute;
-  bottom: -12%;
+  top: 2%;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
-  width: 92%;
 }
-#wheel #contact1{
+#Layer_3{
+  width: 100%;
+  position: absolute;
+  left: 56%;
+  top: -3%;
+  transform: translate(-50%,0) rotate(96deg);
+}
+#Layer_4{
+  width: 100%;
   position: absolute;
   top: 50%;
-  left: -45%;
-  transform: translateY(-50%) rotate(-90deg);
-  width: 90%;
+  left: -6%;
+  transform: translateY(-50%) rotate(-89deg);
 }
-#wheel #event2{
-  position: absolute;
-  right: -45%;
-  top: 50%;
-  transform: translateY(-50%) rotate(90deg);
-  width: 92%;
+#Layer_1 text,#Layer_2 text,#Layer_3 text,#Layer_4 text{
+  font-family: title;
 }
-
-#wheel .mtxt{
-  position: relative;
-  opacity: .1;
-}
-
 .page1-overlay {
   position: relative;
   height: 100%;
@@ -1205,9 +1205,15 @@ nav > h1 {
   font-weight: 500;
   font-family: heading;
   font-family: title;
+}
+#page6 #section1 #heading{
+  overflow: hidden;
   margin-bottom: 1vw;
 }
 
+#page6 #section1 .section1-dis{
+  overflow: hidden;
+}
 #page6 #section1 h3 {
   font-family: regularfont;
   font-size: 2.6vw;
@@ -1223,6 +1229,13 @@ nav > h1 {
   background-size: cover;
   padding: 2vw 3vw;
   display: flex;
+}
+
+#page6 #section2 .heading-sec2{
+  overflow: hidden;
+}
+#page6 #section2 .description{
+  overflow: hidden;
 }
 
 #page6 #overlay
@@ -1245,9 +1258,11 @@ nav > h1 {
   width: 62%;
   display: flex;
   flex-direction: column;
-  gap: 2vw;
 }
 
+#page6 #section2 #left #heading{
+  margin-bottom: 2vw;
+}
 #page6 #section2 #left #heading h1 {
   font-size: 5.5vw;
   font-family: title;
@@ -1291,6 +1306,7 @@ nav > h1 {
   gap: 0.5vw;
   width: fit-content;
   cursor: pointer;
+  margin-top: 2vw;
 }
 
 
@@ -1336,7 +1352,7 @@ nav > h1 {
   position: relative;
   background: linear-gradient
     (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
-  backdrop-filter: blur(30px);
+  backdrop-filter: blur(10px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   padding-bottom: 2vw;
 }
