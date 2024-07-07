@@ -715,7 +715,8 @@ page7Animation()
 
 
 // textEffect animation
-// can be used by giving class .text-effect to parent , which has two childern
+// can be used by giving class .text-effect to parent , 
+// which has two childern
 const textEffect = () => {
   // Splitting the text content into individual letters and wrapping each in a span with a class
   document.querySelectorAll(".text-effect").forEach(function (e) {
