@@ -1,7 +1,13 @@
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { gsap } from "gsap/gsap-core";
 import GUI from "lil-gui";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { color } from "three/examples/jsm/nodes/Nodes.js";
+
+// Scroll Trigger
+gsap.registerPlugin(ScrollTrigger);
 
 /**
  * Canvas
@@ -13,7 +19,7 @@ const canvas = document.querySelector(".modelS");
  */
 // const gui = new GUI();
 const object = {};
-object.renderColor = "#ffffff";
+object.renderColor = "#000000";
 object.carColor = "#ae0a0a";
 object.floorColor = "#969696";
 
@@ -28,24 +34,44 @@ const scene = new THREE.Scene();
 const group = new THREE.Group();
 scene.add(group);
 
-const carColormaterial = new THREE.MeshStandardMaterial({
+const carColorMaterial = new THREE.MeshStandardMaterial({
   color: object.carColor,
 });
+
+const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
 const updateMaterial = () => {
   scene.traverse((child) => {
     if (child.isMesh && child.material.isMeshStandardMaterial) {
-      child.material.roughness = 0.6;
-      child.material.metalness = 0.1;
-      child.castShadow = true; // The object will cast a shadow
-      if (child.material.name === "car_main_paint")
-        child.material = carColormaterial;
+      child.material.roughness = 0.01;
+      child.material.metalness = 0.9;
+
+      child.castShadow = true;
+      if (
+        child.material.name === "car_main_paint" ||
+        child.material.name === "calipers"
+      ) {
+        child.material = carColorMaterial;
+      }
+
+      if (child.material.name === "Rims") {
+        child.material = carRimsMaterial;
+      }
+
+      if (child.material.name === "seats") {
+        child.material = carSeatsMaterial;
+      }
+
+      if (child.material.name === "Brake_Disc") {
+        child.material = carColorMaterial;
+      }
     }
   });
 };
 
 // gui.addColor(object, "carColor").onChange(() => {
-//   material.color.set(object.carColor);
+//   carColorMaterial.color.set(object.carColor);
 // });
 
 /**
@@ -54,10 +80,11 @@ const updateMaterial = () => {
 const textureLoader = new THREE.TextureLoader();
 const gltfLoader = new GLTFLoader();
 
+let model1 = null;
 gltfLoader.load("/models/example/scene.gltf", (gltf) => {
-  group.add(gltf.scene);
-
-  group.rotation.y = -0.56;
+  model1 = gltf.scene;
+  scene.add(model1);
+  model1.rotation.y = -0.56;
   updateMaterial();
 });
 
@@ -96,16 +123,16 @@ floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
 floorColorTexture.colorSpace = THREE.SRGBColorSpace;
 
 const floor = new THREE.Mesh(
-  new THREE.PlaneGeometry(12,12, 128,128),
-  new THREE.MeshStandardMaterial({
-    // alphaMap: floorAlphaTexture,
+  new THREE.PlaneGeometry(12, 12, 128, 128),
+  new THREE.MeshPhysicalMaterial({
+    alphaMap: floorAlphaTexture,
     transparent: true,
     map: floorColorTexture,
     roughnessMap: floorARMTexture,
     metalnessMap: floorARMTexture,
     normalMap: floorNormalTexture,
     displacementMap: floorDisplacementTexture,
-    displacementScale: 0.3,
+    displacementScale: 0.25,
     displacementBias: -0.2,
   })
 );
@@ -116,7 +143,7 @@ group.add(floor);
 /**
  * Fog
  */
-const fog = new THREE.Fog(object.renderColor,3, 8);
+const fog = new THREE.Fog(object.renderColor, 3, 7);
 scene.fog = fog;
 
 /**
@@ -161,11 +188,27 @@ window.addEventListener("resize", () => {
 // gui.add(camera.position, "y").min(-10).max(10).step(0.01).name("camera y");
 // gui.add(camera.position, "z").min(-10).max(20).step(0.01).name("camera z");
 
+const tl = gsap.timeline({
+  scrollTrigger: {
+    trigger: ".threejs-models",
+    scroller: "body",
+    start: "top 0",
+    end: "top -100%",
+    scrub: true,
+    // markers: true,
+    pin: true,
+  },
+});
+
+tl.from(camera.position, {
+  x: -10,
+});
+
 /**
  * Lights
  */
 // Ambient Light
-const ambientLight = new THREE.AmbientLight("#ffffff", 5);
+const ambientLight = new THREE.AmbientLight("#ffffff", 2);
 scene.add(ambientLight);
 
 // Directional Light
@@ -173,6 +216,10 @@ const directionalLightBackLeft = new THREE.DirectionalLight("#ffffff", 4);
 directionalLightBackLeft.castShadow = true;
 // directionalLightBackLeft.position.set(0, 0.1, -10);
 scene.add(directionalLightBackLeft);
+
+// gui.add(directionalLightBackLeft.position, "x").min(-30).max(30).step(0.001);
+// gui.add(directionalLightBackLeft.position, "y").min(-30).max(30).step(0.001);
+// gui.add(directionalLightBackLeft.position, "z").min(-30).max(30).step(0.001);
 
 // Shadow
 directionalLightBackLeft.shadow.mapSize.set(1024, 1024);
@@ -199,11 +246,12 @@ const renderer = new THREE.WebGLRenderer({
 renderer.setSize(sizes.widht, sizes.height);
 renderer.setClearColor(object.renderColor);
 renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-renderer.shadowMap.enabled = true;
+// renderer.shadowMap.enabled = true;
 renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
 // gui.addColor(object, "renderColor").onChange(() => {
 //   renderer.setClearColor(new THREE.Color(object.renderColor));
+//   scene.fog.color.setHex(new THREE.Color(object.renderColor));
 // });
 
 // gui.addColor(object, "floorColor").onChange(() => {
@@ -215,25 +263,6 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap;
  */
 const controls = new OrbitControls(camera, canvas);
 controls.enableZoom = false;
-
-// gui
-//   .add(controls.target, "x")
-//   .min(-30)
-//   .max(30)
-//   .setValue(0.001)
-//   .name("control x");
-// gui
-//   .add(controls.target, "y")
-//   .min(-30)
-//   .max(30)
-//   .setValue(0.001)
-//   .name("control y");
-// gui
-//   .add(controls.target, "z")
-//   .min(-30)
-//   .max(30)
-//   .setValue(0.001)
-//   .name("control z");
 
 controls.enableDamping = true;
 controls.maxPolarAngle = -Math.PI;
@@ -250,6 +279,11 @@ const clock = new THREE.Clock();
  */
 const tick = () => {
   const elapsedTime = clock.getElapsedTime();
+
+  // if (model1) {
+  //   group.rotation.y = -elapsedTime * 0.4;
+  //   model1.rotation.y = -elapsedTime * 0.4;
+  // }
 
   controls.update();
   renderer.render(scene, camera);
@@ -271,3 +305,35 @@ canvas.addEventListener("mouseup", () => {
 canvas.addEventListener("mouseenter", () => {
   canvas.style.cursor = "grab";
 });
+
+const colorChangeAnimation = () => {
+  const colorPickerElem = document.querySelectorAll(".color-picker-elem");
+  const allColorPicker = document.querySelectorAll(".color-picker-elem input");
+
+  colorPickerElem.forEach((elem, index) => {
+    elem.addEventListener("click", () => {
+      allColorPicker[index].click();
+
+      allColorPicker[index].addEventListener("input", function () {
+        const colorValue = allColorPicker[index].value;
+        if (index === 0) {
+          carColorMaterial.color = new THREE.Color(colorValue);
+          gsap.to(colorPickerElem[index], {
+            backgroundColor: colorValue,
+          });
+        } else if (index === 1) {
+          carSeatsMaterial.color = new THREE.Color(colorValue);
+          gsap.to(colorPickerElem[index], {
+            backgroundColor: colorValue,
+          });
+        } else {
+          carRimsMaterial.color = new THREE.Color(colorValue);
+          gsap.to(colorPickerElem[index], {
+            backgroundColor: colorValue,
+          });
+        }
+      });
+    });
+  });
+};
+colorChangeAnimation();

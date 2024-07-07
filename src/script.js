@@ -3,7 +3,7 @@ import "remixicon/fonts/remixicon.css";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 
 // Scroll Trigger
@@ -41,7 +41,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => { });
+  lenis.on("scroll", (e) => {});
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -53,9 +53,8 @@ const lenisJs = () => {
 };
 lenisJs();
 
-
 // magneticEffect animation
-// can be used by giving class .magnet-effect to parent 
+// can be used by giving class .magnet-effect to parent
 const magneticEffect = () => {
   window.addEventListener("mousemove", function (dets) {
     gsap.to("#cursor", {
@@ -99,7 +98,6 @@ const magneticEffect = () => {
       });
     });
   });
-
 };
 magneticEffect();
 
@@ -107,65 +105,66 @@ magneticEffect();
 const menuAnimation = () => {
   let rotationAngle = 0;
   document.querySelector(".menu-open").addEventListener("click", function () {
-    rotationAngle = 0
-    document.querySelector('#wheel').style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    document.querySelector("#contact").style.opacity = 1
+    rotationAngle = 0;
+    document.querySelector(
+      "#wheel"
+    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector("#contact").style.opacity = 1;
     gsap.to("#menu-page", {
       display: "block",
       opacity: 1,
-      duration: .5
-    })
-  })
+      duration: 0.5,
+    });
+  });
   document.querySelector(".menu-close").addEventListener("click", function () {
-    var mn = gsap.timeline()
-    mn
-    .to(window, {
+    var mn = gsap.timeline();
+    mn.to(window, {
       scrollTo: 0,
       duration: 1,
       ease: "power1.inOut",
-    })
-    .to("#menu-page", {
+    }).to("#menu-page", {
       display: "none",
       opacity: 0,
-      duration:.2
-    })
-  })
+      duration: 0.2,
+    });
+  });
   //wheel movement
-  window.addEventListener('wheel', function (event) {
+  window.addEventListener("wheel", function (event) {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta/5;
+    rotationAngle += delta / 5;
 
-    let circle = document.querySelector('#wheel');
+    let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    gsap.to(circle,{
-      rotate:rotationAngle,
-      scale:1.2
-    })
+    gsap.to(circle, {
+      rotate: rotationAngle,
+      scale: 1.2,
+    });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
-      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
+      let txtCenter =
+        txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2;
       // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
-      if ((window.innerWidth / 2 - 300) < txtCenter && (window.innerWidth / 2 + 300) > txtCenter) {
-        txt.style.opacity = 1
+      if (
+        window.innerWidth / 2 - 300 < txtCenter &&
+        window.innerWidth / 2 + 300 > txtCenter
+      ) {
+        txt.style.opacity = 1;
+      } else {
+        txt.style.opacity = 0.2;
       }
-      else {
-        txt.style.opacity = 0.2
-
-      }
-    })
-
+    });
   });
-}
-menuAnimation()
+};
+menuAnimation();
 
 // Page2 Animation
 const page2Animation = () => {
   const paragraphText = [
     "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S",
-    "The Tesla Model 3 is a groundbreaking electric vehicle that has set new standards for performance, efficiency, and accessibility in the automotive industry. Launched in 2017.",
+    "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation",
     "The Tesla Model X is a high-performance electric SUV that combines impressive range, cutting-edge technology, and unparalleled acceleration. Available in Long Range and Plaid variants.",
   ];
 
@@ -315,18 +314,18 @@ page2Animation();
 //page4Animation
 
 const page4HoverAnimation = () => {
-  const sections = document.querySelectorAll("#page4 #left .section")
+  const sections = document.querySelectorAll("#page4 #left .section");
 
   sections.forEach(function (section) {
-    const sectionOverlay = section.querySelector(".section-overlay")
+    const sectionOverlay = section.querySelector(".section-overlay");
 
     section.addEventListener("mouseenter", function () {
       sectionOverlay.style.pointerEvents = "all";
 
       gsap.to(section.querySelector(".section-overlay"), {
         opacity: 1,
-        ease: "power4"
-      })
+        ease: "power4",
+      });
 
       gsap.to(section.querySelector(".section-overlay #diamond"), {
         scale: 1,
@@ -335,9 +334,9 @@ const page4HoverAnimation = () => {
 
       gsap.to(section.querySelector(".section-overlay button"), {
         opacity: 1,
-        ease: "power4"
-      })
-    })
+        ease: "power4",
+      });
+    });
 
     section.addEventListener("mouseleave", function () {
       sectionOverlay.style.pointerEvents = "none";
@@ -346,20 +345,22 @@ const page4HoverAnimation = () => {
         opacity: 0,
       });
 
-      gsap.to(section.querySelector(".section-overlay #diamond"), {
-        scale: 0,
-        rotate: "0deg"
-      }, "<");
+      gsap.to(
+        section.querySelector(".section-overlay #diamond"),
+        {
+          scale: 0,
+          rotate: "0deg",
+        },
+        "<"
+      );
 
       gsap.to(section.querySelector(".section-overlay button"), {
-        opacity: 0
+        opacity: 0,
       });
-
     });
-
-  })
-}
-page4HoverAnimation()
+  });
+};
+page4HoverAnimation();
 
 const page4LeftAnimation = () => {
   const sections = document.querySelectorAll("#page4 #left .section");
@@ -379,7 +380,7 @@ const page4LeftAnimation = () => {
     gsap.to(button, { x: 60 });
     gsap.to("#page4 #right #main", {
       transform: `translateX(${translateX}%)`,
-      ease: "sine.inOut"
+      ease: "sine.inOut",
     });
 
     previousButton = button;
@@ -436,12 +437,12 @@ const page4RightAnimation = () => {
           gsap.to(part, {
             duration: 0.5,
             display: "block",
-            delay: 0.25
+            delay: 0.25,
           });
           gsap.to(part, {
             opacity: 1,
             duration: 0.5,
-            delay: 0.25
+            delay: 0.25,
           });
         });
       });
@@ -454,12 +455,12 @@ const page4RightAnimation = () => {
           gsap.to(part, {
             duration: 0.3,
             display: "none",
-            clearProps: "all"
+            clearProps: "all",
           });
           gsap.to(part, {
             opacity: 0,
             duration: 0.3,
-            clearProps: "all"
+            clearProps: "all",
           });
         });
 
@@ -482,12 +483,12 @@ const page4RightAnimation = () => {
           gsap.to(part2, {
             duration: 0.5,
             display: "block",
-            delay: 0.25
+            delay: 0.25,
           });
           gsap.to(part2, {
             opacity: 1,
             duration: 0.5,
-            delay: 0.25
+            delay: 0.25,
           });
         });
       });
@@ -500,12 +501,12 @@ const page4RightAnimation = () => {
           gsap.to(part2, {
             duration: 0.3,
             display: "none",
-            clearProps: "all"
+            clearProps: "all",
           });
           gsap.to(part2, {
             opacity: 0,
             duration: 0.3,
-            clearProps: "all"
+            clearProps: "all",
           });
         });
 
@@ -528,12 +529,12 @@ const page4RightAnimation = () => {
           gsap.to(part3, {
             duration: 0.5,
             display: "block",
-            delay: 0.25
+            delay: 0.25,
           });
           gsap.to(part3, {
             opacity: 1,
             duration: 0.5,
-            delay: 0.25
+            delay: 0.25,
           });
         });
       });
@@ -550,23 +551,25 @@ const page4RightAnimation = () => {
           gsap.to(part3, {
             duration: 0.3,
             display: "none",
-            clearProps: "all"
+            clearProps: "all",
           });
           gsap.to(part3, {
             opacity: 0,
             duration: 0.3,
-            clearProps: "all"
+            clearProps: "all",
           });
         });
       });
     });
-
-
   });
 
   // section 2
-  const subsections = document.querySelectorAll("#page4 #right #section2 [id^=sub-sec]");
-  const videos = document.querySelectorAll("#page4 #right #section2 #videos [id^=video]");
+  const subsections = document.querySelectorAll(
+    "#page4 #right #section2 [id^=sub-sec]"
+  );
+  const videos = document.querySelectorAll(
+    "#page4 #right #section2 #videos [id^=video]"
+  );
 
   function showVideo(index) {
     videos.forEach((video, idx) => {
@@ -583,7 +586,6 @@ const page4RightAnimation = () => {
   subsections.forEach((subsec, idx) => {
     subsec.addEventListener("mouseenter", () => showVideo(idx));
   });
-
 };
 page4RightAnimation();
 
@@ -595,7 +597,7 @@ const page5MarqueeAnimation = () => {
     transform: "translateX(-100%)",
     duration: 10,
     repeat: -1,
-    ease: "linear"
+    ease: "linear",
   });
 
   window.addEventListener("wheel", function (dets) {
@@ -605,7 +607,7 @@ const page5MarqueeAnimation = () => {
         transform: "translateX(-100%)",
         duration: 10,
         repeat: -1,
-        ease: "linear"
+        ease: "linear",
       });
     } else {
       // Animation when scrolling down
@@ -613,13 +615,12 @@ const page5MarqueeAnimation = () => {
         transform: "translateX(0%)",
         duration: 10,
         repeat: -1,
-        ease: "linear"
+        ease: "linear",
       });
     }
   });
-}
+};
 page5MarqueeAnimation();
-
 
 // page6Animation
 const page6LeftBtnHover = () => {
@@ -687,44 +688,52 @@ const page7Animation = () => {
       end: "top -15%",
       scrub: 1,
       // markers:true
-    }
-  })
+    },
+  });
   tl7
     .to("#discovery #dis-text", {
       scale: 1,
       clipPath: "polygon(0% 0%, 100% 0, 100% 100%, 0% 100%)",
       duration: 2,
       ease: "linear",
-
     })
     .from(".ig7", {
       y: 10,
       opacity: 0,
-      stagger: 0.3
-    })
+      stagger: 0.3,
+    });
 
-  var tl72 = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#page7",
-      scroller: "body",
-      start: "bottom bottom",
-      end: "bottom -150%",
-      pin: true,
-      scrub: 1,
-      // markers:true
-    }
-  })
-    .to("#discovery #dis-text #container7", {
-      x: "-71%",
-      duration: 3,
-      ease: "linear",
-    }, "a")
-    .to(".ig7", {
-      x: -200,
-      duration: 3
-    }, "a")
-}
-page7Animation()
+  var tl72 = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#page7",
+        scroller: "body",
+        start: "bottom bottom",
+        end: "bottom -150%",
+        pin: true,
+        scrub: 1,
+        // markers:true
+      },
+    })
+    .to(
+      "#discovery #dis-text #container7",
+      {
+        x: "-71%",
+        duration: 3,
+        ease: "linear",
+      },
+      "a"
+    )
+    .to(
+      ".ig7",
+      {
+        x: -200,
+        duration: 3,
+      },
+      "a"
+    );
+};
+page7Animation();
 
 document.querySelectorAll(".text-animation").forEach(function (parent) {
   gsap.from(parent.children[0], {
@@ -737,9 +746,9 @@ document.querySelectorAll(".text-animation").forEach(function (parent) {
       end: "top 79%",
       scrub: 1,
       // markers:true
-    }
-  })
-})
+    },
+  });
+});
 
 // textEffect animation
 // can be used by giving class .text-effect to parent , which has two childern
@@ -752,8 +761,8 @@ const textEffect = () => {
         clutter += `<span>${l}</span>`;
       });
       h.innerHTML = clutter;
-    })
-  })
+    });
+  });
   //animation for mousemove
   document.querySelectorAll(".text-effect").forEach(function (e) {
     e.addEventListener("mouseenter", function () {

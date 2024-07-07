@@ -133,25 +133,25 @@ nav > h1 {
   gap: 2vw;
   height: 3vw;
   width: 3vw;
-  padding: .4vw;
+  padding: 0.4vw;
 }
-#open-container{
+#open-container {
   height: 100%;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: .5vw;
+  gap: 0.5vw;
 }
-#open-container .op-line{
+#open-container .op-line {
   width: 100%;
   height: 10%;
   background-color: #ffffff;
   border-radius: 10px;
 }
 
-#cursor{
+#cursor {
   position: fixed;
   z-index: 999;
   width: 3vw;
@@ -159,11 +159,11 @@ nav > h1 {
   background-color: #ffffff;
   border-radius: 50%;
   mix-blend-mode: difference;
-  transform: translate(-50%,-50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
 }
 
-#menu-page{
+#menu-page {
   height: 100vh;
   width: 100%;
   background-color: black;
@@ -175,7 +175,7 @@ nav > h1 {
   display: none;
   opacity: 0;
 }
-#menu-nav{
+#menu-nav {
   width: 100%;
   display: flex;
   align-items: center;
@@ -191,37 +191,37 @@ nav > h1 {
   color: #fff;
 }
 
-#menu-nav-rt{
+#menu-nav-rt {
   height: 3vw;
   width: 3vw;
-  padding: .4vw;
+  padding: 0.4vw;
 }
-#close-container{
+#close-container {
   position: relative;
   height: 100%;
   width: 100%;
 }
-#close-container #cl-line1{
+#close-container #cl-line1 {
   position: absolute;
   left: 50%;
   top: 50%;
   transform-origin: center;
-  transform: translate(-50%,-50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
   height: 100%;
   width: 10%;
   background-color: #fff;
 }
-#close-container #cl-line2{
+#close-container #cl-line2 {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translate(-50%,-50%) rotate(-45deg);
+  transform: translate(-50%, -50%) rotate(-45deg);
   height: 100%;
   width: 10%;
   background-color: #fff;
 }
 
-#wheel{
+#wheel {
   position: absolute;
   left: 50%;
   transform-origin: center;
@@ -230,15 +230,15 @@ nav > h1 {
   height: 110vh;
   width: 110vh;
 }
-#wheel #tier{
+#wheel #tier {
   height: 100%;
   width: 100%;
   object-fit: contain;
   object-position: center;
-  opacity: .3;
+  opacity: 0.3;
 }
 
-#wheel #contact{
+#wheel #contact {
   position: absolute;
   top: -12%;
   left: 50%;
@@ -246,21 +246,21 @@ nav > h1 {
   width: 92%;
   opacity: 1;
 }
-#wheel #event{
+#wheel #event {
   position: absolute;
   bottom: -12%;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
   width: 92%;
 }
-#wheel #contact1{
+#wheel #contact1 {
   position: absolute;
   top: 50%;
   left: -45%;
   transform: translateY(-50%) rotate(-90deg);
   width: 90%;
 }
-#wheel #event2{
+#wheel #event2 {
   position: absolute;
   right: -45%;
   top: 50%;
@@ -268,9 +268,9 @@ nav > h1 {
   width: 92%;
 }
 
-#wheel .mtxt{
+#wheel .mtxt {
   position: relative;
-  opacity: .1;
+  opacity: 0.1;
 }
 
 .page1-overlay {
@@ -569,6 +569,51 @@ nav > h1 {
   font-size: 3vw;
 }
 
+.color-picker {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1vw;
+}
+
+.color-picker-elem {
+  position: relative;
+  height: 100%;
+  /* width: calc(100% / 3); */
+  background-color: rgba(0, 0, 0, 0.383);
+  padding: 0.5vw;
+}
+
+.color-picker-elem > img {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.color-picker-elem:nth-child(1) > img {
+  scale: 1.6;
+}
+
+.car-color {
+  opacity: 0;
+  /* display: none; */
+}
+.car-seat {
+  opacity: 0;
+  /* display: none; */
+}
+.car-rims {
+  opacity: 0;
+  /* display: none; */
+}
+
 .modelS {
   position: relative;
   height: 100%;
@@ -733,7 +778,7 @@ nav > h1 {
   display: flex;
   align-items: center;
   border-bottom: 0.5px solid #6a6a6a;
-  position: relative; 
+  position: relative;
 }
 
 #page4 #left .section .section-overlay {
@@ -741,19 +786,22 @@ nav > h1 {
   height: 100%;
   position: absolute;
   left: 0%;
-  background: linear-gradient(to right, rgba(255, 255, 255, 1) 0%, rgba(135, 135, 135, 0.452) 150%);
-  backdrop-filter: blur(25px); 
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); 
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(135, 135, 135, 0.452) 150%
+  );
+  backdrop-filter: blur(25px);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   display: none;
   padding-left: 15vw;
   display: flex;
   align-items: center;
-  gap: 20vw; 
+  gap: 20vw;
   opacity: 0;
   pointer-events: none;
   z-index: 2;
 }
-
 
 #page4 #left .section .section-overlay #diamond {
   width: 1.2vw;
@@ -782,15 +830,14 @@ nav > h1 {
   justify-content: center;
   gap: 0.5vw;
   opacity: 0;
-  }
+}
 
-#page4 #left .section .section-overlay button:hover
-{
+#page4 #left .section .section-overlay button:hover {
   cursor: pointer;
 }
 
 #page4 #left .section #innerleft {
-  z-index: 3; 
+  z-index: 3;
 }
 
 #page4 #left .section #innerleft #heading h3 {
@@ -803,7 +850,7 @@ nav > h1 {
 #page4 #right {
   width: 50%;
   height: 100%;
-  overflow: hidden;  
+  overflow: hidden;
 }
 
 #page4 #right #main {
@@ -826,7 +873,7 @@ nav > h1 {
   color: #fff;
 }
 
-#page4 #right #main .section #hover-div h3>.bold {
+#page4 #right #main .section #hover-div h3 > .bold {
   font-family: gilroy;
 }
 
@@ -848,7 +895,7 @@ nav > h1 {
   background-color: transparent;
   z-index: 4;
   font-family: regularFont;
-  color: #6A6A6A;
+  color: #6a6a6a;
 }
 
 #page4 #right #main .section #hover-divs .hover-div {
@@ -874,21 +921,21 @@ nav > h1 {
   width: 100%;
   height: 20%;
   padding: 1vw 0vw;
-  border-bottom: 1px solid #6A6A6A;
+  border-bottom: 1px solid #6a6a6a;
 }
 
 #page4 #right #main .section #hover-divs .hover-div #part-2 {
   width: 100%;
   height: 20%;
   padding: 2vw 0vw;
-  border-bottom: 1px solid #6A6A6A;
+  border-bottom: 1px solid #6a6a6a;
 }
 
 #page4 #right #main .section #hover-divs .hover-div #part-3 {
   width: 100%;
   height: 35%;
   padding: 2vw 0vw;
-  border-bottom: 1px solid #6A6A6A;
+  border-bottom: 1px solid #6a6a6a;
 }
 
 #page4 #right #main .section #overlay {
@@ -913,14 +960,12 @@ nav > h1 {
   cursor: pointer;
 }
 
-#page4 #right #main .section #overlay .sub-sec:hover h3
-{
+#page4 #right #main .section #overlay .sub-sec:hover h3 {
   color: #31a93e;
 }
 
 #page4 #right #main .section #overlay .sub-sec h3,
-#page4 #right #main .section #overlay .sub-sec h5
- {
+#page4 #right #main .section #overlay .sub-sec h5 {
   font-size: 2vw;
   font-weight: 500;
   font-family: regularFont;
@@ -936,12 +981,11 @@ nav > h1 {
   padding-top: 2vw;
 }
 
-#page4 #right #main #section1 #hover-divs #hover-2 #part-3 
-{
+#page4 #right #main #section1 #hover-divs #hover-2 #part-3 {
   padding-top: 4vw;
 }
 
-#page4 #right #main .section #hover-divs #hover-3 #part-1, 
+#page4 #right #main .section #hover-divs #hover-3 #part-1,
 #page4 #right #main .section #hover-divs #hover-3 #part-2 {
   height: 10vw;
 }
@@ -971,14 +1015,18 @@ nav > h1 {
   height: 100%;
   position: absolute;
   z-index: 2;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 1)
+  );
 }
 
 #page4 #right #main #section3 {
   background-image: url(/images/page4_3.png);
 }
 
-#page4 #right #main #section3 #hover-divs #hover-1 #part-1{
+#page4 #right #main #section3 #hover-divs #hover-1 #part-1 {
   padding-top: 2vw;
 }
 
@@ -987,7 +1035,7 @@ nav > h1 {
 }
 
 #page4 #right #main #section3 #hover-divs #hover-2 #part-3 {
-  padding : 1.5vw 0vw;
+  padding: 1.5vw 0vw;
 }
 
 #page4 #right #main #section4 {
@@ -1001,7 +1049,11 @@ nav > h1 {
 #page4 #right #main #section4 #main-overlay {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 1)
+  );
 }
 
 #page4 #right #main #section4 #overlay {
@@ -1023,8 +1075,7 @@ nav > h1 {
   border-right: none;
 }
 
-#page4 #right #main #section4 #overlay .sub-sec h3
-{
+#page4 #right #main #section4 #overlay .sub-sec h3 {
   line-height: 4vw;
   font-size: 3vw;
   font-weight: 600;
@@ -1054,7 +1105,11 @@ nav > h1 {
 #page4 #right #main #section5 #main-overlay {
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(0, 0, 0, 1));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(0, 0, 0, 1)
+  );
 }
 
 #page4 #right #main #section5 #overlay {
@@ -1110,7 +1165,7 @@ nav > h1 {
 
 #page4 #right #main #section5 #overlay #buttons #but1:hover,
 #page4 #right #main #section5 #overlay #buttons #but2:hover {
-  cursor: pointer;  
+  cursor: pointer;
 }
 
 /* Page4 end */
@@ -1129,16 +1184,14 @@ nav > h1 {
   overflow: hidden;
 }
 
-#page5 #overlay
-{
+#page5 #overlay {
   width: 100%;
   height: 100vh;
   position: absolute;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#page5 #main
-{
+#page5 #main {
   width: 100%;
   height: 100vh;
   display: flex;
@@ -1177,7 +1230,6 @@ nav > h1 {
   align-items: center;
   font-weight: 500;
 }
-
 
 /* Page5 end */
 
@@ -1225,8 +1277,7 @@ nav > h1 {
   display: flex;
 }
 
-#page6 #overlay
-{
+#page6 #overlay {
   width: 100%;
   height: 100.2vh;
   position: absolute;
@@ -1234,14 +1285,12 @@ nav > h1 {
   pointer-events: none;
 }
 
-#page6 #section2 #main
-{
+#page6 #section2 #main {
   z-index: 2;
   display: flex;
 }
 
-#page6 #section2 #left
-{
+#page6 #section2 #left {
   width: 62%;
   display: flex;
   flex-direction: column;
@@ -1261,8 +1310,7 @@ nav > h1 {
   gap: 1vw;
 }
 
-#page6 #section2 #left #heading-3 #line
-{
+#page6 #section2 #left #heading-3 #line {
   width: 57%;
   height: 0.1vw;
   background-color: #fff;
@@ -1292,7 +1340,6 @@ nav > h1 {
   width: fit-content;
   cursor: pointer;
 }
-
 
 #page6 #section2 #left #button #text {
   height: 2vw;
