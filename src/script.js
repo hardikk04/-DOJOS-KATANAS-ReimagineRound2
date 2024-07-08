@@ -109,11 +109,9 @@ magneticEffect();
 const menuAnimation = () => {
   let rotationAngle = 0;
   document.querySelector(".menu-open").addEventListener("click", function () {
-    rotationAngle = 0;
-    document.querySelector(
-      "#wheel"
-    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    document.querySelector("#contact").style.opacity = 1;
+    rotationAngle = 0
+    document.querySelector('#wheel').style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    // document.querySelector("#contact").style.opacity = 1
     gsap.to("#menu-page", {
       display: "block",
       opacity: 1,
@@ -141,28 +139,13 @@ const menuAnimation = () => {
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    gsap.to(circle, {
-      rotate: rotationAngle,
-      scale: 1.2,
-    });
-
-    document.querySelectorAll(".mtxt").forEach(function (txt) {
-      // center value of text in x-axis with respect to window
-      let txtCenter =
-        txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2;
-      // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
-      if (
-        window.innerWidth / 2 - 300 < txtCenter &&
-        window.innerWidth / 2 + 300 > txtCenter
-      ) {
-        txt.style.opacity = 1;
-      } else {
-        txt.style.opacity = 0.2;
-      }
-    });
+    gsap.to(circle,{
+      rotate:rotationAngle,
+      scale:1.2
+    })
   });
-};
-menuAnimation();
+}
+menuAnimation()
 
 // Page2 Animation
 const page2Animation = () => {
@@ -1047,55 +1030,34 @@ const page7Animation = () => {
       stagger: 0.3,
     });
 
-  var tl72 = gsap
-    .timeline({
-      scrollTrigger: {
-        trigger: "#page7",
-        scroller: "body",
-        start: "bottom bottom",
-        end: "bottom -150%",
-        pin: true,
-        scrub: 1,
-        // markers:true
-      },
-    })
-    .to(
-      "#discovery #dis-text #container7",
-      {
-        x: "-71%",
-        duration: 3,
-        ease: "linear",
-      },
-      "a"
-    )
-    .to(
-      ".ig7",
-      {
-        x: -200,
-        duration: 3,
-      },
-      "a"
-    );
-};
-page7Animation();
-
-document.querySelectorAll(".text-animation").forEach(function (parent) {
-  gsap.from(parent.children[0], {
-    y: 100,
-    duration: 0.5,
+  var tl72 = gsap.timeline({
     scrollTrigger: {
-      trigger: parent,
+      trigger: "#page7",
       scroller: "body",
-      start: "top 80%",
-      end: "top 79%",
+      start: "bottom bottom",
+      end: "bottom -150%",
+      pin: true,
       scrub: 1,
       // markers:true
-    },
-  });
-});
+    }
+  })
+    .to("#discovery #dis-text #container7", {
+      x: "-71%",
+      duration: 3,
+      ease: "linear",
+    }, "a")
+    .to(".ig7", {
+      x: -200,
+      duration: 3
+    }, "a")
+}
+page7Animation()
+
+
 
 // textEffect animation
-// can be used by giving class .text-effect to parent , which has two childern
+// can be used by giving class .text-effect to parent , 
+// which has two childern
 const textEffect = () => {
   // Splitting the text content into individual letters and wrapping each in a span with a class
   document.querySelectorAll(".text-effect").forEach(function (e) {
@@ -1146,3 +1108,74 @@ const textEffect = () => {
   });
 };
 textEffect();
+
+const textAnimation = ()=>{
+  
+var tl61 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page6 #section1",
+    scroller:"body",
+    start:"top 85%",
+    end:"top 60%",
+    scrub:1,
+  }
+})
+tl61
+.from("#page6 #section1 h1",{
+  y:100,
+  duration:1,
+})
+.from(".section1-dis h3",{
+  y:100,
+  stagger:0.4,
+  duration:1,
+
+})
+
+var tl62 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page6 #section2",
+    scroller:"body",
+    start:"top 70%",
+    end:"top 30%",
+    scrub:1,
+  }
+})
+tl62
+.from("#page6 #section2 h1",{
+  y:100,
+  stagger:0.6,
+  duration:2,
+})
+.from("#page6 #section2 #line",{
+  width:0,
+  duration:2,
+  delay:.8
+})
+.from("#page6 #section2 .description h3",{
+  y:100,
+  stagger:0.4,
+  duration:2,
+})
+
+var tl63 = gsap.timeline({
+  scrollTrigger:{
+    trigger:"#page7",
+    scroller:"body",
+    start:"top 80%",
+    end:"top 45%",
+    scrub:1,
+  }
+})
+tl63
+.from("#page7 #head-wrap7 h1",{
+  y:100,
+  duration:1,
+})
+.from("#page7 .para-wrap7 p",{
+  y:100,
+  stagger:0.6,
+  duration:2,
+})
+}
+textAnimation()
