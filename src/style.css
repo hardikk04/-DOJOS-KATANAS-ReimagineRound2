@@ -221,9 +221,6 @@ nav > h1 {
   background-color: #fff;
 }
 
-#wheel svg{
-  opacity: .9;
-}
 
 #wheel{
   position: absolute;
@@ -241,38 +238,39 @@ nav > h1 {
   object-position: center;
   opacity: 0.3;
 }
-
-#Layer_1{
-  width: 100%;
+#wheel .mtxt{
+  opacity: .5;
+}
+#contactus{
   position: absolute;
-  top: -8%;
+  top: -10.5%;
   left: 50%;
   transform: translateX(-50%);
+  width: 75%;
 }
-#Layer_2{
-  width: 100%;
-  position: absolute;
-  top: 2%;
-  left: 50%;
-  transform: translateX(-50%) rotate(180deg);
-}
-#Layer_3{
-  width: 100%;
-  position: absolute;
-  left: 56%;
-  top: -3%;
-  transform: translate(-50%,0) rotate(96deg);
-}
-#Layer_4{
-  width: 100%;
+#aboutus{
   position: absolute;
   top: 50%;
-  left: -6%;
-  transform: translateY(-50%) rotate(-89deg);
+  left: -35%;
+  transform: translateY(-50%) rotate(-93deg);
+  width: 69%;
 }
-#Layer_1 text,#Layer_2 text,#Layer_3 text,#Layer_4 text{
-  font-family: title;
+#locateus{
+  position: absolute;
+  top: 50%;
+  right: -35%;
+  transform: translateY(-50%) rotate(90deg);
+  width: 69%;
 }
+
+#event{
+  position: absolute;
+  bottom: -10%;
+  left: 50%;
+  transform: translateX(-50%) rotate(180deg);
+  width: 75%;
+}
+
 .page1-overlay {
   position: relative;
   height: 100%;

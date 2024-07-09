@@ -137,13 +137,13 @@ const menuAnimation = () => {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta / 5;
+    rotationAngle += delta*0.2;
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     gsap.to(circle,{
       rotate:rotationAngle,
-      scale:1.2
+      scale:1.2,
     })
   });
 }
