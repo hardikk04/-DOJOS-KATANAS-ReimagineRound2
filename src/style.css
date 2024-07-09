@@ -561,9 +561,9 @@ nav > h1 {
 
 .threejs-models > h1 {
   position: absolute;
-  top: 5%;
+  top: 2.5%;
   left: 5%;
-  color: #666666;
+  color: #d8d8d8;
   font-family: title;
   z-index: 1;
   font-size: 3vw;
