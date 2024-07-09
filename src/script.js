@@ -145,6 +145,19 @@ const menuAnimation = () => {
       rotate:rotationAngle,
       scale:1.2,
     })
+    
+    document.querySelectorAll(".mtxt").forEach(function (txt) {
+      // center value of text in x-axis with respect to window
+      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
+      // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
+      if ((window.innerWidth / 2 - 320) < txtCenter && (window.innerWidth / 2 + 320) > txtCenter) {
+        txt.style.opacity = 1
+      }
+      else {
+        txt.style.opacity = 0.2
+      }
+    })
+
   });
 }
 menuAnimation()
