@@ -582,10 +582,64 @@ nav > h1 {
   gap: 1vw;
 }
 
+select {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.383);
+  font-family: title;
+  /* padding: 0vw 0.5vw; */
+  color: #fff;
+  text-align: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.model-change-box > option {
+  color: #ffffff;
+  /* text-align: center; */
+  background-color: rgba(0, 0, 0, 0.383);
+}
+
+/* 
+.model-change {
+  position: relative;
+  top: -200%;
+  height: 100%;
+  font-family: title;
+  background-color: rgba(0, 0, 0, 0.383);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0vw 0.5vw;
+  transition: all ease 0.5s;
+}
+
+.model-roadster {
+  opacity: 0;
+}
+
+.model-cybertruck {
+  opacity: 0;
+}
+
+.model-change:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.706);
+}
+
+.model-change > h3 {
+  color: #fff;
+  font-weight: 100;
+  font-size: 0.6vw;
+  letter-spacing: 1px;
+} */
+
 .color-picker-elem {
   position: relative;
   height: 100%;
-  /* width: calc(100% / 3); */
   background-color: rgba(0, 0, 0, 0.383);
   padding: 0.5vw;
 }

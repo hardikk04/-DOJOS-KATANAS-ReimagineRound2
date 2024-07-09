@@ -3,12 +3,14 @@ import "remixicon/fonts/remixicon.css";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
+import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
 import GUI from "lil-gui";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
+import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -317,9 +319,6 @@ page2Animation();
 
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
-  // Scroll Trigger
-  gsap.registerPlugin(ScrollTrigger);
-
   /**
    * Canvas
    */
@@ -340,14 +339,38 @@ const threeTeslaModelAnimation = () => {
   const scene = new THREE.Scene();
 
   /**
+   * Loader
+   */
+  const textureLoader = new THREE.TextureLoader();
+  const gltfLoader = new GLTFLoader();
+
+  /**
+   * DRACO Loader
+   */
+  const dracoLoader = new DRACOLoader();
+  dracoLoader.setDecoderPath("/draco/");
+  gltfLoader.setDRACOLoader(dracoLoader);
+
+  /**
+   * Environment map
+   */
+  const environmentMap = textureLoader.load("/environment/sky.jpg");
+  environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+  environmentMap.colorSpace = THREE.SRGBColorSpace;
+
+  scene.background = environmentMap;
+  scene.environment = environmentMap;
+
+  scene.environmentIntensity = 3;
+  scene.backgroundIntensity = 3;
+
+  /**
    * Group
    */
   const group = new THREE.Group();
-  scene.add(group);
+  // scene.add(group);
 
-  const carColorMaterial = new THREE.MeshStandardMaterial({
-    color: object.carColor,
-  });
+  const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
   const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
@@ -355,18 +378,25 @@ const threeTeslaModelAnimation = () => {
   const updateMaterial = () => {
     scene.traverse((child) => {
       if (child.isMesh && child.material.isMeshStandardMaterial) {
-        child.material.roughness = 0.01;
-        child.material.metalness = 0.9;
+        child.material.roughness = 0.1;
+        child.material.metalness = 1;
 
+        console.log(child.material);
         child.castShadow = true;
+        child.receiveShadow = true;
         if (
           child.material.name === "car_main_paint" ||
-          child.material.name === "calipers"
+          child.material.name === "calipers" ||
+          child.material.name === "Burner_red" ||
+          child.material.name === "Material.003"
         ) {
           child.material = carColorMaterial;
         }
 
-        if (child.material.name === "Rims") {
+        if (
+          child.material.name === "Rims" ||
+          child.material.name === "Material.010"
+        ) {
           child.material = carRimsMaterial;
         }
 
@@ -377,6 +407,10 @@ const threeTeslaModelAnimation = () => {
         if (child.material.name === "Brake_Disc") {
           child.material = carColorMaterial;
         }
+
+        if (child.material.name === "Concrete_Tiles") {
+          child.material.roughness = 1;
+        }
       }
     });
   };
@@ -385,73 +419,141 @@ const threeTeslaModelAnimation = () => {
   //   carColorMaterial.color.set(object.carColor);
   // });
 
-  /**
-   * Loader
-   */
-  const textureLoader = new THREE.TextureLoader();
-  const gltfLoader = new GLTFLoader();
-
-  let model1 = null;
-  gltfLoader.load("/models/example/scene.gltf", (gltf) => {
-    model1 = gltf.scene;
-    scene.add(model1);
-    model1.rotation.y = -0.56;
-    updateMaterial();
+  // Loading the garage
+  let garage = null;
+  gltfLoader.load("/models/garage/garage.glb", (gltf) => {
+    garage = gltf.scene;
+    scene.add(garage);
   });
 
-  /**
-   * Floor
-   */
-  // // Loading the textures
+  // Loading the models
 
-  const floorAlphaTexture = textureLoader.load("./textures/alpha.webp");
-  const floorColorTexture = textureLoader.load(
-    "/textures/rubber_tiles_diff_1k.jpg"
-  );
-  const floorARMTexture = textureLoader.load(
-    "/textures/rubber_tiles_arm_1k.jpg"
-  );
-  const floorNormalTexture = textureLoader.load(
-    "/textures/rubber_tiles_nor_gl_1k.jpg"
-  );
-  const floorDisplacementTexture = textureLoader.load(
-    "/textures/rubber_tiles_disp_1k.jpg"
-  );
+  // Array of model paths
+  const modelPaths = [
+    "/models/model3/model3.glb",
+    "/models/roadster/roadster.glb",
+    "/models/cybertruck/cybertruck.glb",
+  ];
 
-  floorColorTexture.repeat.set(8, 8);
-  floorARMTexture.repeat.set(8, 8);
-  floorNormalTexture.repeat.set(8, 8);
-  floorDisplacementTexture.repeat.set(8, 8);
+  let models = [];
+  modelPaths.forEach((model, index) => {
+    gltfLoader.load(model, (gltf) => {
+      models[index] = gltf.scene;
+      if (index === 0) {
+        scene.add(models[index]);
+      }
 
-  floorColorTexture.wrapS = THREE.RepeatWrapping;
-  floorARMTexture.wrapS = THREE.RepeatWrapping;
-  floorNormalTexture.wrapS = THREE.RepeatWrapping;
-  floorDisplacementTexture.wrapS = THREE.RepeatWrapping;
+      models[index].rotation.y = -0.56;
+      updateMaterial();
+      updateMaterial();
+    });
+  });
 
-  floorColorTexture.wrapT = THREE.RepeatWrapping;
-  floorARMTexture.wrapT = THREE.RepeatWrapping;
-  floorNormalTexture.wrapT = THREE.RepeatWrapping;
-  floorDisplacementTexture.wrapT = THREE.RepeatWrapping;
-
-  floorColorTexture.colorSpace = THREE.SRGBColorSpace;
-
-  const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(12, 12, 128, 128),
-    new THREE.MeshPhysicalMaterial({
-      alphaMap: floorAlphaTexture,
-      transparent: true,
-      map: floorColorTexture,
-      roughnessMap: floorARMTexture,
-      metalnessMap: floorARMTexture,
-      normalMap: floorNormalTexture,
-      displacementMap: floorDisplacementTexture,
-      displacementScale: 0.25,
-      displacementBias: -0.2,
-    })
-  );
-  floor.rotation.x = -Math.PI / 2;
-  floor.receiveShadow = true;
-  group.add(floor);
+  const select = document.querySelector("select");
+  select.addEventListener("input", (event) => {
+    if (select.value === "MODELS") {
+      const tl = gsap.timeline();
+      tl.to(camera.position, {
+        x: -10,
+        duration: 1.5,
+        onStart: () => {
+          gsap.to(".model-transition", {
+            opacity: 0,
+            stagger: {
+              amount: 0.2,
+            },
+          });
+        },
+        onComplete: () => {
+          gsap.to(".threejs-models>h1", {
+            text: "MODEL S",
+            duration: 0.5,
+          });
+          gsap.to(".model-transition", {
+            opacity: 1,
+            stagger: {
+              amount: -0.2,
+            },
+          });
+          scene.add(models[0]);
+          scene.remove(models[1]);
+          scene.remove(models[2]);
+        },
+      });
+      tl.to(camera.position, {
+        x: 0,
+        duration: 1.5,
+      });
+    } else if (select.value === "ROADSTER") {
+      const tl = gsap.timeline();
+      tl.to(camera.position, {
+        x: -10,
+        duration: 1.5,
+        onStart: () => {
+          gsap.to(".model-transition", {
+            opacity: 0,
+            stagger: {
+              amount: 0.2,
+            },
+          });
+        },
+        onComplete: () => {
+          gsap.to(".threejs-models>h1", {
+            text: "ROADSTER",
+            duration: 0.5,
+          });
+          gsap.to(".model-transition", {
+            opacity: 1,
+            stagger: {
+              amount: -0.2,
+            },
+          });
+          scene.remove(models[0]);
+          scene.add(models[1]);
+          scene.remove(models[2]);
+          updateMaterial();
+        },
+      });
+      tl.to(camera.position, {
+        x: 0,
+        duration: 1.5,
+      });
+    } else if (select.value === "CYBERTRUCK") {
+      const tl = gsap.timeline();
+      tl.to(camera.position, {
+        x: -10,
+        duration: 1.5,
+        onStart: () => {
+          gsap.to(".model-transition", {
+            opacity: 0,
+            stagger: {
+              amount: 0.2,
+            },
+          });
+        },
+        onComplete: () => {
+          gsap.to(".threejs-models>h1", {
+            text: "CYBERTRUCK",
+            duration: 0.5,
+          });
+          gsap.to(".model-transition", {
+            opacity: 1,
+            stagger: {
+              amount: -0.2,
+            },
+          });
+          scene.remove(models[0]);
+          scene.remove(models[1]);
+          scene.add(models[2]);
+          updateMaterial();
+        },
+      });
+      tl.to(camera.position, {
+        x: 0,
+        duration: 1.5,
+      });
+    }
+  });
 
   /**
    * Fog
@@ -490,11 +592,6 @@ const threeTeslaModelAnimation = () => {
     camera.updateProjectionMatrix();
     renderer.setSize(sizes.widht, sizes.height);
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-
-    fireFliesMaterial.uniforms.uPixelRatio.value = Math.min(
-      2,
-      window.devicePixelRatio
-    );
   });
 
   // gui.add(camera.position, "x").min(-10).max(10).step(0.01).name("camera x");
@@ -593,10 +690,15 @@ const threeTeslaModelAnimation = () => {
   const tick = () => {
     const elapsedTime = clock.getElapsedTime();
 
-    // if (model1) {
-    //   group.rotation.y = -elapsedTime * 0.4;
-    //   model1.rotation.y = -elapsedTime * 0.4;
-    // }
+    // Sky Environment rotation
+    scene.backgroundRotation.y = elapsedTime * 0.05;
+    scene.environmentRotation.y = elapsedTime * 0.1;
+
+    if (models) {
+      // model1.rotation.y = -elapsedTime * 0.4;
+      // garage.rotation.y = -elapsedTime * 0.4;
+      // camera.position.x = Math.sin(-elapsedTime * 0.5);
+    }
 
     controls.update();
     renderer.render(scene, camera);
