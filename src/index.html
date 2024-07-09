@@ -139,15 +139,20 @@
       <div class="threejs-models">
         <h1>MODEL S</h1>
         <div class="color-picker">
-          <div class="color-picker-elem">
+          <select class="model-change-box model-transition">
+            <option value="MODELS">MODELS</option>
+            <option value="ROADSTER">ROADSTER</option>
+            <option value="CYBERTRUCK">CYBERTRUCK</option>
+          </select>
+          <div class="color-picker-elem model-transition">
             <img src="/images/carColor.png" alt="" />
             <input type="color" class="car-color" value="ae0a0a" />
           </div>
-          <div class="color-picker-elem">
+          <div class="color-picker-elem model-transition">
             <img src="/images/carSeat.png" alt="" />
             <input type="color" class="car-seat" />
           </div>
-          <div class="color-picker-elem">
+          <div class="color-picker-elem model-transition">
             <img src="/images/carRims.png" alt="" />
             <input type="color" class="car-rims" />
           </div>

@@ -84,9 +84,8 @@ const vehicleVideoAnimation = (index, prevIndex) => {
     gsap.from(".page1-hero-text-vehicle>h1>span", {
       opacity: 0,
       y: 90,
-      transform: "scaleY(3)",
       stagger: {
-        amount: prevIndex <= 0 ? 0.5 : -0.5,
+        amount: prevIndex <= 0 ? 0.25 : -0.25,
         from: "x",
       },
       onComplete: () => {
@@ -121,9 +120,8 @@ const energyVideoAnimation = (index, prevIndex) => {
     gsap.from(".page1-hero-text-energy>h1>span", {
       opacity: 0,
       y: 90,
-      transform: "scaleY(3)",
       stagger: {
-        amount: prevIndex <= 1 ? 0.5 : -0.5,
+        amount: prevIndex <= 1 ? 0.25 : -0.25,
         from: "x",
       },
       onComplete: () => {
@@ -158,9 +156,8 @@ const chargingVideoAnimation = () => {
     gsap.from(".page1-hero-text-charging>h1>span", {
       opacity: 0,
       y: 90,
-      transform: "scaleY(3)",
       stagger: {
-        amount: 0.5,
+        amount: 0.25,
         from: "x",
       },
       onComplete: () => {
