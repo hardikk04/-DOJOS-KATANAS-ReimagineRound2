@@ -155,8 +155,8 @@ menuAnimation();
 const page2Animation = () => {
   const paragraphText = [
     "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S",
-    "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation",
-    "The Tesla Model X is a high-performance electric SUV that combines impressive range, cutting-edge technology, and unparalleled acceleration. Available in Long Range and Plaid variants.",
+    "The most powerful ever fitted to Model 3, enabling more than 500 horsepower and 0 to 60 mph in as little as 2.9 seconds.",
+    "Model X platforms unite powertrain and battery technologies for an unrivaled combination of performance, range and efficiency.",
   ];
 
   const t1 = gsap.timeline({
