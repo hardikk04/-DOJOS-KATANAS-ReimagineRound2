@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import GUI from "lil-gui";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
@@ -328,6 +329,7 @@ const threeTeslaModelAnimation = () => {
    */
   const textureLoader = new THREE.TextureLoader();
   const gltfLoader = new GLTFLoader();
+  const rgbeLoader = new RGBELoader();
 
   /**
    * DRACO Loader
@@ -339,14 +341,22 @@ const threeTeslaModelAnimation = () => {
   /**
    * Environment map
    */
-  const environmentMap = textureLoader.load("/environment/sky.jpg");
-  environmentMap.mapping = THREE.EquirectangularReflectionMapping;
-  environmentMap.colorSpace = THREE.SRGBColorSpace;
+  const environmentSkyMap = textureLoader.load("/environment/sky.jpg");
 
-  scene.background = environmentMap;
-  scene.environment = environmentMap;
+  /**
+   * HDR (RGBE) equirectangular
+   */
+  rgbeLoader.load("/environment/light.hdr", (environmentMap) => {
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+    scene.environment = environmentMap;
+  });
 
-  scene.environmentIntensity = 3;
+  environmentSkyMap.mapping = THREE.EquirectangularReflectionMapping;
+  environmentSkyMap.colorSpace = THREE.SRGBColorSpace;
+
+  scene.background = environmentSkyMap;
+
+  scene.environmentIntensity = 0.3;
   scene.backgroundIntensity = 3;
 
   /**
@@ -356,15 +366,17 @@ const threeTeslaModelAnimation = () => {
   // scene.add(group);
 
   const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+  const carMirrorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
   const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+  //
 
   const updateMaterial = () => {
     scene.traverse((child) => {
       if (child.isMesh && child.material.isMeshStandardMaterial) {
-        child.material.roughness = -0.5;
-        child.material.metalness = 1.5;
+        child.material.roughness = 0;
+        child.material.metalness = 1;
 
         if (child.material.name !== "Concrete_Tiles") {
           child.castShadow = true;
@@ -377,6 +389,10 @@ const threeTeslaModelAnimation = () => {
           child.material.name === "Material.003"
         ) {
           child.material = carColorMaterial;
+        }
+
+        if (child.material.name === "Glass_mid_tint") {
+          child.material = carMirrorMaterial;
         }
 
         if (
