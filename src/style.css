@@ -221,13 +221,12 @@ nav > h1 {
   background-color: #fff;
 }
 
-
-#wheel{
+#wheel {
   position: absolute;
   left: 50%;
   transform-origin: center;
   transform: translateX(-50%) rotate(0) scale(1.2);
-  bottom:-65vh;
+  bottom: -65vh;
   height: 110vh;
   width: 110vh;
 }
@@ -238,24 +237,24 @@ nav > h1 {
   object-position: center;
   opacity: 0.3;
 }
-#wheel .mtxt{
-  opacity: .5;
+#wheel .mtxt {
+  opacity: 0.5;
 }
-#contactus{
+#contactus {
   position: absolute;
   top: -10.5%;
   left: 50%;
   transform: translateX(-50%);
   width: 75%;
 }
-#aboutus{
+#aboutus {
   position: absolute;
   top: 50%;
   left: -35%;
   transform: translateY(-50%) rotate(-93deg);
   width: 69%;
 }
-#locateus{
+#locateus {
   position: absolute;
   top: 50%;
   right: -35%;
@@ -263,7 +262,7 @@ nav > h1 {
   width: 69%;
 }
 
-#event{
+#event {
   position: absolute;
   bottom: -10%;
   left: 50%;
@@ -456,6 +455,11 @@ nav > h1 {
   font-family: mediumFont;
 }
 
+.page2-text {
+  position: relative;
+  height: 18.5vw;
+}
+
 .page2-text > h1 {
   font-size: 1.8vw;
   font-family: tesla;
@@ -492,6 +496,8 @@ nav > h1 {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  height: 16vw;
+  
 }
 
 .page2-circle {
@@ -524,7 +530,7 @@ nav > h1 {
 
 .page2-box {
   position: relative;
-  bottom: 0%;
+  height: 11vw;
   width: 100%;
   padding: 3vw 0;
   background-color: #000;
@@ -1310,12 +1316,12 @@ select {
   font-family: heading;
   font-family: title;
 }
-#page6 #section1 #heading{
+#page6 #section1 #heading {
   overflow: hidden;
   margin-bottom: 1vw;
 }
 
-#page6 #section1 .section1-dis{
+#page6 #section1 .section1-dis {
   overflow: hidden;
 }
 #page6 #section1 h3 {
@@ -1335,15 +1341,14 @@ select {
   display: flex;
 }
 
-#page6 #section2 .heading-sec2{
+#page6 #section2 .heading-sec2 {
   overflow: hidden;
 }
-#page6 #section2 .description{
+#page6 #section2 .description {
   overflow: hidden;
 }
 
-#page6 #overlay
-{
+#page6 #overlay {
   width: 100%;
   height: 100.2vh;
   position: absolute;
@@ -1362,7 +1367,7 @@ select {
   flex-direction: column;
 }
 
-#page6 #section2 #left #heading{
+#page6 #section2 #left #heading {
   margin-bottom: 2vw;
 }
 #page6 #section2 #left #heading h1 {
