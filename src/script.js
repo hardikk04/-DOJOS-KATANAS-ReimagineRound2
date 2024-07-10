@@ -374,12 +374,13 @@ const threeTeslaModelAnimation = () => {
   const updateMaterial = () => {
     scene.traverse((child) => {
       if (child.isMesh && child.material.isMeshStandardMaterial) {
-        child.material.roughness = 0.1;
-        child.material.metalness = 1;
+        child.material.roughness = 0;
+        child.material.metalness = 1.5;
 
-        console.log(child.material);
-        child.castShadow = true;
-        child.receiveShadow = true;
+        if (child.material.name !== "Concrete_Tiles") {
+          child.castShadow = true;
+        }
+
         if (
           child.material.name === "car_main_paint" ||
           child.material.name === "calipers" ||
@@ -406,6 +407,7 @@ const threeTeslaModelAnimation = () => {
 
         if (child.material.name === "Concrete_Tiles") {
           child.material.roughness = 1;
+          child.receiveShadow = true;
         }
       }
     });
@@ -420,6 +422,7 @@ const threeTeslaModelAnimation = () => {
   gltfLoader.load("/models/garage/garage.glb", (gltf) => {
     garage = gltf.scene;
     scene.add(garage);
+    updateMaterial();
   });
 
   // Loading the models
@@ -450,8 +453,11 @@ const threeTeslaModelAnimation = () => {
     if (select.value === "MODELS") {
       const tl = gsap.timeline();
       tl.to(camera.position, {
-        x: -10,
-        duration: 1.5,
+        x: 10,
+        y: 0,
+        z: 0,
+        ease: "expo.in",
+        duration: 2,
         onStart: () => {
           gsap.to(".model-transition", {
             opacity: 0,
@@ -478,13 +484,19 @@ const threeTeslaModelAnimation = () => {
       });
       tl.to(camera.position, {
         x: 0,
-        duration: 1.5,
+        y: 0,
+        z: 4,
+        ease: "expo.out",
+        duration: 2,
       });
     } else if (select.value === "ROADSTER") {
       const tl = gsap.timeline();
       tl.to(camera.position, {
-        x: -10,
-        duration: 1.5,
+        x: 10,
+        y: 0,
+        z: 0,
+        ease: "expo.in",
+        duration: 2,
         onStart: () => {
           gsap.to(".model-transition", {
             opacity: 0,
@@ -512,13 +524,19 @@ const threeTeslaModelAnimation = () => {
       });
       tl.to(camera.position, {
         x: 0,
-        duration: 1.5,
+        y: 0,
+        z: 4,
+        ease: "expo.out",
+        duration: 2,
       });
     } else if (select.value === "CYBERTRUCK") {
       const tl = gsap.timeline();
       tl.to(camera.position, {
-        x: -10,
-        duration: 1.5,
+        x: 10,
+        y: 0,
+        z: 0,
+        ease: "expo.in",
+        duration: 2,
         onStart: () => {
           gsap.to(".model-transition", {
             opacity: 0,
@@ -546,7 +564,10 @@ const threeTeslaModelAnimation = () => {
       });
       tl.to(camera.position, {
         x: 0,
-        duration: 1.5,
+        y: 0,
+        z: 4,
+        ease: "expo.out",
+        duration: 2,
       });
     }
   });
@@ -554,7 +575,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Fog
    */
-  const fog = new THREE.Fog(object.renderColor, 3, 7);
+  const fog = new THREE.Fog(object.renderColor, 3, 8);
   scene.fog = fog;
 
   /**
@@ -599,8 +620,8 @@ const threeTeslaModelAnimation = () => {
       trigger: ".threejs-models",
       scroller: "body",
       start: "top 0",
-      end: "top -100%",
-      scrub: true,
+      end: "top -30%",
+      // scrub: true,
       // markers: true,
       pin: true,
     },
@@ -608,6 +629,21 @@ const threeTeslaModelAnimation = () => {
 
   tl.from(camera.position, {
     x: -10,
+    duration: 5,
+    ease: "expo.in",
+    onStart: () => {
+      controls.enabled = false;
+    },
+    onComplete: () => {
+      controls.enabled = true;
+    },
+  });
+
+  tl.from(".model-transition", {
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+    },
   });
 
   /**
@@ -615,28 +651,48 @@ const threeTeslaModelAnimation = () => {
    */
   // Ambient Light
   const ambientLight = new THREE.AmbientLight("#ffffff", 2);
-  scene.add(ambientLight);
+  // scene.add(ambientLight);
 
   // Directional Light
-  const directionalLightBackLeft = new THREE.DirectionalLight("#ffffff", 4);
-  directionalLightBackLeft.castShadow = true;
-  // directionalLightBackLeft.position.set(0, 0.1, -10);
-  scene.add(directionalLightBackLeft);
+  const directionalLight = new THREE.DirectionalLight("#ffc800", 2);
+  directionalLight.castShadow = true;
+  // directionalLight.position.set(0, 0.1, -10);
+  scene.add(directionalLight);
+  object.LightColor = "#ffffff";
 
-  // gui.add(directionalLightBackLeft.position, "x").min(-30).max(30).step(0.001);
-  // gui.add(directionalLightBackLeft.position, "y").min(-30).max(30).step(0.001);
-  // gui.add(directionalLightBackLeft.position, "z").min(-30).max(30).step(0.001);
+  // gui.addColor(object, "LightColor").onChange(() => {
+  //   directionalLight.color = new THREE.Color(object.LightColor);
+  // });
+
+  // gui
+  //   .add(directionalLight.position, "x")
+  //   .min(-30)
+  //   .max(30)
+  //   .step(0.001)
+  //   .name("directionalLight X");
+  // gui
+  //   .add(directionalLight.position, "y")
+  //   .min(-30)
+  //   .max(30)
+  //   .step(0.001)
+  //   .name("directionalLight Y");
+  // gui
+  //   .add(directionalLight.position, "z")
+  //   .min(-30)
+  //   .max(30)
+  //   .step(0.001)
+  //   .name("directionalLight Z");
 
   // Shadow
-  directionalLightBackLeft.shadow.mapSize.set(1024, 1024);
-  directionalLightBackLeft.shadow.camera.near = -2;
-  directionalLightBackLeft.shadow.camera.far = 2;
-  directionalLightBackLeft.shadow.camera.top = 3;
-  directionalLightBackLeft.shadow.camera.right = 3.5;
-  directionalLightBackLeft.shadow.camera.bottom = -3;
-  directionalLightBackLeft.shadow.camera.left = -3.5;
+  directionalLight.shadow.mapSize.set(1028, 1028);
+  directionalLight.shadow.camera.near = 0;
+  directionalLight.shadow.camera.far = 2;
+  directionalLight.shadow.camera.top = 3;
+  directionalLight.shadow.camera.right = 2;
+  directionalLight.shadow.camera.bottom = -3;
+  directionalLight.shadow.camera.left = -2;
   const directionalLightCameraHelper = new THREE.CameraHelper(
-    directionalLightBackLeft.shadow.camera
+    directionalLight.shadow.camera
   );
   // scene.add(directionalLightCameraHelper);
 
@@ -652,16 +708,12 @@ const threeTeslaModelAnimation = () => {
   renderer.setSize(sizes.widht, sizes.height);
   renderer.setClearColor(object.renderColor);
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-  // renderer.shadowMap.enabled = true;
+  renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
   // gui.addColor(object, "renderColor").onChange(() => {
   //   renderer.setClearColor(new THREE.Color(object.renderColor));
   //   scene.fog.color.setHex(new THREE.Color(object.renderColor));
-  // });
-
-  // gui.addColor(object, "floorColor").onChange(() => {
-  //   floor.material.color.set(object.floorColor);
   // });
 
   /**
@@ -679,6 +731,7 @@ const threeTeslaModelAnimation = () => {
    * Clock
    */
   const clock = new THREE.Clock();
+  let time = Date.now();
 
   /**
    * Animation
@@ -686,14 +739,19 @@ const threeTeslaModelAnimation = () => {
   const tick = () => {
     const elapsedTime = clock.getElapsedTime();
 
-    // Sky Environment rotation
-    scene.backgroundRotation.y = elapsedTime * 0.05;
-    scene.environmentRotation.y = elapsedTime * 0.1;
+    const currentTime = Date.now();
+    const deltaTime = currentTime - time;
+    time = currentTime;
 
-    if (models) {
-      // model1.rotation.y = -elapsedTime * 0.4;
-      // garage.rotation.y = -elapsedTime * 0.4;
-      // camera.position.x = Math.sin(-elapsedTime * 0.5);
+    // Sky Environment rotation
+    // scene.backgroundRotation.y -= deltaTime * 0.000025;
+    scene.environmentRotation.y -= deltaTime * 0.00025;
+
+    if (models[0] && models[1] && models[2]) {
+      models[0].rotation.y -= deltaTime * 0.00025;
+      models[1].rotation.y -= deltaTime * 0.00025;
+      models[2].rotation.y -= deltaTime * 0.00025;
+      garage.rotation.y -= deltaTime * 0.00025;
     }
 
     controls.update();
