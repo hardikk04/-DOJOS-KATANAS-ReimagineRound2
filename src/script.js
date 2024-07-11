@@ -341,23 +341,22 @@ const threeTeslaModelAnimation = () => {
   /**
    * Environment map
    */
-  const environmentSkyMap = textureLoader.load("/environment/sky.jpg");
 
   /**
    * HDR (RGBE) equirectangular
    */
-  rgbeLoader.load("/environment/light.hdr", (environmentMap) => {
+  rgbeLoader.load("/environment/withoutLight.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = environmentMap;
   });
 
-  environmentSkyMap.mapping = THREE.EquirectangularReflectionMapping;
-  environmentSkyMap.colorSpace = THREE.SRGBColorSpace;
+  rgbeLoader.load("/environment/sky.hdr", (environmentMap) => {
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+    scene.background = environmentMap;
+  });
 
-  scene.background = environmentSkyMap;
-
-  scene.environmentIntensity = 0.3;
-  scene.backgroundIntensity = 3;
+  scene.environmentIntensity = 1;
+  scene.backgroundIntensity = 1;
 
   /**
    * Group
@@ -370,7 +369,8 @@ const threeTeslaModelAnimation = () => {
 
   const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
-  //
+
+  const floor = new THREE.MeshStandardMaterial();
 
   const updateMaterial = () => {
     scene.traverse((child) => {
@@ -588,7 +588,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Fog
    */
-  const fog = new THREE.Fog(object.renderColor, 3, 8);
+  const fog = new THREE.Fog("#040b10", 3, 8);
   scene.fog = fog;
 
   /**
@@ -663,19 +663,16 @@ const threeTeslaModelAnimation = () => {
   /**
    * Lights
    */
-  // Ambient Light
-  const ambientLight = new THREE.AmbientLight("#ffffff", 2);
-  // scene.add(ambientLight);
 
   // Directional Light
-  const directionalLight = new THREE.DirectionalLight("#ffc800", 5);
+  const directionalLight = new THREE.DirectionalLight("#ffffff", 5);
   directionalLight.castShadow = true;
   // directionalLight.position.set(0, 0.1, -10);
   scene.add(directionalLight);
-  object.LightColor = "#ffffff";
+  object.LightColor = "#b4a26e";
 
   // gui.addColor(object, "LightColor").onChange(() => {
-  //   directionalLight.color = new THREE.Color(object.LightColor);
+  //   scene.fog.color = new THREE.Color(object.LightColor);
   // });
 
   // gui
@@ -698,7 +695,7 @@ const threeTeslaModelAnimation = () => {
   //   .name("directionalLight Z");
 
   // Shadow
-  directionalLight.shadow.mapSize.set(512, 512);
+  directionalLight.shadow.mapSize.set(1024, 1024);
   directionalLight.shadow.camera.near = 0;
   directionalLight.shadow.camera.far = 2;
   directionalLight.shadow.camera.top = 3;
@@ -744,7 +741,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Clock
    */
-  const clock = new THREE.Clock();
+
   let time = Date.now();
 
   /**
@@ -753,14 +750,12 @@ const threeTeslaModelAnimation = () => {
   let loop360AnimationRotationFlag = true;
   let speed = 0.25;
   const tick = () => {
-    const elapsedTime = clock.getElapsedTime();
-
     const currentTime = Date.now();
     const deltaTime = currentTime - time;
     time = currentTime;
 
     // Sky Environment rotation
-    scene.environmentRotation.y -= deltaTime * 0.00005;
+    scene.environmentRotation.y -= Math.sin(deltaTime * 0.00005) * 2;
 
     if (loop360AnimationRotationFlag) {
       speed -= deltaTime * 0.000025;
