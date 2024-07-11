@@ -4,6 +4,7 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader.js";
+import { RGBELoader } from "three/examples/jsm/loaders/RGBELoader.js";
 import GUI from "lil-gui";
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
@@ -111,8 +112,10 @@ magneticEffect();
 const menuAnimation = () => {
   let rotationAngle = 0;
   document.querySelector(".menu-open").addEventListener("click", function () {
-    rotationAngle = 0
-    document.querySelector('#wheel').style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    rotationAngle = 0;
+    document.querySelector(
+      "#wheel"
+    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     // document.querySelector("#contact").style.opacity = 1
     gsap.to("#menu-page", {
       display: "block",
@@ -137,7 +140,7 @@ const menuAnimation = () => {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta*0.2;
+    rotationAngle += delta * 0.2;
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
@@ -159,15 +162,15 @@ const menuAnimation = () => {
     })
 
   });
-}
-menuAnimation()
+};
+menuAnimation();
 
 // Page2 Animation
 const page2Animation = () => {
   const paragraphText = [
     "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S",
-    "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S trims enables back-to-back track runs without performance degradation",
-    "The Tesla Model X is a high-performance electric SUV that combines impressive range, cutting-edge technology, and unparalleled acceleration. Available in Long Range and Plaid variants.",
+    "The most powerful ever fitted to Model 3, enabling more than 500 horsepower and 0 to 60 mph in as little as 2.9 seconds.",
+    "Model X platforms unite powertrain and battery technologies for an unrivaled combination of performance, range and efficiency.",
   ];
 
   const t1 = gsap.timeline({
@@ -339,6 +342,7 @@ const threeTeslaModelAnimation = () => {
    */
   const textureLoader = new THREE.TextureLoader();
   const gltfLoader = new GLTFLoader();
+  const rgbeLoader = new RGBELoader();
 
   /**
    * DRACO Loader
@@ -350,15 +354,22 @@ const threeTeslaModelAnimation = () => {
   /**
    * Environment map
    */
-  const environmentMap = textureLoader.load("/environment/sky.jpg");
-  environmentMap.mapping = THREE.EquirectangularReflectionMapping;
-  environmentMap.colorSpace = THREE.SRGBColorSpace;
 
-  scene.background = environmentMap;
-  scene.environment = environmentMap;
+  /**
+   * HDR (RGBE) equirectangular
+   */
+  rgbeLoader.load("/environment/withoutLight.hdr", (environmentMap) => {
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+    scene.environment = environmentMap;
+  });
 
-  scene.environmentIntensity = 3;
-  scene.backgroundIntensity = 3;
+  rgbeLoader.load("/environment/sky.hdr", (environmentMap) => {
+    environmentMap.mapping = THREE.EquirectangularReflectionMapping;
+    scene.background = environmentMap;
+  });
+
+  scene.environmentIntensity = 1;
+  scene.backgroundIntensity = 1;
 
   /**
    * Group
@@ -367,15 +378,18 @@ const threeTeslaModelAnimation = () => {
   // scene.add(group);
 
   const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+  const carMirrorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
   const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+
+  const floor = new THREE.MeshStandardMaterial();
 
   const updateMaterial = () => {
     scene.traverse((child) => {
       if (child.isMesh && child.material.isMeshStandardMaterial) {
         child.material.roughness = 0;
-        child.material.metalness = 1.5;
+        child.material.metalness = 1;
 
         if (child.material.name !== "Concrete_Tiles") {
           child.castShadow = true;
@@ -388,6 +402,10 @@ const threeTeslaModelAnimation = () => {
           child.material.name === "Material.003"
         ) {
           child.material = carColorMaterial;
+        }
+
+        if (child.material.name === "Glass_mid_tint") {
+          child.material = carMirrorMaterial;
         }
 
         if (
@@ -448,12 +466,16 @@ const threeTeslaModelAnimation = () => {
     });
   });
 
+  const animationSound = new Audio("/sounds/animation.mp3");
+
   const select = document.querySelector("select");
   select.addEventListener("input", (event) => {
     if (select.value === "MODELS") {
       const tl = gsap.timeline();
+      animationSound.play();
+      animationSound.playbackRate = 1.8;
       tl.to(camera.position, {
-        x: 10,
+        x: 14,
         y: 0,
         z: 0,
         ease: "expo.in",
@@ -491,8 +513,10 @@ const threeTeslaModelAnimation = () => {
       });
     } else if (select.value === "ROADSTER") {
       const tl = gsap.timeline();
+      animationSound.play();
+      animationSound.playbackRate = 1.8;
       tl.to(camera.position, {
-        x: 10,
+        x: 14,
         y: 0,
         z: 0,
         ease: "expo.in",
@@ -531,8 +555,10 @@ const threeTeslaModelAnimation = () => {
       });
     } else if (select.value === "CYBERTRUCK") {
       const tl = gsap.timeline();
+      animationSound.play();
+      animationSound.playbackRate = 1.8;
       tl.to(camera.position, {
-        x: 10,
+        x: 14,
         y: 0,
         z: 0,
         ease: "expo.in",
@@ -575,7 +601,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Fog
    */
-  const fog = new THREE.Fog(object.renderColor, 3, 8);
+  const fog = new THREE.Fog("#040b10", 3, 8);
   scene.fog = fog;
 
   /**
@@ -606,6 +632,7 @@ const threeTeslaModelAnimation = () => {
     sizes.widht = window.innerWidth;
     sizes.height = window.innerHeight;
     camera.aspect = sizes.widht / sizes.height;
+    camera.position.z = 4.0;
     camera.updateProjectionMatrix();
     renderer.setSize(sizes.widht, sizes.height);
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
@@ -620,7 +647,7 @@ const threeTeslaModelAnimation = () => {
       trigger: ".threejs-models",
       scroller: "body",
       start: "top 0",
-      end: "top -30%",
+      end: "top -50%",
       // scrub: true,
       // markers: true,
       pin: true,
@@ -629,7 +656,7 @@ const threeTeslaModelAnimation = () => {
 
   tl.from(camera.position, {
     x: -10,
-    duration: 5,
+    duration: 4,
     ease: "expo.in",
     onStart: () => {
       controls.enabled = false;
@@ -649,19 +676,16 @@ const threeTeslaModelAnimation = () => {
   /**
    * Lights
    */
-  // Ambient Light
-  const ambientLight = new THREE.AmbientLight("#ffffff", 2);
-  // scene.add(ambientLight);
 
   // Directional Light
-  const directionalLight = new THREE.DirectionalLight("#ffc800", 2);
+  const directionalLight = new THREE.DirectionalLight("#ffffff", 5);
   directionalLight.castShadow = true;
   // directionalLight.position.set(0, 0.1, -10);
   scene.add(directionalLight);
-  object.LightColor = "#ffffff";
+  object.LightColor = "#b4a26e";
 
   // gui.addColor(object, "LightColor").onChange(() => {
-  //   directionalLight.color = new THREE.Color(object.LightColor);
+  //   scene.fog.color = new THREE.Color(object.LightColor);
   // });
 
   // gui
@@ -684,13 +708,13 @@ const threeTeslaModelAnimation = () => {
   //   .name("directionalLight Z");
 
   // Shadow
-  directionalLight.shadow.mapSize.set(1028, 1028);
+  directionalLight.shadow.mapSize.set(1024, 1024);
   directionalLight.shadow.camera.near = 0;
   directionalLight.shadow.camera.far = 2;
   directionalLight.shadow.camera.top = 3;
-  directionalLight.shadow.camera.right = 2;
+  directionalLight.shadow.camera.right = 3;
   directionalLight.shadow.camera.bottom = -3;
-  directionalLight.shadow.camera.left = -2;
+  directionalLight.shadow.camera.left = -3;
   const directionalLightCameraHelper = new THREE.CameraHelper(
     directionalLight.shadow.camera
   );
@@ -730,28 +754,33 @@ const threeTeslaModelAnimation = () => {
   /**
    * Clock
    */
-  const clock = new THREE.Clock();
+
   let time = Date.now();
 
   /**
    * Animation
    */
+  let loop360AnimationRotationFlag = true;
+  let speed = 0.25;
   const tick = () => {
-    const elapsedTime = clock.getElapsedTime();
-
     const currentTime = Date.now();
     const deltaTime = currentTime - time;
     time = currentTime;
 
     // Sky Environment rotation
-    // scene.backgroundRotation.y -= deltaTime * 0.000025;
-    scene.environmentRotation.y -= deltaTime * 0.00025;
+    scene.environmentRotation.y -= Math.sin(deltaTime * 0.00005) * 2;
+
+    if (loop360AnimationRotationFlag) {
+      speed -= deltaTime * 0.000025;
+    } else {
+      speed += deltaTime * 0.000025;
+    }
 
     if (models[0] && models[1] && models[2]) {
-      models[0].rotation.y -= deltaTime * 0.00025;
-      models[1].rotation.y -= deltaTime * 0.00025;
-      models[2].rotation.y -= deltaTime * 0.00025;
-      garage.rotation.y -= deltaTime * 0.00025;
+      models[0].rotation.y = speed;
+      models[1].rotation.y = speed;
+      models[2].rotation.y = speed;
+      garage.rotation.y = speed;
     }
 
     controls.update();
@@ -767,8 +796,16 @@ const threeTeslaModelAnimation = () => {
     canvas.style.cursor = "grabbing";
   });
 
-  canvas.addEventListener("mouseup", () => {
+  const screenHalfWidth = window.innerWidth / 2;
+  let lastX = 0;
+  canvas.addEventListener("mouseup", (event) => {
     canvas.style.cursor = "grab";
+    if (lastX < event.clientX) {
+      loop360AnimationRotationFlag = false;
+    } else {
+      loop360AnimationRotationFlag = true;
+    }
+    lastX = event.clientX;
   });
 
   canvas.addEventListener("mouseenter", () => {
@@ -1203,33 +1240,40 @@ const page7Animation = () => {
       stagger: 0.3,
     });
 
-  var tl72 = gsap.timeline({
-    scrollTrigger: {
-      trigger: "#page7",
-      scroller: "body",
-      start: "bottom bottom",
-      end: "bottom -150%",
-      pin: true,
-      scrub: 1,
-      // markers:true
-    }
-  })
-    .to("#discovery #dis-text #container7", {
-      x: "-71%",
-      duration: 3,
-      ease: "linear",
-    }, "a")
-    .to(".ig7", {
-      x: -200,
-      duration: 3
-    }, "a")
-}
-page7Animation()
-
-
+  var tl72 = gsap
+    .timeline({
+      scrollTrigger: {
+        trigger: "#page7",
+        scroller: "body",
+        start: "bottom bottom",
+        end: "bottom -150%",
+        pin: true,
+        scrub: 1,
+        // markers:true
+      },
+    })
+    .to(
+      "#discovery #dis-text #container7",
+      {
+        x: "-71%",
+        duration: 3,
+        ease: "linear",
+      },
+      "a"
+    )
+    .to(
+      ".ig7",
+      {
+        x: -200,
+        duration: 3,
+      },
+      "a"
+    );
+};
+page7Animation();
 
 // textEffect animation
-// can be used by giving class .text-effect to parent , 
+// can be used by giving class .text-effect to parent ,
 // which has two childern
 const textEffect = () => {
   // Splitting the text content into individual letters and wrapping each in a span with a class
@@ -1282,73 +1326,71 @@ const textEffect = () => {
 };
 textEffect();
 
-const textAnimation = ()=>{
-  
-var tl61 = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#page6 #section1",
-    scroller:"body",
-    start:"top 85%",
-    end:"top 60%",
-    scrub:1,
-  }
-})
-tl61
-.from("#page6 #section1 h1",{
-  y:100,
-  duration:1,
-})
-.from(".section1-dis h3",{
-  y:100,
-  stagger:0.4,
-  duration:1,
+const textAnimation = () => {
+  var tl61 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page6 #section1",
+      scroller: "body",
+      start: "top 85%",
+      end: "top 60%",
+      scrub: 1,
+    },
+  });
+  tl61
+    .from("#page6 #section1 h1", {
+      y: 100,
+      duration: 1,
+    })
+    .from(".section1-dis h3", {
+      y: 100,
+      stagger: 0.4,
+      duration: 1,
+    });
 
-})
+  var tl62 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page6 #section2",
+      scroller: "body",
+      start: "top 70%",
+      end: "top 30%",
+      scrub: 1,
+    },
+  });
+  tl62
+    .from("#page6 #section2 h1", {
+      y: 100,
+      stagger: 0.6,
+      duration: 2,
+    })
+    .from("#page6 #section2 #line", {
+      width: 0,
+      duration: 2,
+      delay: 0.8,
+    })
+    .from("#page6 #section2 .description h3", {
+      y: 100,
+      stagger: 0.4,
+      duration: 2,
+    });
 
-var tl62 = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#page6 #section2",
-    scroller:"body",
-    start:"top 70%",
-    end:"top 30%",
-    scrub:1,
-  }
-})
-tl62
-.from("#page6 #section2 h1",{
-  y:100,
-  stagger:0.6,
-  duration:2,
-})
-.from("#page6 #section2 #line",{
-  width:0,
-  duration:2,
-  delay:.8
-})
-.from("#page6 #section2 .description h3",{
-  y:100,
-  stagger:0.4,
-  duration:2,
-})
-
-var tl63 = gsap.timeline({
-  scrollTrigger:{
-    trigger:"#page7",
-    scroller:"body",
-    start:"top 80%",
-    end:"top 45%",
-    scrub:1,
-  }
-})
-tl63
-.from("#page7 #head-wrap7 h1",{
-  y:100,
-  duration:1,
-})
-.from("#page7 .para-wrap7 p",{
-  y:100,
-  stagger:0.6,
-  duration:2,
-})
-}
-textAnimation()
+  var tl63 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page7",
+      scroller: "body",
+      start: "top 80%",
+      end: "top 45%",
+      scrub: 1,
+    },
+  });
+  tl63
+    .from("#page7 #head-wrap7 h1", {
+      y: 100,
+      duration: 1,
+    })
+    .from("#page7 .para-wrap7 p", {
+      y: 100,
+      stagger: 0.6,
+      duration: 2,
+    });
+};
+textAnimation();
