@@ -11,7 +11,6 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
-import { log } from "three/examples/jsm/nodes/Nodes.js";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -179,7 +178,7 @@ const page2Animation = () => {
       trigger: ".page2-img1",
       start: "top 100%",
       end: "top 0%",
-      scrub: 2,
+      scrub: 1,
       // markers: true,
     },
   });
@@ -238,19 +237,20 @@ const page2Animation = () => {
   });
 
   t1.from(".page2-elem1>h1", {
-    text: "000 mi",
+    text: "",
+    delay: 2,
   });
 
   t1.from(".page2-elem2>h1", {
-    text: "000 mph",
+    text: "",
   });
 
   t1.from(".page2-elem3>h1", {
-    text: "0 Year",
+    text: "",
   });
 
   t1.from(".page2-elem4>h1", {
-    text: "0000 hp",
+    text: "",
   });
 
   // Model 2
@@ -264,23 +264,23 @@ const page2Animation = () => {
   });
 
   t2.to(".page2-circle>h1", {
-    text: "2.89s",
+    text: "1.46s",
   });
 
   t2.to(".page2-elem1>h1", {
-    text: "580 mi",
+    text: "259 mi",
   });
 
   t2.to(".page2-elem2>h1", {
-    text: "400 mph",
+    text: "178 mph",
   });
 
   t2.to(".page2-elem3>h1", {
-    text: "8 Year",
+    text: "5 Year",
   });
 
   t2.to(".page2-elem4>h1", {
-    text: "2040 hp",
+    text: "1040 hp",
   });
 
   // Model 2
@@ -294,23 +294,23 @@ const page2Animation = () => {
   });
 
   t3.to(".page2-circle>h1", {
-    text: "3.89s",
+    text: "3.99s",
   });
 
   t3.to(".page2-elem1>h1", {
-    text: "680 mi",
+    text: "259 mi",
   });
 
   t3.to(".page2-elem2>h1", {
-    text: "600 mph",
+    text: "210 mph",
   });
 
   t3.to(".page2-elem3>h1", {
-    text: "10 Year",
+    text: "5 Year",
   });
 
   t3.to(".page2-elem4>h1", {
-    text: "3040 hp",
+    text: "1200 hp",
   });
 };
 
@@ -459,6 +459,8 @@ const threeTeslaModelAnimation = () => {
       if (index === 0) {
         scene.add(models[index]);
       }
+
+      models[index].position.x = 0.25;
 
       models[index].rotation.y = -0.56;
       updateMaterial();
@@ -656,7 +658,7 @@ const threeTeslaModelAnimation = () => {
 
   tl.from(camera.position, {
     x: -10,
-    duration: 4,
+    duration: 2,
     ease: "expo.in",
     onStart: () => {
       controls.enabled = false;

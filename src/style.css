@@ -500,7 +500,6 @@ nav > h1 {
   align-items: center;
   flex-direction: column;
   height: 16vw;
-  
 }
 
 .page2-circle {
@@ -536,17 +535,19 @@ nav > h1 {
   height: 11vw;
   width: 100%;
   padding: 3vw 0;
-  background-color: #000;
+  background-color: #31a93e;
   color: #fff;
   display: flex;
   justify-content: space-evenly;
-  border-radius: 0.2vw;
+  border-top-left-radius: 3vw;
+  border-top-right-radius: 3vw;
   margin-top: 2vw;
   text-align: center;
 }
 
 .page2-box-elem > h1 {
   font-size: 2vw;
+  height: 3vw;
   font-weight: 500;
 }
 
@@ -1237,7 +1238,7 @@ select {
   position: relative;
   height: 100vh;
   width: 100%;
-  background-image: url(./images/page5.jpg);
+  background-image: url(/images/page5.jpg);
   background-size: cover;
   display: flex;
   align-items: center;
@@ -1338,7 +1339,7 @@ select {
 #page6 #section2 {
   width: 100%;
   height: 100.2vh;
-  background-image: url(./images/page6_main.jpg);
+  background-image: url(/images/page6_main.jpg);
   background-size: cover;
   padding: 2vw 3vw;
   display: flex;
