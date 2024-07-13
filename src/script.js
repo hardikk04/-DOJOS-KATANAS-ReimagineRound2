@@ -11,6 +11,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
+import overlayVertexShader from "./shaders/overlay/vertex.glsl";
+import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -216,21 +218,21 @@ const page2Animation = () => {
   clutterAnimation(".page2-para3");
 
   t1.to(".page2-para1>div", {
-    y: 30,
+    y: -30,
     opacity: 1,
     stagger: {
       amount: 1,
     },
   });
   t1.to(".page2-para2>div", {
-    y: 30,
+    y: -30,
     opacity: 1,
     stagger: {
-      amount: -1,
+      amount: 1,
     },
   });
   t1.to(".page2-para3>div", {
-    y: 30,
+    y: -30,
     opacity: 1,
     stagger: {
       amount: 1,
@@ -275,7 +277,7 @@ const page2Animation = () => {
 
   t1.to(".page2-para3>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
       amount: -1,
     },
@@ -283,14 +285,14 @@ const page2Animation = () => {
 
   t1.to(".page2-para2>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
-      amount: 1,
+      amount: -1,
     },
   });
   t1.to(".page2-para1>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
       amount: -1,
     },
@@ -308,7 +310,7 @@ const page2Animation = () => {
 
   t2.to(".page2-text-para2 .page2-para1>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     stagger: {
       amount: 1,
     },
@@ -316,14 +318,14 @@ const page2Animation = () => {
 
   t2.to(".page2-text-para2 .page2-para2>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     stagger: {
-      amount: -1,
+      amount: 1,
     },
   });
   t2.to(".page2-text-para2 .page2-para3>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     stagger: {
       amount: 1,
     },
@@ -351,7 +353,7 @@ const page2Animation = () => {
 
   t2.to(".page2-text-para2 .page2-para3>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
       amount: -1,
     },
@@ -359,15 +361,15 @@ const page2Animation = () => {
 
   t2.to(".page2-text-para2 .page2-para2>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
-      amount: 1,
+      amount: -1,
     },
   });
 
   t2.to(".page2-text-para2 .page2-para1>div", {
     opacity: 0,
-    y: -30,
+    y: 10,
     stagger: {
       amount: -1,
     },
@@ -385,7 +387,7 @@ const page2Animation = () => {
 
   t3.to(".page2-text-para3 .page2-para1>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     delay: 2,
     stagger: {
       amount: 1,
@@ -394,15 +396,15 @@ const page2Animation = () => {
 
   t3.to(".page2-text-para3 .page2-para2>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     stagger: {
-      amount: -1,
+      amount: 1,
     },
   });
 
   t3.to(".page2-text-para3 .page2-para3>div", {
     opacity: 1,
-    y: 30,
+    y: -30,
     stagger: {
       amount: 1,
     },
@@ -486,12 +488,6 @@ const threeTeslaModelAnimation = () => {
   scene.environmentIntensity = 1;
   scene.backgroundIntensity = 1;
 
-  /**
-   * Group
-   */
-  const group = new THREE.Group();
-  // scene.add(group);
-
   const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carMirrorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
@@ -550,6 +546,7 @@ const threeTeslaModelAnimation = () => {
   gltfLoader.load("/models/garage/garage.glb", (gltf) => {
     garage = gltf.scene;
     scene.add(garage);
+
     updateMaterial();
   });
 
@@ -578,6 +575,31 @@ const threeTeslaModelAnimation = () => {
     });
   });
 
+  /**
+   * Model Overlay
+   */
+  const displacementTexture = textureLoader.load("/images/images.jpg");
+  const video = document.querySelector(".overlay-video");
+  const videoTexture = new THREE.VideoTexture(video);
+
+  const overlay = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 2, 1, 1),
+    new THREE.ShaderMaterial({
+      vertexShader: overlayVertexShader,
+      fragmentShader: overlayFragmentShader,
+      uniforms: {
+        uDisplacementTexture: new THREE.Uniform(displacementTexture),
+        uOverlayVideo: new THREE.Uniform(videoTexture),
+        uOffset: new THREE.Uniform(0),
+      },
+      // side: THREE.DoubleSide,
+      transparent: true,
+    })
+  );
+
+  overlay.position.z = 2.5;
+  scene.add(overlay);
+
   const animationSound = new Audio("/sounds/animation.mp3");
 
   const select = document.querySelector("select");
@@ -601,7 +623,7 @@ const threeTeslaModelAnimation = () => {
           });
         },
         onComplete: () => {
-          gsap.to(".threejs-models>h1", {
+          gsap.to(".models-name>h1", {
             text: "MODEL S",
             duration: 0.5,
           });
@@ -642,7 +664,7 @@ const threeTeslaModelAnimation = () => {
           });
         },
         onComplete: () => {
-          gsap.to(".threejs-models>h1", {
+          gsap.to(".models-name>h1", {
             text: "ROADSTER",
             duration: 0.5,
           });
@@ -684,7 +706,7 @@ const threeTeslaModelAnimation = () => {
           });
         },
         onComplete: () => {
-          gsap.to(".threejs-models>h1", {
+          gsap.to(".models-name>h1", {
             text: "CYBERTRUCK",
             duration: 0.5,
           });
@@ -750,39 +772,144 @@ const threeTeslaModelAnimation = () => {
     renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
   });
 
-  // gui.add(camera.position, "x").min(-10).max(10).step(0.01).name("camera x");
-  // gui.add(camera.position, "y").min(-10).max(10).step(0.01).name("camera y");
-  // gui.add(camera.position, "z").min(-10).max(20).step(0.01).name("camera z");
-
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".threejs-models",
       scroller: "body",
       start: "top 0",
-      end: "top -50%",
-      // scrub: true,
+      end: "top -300%",
+      scrub: true,
       // markers: true,
       pin: true,
     },
   });
 
-  tl.from(camera.position, {
-    x: -10,
-    duration: 2,
-    ease: "expo.in",
-    onStart: () => {
-      controls.enabled = false;
-    },
-    onComplete: () => {
-      controls.enabled = true;
+  clutterAnimation(".overlay-text1>h1");
+  clutterAnimation(".overlay-text2>h1");
+
+  tl.to(".modelS", {
+    pointerEvents: "none",
+  });
+
+  tl.from(".overlay-text1>h1>div", {
+    y: 40,
+    opacity: 0,
+    stagger: {
+      amount: 0.4,
+      from: "center",
     },
   });
 
-  tl.from(".model-transition", {
+  tl.from(".overlay-text2>h1>div", {
+    y: 40,
+    opacity: 0,
+    delay: -0.5,
+    stagger: {
+      amount: -0.4,
+      from: "center",
+    },
+  });
+
+  tl.from(".overlay-line", {
+    height: "0",
+  });
+
+  tl.from(".overlay-scroller>i", {
+    opacity: 0,
+  });
+
+  tl.from(".overlay-scroller>p", {
+    opacity: 0,
+  });
+
+  tl.to(".overlay-text1>h1>div", {
+    y: -40,
     opacity: 0,
     stagger: {
-      amount: 0.5,
+      amount: 0.4,
+      from: "center",
     },
+  });
+
+  tl.to(".overlay-text2>h1>div", {
+    y: -40,
+    opacity: 0,
+    delay: -0.5,
+    stagger: {
+      amount: -0.4,
+      from: "center",
+    },
+  });
+
+  tl.to(
+    overlay.material.uniforms.uOffset,
+    {
+      value: 1,
+      duration: 3,
+    },
+    "displacement"
+  );
+
+  tl.to(
+    ".overlay-line",
+    {
+      height: "0",
+    },
+    "displacement"
+  );
+
+  tl.to(
+    ".overlay-scroller>i",
+    {
+      opacity: 0,
+    },
+    "displacement"
+  );
+
+  tl.to(
+    ".overlay-scroller>p",
+    {
+      opacity: 0,
+    },
+    "displacement"
+  );
+
+  // tl.from(
+  //   camera.position,
+  //   {
+  //     x: -10,
+  //     duration: 5,
+  //     ease: "linear",
+  //   },
+  //   "same"
+  // );
+
+  tl.from(
+    ".models-name>h1",
+    {
+      opacity: 0,
+      y: 40,
+    },
+    "same"
+  );
+
+  tl.from(
+    ".model-transition",
+    {
+      opacity: 0,
+      stagger: {
+        amount: 0.5,
+      },
+    },
+    "same"
+  );
+
+  tl.to(".modelS", {
+    pointerEvents: "all",
+  });
+
+  tl.from(".model-transition", {
+    duration: 4,
   });
 
   /**
@@ -792,7 +919,6 @@ const threeTeslaModelAnimation = () => {
   // Directional Light
   const directionalLight = new THREE.DirectionalLight("#ffffff", 5);
   directionalLight.castShadow = true;
-  // directionalLight.position.set(0, 0.1, -10);
   scene.add(directionalLight);
   object.LightColor = "#b4a26e";
 

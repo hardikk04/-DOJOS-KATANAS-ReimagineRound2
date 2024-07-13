@@ -365,6 +365,7 @@ nav > h1 {
   position: relative;
   height: 300vh;
   width: 45%;
+  background-color: #000;
   overflow: hidden;
 }
 
@@ -478,7 +479,7 @@ nav > h1 {
 .page2-text-para1 {
   position: absolute;
   width: 100%;
-  top: -20%;
+  top: 15%;
   left: 0;
 }
 
@@ -495,7 +496,7 @@ nav > h1 {
 .page2-text-para2 {
   position: absolute;
   width: 100%;
-  top: -20%;
+  top: 15%;
   left: 0;
 }
 
@@ -511,7 +512,7 @@ nav > h1 {
 .page2-text-para3 {
   position: absolute;
   width: 100%;
-  top: -20%;
+  top: 15%;
   left: 0;
 }
 
@@ -614,14 +615,84 @@ nav > h1 {
   background-color: #fff;
 }
 
-.threejs-models > h1 {
+.models-name > h1 {
   position: absolute;
   top: 2.5%;
   left: 5%;
-  color: #d8d8d8;
+  color: #cccdcd;
   font-family: title;
   z-index: 1;
+  font-size: 2vw;
+  letter-spacing: 2px;
+}
+
+.overlay-content {
+  position: absolute;
+  bottom: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  color: #cccdcd;
+  font-family: title;
+  text-align: center;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.overlay-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.overlay-text > h1 {
+  font-weight: 100;
   font-size: 3vw;
+  letter-spacing: 1px;
+}
+
+.overlay-scroller {
+  position: relative;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  flex-direction: column;
+  height: 12vw;
+}
+
+.overlay-line {
+  position: relative;
+  margin-top: 4.5vw;
+  height: 8vh;
+  width: 2px;
+  background-color: #6a6a6a;
+}
+
+.overlay-scroller > i {
+  margin-top: 0.5vw;
+  font-size: 1vw;
+  animation: upDown 2s infinite both linear;
+}
+
+@keyframes upDown {
+  50% {
+    transform: translateY(-15%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+.overlay-scroller > p {
+  font-size: 0.4vw;
+  letter-spacing: 2px;
+  margin-top: 0.2vw;
+}
+
+.overlay-video {
+  position: absolute;
+  opacity: 0;
+  height: 0;
+  width: 0;
 }
 
 .color-picker {
@@ -657,40 +728,6 @@ select {
   /* text-align: center; */
   background-color: rgba(0, 0, 0, 0.383);
 }
-
-/* 
-.model-change {
-  position: relative;
-  top: -200%;
-  height: 100%;
-  font-family: title;
-  background-color: rgba(0, 0, 0, 0.383);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0vw 0.5vw;
-  transition: all ease 0.5s;
-}
-
-.model-roadster {
-  opacity: 0;
-}
-
-.model-cybertruck {
-  opacity: 0;
-}
-
-.model-change:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.706);
-}
-
-.model-change > h3 {
-  color: #fff;
-  font-weight: 100;
-  font-size: 0.6vw;
-  letter-spacing: 1px;
-} */
 
 .color-picker-elem {
   position: relative;
