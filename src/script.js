@@ -47,7 +47,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => {});
+  lenis.on("scroll", (e) => { });
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -95,10 +95,6 @@ const magneticEffect = () => {
         y: 0,
         duration: 0.5,
       });
-    });
-  });
-  document.querySelectorAll(".magnet-effect").forEach(function (e) {
-    e.addEventListener("mouseleave", function () {
       gsap.to("#cursor", {
         scale: 0,
       });
@@ -110,29 +106,56 @@ magneticEffect();
 //menu animation
 const menuAnimation = () => {
   let rotationAngle = 0;
+
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0;
-    document.querySelector(
-      "#wheel"
-    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    // document.querySelector("#contact").style.opacity = 1
-    gsap.to("#menu-page", {
+    //makeing wheel to initial position
+    document.querySelector("#wheel").style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    //makeing manuPage visible
+    var otl = gsap.timeline()
+    otl
+    .to("#op-line1 ,#op-line2",{
+      width:0,
+      duration:.4
+    })
+    .to("#menu-page", {
       display: "block",
       opacity: 1,
       duration: 0.5,
-    });
+    })
+    .to("#cl-line1 , #cl-line2",{
+      height:"100%",
+      duration:.4,
+    })
+   
   });
+
   document.querySelector(".menu-close").addEventListener("click", function () {
     var mn = gsap.timeline();
-    mn.to(window, {
+    mn
+    .to(window, {
       scrollTo: 0,
       duration: 1,
       ease: "power1.inOut",
-    }).to("#menu-page", {
+    },"a")
+    .to("#cl-line1 , #cl-line2",{
+      height:0,
+      duration:1,
+    },"a")
+    .to("#menu-page", {
       display: "none",
       opacity: 0,
       duration: 0.2,
-    });
+    })
+    .to("#op-line1",{
+      width:"100%",
+      duration:.4
+    },"a")
+    .to("#op-line2",{
+      width:"100%",
+      duration:.4
+    },"a")
+
   });
   //wheel movement
   window.addEventListener("wheel", function (event) {
@@ -143,11 +166,11 @@ const menuAnimation = () => {
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    gsap.to(circle,{
-      rotate:rotationAngle,
-      scale:1.2,
+    gsap.to(circle, {
+      rotate: rotationAngle,
+      scale: 1.2,
     })
-    
+
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
       let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
@@ -1392,6 +1415,36 @@ const page7Animation = () => {
 };
 page7Animation();
 
+window.addEventListener("mousemove",function(dets){
+  gsap.to("#dis-cursor",{
+    top:dets.clientY,
+    left:dets.clientX
+  })
+})
+document.querySelectorAll(".ig7").forEach(function(ig){
+  ig.addEventListener("mouseenter",function(){
+    gsap.to("#dis-cursor",{
+      scale:1,
+      duration:.5
+    })
+    gsap.to(ig.querySelector(".overlay7"),{
+      opacity:0,
+      duration:.5
+    })
+  })
+})
+document.querySelectorAll(".ig7").forEach(function(ig){
+  ig.addEventListener("mouseleave",function(){
+    gsap.to("#dis-cursor",{
+      scale:0,
+      duration:.5
+    })
+    gsap.to(ig.querySelector(".overlay7"),{
+      opacity:1,
+      duration:.5
+    })
+  })
+})
 // textEffect animation
 // can be used by giving class .text-effect to parent ,
 // which has two childern
