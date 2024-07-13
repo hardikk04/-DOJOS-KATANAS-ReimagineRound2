@@ -173,7 +173,7 @@ const page2Animation = () => {
       scroller: "body",
       trigger: "#page2",
       start: "top 0%",
-      end: "top -400%",
+      end: "top -300%",
       scrub: 1,
       pin: true,
       // markers: true,
