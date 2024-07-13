@@ -359,7 +359,7 @@ nav > h1 {
 
 #page2 {
   position: relative;
-  min-height: 100vh;
+  height: 100vh;
   width: 100%;
   display: flex;
 }
@@ -444,7 +444,7 @@ nav > h1 {
 }
 
 .page2-content {
-  position: sticky;
+  position: relative;
   top: 0;
   height: 100vh;
   width: 55%;
@@ -461,6 +461,7 @@ nav > h1 {
 .page2-text {
   position: relative;
   height: 18.5vw;
+  width: 100%;
 }
 
 .page2-text > h1 {
@@ -468,13 +469,62 @@ nav > h1 {
   font-family: tesla;
   letter-spacing: 6px;
   font-weight: 100;
+  margin-bottom: 3vw;
 }
 
-.page2-text-para > p {
+.page2-text-para {
+  position: relative;
+  height: 8vw;
+  width: 100%;
+}
+
+.page2-text-para1 {
+  position: absolute;
+  width: 100%;
+  top: -20%;
+  left: 0;
+}
+
+.page2-text-para1 > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
-  margin-top: 3.5vw;
+}
+
+.page2-text-para1 > p > div {
+  opacity: 0;
+}
+
+.page2-text-para2 {
+  position: absolute;
+  width: 100%;
+  top: -20%;
+  left: 0;
+}
+
+.page2-text-para2 > p {
+  font-size: 2.5vw;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.page2-text-para2 > p > div {
+  opacity: 0;
+}
+
+.page2-text-para3 {
+  position: absolute;
+  width: 100%;
+  top: -20%;
+  left: 0;
+}
+
+.page2-text-para3 > p {
+  font-size: 2.5vw;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+.page2-text-para3 > p > div {
+  opacity: 0;
 }
 
 .page2-text > button {
@@ -483,7 +533,7 @@ nav > h1 {
   border: none;
   background-color: #000;
   color: #fff;
-  margin-top: 2.5vw;
+  margin-top: 3.5vw;
   border-radius: 0.45vw;
   font-size: 1vw;
   display: flex;
@@ -535,12 +585,12 @@ nav > h1 {
   height: 11vw;
   width: 100%;
   padding: 3vw 0;
-  background-color: #31a93e;
+  background-color: #000;
   color: #fff;
   display: flex;
   justify-content: space-evenly;
-  border-top-left-radius: 3vw;
-  border-top-right-radius: 3vw;
+  border-top-left-radius: 2vw;
+  border-top-right-radius: 2vw;
   margin-top: 2vw;
   text-align: center;
 }
