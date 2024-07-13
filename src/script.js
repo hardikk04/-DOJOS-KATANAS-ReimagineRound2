@@ -22,7 +22,7 @@ const clutterAnimation = (element) => {
 
   // Splitting the text content into individual letters and wrapping each in a span with a class
   htmlTag.textContent.split("").forEach((word) => {
-    clutter += `<span class="inline-block">${word}</span>`;
+    clutter += `<div class="inline-block">${word}</div>`;
   });
 
   // Updating the HTML content of the element with the animated spans
@@ -153,18 +153,27 @@ menuAnimation();
 
 // Page2 Animation
 const page2Animation = () => {
-  const paragraphText = [
-    "Model S Plaid has the quickest acceleration of any vehicle in production. Updated battery architecture for all Model S",
-    "The most powerful ever fitted to Model 3, enabling more than 500 horsepower and 0 to 60 mph in as little as 2.9 seconds.",
-    "Model X platforms unite powertrain and battery technologies for an unrivaled combination of performance, range and efficiency.",
-  ];
+  const pin = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page2",
+      start: "top 0%",
+      end: "top -400%",
+      scrub: 1,
+      pin: true,
+      // markers: true,
+    },
+  });
+  pin.to(".page2-imgs", {
+    top: "-200vh",
+  });
 
   const t1 = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
       trigger: ".page2-img1",
       start: "top 100%",
-      end: "top 0%",
+      end: "top -30%",
       scrub: 1,
       // markers: true,
     },
@@ -174,8 +183,8 @@ const page2Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page2-img2",
-      start: "top 100%",
-      end: "top 0%",
+      start: "top 70%",
+      end: "top -80%",
       scrub: 2,
       // markers: true,
     },
@@ -185,23 +194,47 @@ const page2Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page2-img3",
-      start: "top 100%",
-      end: "top 0%",
+      start: "top 40%",
+      end: "top -100%",
       scrub: 2,
       // markers: true,
     },
   });
 
-  t1.from(".page2-text>h1", {
-    text: "",
-    x: 30,
+  clutterAnimation(".page2-text>h1");
+  t1.from(".page2-text>h1>div", {
+    y: 30,
     opacity: 0,
-    delay: 2,
+    stagger: {
+      amount: 0.2,
+    },
+    delay: 4,
   });
 
-  t1.from(".page2-text-para>p", {
-    text: "",
-    delay: 2,
+  clutterAnimation(".page2-para1");
+  clutterAnimation(".page2-para2");
+  clutterAnimation(".page2-para3");
+
+  t1.to(".page2-para1>div", {
+    y: 30,
+    opacity: 1,
+    stagger: {
+      amount: 1,
+    },
+  });
+  t1.to(".page2-para2>div", {
+    y: 30,
+    opacity: 1,
+    stagger: {
+      amount: -1,
+    },
+  });
+  t1.to(".page2-para3>div", {
+    y: 30,
+    opacity: 1,
+    stagger: {
+      amount: 1,
+    },
   });
 
   t1.from(".page2-text>button", {
@@ -240,14 +273,60 @@ const page2Animation = () => {
     text: "",
   });
 
+  t1.to(".page2-para3>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: -1,
+    },
+  });
+
+  t1.to(".page2-para2>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: 1,
+    },
+  });
+  t1.to(".page2-para1>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: -1,
+    },
+  });
+
   // Model 2
+
+  clutterAnimation(".page2-text-para2 .page2-para1");
+  clutterAnimation(".page2-text-para2 .page2-para2");
+  clutterAnimation(".page2-text-para2 .page2-para3");
 
   t2.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t2.to(".page2-text-para>p", {
-    text: paragraphText[1],
+  t2.to(".page2-text-para2 .page2-para1>div", {
+    opacity: 1,
+    y: 30,
+    stagger: {
+      amount: 1,
+    },
+  });
+
+  t2.to(".page2-text-para2 .page2-para2>div", {
+    opacity: 1,
+    y: 30,
+    stagger: {
+      amount: -1,
+    },
+  });
+  t2.to(".page2-text-para2 .page2-para3>div", {
+    opacity: 1,
+    y: 30,
+    stagger: {
+      amount: 1,
+    },
   });
 
   t2.to(".page2-circle>h1", {
@@ -270,14 +349,63 @@ const page2Animation = () => {
     text: "1040 hp",
   });
 
+  t2.to(".page2-text-para2 .page2-para3>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: -1,
+    },
+  });
+
+  t2.to(".page2-text-para2 .page2-para2>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: 1,
+    },
+  });
+
+  t2.to(".page2-text-para2 .page2-para1>div", {
+    opacity: 0,
+    y: -30,
+    stagger: {
+      amount: -1,
+    },
+  });
+
   // Model 2
+
+  clutterAnimation(".page2-text-para3 .page2-para1");
+  clutterAnimation(".page2-text-para3 .page2-para2");
+  clutterAnimation(".page2-text-para3 .page2-para3");
 
   t3.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t3.to(".page2-text-para>p", {
-    text: paragraphText[2],
+  t3.to(".page2-text-para3 .page2-para1>div", {
+    opacity: 1,
+    y: 30,
+    delay: 2,
+    stagger: {
+      amount: 1,
+    },
+  });
+
+  t3.to(".page2-text-para3 .page2-para2>div", {
+    opacity: 1,
+    y: 30,
+    stagger: {
+      amount: -1,
+    },
+  });
+
+  t3.to(".page2-text-para3 .page2-para3>div", {
+    opacity: 1,
+    y: 30,
+    stagger: {
+      amount: 1,
+    },
   });
 
   t3.to(".page2-circle>h1", {
@@ -367,8 +495,7 @@ const threeTeslaModelAnimation = () => {
   const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
   const carMirrorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
-  const carSeatsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
-  const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+  const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
   const floor = new THREE.MeshStandardMaterial();
 
@@ -400,10 +527,6 @@ const threeTeslaModelAnimation = () => {
           child.material.name === "Material.010"
         ) {
           child.material = carRimsMaterial;
-        }
-
-        if (child.material.name === "seats") {
-          child.material = carSeatsMaterial;
         }
 
         if (child.material.name === "Brake_Disc") {
@@ -610,7 +733,7 @@ const threeTeslaModelAnimation = () => {
     1,
     100
   );
-  camera.position.z = 4.0;
+  camera.position.z = 3.8;
 
   scene.add(camera);
 
@@ -815,11 +938,6 @@ const threeTeslaModelAnimation = () => {
           const colorValue = allColorPicker[index].value;
           if (index === 0) {
             carColorMaterial.color = new THREE.Color(colorValue);
-            gsap.to(colorPickerElem[index], {
-              backgroundColor: colorValue,
-            });
-          } else if (index === 1) {
-            carSeatsMaterial.color = new THREE.Color(colorValue);
             gsap.to(colorPickerElem[index], {
               backgroundColor: colorValue,
             });
