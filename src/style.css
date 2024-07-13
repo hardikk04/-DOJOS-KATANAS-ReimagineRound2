@@ -237,10 +237,13 @@ nav > h1 {
   object-position: center;
   opacity: 0.3;
 }
-#wheel .mtxt {
-  opacity: 0.5;
+#wheel .mtxt{
+  opacity: .2;
 }
-#contactus {
+#wheel .mtxt1{
+  opacity: 1;
+}
+#contactus{
   position: absolute;
   top: -10.5%;
   left: 50%;
@@ -264,7 +267,7 @@ nav > h1 {
 
 #event {
   position: absolute;
-  bottom: -10%;
+  bottom: -10.5%;
   left: 50%;
   transform: translateX(-50%) rotate(180deg);
   width: 75%;
