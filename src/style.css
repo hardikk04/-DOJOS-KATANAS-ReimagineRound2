@@ -627,11 +627,12 @@ nav > h1 {
   z-index: 1;
   font-size: 2vw;
   letter-spacing: 2px;
+  opacity: 0;
 }
 
 .overlay-content {
   position: absolute;
-  bottom: 0%;
+  bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
   z-index: 9;
@@ -696,6 +697,10 @@ nav > h1 {
   opacity: 0;
   height: 0;
   width: 0;
+}
+
+.model-transition{
+  opacity: 0;
 }
 
 .color-picker {
