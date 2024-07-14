@@ -175,16 +175,18 @@ const menuAnimation = () => {
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
-      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
+      let txtCenter =
+        txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2;
       // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
-      if ((window.innerWidth / 2 - 320) < txtCenter && (window.innerWidth / 2 + 320) > txtCenter) {
-        txt.style.opacity = 1
+      if (
+        window.innerWidth / 2 - 320 < txtCenter &&
+        window.innerWidth / 2 + 320 > txtCenter
+      ) {
+        txt.style.opacity = 1;
+      } else {
+        txt.style.opacity = 0.2;
       }
-      else {
-        txt.style.opacity = 0.2
-      }
-    })
-
+    });
   });
 };
 menuAnimation();
@@ -820,6 +822,17 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
+  const real = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".threejs-models",
+      scroller: "body",
+      start: "top 0",
+      end: "top -300%",
+      // scrub: true,
+      // markers: true,
+    },
+  });
+
   clutterAnimation(".overlay-text1>h1");
   clutterAnimation(".overlay-text2>h1");
 
@@ -846,15 +859,15 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.from(".overlay-line", {
+  real.from(".overlay-line", {
     height: "0",
   });
 
-  tl.from(".overlay-scroller>i", {
+  real.from(".overlay-scroller>i", {
     opacity: 0,
   });
 
-  tl.from(".overlay-scroller>p", {
+  real.from(".overlay-scroller>p", {
     opacity: 0,
   });
 
@@ -920,19 +933,19 @@ const threeTeslaModelAnimation = () => {
   //   "same"
   // );
 
-  tl.from(
+  tl.to(
     ".models-name>h1",
     {
-      opacity: 0,
+      opacity: 1,
       y: 40,
     },
     "same"
   );
 
-  tl.from(
+  tl.to(
     ".model-transition",
     {
-      opacity: 0,
+      opacity: 1,
       stagger: {
         amount: 0.5,
       },
@@ -945,7 +958,7 @@ const threeTeslaModelAnimation = () => {
   });
 
   tl.from(".model-transition", {
-    duration: 4,
+    duration: 2,
   });
 
   /**
