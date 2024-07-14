@@ -785,6 +785,7 @@ select {
   height: 61vh;
   width: 100%;
   background-color: black;
+  overflow: hidden;
 }
 #energy-container .circle3 h4{
   font-family: mediumfont;
@@ -798,7 +799,7 @@ select {
   border-radius: 50%;
   position: absolute;
   z-index: 2;
-  top: 50%;
+  top: 130%;
   left: 41%;
   transform: translate(-50%,-50%) scale(.8);
   display: flex;
@@ -814,7 +815,7 @@ select {
   border-radius: 50%;
   position: absolute;
   z-index: 1;
-  top: 50%;
+  top: 130%;
   left: 59%;
   transform: translate(-50%,-50%) scale(.8);
   display: flex;
@@ -845,8 +846,7 @@ select {
   align-items: end;
   justify-content: end;
   padding-right: 1vw;
-  /* display: none; */
-  transform: translateX(-52%);
+  opacity: 0;
 }
 #energy-container #energy h1{
   color: #fff;

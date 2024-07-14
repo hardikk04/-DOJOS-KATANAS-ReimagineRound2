@@ -1117,6 +1117,58 @@ const threeTeslaModelAnimation = () => {
 };
 threeTeslaModelAnimation();
 
+// page3Animation
+const page3Animation = ()=>{
+  var tl3 = gsap.timeline({
+    scrollTrigger:{
+      trigger:"#page3",
+      scroller:"body",
+      start:"top top",
+      end:"top -150%",
+      scrub:true,
+      pin:true,
+      // markers:true
+    }
+  })
+  tl3
+  .to("#circle1",{
+    top:"50%",
+    scale:1
+  },"a")
+  .to("#circle2",{
+    top:"50%",
+    scale:1,
+    delay:.2
+  },"a")
+  .to(".circle3",{
+    left:"50%",
+  },"b")
+  .to(".circle3 h4",{
+    opacity:0
+  },"b")
+  .to("#circle2",{
+    opacity:0
+  },"c")
+  .to("#circle1",{
+    scale:5
+  },"c")
+  .to("#energy",{
+    opacity:1,
+    duration:0
+  })
+  .to("#circle1",{
+    opacity:0,
+    duration:0
+  })
+  .to("#energy",{
+    transform:"translateX(-52%)",
+    ease: "linear",
+    duration:1
+  })
+
+}
+page3Animation()
+
 // page5Animation
 
 const page5MarqueeAnimation = () => {
