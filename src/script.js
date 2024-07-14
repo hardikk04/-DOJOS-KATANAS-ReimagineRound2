@@ -113,6 +113,7 @@ const menuAnimation = () => {
     rotationAngle = 0;
     //makeing wheel to initial position
     document.querySelector("#wheel").style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector(".mtxt1").style.opacity = 1
     //makeing manuPage visible
     var otl = gsap.timeline()
     otl
