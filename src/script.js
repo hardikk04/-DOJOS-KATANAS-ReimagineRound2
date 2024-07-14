@@ -1194,7 +1194,7 @@ const page3Animation = ()=>{
       start:"top -10%",
       end:"top -40%",
       scrub:true,
-      markers:true
+      // markers:true
     }
   })
 
