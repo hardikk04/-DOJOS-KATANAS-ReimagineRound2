@@ -1146,15 +1146,18 @@ const page3Animation = ()=>{
   tl3
   .to("#circle1",{
     top:"50%",
-    scale:1
+    scale:1,
+    duration:.5
   },"a")
   .to("#circle2",{
     top:"50%",
     scale:1,
-    delay:.2
+    delay:.2,
+    duration:.5
   },"a")
   .to(".circle3",{
     left:"50%",
+    duration:.2
   },"b")
   .to(".circle3 h4",{
     opacity:0
@@ -1163,7 +1166,8 @@ const page3Animation = ()=>{
     opacity:0
   },"c")
   .to("#circle1",{
-    scale:5
+    scale:5,
+    duration:.5
   },"c")
   .to("#energy",{
     opacity:1,
@@ -1177,6 +1181,21 @@ const page3Animation = ()=>{
     transform:"translateX(-52%)",
     ease: "linear",
     duration:1
+  })
+  gsap.from(".img-container",{
+    y:200,
+    stagger:{
+      amount:.5
+    },
+    duration:1,
+    scrollTrigger:{
+      trigger:"#page3",
+      scroller:"body",
+      start:"top -10%",
+      end:"top -40%",
+      scrub:true,
+      markers:true
+    }
   })
 
 }

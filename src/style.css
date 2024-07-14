@@ -862,7 +862,7 @@ select {
 
 #solar-text{
   padding:1vw 3vw;
-  padding-bottom: 2vw;
+  padding-bottom: 4vw;
 }
 #solar-text h1{
   font-size: 5.5vw;
@@ -871,12 +871,61 @@ select {
   line-height: 1;
 }
 #solar-container{
-  height: 100vh;
+  height: 80vh;
   width: 100%;
-  background-color: red;
   display: flex;
   align-items: center;
+  overflow: hidden;
+  overflow-x: auto;
 } 
+#solar-container::-webkit-scrollbar{
+  display: none;
+}
+#solar-container .img-container{
+  position: relative;
+  flex-shrink: 0;
+  width: 30vw;
+  height: 100%;
+  overflow: hidden;
+}
+#solar-container .img-container img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+#solar-container .img-container .solar-overlay{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.solar-overlay .top-panel{
+  width: 100%;
+  height: 20%;
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  padding: 1vw;
+}
+.solar-overlay .top-panel .arrow{
+  width: 3.5vw;
+  height: 3.5vw;
+  overflow: hidden;
+}
+.solar-overlay .top-panel .arrow .arrow2{
+  margin-left: -100%;
+}
+.solar-overlay .top-panel h3{
+  color: #fff;
+  font-family: title;
+  text-transform: uppercase;
+  font-size: 2.5vw;
+  line-height: 1;
+  font-weight: 500;
+}
 
 /* Page3 end */
 
