@@ -1130,6 +1130,8 @@ const threeTeslaModelAnimation = () => {
 };
 threeTeslaModelAnimation();
 
+
+
 // page3Animation
 const page3Animation = ()=>{
   var tl3 = gsap.timeline({
@@ -1183,16 +1185,15 @@ const page3Animation = ()=>{
     duration:1
   })
   gsap.from(".img-container",{
-    y:200,
+    y:400,
     stagger:{
-      amount:.5
+      amount:.8
     },
-    duration:1,
     scrollTrigger:{
       trigger:"#page3",
       scroller:"body",
       start:"top -10%",
-      end:"top -40%",
+      end:"top -60%",
       scrub:true,
       // markers:true
     }
@@ -1200,7 +1201,55 @@ const page3Animation = ()=>{
 
 }
 page3Animation()
-
+const page3Dragger = () =>{
+  
+  const slider = document.querySelector('#solar-container');
+  let mouseDown = false;
+  let startX, scrollLeft;
+  
+  let startDragging = function (e) {
+      mouseDown = true;
+      startX = e.pageX - slider.offsetLeft;
+      scrollLeft = slider.scrollLeft;
+  };
+  
+  let stopDragging = function (event) {
+      mouseDown = false;
+  };
+  
+  slider.addEventListener('mousemove', (e) => {
+      if (!mouseDown) return;
+      e.preventDefault();
+      const x = e.pageX - slider.offsetLeft;
+      const scroll = x - startX;
+      slider.scrollLeft = scrollLeft - scroll;
+  });
+  
+  slider.addEventListener('mousedown', startDragging, false);
+  slider.addEventListener('mouseup', stopDragging, false);
+  slider.addEventListener('mouseleave', stopDragging, false);
+  
+  window.addEventListener("mousemove",function(dets){
+    gsap.to("#solar-cursor",{
+      top:dets.clientY,
+      left:dets.clientX
+    })
+  })
+  document.querySelector("#solar-container").addEventListener("mouseenter",function(){
+      gsap.to("#solar-cursor",{
+        scale:1,
+        duration:.5
+      })
+    })
+    document.querySelector("#solar-container").addEventListener("mouseleave",function(){
+      gsap.to("#solar-cursor",{
+        scale:0,
+        duration:.5
+      })
+    })
+  
+  }
+  page3Dragger()
 // page5Animation
 
 const page5MarqueeAnimation = () => {
