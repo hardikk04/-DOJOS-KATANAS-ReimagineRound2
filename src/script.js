@@ -1117,7 +1117,6 @@ const threeTeslaModelAnimation = () => {
 };
 threeTeslaModelAnimation();
 
-
 // page5Animation
 
 const page5MarqueeAnimation = () => {

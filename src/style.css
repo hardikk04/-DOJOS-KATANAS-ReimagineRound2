@@ -776,17 +776,22 @@ select {
 
 #page3{
   position: relative;
-  height: 55vh;
+  min-height: 100vh;
   width: 100%;
-  background-color: black;
   overflow: hidden;
 }
-#page3 .circle3 h4{
+#page3 #energy-container{
+  position: relative;
+  height: 61vh;
+  width: 100%;
+  background-color: black;
+}
+#energy-container .circle3 h4{
   font-family: mediumfont;
   font-size: 2vw;
   font-weight: 500;
 }
-#page3 #circle1{
+#energy-container #circle1{
   height: 45vh;
   width: 45vh;
   background-color: #31A93E;
@@ -794,15 +799,15 @@ select {
   position: absolute;
   z-index: 2;
   top: 50%;
-  left: 42%;
-  transform: translate(-50%,-50%);
+  left: 41%;
+  transform: translate(-50%,-50%) scale(.8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
 }
 
-#page3 #circle2{
+#energy-container #circle2{
   height: 45vh;
   width: 45vh;
   background-color: #fff;
@@ -810,21 +815,21 @@ select {
   position: absolute;
   z-index: 1;
   top: 50%;
-  left: 58%;
-  transform: translate(-50%,-50%);
+  left: 59%;
+  transform: translate(-50%,-50%) scale(.8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #31A93E;
 }
-#page3-text{
+#energy-text{
   position: absolute;
   top: 0;
   left: 0;
   z-index: 3;
   padding: 1.7vw 3vw;
 }
-#page3-text h4{
+#energy-text h4{
   font-size: 3.2vw;
   font-weight: 500;
   color: #fff;
@@ -832,7 +837,7 @@ select {
   text-transform: capitalize;
   line-height: .9;
 }
-#page3 #energy{
+#energy-container #energy{
   width: 210%;
   height: 100%;
   background: linear-gradient(to right,#31A93E 50%,#B2FEBB);
@@ -840,41 +845,39 @@ select {
   align-items: end;
   justify-content: end;
   padding-right: 1vw;
+  /* display: none; */
   transform: translateX(-52%);
 }
-#page3 #energy H1{
+#energy-container #energy h1{
   color: #fff;
   font-size: 21vw;
   line-height: 1;
   font-family: title;
 }
 
-/* Page3 end */
-
-/* Page4 start */
-
-#page4{
-  min-height: 100vh;
-  width: 100%;
-  background-color: #fff;
-}
-#page4-text{
+#solar-text{
   padding:1vw 3vw;
   padding-bottom: 2vw;
 }
-#page4-text h1{
+#solar-text h1{
   font-size: 5.5vw;
   font-weight: 500;
   font-family: title;
   line-height: 1;
 }
-#page4-container{
+#solar-container{
   height: 100vh;
   width: 100%;
   background-color: red;
   display: flex;
   align-items: center;
 } 
+
+/* Page3 end */
+
+
+
+
 
 /* Page4 end */
 
