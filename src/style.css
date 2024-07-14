@@ -848,6 +848,11 @@ select {
   line-height: 1;
   font-family: title;
 }
+
+/* Page3 end */
+
+/* Page4 start */
+
 #page4{
   min-height: 100vh;
   width: 100%;
@@ -870,9 +875,6 @@ select {
   display: flex;
   align-items: center;
 } 
-/* Page3 end */
-
-/* Page4 start */
 
 /* Page4 end */
 
