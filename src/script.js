@@ -49,7 +49,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => { });
+  lenis.on("scroll", (e) => {});
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -112,53 +112,68 @@ const menuAnimation = () => {
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0;
     //makeing wheel to initial position
-    document.querySelector("#wheel").style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
-    document.querySelector(".mtxt1").style.opacity = 1
+    document.querySelector(
+      "#wheel"
+    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector(".mtxt1").style.opacity = 1;
     //makeing manuPage visible
-    var otl = gsap.timeline()
+    var otl = gsap.timeline();
     otl
-    .to("#op-line1 ,#op-line2",{
-      width:0,
-      duration:.4
-    })
-    .to("#menu-page", {
-      display: "block",
-      opacity: 1,
-      duration: 0.5,
-    })
-    .to("#cl-line1 , #cl-line2",{
-      height:"100%",
-      duration:.4,
-    })
-   
+      .to("#op-line1 ,#op-line2", {
+        width: 0,
+        duration: 0.4,
+      })
+      .to("#menu-page", {
+        display: "block",
+        opacity: 1,
+        duration: 0.5,
+      })
+      .to("#cl-line1 , #cl-line2", {
+        height: "100%",
+        duration: 0.4,
+      });
   });
 
   document.querySelector(".menu-close").addEventListener("click", function () {
     var mn = gsap.timeline();
-    mn
-    .to(window, {
-      scrollTo: 0,
-      duration: 1,
-      ease: "power1.inOut",
-    },"a")
-    .to("#cl-line1 , #cl-line2",{
-      height:0,
-      duration:1,
-    },"a")
-    .to("#menu-page", {
-      display: "none",
-      opacity: 0,
-      duration: 0.2,
-    })
-    .to("#op-line1",{
-      width:"100%",
-      duration:.4
-    },"a")
-    .to("#op-line2",{
-      width:"100%",
-      duration:.4
-    },"a")
-
+    mn.to(
+      window,
+      {
+        scrollTo: 0,
+        duration: 1,
+        ease: "power1.inOut",
+      },
+      "a"
+    )
+      .to(
+        "#cl-line1 , #cl-line2",
+        {
+          height: 0,
+          duration: 1,
+        },
+        "a"
+      )
+      .to("#menu-page", {
+        display: "none",
+        opacity: 0,
+        duration: 0.2,
+      })
+      .to(
+        "#op-line1",
+        {
+          width: "100%",
+          duration: 0.4,
+        },
+        "a"
+      )
+      .to(
+        "#op-line2",
+        {
+          width: "100%",
+          duration: 0.4,
+        },
+        "a"
+      );
   });
   //wheel movement
   window.addEventListener("wheel", function (event) {
@@ -172,7 +187,7 @@ const menuAnimation = () => {
     gsap.to(circle, {
       rotate: rotationAngle,
       scale: 1.2,
-    })
+    });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
@@ -636,7 +651,6 @@ const threeTeslaModelAnimation = () => {
     })
   );
 
-  overlay.position.z = 2.5;
   scene.add(overlay);
 
   const animationSound = new Audio("/sounds/animation.mp3");
@@ -909,49 +923,19 @@ const threeTeslaModelAnimation = () => {
   );
 
   tl.to(
-    ".overlay-scroller>i",
+    ".overlay-scroller > i",
     {
-      opacity: 0,
+      opacity: "0",
     },
     "displacement"
   );
 
   tl.to(
-    ".overlay-scroller>p",
+    ".overlay-scroller > p",
     {
-      opacity: 0,
+      opacity: "0",
     },
     "displacement"
-  );
-
-  // tl.from(
-  //   camera.position,
-  //   {
-  //     x: -10,
-  //     duration: 5,
-  //     ease: "linear",
-  //   },
-  //   "same"
-  // );
-
-  tl.to(
-    ".models-name>h1",
-    {
-      opacity: 1,
-      y: 40,
-    },
-    "same"
-  );
-
-  tl.to(
-    ".model-transition",
-    {
-      opacity: 1,
-      stagger: {
-        amount: 0.5,
-      },
-    },
-    "same"
   );
 
   tl.to(".modelS", {
@@ -959,7 +943,44 @@ const threeTeslaModelAnimation = () => {
   });
 
   tl.from(".model-transition", {
-    duration: 2,
+    duration: 0.3,
+  });
+
+  gsap.to(".models-name>h1", {
+    opacity: 1,
+    y: 40,
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.to(".model-transition", {
+    opacity: 1,
+    stagger: {
+      amount: 0.5,
+    },
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.from(".black-over", {
+    opacity: 0,
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -300%",
+      end: "top -400%",
+      scrub: 1,
+    },
   });
 
   /**
@@ -1131,126 +1152,149 @@ const threeTeslaModelAnimation = () => {
 };
 threeTeslaModelAnimation();
 
-
-
 // page3Animation
-const page3Animation = ()=>{
+const page3Animation = () => {
   var tl3 = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#page3",
-      scroller:"body",
-      start:"top top",
-      end:"top -150%",
-      scrub:true,
-      pin:true,
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "body",
+      start: "top top",
+      end: "top -150%",
+      scrub: true,
+      pin: true,
       // markers:true
-    }
-  })
-  tl3
-  .to("#circle1",{
-    top:"50%",
-    scale:1,
-    duration:.5
-  },"a")
-  .to("#circle2",{
-    top:"50%",
-    scale:1,
-    delay:.2,
-    duration:.5
-  },"a")
-  .to(".circle3",{
-    left:"50%",
-    duration:.2
-  },"b")
-  .to(".circle3 h4",{
-    opacity:0
-  },"b")
-  .to("#circle2",{
-    opacity:0
-  },"c")
-  .to("#circle1",{
-    scale:5,
-    duration:.5
-  },"c")
-  .to("#energy",{
-    opacity:1,
-    duration:0
-  })
-  .to("#circle1",{
-    opacity:0,
-    duration:0
-  })
-  .to("#energy",{
-    transform:"translateX(-52%)",
-    ease: "linear",
-    duration:1
-  })
-  gsap.from(".img-container",{
-    y:400,
-    stagger:{
-      amount:.8
     },
-    scrollTrigger:{
-      trigger:"#page3",
-      scroller:"body",
-      start:"top -10%",
-      end:"top -60%",
-      scrub:true,
+  });
+  tl3
+    .to(
+      "#circle1",
+      {
+        top: "50%",
+        scale: 1,
+        duration: 0.5,
+      },
+      "a"
+    )
+    .to(
+      "#circle2",
+      {
+        top: "50%",
+        scale: 1,
+        delay: 0.2,
+        duration: 0.5,
+      },
+      "a"
+    )
+    .to(
+      ".circle3",
+      {
+        left: "50%",
+        duration: 0.2,
+      },
+      "b"
+    )
+    .to(
+      ".circle3 h4",
+      {
+        opacity: 0,
+      },
+      "b"
+    )
+    .to(
+      "#circle2",
+      {
+        opacity: 0,
+      },
+      "c"
+    )
+    .to(
+      "#circle1",
+      {
+        scale: 5,
+        duration: 0.5,
+      },
+      "c"
+    )
+    .to("#energy", {
+      opacity: 1,
+      duration: 0,
+    })
+    .to("#circle1", {
+      opacity: 0,
+      duration: 0,
+    })
+    .to("#energy", {
+      transform: "translateX(-52%)",
+      ease: "linear",
+      duration: 1,
+    });
+  gsap.from(".img-container", {
+    y: 400,
+    stagger: {
+      amount: 0.8,
+    },
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "body",
+      start: "top -10%",
+      end: "top -60%",
+      scrub: true,
       // markers:true
-    }
-  })
-
-}
-page3Animation()
-const page3Dragger = () =>{
-  
-  const slider = document.querySelector('#solar-container');
+    },
+  });
+};
+page3Animation();
+const page3Dragger = () => {
+  const slider = document.querySelector("#solar-container");
   let mouseDown = false;
   let startX, scrollLeft;
-  
+
   let startDragging = function (e) {
-      mouseDown = true;
-      startX = e.pageX - slider.offsetLeft;
-      scrollLeft = slider.scrollLeft;
+    mouseDown = true;
+    startX = e.pageX - slider.offsetLeft;
+    scrollLeft = slider.scrollLeft;
   };
-  
+
   let stopDragging = function (event) {
-      mouseDown = false;
+    mouseDown = false;
   };
-  
-  slider.addEventListener('mousemove', (e) => {
-      if (!mouseDown) return;
-      e.preventDefault();
-      const x = e.pageX - slider.offsetLeft;
-      const scroll = x - startX;
-      slider.scrollLeft = scrollLeft - scroll;
+
+  slider.addEventListener("mousemove", (e) => {
+    if (!mouseDown) return;
+    e.preventDefault();
+    const x = e.pageX - slider.offsetLeft;
+    const scroll = x - startX;
+    slider.scrollLeft = scrollLeft - scroll;
   });
-  
-  slider.addEventListener('mousedown', startDragging, false);
-  slider.addEventListener('mouseup', stopDragging, false);
-  slider.addEventListener('mouseleave', stopDragging, false);
-  
-  window.addEventListener("mousemove",function(dets){
-    gsap.to("#solar-cursor",{
-      top:dets.clientY,
-      left:dets.clientX
-    })
-  })
-  document.querySelector("#solar-container").addEventListener("mouseenter",function(){
-      gsap.to("#solar-cursor",{
-        scale:1,
-        duration:.5
-      })
-    })
-    document.querySelector("#solar-container").addEventListener("mouseleave",function(){
-      gsap.to("#solar-cursor",{
-        scale:0,
-        duration:.5
-      })
-    })
-  
-  }
-  page3Dragger()
+
+  slider.addEventListener("mousedown", startDragging, false);
+  slider.addEventListener("mouseup", stopDragging, false);
+  slider.addEventListener("mouseleave", stopDragging, false);
+
+  window.addEventListener("mousemove", function (dets) {
+    gsap.to("#solar-cursor", {
+      top: dets.clientY,
+      left: dets.clientX,
+    });
+  });
+  document
+    .querySelector("#solar-container")
+    .addEventListener("mouseenter", function () {
+      gsap.to("#solar-cursor", {
+        scale: 1,
+        duration: 0.5,
+      });
+    });
+  document
+    .querySelector("#solar-container")
+    .addEventListener("mouseleave", function () {
+      gsap.to("#solar-cursor", {
+        scale: 0,
+        duration: 0.5,
+      });
+    });
+};
+page3Dragger();
 // page5Animation
 
 const page5MarqueeAnimation = () => {
@@ -1397,36 +1441,36 @@ const page7Animation = () => {
 };
 page7Animation();
 
-window.addEventListener("mousemove",function(dets){
-  gsap.to("#dis-cursor",{
-    top:dets.clientY,
-    left:dets.clientX
-  })
-})
-document.querySelectorAll(".ig7").forEach(function(ig){
-  ig.addEventListener("mouseenter",function(){
-    gsap.to("#dis-cursor",{
-      scale:1,
-      duration:.5
-    })
-    gsap.to(ig.querySelector(".overlay7"),{
-      opacity:0,
-      duration:.5
-    })
-  })
-})
-document.querySelectorAll(".ig7").forEach(function(ig){
-  ig.addEventListener("mouseleave",function(){
-    gsap.to("#dis-cursor",{
-      scale:0,
-      duration:.5
-    })
-    gsap.to(ig.querySelector(".overlay7"),{
-      opacity:1,
-      duration:.5
-    })
-  })
-})
+window.addEventListener("mousemove", function (dets) {
+  gsap.to("#dis-cursor", {
+    top: dets.clientY,
+    left: dets.clientX,
+  });
+});
+document.querySelectorAll(".ig7").forEach(function (ig) {
+  ig.addEventListener("mouseenter", function () {
+    gsap.to("#dis-cursor", {
+      scale: 1,
+      duration: 0.5,
+    });
+    gsap.to(ig.querySelector(".overlay7"), {
+      opacity: 0,
+      duration: 0.5,
+    });
+  });
+});
+document.querySelectorAll(".ig7").forEach(function (ig) {
+  ig.addEventListener("mouseleave", function () {
+    gsap.to("#dis-cursor", {
+      scale: 0,
+      duration: 0.5,
+    });
+    gsap.to(ig.querySelector(".overlay7"), {
+      opacity: 1,
+      duration: 0.5,
+    });
+  });
+});
 // textEffect animation
 // can be used by giving class .text-effect to parent ,
 // which has two childern

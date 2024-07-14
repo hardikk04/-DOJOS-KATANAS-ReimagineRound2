@@ -238,11 +238,11 @@ nav > h1 {
   object-position: center;
   opacity: 0.3;
 }
-#wheel .mtxt{
-  opacity: .2;
+#wheel .mtxt {
+  opacity: 0.2;
 }
 
-#contactus{
+#contactus {
   position: absolute;
   top: -10.5%;
   left: 50%;
@@ -619,7 +619,7 @@ nav > h1 {
 
 .models-name > h1 {
   position: absolute;
-  top: 2.5%;
+  top: 0%;
   left: 5%;
   color: #cccdcd;
   font-family: title;
@@ -649,7 +649,7 @@ nav > h1 {
 
 .overlay-text > h1 {
   font-weight: 100;
-  font-size: 3vw;
+  font-size: 2.5vw;
   letter-spacing: 1px;
 }
 
@@ -660,6 +660,7 @@ nav > h1 {
   align-items: center;
   flex-direction: column;
   height: 12vw;
+  margin-top: 4.5vw;
 }
 
 .overlay-line {
@@ -685,6 +686,17 @@ nav > h1 {
   }
 }
 
+.black-over {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: #000;
+  z-index: 2;
+  pointer-events: none;
+}
+
 .overlay-scroller > p {
   font-size: 0.4vw;
   letter-spacing: 2px;
@@ -698,7 +710,7 @@ nav > h1 {
   width: 0;
 }
 
-.model-transition{
+.model-transition {
   opacity: 0;
 }
 
@@ -777,41 +789,41 @@ select {
 
 /* Page3 start */
 
-#page3{
+#page3 {
   position: relative;
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
 }
-#page3 #energy-container{
+#page3 #energy-container {
   position: relative;
   height: 61vh;
   width: 100%;
   background-color: black;
   overflow: hidden;
 }
-#energy-container .circle3 h4{
+#energy-container .circle3 h4 {
   font-family: mediumfont;
   font-size: 2vw;
   font-weight: 500;
 }
-#energy-container #circle1{
+#energy-container #circle1 {
   height: 45vh;
   width: 45vh;
-  background-color: #31A93E;
+  background-color: #31a93e;
   border-radius: 50%;
   position: absolute;
   z-index: 2;
   top: 130%;
   left: 41%;
-  transform: translate(-50%,-50%) scale(.8);
+  transform: translate(-50%, -50%) scale(0.8);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
 }
 
-#energy-container #circle2{
+#energy-container #circle2 {
   height: 45vh;
   width: 45vh;
   background-color: #fff;
@@ -820,55 +832,55 @@ select {
   z-index: 1;
   top: 130%;
   left: 59%;
-  transform: translate(-50%,-50%) scale(.8);
+  transform: translate(-50%, -50%) scale(0.8);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #31A93E;
+  color: #31a93e;
 }
-#energy-text{
+#energy-text {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 3;
   padding: 1.7vw 3vw;
 }
-#energy-text h4{
+#energy-text h4 {
   font-size: 3.2vw;
   font-weight: 500;
   color: #fff;
   font-family: mediumfont;
   text-transform: capitalize;
-  line-height: .9;
+  line-height: 0.9;
 }
-#energy-container #energy{
+#energy-container #energy {
   width: 210%;
   height: 100%;
-  background: linear-gradient(to right,#31A93E 50%,#B2FEBB);
+  background: linear-gradient(to right, #31a93e 50%, #b2febb);
   display: flex;
   align-items: end;
   justify-content: end;
   padding-right: 1vw;
   opacity: 0;
 }
-#energy-container #energy h1{
+#energy-container #energy h1 {
   color: #fff;
   font-size: 21vw;
   line-height: 1;
   font-family: title;
 }
 
-#solar-text{
-  padding:1vw 3vw;
+#solar-text {
+  padding: 1vw 3vw;
   padding-bottom: 4vw;
 }
-#solar-text h1{
+#solar-text h1 {
   font-size: 5.5vw;
   font-weight: 500;
   font-family: title;
   line-height: 1;
 }
-#solar-container{
+#solar-container {
   height: 85vh;
   width: 100%;
   display: flex;
@@ -877,12 +889,12 @@ select {
   overflow-x: auto;
   user-select: none;
   cursor: none;
-} 
+}
 
-#solar-container::-webkit-scrollbar{
+#solar-container::-webkit-scrollbar {
   display: none;
 }
-#solar-container .img-container{
+#solar-container .img-container {
   position: relative;
   flex-shrink: 0;
   width: 30vw;
@@ -890,7 +902,7 @@ select {
   overflow: hidden;
 }
 
-#solar-container .img-container img{
+#solar-container .img-container img {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -898,10 +910,10 @@ select {
   transform: scale(1);
   transition: all ease 0.3s;
 }
-#solar-container .img-container:hover img{
+#solar-container .img-container:hover img {
   transform: scale(1.1);
 }
-#solar-container .img-container .solar-overlay{
+#solar-container .img-container .solar-overlay {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -911,29 +923,29 @@ select {
   opacity: 0;
   transition: all ease 0.3s;
 }
-#solar-container .img-container:hover .solar-overlay{
+#solar-container .img-container:hover .solar-overlay {
   opacity: 1;
 }
 
-.solar-overlay .top-panel{
+.solar-overlay .top-panel {
   width: 70%;
   height: 20%;
-  background-color: #31A93E;
+  background-color: #31a93e;
   display: flex;
   align-items: end;
   justify-content: space-between;
   padding: 1vw;
 }
-.solar-overlay .top-panel .arrow{
+.solar-overlay .top-panel .arrow {
   width: 3.5vw;
   height: 3.5vw;
   overflow: hidden;
 }
-.solar-overlay .top-panel svg{
+.solar-overlay .top-panel svg {
   height: 2.6vw;
   width: 2.6vw;
 }
-.solar-overlay .top-panel h3{
+.solar-overlay .top-panel h3 {
   color: #fff;
   font-family: title;
   text-transform: uppercase;
@@ -1293,7 +1305,8 @@ select {
   transform: scale(0.36);
   clip-path: polygon(13% 0, 87% 0, 87% 100%, 13% 100%);
 }
-#dis-cursor ,#solar-cursor{
+#dis-cursor,
+#solar-cursor {
   height: 4.5vw;
   width: 4.5vw;
   position: fixed;
@@ -1306,11 +1319,11 @@ select {
   font-family: mediumfont;
   font-weight: 900;
   z-index: 9;
-  transform: translate(-50%,-50%) scale(0);
+  transform: translate(-50%, -50%) scale(0);
   pointer-events: none;
   mix-blend-mode: difference;
 }
-#solar-cursor{
+#solar-cursor {
   mix-blend-mode: normal;
 }
 #discovery #dis-text #container7 {
