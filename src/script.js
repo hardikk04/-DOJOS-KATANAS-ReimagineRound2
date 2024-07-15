@@ -209,6 +209,39 @@ const menuAnimation = () => {
 };
 menuAnimation();
 
+// Landing wheel animation
+const landingWheelAnimation = () => {
+  const landingWheel = document.querySelector("#landing-wheel");
+  landingWheel.addEventListener("mousemove", (dets) => {
+    const cursorX = dets.x / window.innerWidth;
+    const cursorY = dets.y / window.innerHeight;
+
+    if (cursorX > 0.5) {
+      gsap.to(".landing-wheel-img > img", {
+        rotate: cursorX * 90,
+        duration: 0.5,
+      });
+    } else {
+      gsap.to(".landing-wheel-img > img", {
+        rotate: (cursorX - 0.5) * 180,
+        duration: 0.5,
+      });
+    }
+  });
+
+  landingWheel.addEventListener("mouseleave", (dets) => {
+    const cursorX = dets.x / window.innerWidth;
+    const cursorY = dets.y / window.innerHeight;
+
+    gsap.to(".landing-wheel-img > img", {
+      rotate: 0,
+      duration: 0.5,
+    });
+  });
+};
+
+landingWheelAnimation();
+
 // Page2 Animation
 const page2Animation = () => {
   const pin = gsap.timeline({
@@ -787,14 +820,14 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  clutterAnimation(".overlay-text1>h1");
-  clutterAnimation(".overlay-text2>h1");
+  // clutterAnimation(".overlay-text1>h1");
+  // clutterAnimation(".overlay-text2>h1");
 
   tl.to(".modelS", {
     pointerEvents: "none",
   });
 
-  tl.from(".overlay-text1>h1>div", {
+  tl.from(".overlay-text1>h1", {
     y: 40,
     opacity: 0,
     stagger: {
@@ -803,7 +836,7 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.from(".overlay-text2>h1>div", {
+  tl.from(".overlay-text2>h1", {
     y: 40,
     opacity: 0,
     delay: -0.5,
@@ -825,7 +858,7 @@ const threeTeslaModelAnimation = () => {
     opacity: 0,
   });
 
-  tl.to(".overlay-text1>h1>div", {
+  tl.to(".overlay-text1>h1", {
     y: -40,
     opacity: 0,
     stagger: {
@@ -834,10 +867,9 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.to(".overlay-text2>h1>div", {
+  tl.to(".overlay-text2>h1", {
     y: -40,
     opacity: 0,
-    delay: -0.5,
     stagger: {
       amount: -0.4,
       from: "center",
@@ -877,9 +909,13 @@ const threeTeslaModelAnimation = () => {
     "displacement"
   );
 
-  tl.to(".modelS", {
-    pointerEvents: "all",
-  });
+  tl.to(
+    ".modelS",
+    {
+      pointerEvents: "all",
+    },
+    "displacement"
+  );
 
   tl.from(".model-transition", {
     duration: 0.3,
