@@ -372,10 +372,12 @@ nav > h1 {
 }
 
 .page2-img1 {
-  position: relative;
+  top: 0;
+  left: 0;
+  position: absolute;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
 .page2-img1 > img {
@@ -385,6 +387,17 @@ nav > h1 {
   object-fit: cover;
   scale: 1.2;
   opacity: 0;
+}
+.page2-imgs h1{
+  position: absolute;
+  top: 15%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 4vw;
+  color: #fff;
+  font-family: title;
+  font-weight: 500;
+  z-index: 2;
 }
 
 .page2-img1 > canvas {
@@ -396,10 +409,12 @@ nav > h1 {
 }
 
 .page2-img2 {
-  position: relative;
+  top: 0;
+  left: 0;
+  position: absolute;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 .page2-img2 > img {
@@ -420,10 +435,12 @@ nav > h1 {
 }
 
 .page2-img3 {
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 100vh;
   width: 100%;
-  overflow: hidden;
+  clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
 .page2-img3 > img {

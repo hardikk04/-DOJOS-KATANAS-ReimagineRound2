@@ -210,7 +210,44 @@ const menuAnimation = () => {
 menuAnimation();
 
 // Page2 Animation
-const page2Animation = () => {
+const page2Animation = ()=>{
+  const t1 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page2",
+      start: "top 80%",
+      end: "top -10%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  t1.from(".page2-text-para1 p",{
+    y:100,
+    stagger:.2
+  })
+  t1.from(".page2-text>button", {
+    opacity: 0,
+    y: 30,
+  });
+  
+  t1.from(".page2-speed", {
+    opacity: 0,
+    y: 30,
+  });
+  
+  t1.from(".page2-circle>h1", {
+    text: "0.00s",
+  });
+  
+  t1.from(".page2-speed>h3", {
+    opacity: 0,
+    y: 30,
+  });
+  t1.from(".page2-box h1", {
+    text: "",
+    stagger:.2
+  });
+  
   const pin = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -222,209 +259,94 @@ const page2Animation = () => {
       // markers: true,
     },
   });
-  pin.to(".page2-imgs", {
-    top: "-200vh",
-  });
-
-  const t1 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img1",
-      start: "top 100%",
-      end: "top -30%",
-      scrub: 1,
-      // markers: true,
-    },
-  });
-
-  const t2 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img2",
-      start: "top 70%",
-      end: "top -80%",
-      scrub: 2,
-      // markers: true,
-    },
-  });
-
-  const t3 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img3",
-      start: "top 40%",
-      end: "top -100%",
-      scrub: 2,
-      // markers: true,
-    },
-  });
-
-  clutterAnimation(".page2-text>h1");
-  t1.from(".page2-text>h1>div", {
-    y: 30,
-    opacity: 0,
-    stagger: {
-      amount: 0.2,
-    },
-    delay: 4,
-  });
-
-  t1.from(".page2-text-para1 .page2-para1", {
-    opacity: 0,
-    y: 50,
-  });
-  t1.from(".page2-text-para1 .page2-para2", {
-    opacity: 0,
-    y: 50,
-  });
-  t1.from(".page2-text-para1 .page2-para3", {
-    opacity: 0,
-    y: 50,
-  });
-
-  t1.from(".page2-text>button", {
-    opacity: 0,
-    y: 30,
-  });
-
-  t1.from(".page2-speed", {
-    opacity: 0,
-    y: 30,
-  });
-
-  t1.from(".page2-circle>h1", {
-    text: "0.00s",
-  });
-
-  t1.from(".page2-speed>h3", {
-    opacity: 0,
-    y: 30,
-  });
-
-  t1.from(".page2-elem1>h1", {
-    text: "",
-    delay: 2,
-  });
-
-  t1.from(".page2-elem2>h1", {
-    text: "",
-  });
-
-  t1.from(".page2-elem3>h1", {
-    text: "",
-  });
-
-  t1.from(".page2-elem4>h1", {
-    text: "",
-  });
-
-  t1.to(".page2-text-para1 .page2-para1", {
-    y: -60,
-  });
-
-  t1.to(".page2-text-para1 .page2-para2", {
-    y: -60,
-  });
-  t1.to(".page2-text-para1 .page2-para3", {
-    y: -60,
-  });
-
-  // Model 2
-
-  t2.to(".page2-text>h1", {
-    text: "TESLA",
-  });
-
-  t2.from(".page2-text-para2 .page2-para1", {
-    opacity: 0,
-    y: 50,
-  });
-
-  t2.from(".page2-text-para2 .page2-para2", {
-    opacity: 0,
-    y: 50,
-  });
-  t2.from(".page2-text-para2 .page2-para3", {
-    opacity: 0,
-    y: 50,
-  });
-
-  t2.to(".page2-circle>h1", {
+  pin.to(".page2-img1", {
+     clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"a");
+  pin.to(".page2-img2",{
+    clipPath:` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"a")
+  pin.to(".page2-text-para1 p",{
+    y:-100,
+    delay:.1
+  },"a")
+  pin.from(".page2-text-para2 p",{
+    y:100,
+    delay:.1
+  },"a")
+  pin.to(".page2-circle>h1", {
     text: "1.46s",
-  });
-
-  t2.to(".page2-elem1>h1", {
+    delay:.1
+  },"a");
+  pin.to(".page2-circle>h1", {
+    text: "1.46s",
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem1>h1", {
     text: "259 mi",
-  });
-
-  t2.to(".page2-elem2>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem2>h1", {
     text: "178 mph",
-  });
-
-  t2.to(".page2-elem3>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem3>h1", {
     text: "5 Year",
-  });
-
-  t2.to(".page2-elem4>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem4>h1", {
     text: "1040 hp",
-  });
-
-  t2.to(".page2-text-para2 .page2-para1", {
-    y: -60,
-  });
-
-  t2.to(".page2-text-para2 .page2-para2", {
-    y: -60,
-  });
-
-  t2.to(".page2-text-para2 .page2-para3", {
-    y: -60,
-  });
-
-  // Model 2
-
-  t3.to(".page2-text>h1", {
-    text: "TESLA",
-  });
-
-  t3.from(".page2-text-para3 .page2-para1", {
-    opacity: 0,
-    y: 50,
-    delay: 2,
-  });
-
-  t3.from(".page2-text-para3 .page2-para2", {
-    opacity: 0,
-    y: 50,
-  });
-
-  t3.from(".page2-text-para3 .page2-para3", {
-    opacity: 0,
-    y: 50,
-  });
-
-  t3.to(".page2-circle>h1", {
+    delay:.1
+  
+  },"a");
+  pin.to(".page2-img2",{
+    clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"b")
+  pin.to(".page2-img3",{
+    clipPath:`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"b")
+  pin.to(".page2-text-para2 p",{
+    y:-100,
+    delay:.1
+  },"b")
+  pin.from(".page2-text-para3 p",{
+    y:100,
+    delay:.1
+  },"b")
+  pin.to(".page2-circle>h1", {
     text: "3.99s",
-  });
-
-  t3.to(".page2-elem1>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem1>h1", {
     text: "259 mi",
-  });
-
-  t3.to(".page2-elem2>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem2>h1", {
     text: "210 mph",
-  });
-
-  t3.to(".page2-elem3>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem3>h1", {
     text: "5 Year",
-  });
-
-  t3.to(".page2-elem4>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem4>h1", {
     text: "1200 hp",
-  });
-};
-
-page2Animation();
+    delay:.1
+  },"b");
+  
+}
+page2Animation()
 
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
