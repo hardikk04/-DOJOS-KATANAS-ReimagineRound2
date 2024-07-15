@@ -1443,3 +1443,20 @@ select {
   background-color: rgba(0, 0, 0, 0.166);
 }
 /* footer end */
+
+
+/* Responsive */
+
+@media (min-width: 993px) and (max-width: 1200px) {
+  
+}
+@media (min-width: 769px) and (max-width: 992px) {
+  
+}
+
+@media (min-width: 601px) and (max-width: 768px) {
+  
+}
+@media (max-width: 600px) {
+  
+}
