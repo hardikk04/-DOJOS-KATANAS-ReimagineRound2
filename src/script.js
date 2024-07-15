@@ -51,7 +51,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => { });
+  lenis.on("scroll", (e) => {});
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -138,16 +138,15 @@ const menuAnimation = () => {
 
   document.querySelector(".menu-close").addEventListener("click", function () {
     var mn = gsap.timeline();
-    mn
-      .to(
-        window,
-        {
-          scrollTo: 0,
-          duration: 1,
-          ease: "power1.inOut",
-        },
-        "a"
-      )
+    mn.to(
+      window,
+      {
+        scrollTo: 0,
+        duration: 1,
+        ease: "power1.inOut",
+      },
+      "a"
+    )
       .to(
         "#cl-line1 , #cl-line2",
         {
@@ -190,8 +189,8 @@ const menuAnimation = () => {
     gsap.to(circle, {
       rotate: rotationAngle,
       scale: 1.2,
-      ease:"linear",
-      duration: .5,
+      ease: "linear",
+      duration: 0.5,
     });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
@@ -251,8 +250,8 @@ const page1Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: "#page1",
-      start: "top 100%",
-      end: "top 20%",
+      start: "top 80%",
+      end: "top 0%",
       scrub: 1,
       // markers: true,
     },
@@ -305,7 +304,7 @@ const page2Animation = () => {
   });
   t1.from(".page2-box h1", {
     text: "",
-    stagger: .2
+    stagger: 0.2,
   });
 
   const pin = gsap.timeline({
@@ -319,94 +318,164 @@ const page2Animation = () => {
       // markers: true,
     },
   });
-  pin.to(".page2-img1", {
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  }, "a");
-  pin.to(".page2-img2", {
-    clipPath: ` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  }, "a")
-  pin.to(".page2-text-para1 p", {
-    y: -100,
-    delay: .1
-  }, "a")
-  pin.from(".page2-text-para2 p", {
-    y: 100,
-    delay: .1
-  }, "a")
-  pin.to(".page2-circle>h1", {
-    text: "1.46s",
-    delay: .1
-  }, "a");
-  pin.to(".page2-circle>h1", {
-    text: "1.46s",
-    delay: .1
+  pin.to(
+    ".page2-img1",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-img2",
+    {
+      clipPath: ` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-text-para1 p",
+    {
+      y: -100,
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.from(
+    ".page2-text-para2 p",
+    {
+      y: 100,
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "1.46s",
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "1.46s",
+      delay: 0.1,
+    },
+    "a"
+  );
 
-  }, "a");
+  pin.to(
+    ".page2-elem1>h1",
+    {
+      text: "259 mi",
+      delay: 0.1,
+    },
+    "a"
+  );
 
-  pin.to(".page2-elem1>h1", {
-    text: "259 mi",
-    delay: .1
+  pin.to(
+    ".page2-elem2>h1",
+    {
+      text: "178 mph",
+      delay: 0.1,
+    },
+    "a"
+  );
 
-  }, "a");
+  pin.to(
+    ".page2-elem3>h1",
+    {
+      text: "5 Year",
+      delay: 0.1,
+    },
+    "a"
+  );
 
-  pin.to(".page2-elem2>h1", {
-    text: "178 mph",
-    delay: .1
+  pin.to(
+    ".page2-elem4>h1",
+    {
+      text: "1040 hp",
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-img2",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-img3",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-text-para2 p",
+    {
+      y: -100,
+      delay: 0.1,
+    },
+    "b"
+  );
+  pin.from(
+    ".page2-text-para3 p",
+    {
+      y: 100,
+      delay: 0.1,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "3.99s",
+      delay: 0.1,
+    },
+    "b"
+  );
 
-  }, "a");
+  pin.to(
+    ".page2-elem1>h1",
+    {
+      text: "259 mi",
+      delay: 0.1,
+    },
+    "b"
+  );
 
-  pin.to(".page2-elem3>h1", {
-    text: "5 Year",
-    delay: .1
+  pin.to(
+    ".page2-elem2>h1",
+    {
+      text: "210 mph",
+      delay: 0.1,
+    },
+    "b"
+  );
 
-  }, "a");
+  pin.to(
+    ".page2-elem3>h1",
+    {
+      text: "5 Year",
+      delay: 0.1,
+    },
+    "b"
+  );
 
-  pin.to(".page2-elem4>h1", {
-    text: "1040 hp",
-    delay: .1
-
-  }, "a");
-  pin.to(".page2-img2", {
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  }, "b")
-  pin.to(".page2-img3", {
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  }, "b")
-  pin.to(".page2-text-para2 p", {
-    y: -100,
-    delay: .1
-  }, "b")
-  pin.from(".page2-text-para3 p", {
-    y: 100,
-    delay: .1
-  }, "b")
-  pin.to(".page2-circle>h1", {
-    text: "3.99s",
-    delay: .1
-  }, "b");
-
-  pin.to(".page2-elem1>h1", {
-    text: "259 mi",
-    delay: .1
-  }, "b");
-
-  pin.to(".page2-elem2>h1", {
-    text: "210 mph",
-    delay: .1
-  }, "b");
-
-  pin.to(".page2-elem3>h1", {
-    text: "5 Year",
-    delay: .1
-  }, "b");
-
-  pin.to(".page2-elem4>h1", {
-    text: "1200 hp",
-    delay: .1
-  }, "b");
-
-}
-page2Animation()
+  pin.to(
+    ".page2-elem4>h1",
+    {
+      text: "1200 hp",
+      delay: 0.1,
+    },
+    "b"
+  );
+};
+page2Animation();
 
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
