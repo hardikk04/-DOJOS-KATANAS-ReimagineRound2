@@ -575,7 +575,7 @@ nav > h1 {
 }
 .page2-imgs h1 {
   position: absolute;
-  top: 15%;
+  top: 8%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4vw;
