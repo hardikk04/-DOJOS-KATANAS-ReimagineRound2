@@ -245,6 +245,32 @@ const landingWheelAnimation = () => {
 
 landingWheelAnimation();
 
+// Page1 Animation
+const page1Animation = () => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page1",
+      start: "top 100%",
+      end: "top 20%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  tl.from(".page1-energy-line", {
+    height: "0",
+  });
+
+  tl.from(".page1-energy-button", {
+    opacity: 0,
+  });
+
+  tl.from(".page1-energy-text > p", {
+    opacity: 0,
+  });
+};
+page1Animation();
+
 // Page2 Animation
 const page2Animation = () => {
   const t1 = gsap.timeline({
@@ -259,9 +285,7 @@ const page2Animation = () => {
   });
   t1.from(".page2-text-para1 p", {
     y: 100,
-    stagger: .2
-  })
-  t1.from(".page2-text>button", {
+  });
     opacity: 0,
     y: 30,
   });
@@ -282,6 +306,7 @@ const page2Animation = () => {
   t1.from(".page2-box h1", {
     text: "",
     stagger: .2
+    stagger: 0.2,
   });
 
   const pin = gsap.timeline({
