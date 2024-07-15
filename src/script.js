@@ -13,8 +13,8 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import overlayVertexShader from "./shaders/overlay/vertex.glsl";
 import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
-import Swiper from 'swiper';
-import 'swiper/css';
+import Swiper from "swiper";
+import "swiper/css";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -269,40 +269,27 @@ const page2Animation = () => {
     delay: 4,
   });
 
-  clutterAnimation(".page2-para1");
-  clutterAnimation(".page2-para2");
-  clutterAnimation(".page2-para3");
-
-  t1.to(".page2-para1>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
+  t1.from(".page2-text-para1 .page2-para1", {
+    opacity: 0,
+    y: 50,
   });
-  t1.to(".page2-para2>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
+  t1.from(".page2-text-para1 .page2-para2", {
+    opacity: 0,
+    y: 50,
   });
-  t1.to(".page2-para3>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
+  t1.from(".page2-text-para1 .page2-para3", {
+    opacity: 0,
+    y: 50,
   });
 
   t1.from(".page2-text>button", {
     opacity: 0,
-    x: 30,
+    y: 30,
   });
 
   t1.from(".page2-speed", {
     opacity: 0,
-    x: 30,
+    y: 30,
   });
 
   t1.from(".page2-circle>h1", {
@@ -311,7 +298,7 @@ const page2Animation = () => {
 
   t1.from(".page2-speed>h3", {
     opacity: 0,
-    x: 30,
+    y: 30,
   });
 
   t1.from(".page2-elem1>h1", {
@@ -331,60 +318,35 @@ const page2Animation = () => {
     text: "",
   });
 
-  t1.to(".page2-para3>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t1.to(".page2-text-para1 .page2-para1", {
+    y: -60,
   });
 
-  t1.to(".page2-para2>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t1.to(".page2-text-para1 .page2-para2", {
+    y: -60,
   });
-  t1.to(".page2-para1>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t1.to(".page2-text-para1 .page2-para3", {
+    y: -60,
   });
 
   // Model 2
-
-  clutterAnimation(".page2-text-para2 .page2-para1");
-  clutterAnimation(".page2-text-para2 .page2-para2");
-  clutterAnimation(".page2-text-para2 .page2-para3");
 
   t2.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t2.to(".page2-text-para2 .page2-para1>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
+  t2.from(".page2-text-para2 .page2-para1", {
+    opacity: 0,
+    y: 50,
   });
 
-  t2.to(".page2-text-para2 .page2-para2>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
+  t2.from(".page2-text-para2 .page2-para2", {
+    opacity: 0,
+    y: 50,
   });
-  t2.to(".page2-text-para2 .page2-para3>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
+  t2.from(".page2-text-para2 .page2-para3", {
+    opacity: 0,
+    y: 50,
   });
 
   t2.to(".page2-circle>h1", {
@@ -407,63 +369,38 @@ const page2Animation = () => {
     text: "1040 hp",
   });
 
-  t2.to(".page2-text-para2 .page2-para3>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t2.to(".page2-text-para2 .page2-para3", {
+    y: -60,
   });
 
-  t2.to(".page2-text-para2 .page2-para2>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t2.to(".page2-text-para2 .page2-para2", {
+    y: -60,
   });
 
-  t2.to(".page2-text-para2 .page2-para1>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
+  t2.to(".page2-text-para2 .page2-para1", {
+    y: -60,
   });
 
   // Model 2
-
-  clutterAnimation(".page2-text-para3 .page2-para1");
-  clutterAnimation(".page2-text-para3 .page2-para2");
-  clutterAnimation(".page2-text-para3 .page2-para3");
 
   t3.to(".page2-text>h1", {
     text: "TESLA",
   });
 
-  t3.to(".page2-text-para3 .page2-para1>div", {
-    opacity: 1,
-    y: -30,
+  t3.from(".page2-text-para3 .page2-para1", {
+    opacity: 0,
+    y: 50,
     delay: 2,
-    stagger: {
-      amount: 1,
-    },
   });
 
-  t3.to(".page2-text-para3 .page2-para2>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
+  t3.from(".page2-text-para3 .page2-para2", {
+    opacity: 0,
+    y: 50,
   });
 
-  t3.to(".page2-text-para3 .page2-para3>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
+  t3.from(".page2-text-para3 .page2-para3", {
+    opacity: 0,
+    y: 50,
   });
 
   t3.to(".page2-circle>h1", {
@@ -1231,10 +1168,10 @@ const page3Animation = () => {
       duration: 1,
     });
 
-    var swiper = new Swiper(".mySwiper", {
-      slidesPerView: 3.2,
-      freeMode: true,
-    });
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3.2,
+    freeMode: true,
+  });
 
   gsap.from(".swiper-slide", {
     y: 400,
