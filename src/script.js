@@ -51,7 +51,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => {});
+  lenis.on("scroll", (e) => { });
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -138,15 +138,16 @@ const menuAnimation = () => {
 
   document.querySelector(".menu-close").addEventListener("click", function () {
     var mn = gsap.timeline();
-    mn.to(
-      window,
-      {
-        scrollTo: 0,
-        duration: 1,
-        ease: "power1.inOut",
-      },
-      "a"
-    )
+    mn
+      .to(
+        window,
+        {
+          scrollTo: 0,
+          duration: 1,
+          ease: "power1.inOut",
+        },
+        "a"
+      )
       .to(
         "#cl-line1 , #cl-line2",
         {
@@ -179,16 +180,18 @@ const menuAnimation = () => {
   });
   //wheel movement
   window.addEventListener("wheel", function (event) {
+    let circle = document.querySelector("#wheel");
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta*0.2;
+    rotationAngle += delta > 0 ? 5 : -5;
 
-    let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     gsap.to(circle, {
       rotate: rotationAngle,
       scale: 1.2,
+      ease:"linear",
+      duration: .5,
     });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
@@ -242,8 +245,34 @@ const landingWheelAnimation = () => {
 
 landingWheelAnimation();
 
+// Page1 Animation
+const page1Animation = () => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page1",
+      start: "top 100%",
+      end: "top 20%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  tl.from(".page1-energy-line", {
+    height: "0",
+  });
+
+  tl.from(".page1-energy-button", {
+    opacity: 0,
+  });
+
+  tl.from(".page1-energy-text > p", {
+    opacity: 0,
+  });
+};
+page1Animation();
+
 // Page2 Animation
-const page2Animation = ()=>{
+const page2Animation = () => {
   const t1 = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -254,33 +283,31 @@ const page2Animation = ()=>{
       // markers: true,
     },
   });
-  t1.from(".page2-text-para1 p",{
-    y:100,
-    stagger:.2
-  })
+  t1.from(".page2-text-para1 p", {
+    y: 100,
+  });
   t1.from(".page2-text>button", {
     opacity: 0,
     y: 30,
   });
-  
   t1.from(".page2-speed", {
     opacity: 0,
     y: 30,
   });
-  
+
   t1.from(".page2-circle>h1", {
     text: "0.00s",
   });
-  
+
   t1.from(".page2-speed>h3", {
     opacity: 0,
     y: 30,
   });
   t1.from(".page2-box h1", {
     text: "",
-    stagger:.2
+    stagger: .2
   });
-  
+
   const pin = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -293,91 +320,91 @@ const page2Animation = ()=>{
     },
   });
   pin.to(".page2-img1", {
-     clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"a");
-  pin.to(".page2-img2",{
-    clipPath:` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"a")
-  pin.to(".page2-text-para1 p",{
-    y:-100,
-    delay:.1
-  },"a")
-  pin.from(".page2-text-para2 p",{
-    y:100,
-    delay:.1
-  },"a")
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  }, "a");
+  pin.to(".page2-img2", {
+    clipPath: ` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  }, "a")
+  pin.to(".page2-text-para1 p", {
+    y: -100,
+    delay: .1
+  }, "a")
+  pin.from(".page2-text-para2 p", {
+    y: 100,
+    delay: .1
+  }, "a")
   pin.to(".page2-circle>h1", {
     text: "1.46s",
-    delay:.1
-  },"a");
+    delay: .1
+  }, "a");
   pin.to(".page2-circle>h1", {
     text: "1.46s",
-    delay:.1
-  
-  },"a");
-  
+    delay: .1
+
+  }, "a");
+
   pin.to(".page2-elem1>h1", {
     text: "259 mi",
-    delay:.1
-  
-  },"a");
-  
+    delay: .1
+
+  }, "a");
+
   pin.to(".page2-elem2>h1", {
     text: "178 mph",
-    delay:.1
-  
-  },"a");
-  
+    delay: .1
+
+  }, "a");
+
   pin.to(".page2-elem3>h1", {
     text: "5 Year",
-    delay:.1
-  
-  },"a");
-  
+    delay: .1
+
+  }, "a");
+
   pin.to(".page2-elem4>h1", {
     text: "1040 hp",
-    delay:.1
-  
-  },"a");
-  pin.to(".page2-img2",{
-    clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"b")
-  pin.to(".page2-img3",{
-    clipPath:`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"b")
-  pin.to(".page2-text-para2 p",{
-    y:-100,
-    delay:.1
-  },"b")
-  pin.from(".page2-text-para3 p",{
-    y:100,
-    delay:.1
-  },"b")
+    delay: .1
+
+  }, "a");
+  pin.to(".page2-img2", {
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  }, "b")
+  pin.to(".page2-img3", {
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  }, "b")
+  pin.to(".page2-text-para2 p", {
+    y: -100,
+    delay: .1
+  }, "b")
+  pin.from(".page2-text-para3 p", {
+    y: 100,
+    delay: .1
+  }, "b")
   pin.to(".page2-circle>h1", {
     text: "3.99s",
-    delay:.1
-  },"b");
-  
+    delay: .1
+  }, "b");
+
   pin.to(".page2-elem1>h1", {
     text: "259 mi",
-    delay:.1
-  },"b");
-  
+    delay: .1
+  }, "b");
+
   pin.to(".page2-elem2>h1", {
     text: "210 mph",
-    delay:.1
-  },"b");
-  
+    delay: .1
+  }, "b");
+
   pin.to(".page2-elem3>h1", {
     text: "5 Year",
-    delay:.1
-  },"b");
-  
+    delay: .1
+  }, "b");
+
   pin.to(".page2-elem4>h1", {
     text: "1200 hp",
-    delay:.1
-  },"b");
-  
+    delay: .1
+  }, "b");
+
 }
 page2Animation()
 
@@ -423,12 +450,12 @@ const threeTeslaModelAnimation = () => {
   /**
    * HDR (RGBE) equirectangular
    */
-  rgbeLoader.load("/environment/withoutLight.hdr", (environmentMap) => {
+  rgbeLoader.load("/environment/modelReflection.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = environmentMap;
   });
 
-  rgbeLoader.load("/environment/sky.hdr", (environmentMap) => {
+  rgbeLoader.load("/environment/garageBG.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = environmentMap;
   });
@@ -831,16 +858,30 @@ const threeTeslaModelAnimation = () => {
     "displacement"
   );
 
-  tl.to(
-    ".modelS",
-    {
-      pointerEvents: "all",
-    },
-    "displacement"
-  );
-
   tl.from(".model-transition", {
     duration: 0.3,
+  });
+
+  gsap.from(".modelS", {
+    pointerEvents: "none",
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.from(".color-picker", {
+    pointerEvents: "none",
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
   });
 
   gsap.to(".models-name>h1", {
@@ -1056,7 +1097,7 @@ const page3Animation = () => {
       trigger: "#page3",
       scroller: "body",
       start: "top top",
-      end: "top -150%",
+      end: "top -300%",
       scrub: true,
       pin: true,
       // markers:true
@@ -1086,7 +1127,7 @@ const page3Animation = () => {
       ".circle3",
       {
         left: "50%",
-        duration: 0.2,
+        duration: 0.5,
       },
       "b"
     )
@@ -1123,7 +1164,7 @@ const page3Animation = () => {
     .to("#energy", {
       transform: "translateX(-52%)",
       ease: "linear",
-      duration: 1,
+      duration: 1.5,
     });
 
   var swiper = new Swiper(".mySwiper", {
@@ -1140,14 +1181,14 @@ const page3Animation = () => {
       trigger: "#page3",
       scroller: "body",
       start: "top -10%",
-      end: "top -60%",
+      end: "top -70%",
       scrub: true,
       // markers:true
     },
   });
 
   document.querySelectorAll(".swiper-slide").forEach(function (slide) {
-    slide.addEventListener("mouseenter", function () {
+    slide.addEventListener("mousemove", function () {
       gsap.to("#solar-cursor", {
         scale: 1,
         duration: 0.5,
@@ -1282,7 +1323,7 @@ const page7Animation = () => {
     })
     .from(".ig7", {
       y: 10,
-      display:"none",
+      display: "none",
       stagger: 0.3,
     });
 
@@ -1325,7 +1366,7 @@ window.addEventListener("mousemove", function (dets) {
   });
 });
 document.querySelectorAll(".ig7").forEach(function (ig) {
-  ig.addEventListener("mouseenter", function () {
+  ig.addEventListener("mousemove", function () {
     gsap.to("#dis-cursor", {
       scale: 1,
       duration: 0.5,
