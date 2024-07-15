@@ -120,12 +120,6 @@ nav {
   position: relative;
 }
 
-.nav-logo > img {
-  height: 2vw;
-  width: 2vw;
-  object-fit: contain;
-}
-
 nav > h1 {
   font-family: tesla;
   font-weight: 100;
