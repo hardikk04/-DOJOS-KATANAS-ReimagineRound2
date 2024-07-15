@@ -286,10 +286,10 @@ const page2Animation = () => {
   t1.from(".page2-text-para1 p", {
     y: 100,
   });
+  t1.from(".page2-text>button", {
     opacity: 0,
     y: 30,
   });
-
   t1.from(".page2-speed", {
     opacity: 0,
     y: 30,
@@ -306,7 +306,6 @@ const page2Animation = () => {
   t1.from(".page2-box h1", {
     text: "",
     stagger: .2
-    stagger: 0.2,
   });
 
   const pin = gsap.timeline({
