@@ -519,12 +519,12 @@ const threeTeslaModelAnimation = () => {
   /**
    * HDR (RGBE) equirectangular
    */
-  rgbeLoader.load("/environment/withoutLight.hdr", (environmentMap) => {
+  rgbeLoader.load("/environment/modelReflection.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = environmentMap;
   });
 
-  rgbeLoader.load("/environment/sky.hdr", (environmentMap) => {
+  rgbeLoader.load("/environment/garageBG.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = environmentMap;
   });
@@ -927,16 +927,30 @@ const threeTeslaModelAnimation = () => {
     "displacement"
   );
 
-  tl.to(
-    ".modelS",
-    {
-      pointerEvents: "all",
-    },
-    "displacement"
-  );
-
   tl.from(".model-transition", {
     duration: 0.3,
+  });
+
+  gsap.from(".modelS", {
+    pointerEvents: "none",
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.from(".color-picker", {
+    pointerEvents: "none",
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
   });
 
   gsap.to(".models-name>h1", {
