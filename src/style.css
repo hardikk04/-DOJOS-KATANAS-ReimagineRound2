@@ -883,37 +883,28 @@ select {
 #solar-container {
   height: 85vh;
   width: 100%;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  overflow-x: auto;
   user-select: none;
   cursor: none;
 }
 
-#solar-container::-webkit-scrollbar {
-  display: none;
-}
-#solar-container .img-container {
-  position: relative;
-  flex-shrink: 0;
-  width: 30vw;
+.swiper {
+  width: 100%;
   height: 100%;
-  overflow: hidden;
 }
 
-#solar-container .img-container img {
-  height: 100%;
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  position: relative;
+}
+.swiper-slide img {
+  display: block;
   width: 100%;
+  height: 100%;
   object-fit: cover;
-  object-position: center;
-  transform: scale(1);
-  transition: all ease 0.3s;
 }
-#solar-container .img-container:hover img {
-  transform: scale(1.1);
-}
-#solar-container .img-container .solar-overlay {
+.swiper-slide .solar-overlay {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -921,11 +912,8 @@ select {
   left: 0;
   background-color: rgba(0, 0, 0, 0.475);
   opacity: 0;
-  transition: all ease 0.3s;
 }
-#solar-container .img-container:hover .solar-overlay {
-  opacity: 1;
-}
+
 
 .solar-overlay .top-panel {
   width: 70%;
@@ -952,7 +940,8 @@ select {
   font-size: 3vw;
   line-height: 1;
   font-weight: 500;
-}
+  text-align: left;
+} 
 
 /* Page3 end */
 
@@ -1323,9 +1312,7 @@ select {
   pointer-events: none;
   mix-blend-mode: difference;
 }
-#solar-cursor {
-  mix-blend-mode: normal;
-}
+
 #discovery #dis-text #container7 {
   position: relative;
 }

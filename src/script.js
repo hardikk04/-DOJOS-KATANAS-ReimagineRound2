@@ -13,6 +13,8 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import overlayVertexShader from "./shaders/overlay/vertex.glsl";
 import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
+import Swiper from 'swiper';
+import 'swiper/css';
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -195,8 +197,8 @@ const menuAnimation = () => {
         txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2;
       // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
       if (
-        window.innerWidth / 2 - 320 < txtCenter &&
-        window.innerWidth / 2 + 320 > txtCenter
+        window.innerWidth / 2 - 335 < txtCenter &&
+        window.innerWidth / 2 + 335 > txtCenter
       ) {
         txt.style.opacity = 1;
       } else {
@@ -1228,7 +1230,13 @@ const page3Animation = () => {
       ease: "linear",
       duration: 1,
     });
-  gsap.from(".img-container", {
+
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3.2,
+      freeMode: true,
+    });
+
+  gsap.from(".swiper-slide", {
     y: 400,
     stagger: {
       amount: 0.8,
@@ -1242,59 +1250,33 @@ const page3Animation = () => {
       // markers:true
     },
   });
-};
-page3Animation();
-const page3Dragger = () => {
-  const slider = document.querySelector("#solar-container");
-  let mouseDown = false;
-  let startX, scrollLeft;
 
-  let startDragging = function (e) {
-    mouseDown = true;
-    startX = e.pageX - slider.offsetLeft;
-    scrollLeft = slider.scrollLeft;
-  };
-
-  let stopDragging = function (event) {
-    mouseDown = false;
-  };
-
-  slider.addEventListener("mousemove", (e) => {
-    if (!mouseDown) return;
-    e.preventDefault();
-    const x = e.pageX - slider.offsetLeft;
-    const scroll = x - startX;
-    slider.scrollLeft = scrollLeft - scroll;
-  });
-
-  slider.addEventListener("mousedown", startDragging, false);
-  slider.addEventListener("mouseup", stopDragging, false);
-  slider.addEventListener("mouseleave", stopDragging, false);
-
-  window.addEventListener("mousemove", function (dets) {
-    gsap.to("#solar-cursor", {
-      top: dets.clientY,
-      left: dets.clientX,
-    });
-  });
-  document
-    .querySelector("#solar-container")
-    .addEventListener("mouseenter", function () {
+  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+    slide.addEventListener("mouseenter", function () {
       gsap.to("#solar-cursor", {
         scale: 1,
         duration: 0.5,
       });
+      gsap.to(slide.querySelector(".solar-overlay"), {
+        opacity: 1,
+        duration: 0.5,
+      });
     });
-  document
-    .querySelector("#solar-container")
-    .addEventListener("mouseleave", function () {
+  });
+  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+    slide.addEventListener("mouseleave", function () {
       gsap.to("#solar-cursor", {
         scale: 0,
         duration: 0.5,
       });
+      gsap.to(slide.querySelector(".solar-overlay"), {
+        opacity: 0,
+        duration: 0.5,
+      });
     });
+  });
 };
-page3Dragger();
+page3Animation();
 // page5Animation
 
 const page5MarqueeAnimation = () => {
@@ -1442,7 +1424,7 @@ const page7Animation = () => {
 page7Animation();
 
 window.addEventListener("mousemove", function (dets) {
-  gsap.to("#dis-cursor", {
+  gsap.to("#dis-cursor , #solar-cursor", {
     top: dets.clientY,
     left: dets.clientX,
   });
