@@ -369,7 +369,7 @@ const page2Animation = () => {
     text: "1040 hp",
   });
 
-  t2.to(".page2-text-para2 .page2-para3", {
+  t2.to(".page2-text-para2 .page2-para1", {
     y: -60,
   });
 
@@ -377,7 +377,7 @@ const page2Animation = () => {
     y: -60,
   });
 
-  t2.to(".page2-text-para2 .page2-para1", {
+  t2.to(".page2-text-para2 .page2-para3", {
     y: -60,
   });
 
