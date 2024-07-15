@@ -182,7 +182,7 @@ const menuAnimation = () => {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta*0.2;
+    rotationAngle += delta * 0.2;
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
@@ -242,8 +242,34 @@ const landingWheelAnimation = () => {
 
 landingWheelAnimation();
 
+// Page1 Animation
+const page1Animation = () => {
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page1",
+      start: "top 100%",
+      end: "top 20%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  tl.from(".page1-energy-line", {
+    height: "0",
+  });
+
+  tl.from(".page1-energy-button", {
+    opacity: 0,
+  });
+
+  tl.from(".page1-energy-text > p", {
+    opacity: 0,
+  });
+};
+page1Animation();
+
 // Page2 Animation
-const page2Animation = ()=>{
+const page2Animation = () => {
   const t1 = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -254,33 +280,33 @@ const page2Animation = ()=>{
       // markers: true,
     },
   });
-  t1.from(".page2-text-para1 p",{
-    y:100,
-    stagger:.2
-  })
+  t1.from(".page2-text-para1 p", {
+    y: 100,
+    stagger: 0.2,
+  });
   t1.from(".page2-text>button", {
     opacity: 0,
     y: 30,
   });
-  
+
   t1.from(".page2-speed", {
     opacity: 0,
     y: 30,
   });
-  
+
   t1.from(".page2-circle>h1", {
     text: "0.00s",
   });
-  
+
   t1.from(".page2-speed>h3", {
     opacity: 0,
     y: 30,
   });
   t1.from(".page2-box h1", {
     text: "",
-    stagger:.2
+    stagger: 0.2,
   });
-  
+
   const pin = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -292,94 +318,164 @@ const page2Animation = ()=>{
       // markers: true,
     },
   });
-  pin.to(".page2-img1", {
-     clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"a");
-  pin.to(".page2-img2",{
-    clipPath:` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"a")
-  pin.to(".page2-text-para1 p",{
-    y:-100,
-    delay:.1
-  },"a")
-  pin.from(".page2-text-para2 p",{
-    y:100,
-    delay:.1
-  },"a")
-  pin.to(".page2-circle>h1", {
-    text: "1.46s",
-    delay:.1
-  },"a");
-  pin.to(".page2-circle>h1", {
-    text: "1.46s",
-    delay:.1
-  
-  },"a");
-  
-  pin.to(".page2-elem1>h1", {
-    text: "259 mi",
-    delay:.1
-  
-  },"a");
-  
-  pin.to(".page2-elem2>h1", {
-    text: "178 mph",
-    delay:.1
-  
-  },"a");
-  
-  pin.to(".page2-elem3>h1", {
-    text: "5 Year",
-    delay:.1
-  
-  },"a");
-  
-  pin.to(".page2-elem4>h1", {
-    text: "1040 hp",
-    delay:.1
-  
-  },"a");
-  pin.to(".page2-img2",{
-    clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"b")
-  pin.to(".page2-img3",{
-    clipPath:`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"b")
-  pin.to(".page2-text-para2 p",{
-    y:-100,
-    delay:.1
-  },"b")
-  pin.from(".page2-text-para3 p",{
-    y:100,
-    delay:.1
-  },"b")
-  pin.to(".page2-circle>h1", {
-    text: "3.99s",
-    delay:.1
-  },"b");
-  
-  pin.to(".page2-elem1>h1", {
-    text: "259 mi",
-    delay:.1
-  },"b");
-  
-  pin.to(".page2-elem2>h1", {
-    text: "210 mph",
-    delay:.1
-  },"b");
-  
-  pin.to(".page2-elem3>h1", {
-    text: "5 Year",
-    delay:.1
-  },"b");
-  
-  pin.to(".page2-elem4>h1", {
-    text: "1200 hp",
-    delay:.1
-  },"b");
-  
-}
-page2Animation()
+  pin.to(
+    ".page2-img1",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-img2",
+    {
+      clipPath: ` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-text-para1 p",
+    {
+      y: -100,
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.from(
+    ".page2-text-para2 p",
+    {
+      y: 100,
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "1.46s",
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "1.46s",
+      delay: 0.1,
+    },
+    "a"
+  );
+
+  pin.to(
+    ".page2-elem1>h1",
+    {
+      text: "259 mi",
+      delay: 0.1,
+    },
+    "a"
+  );
+
+  pin.to(
+    ".page2-elem2>h1",
+    {
+      text: "178 mph",
+      delay: 0.1,
+    },
+    "a"
+  );
+
+  pin.to(
+    ".page2-elem3>h1",
+    {
+      text: "5 Year",
+      delay: 0.1,
+    },
+    "a"
+  );
+
+  pin.to(
+    ".page2-elem4>h1",
+    {
+      text: "1040 hp",
+      delay: 0.1,
+    },
+    "a"
+  );
+  pin.to(
+    ".page2-img2",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-img3",
+    {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-text-para2 p",
+    {
+      y: -100,
+      delay: 0.1,
+    },
+    "b"
+  );
+  pin.from(
+    ".page2-text-para3 p",
+    {
+      y: 100,
+      delay: 0.1,
+    },
+    "b"
+  );
+  pin.to(
+    ".page2-circle>h1",
+    {
+      text: "3.99s",
+      delay: 0.1,
+    },
+    "b"
+  );
+
+  pin.to(
+    ".page2-elem1>h1",
+    {
+      text: "259 mi",
+      delay: 0.1,
+    },
+    "b"
+  );
+
+  pin.to(
+    ".page2-elem2>h1",
+    {
+      text: "210 mph",
+      delay: 0.1,
+    },
+    "b"
+  );
+
+  pin.to(
+    ".page2-elem3>h1",
+    {
+      text: "5 Year",
+      delay: 0.1,
+    },
+    "b"
+  );
+
+  pin.to(
+    ".page2-elem4>h1",
+    {
+      text: "1200 hp",
+      delay: 0.1,
+    },
+    "b"
+  );
+};
+page2Animation();
 
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
@@ -1282,7 +1378,7 @@ const page7Animation = () => {
     })
     .from(".ig7", {
       y: 10,
-      display:"none",
+      display: "none",
       stagger: 0.3,
     });
 
