@@ -13,6 +13,8 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import overlayVertexShader from "./shaders/overlay/vertex.glsl";
 import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
+import Swiper from "swiper";
+import "swiper/css";
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -49,7 +51,7 @@ const clutterWordAnimation = (element) => {
 const lenisJs = () => {
   const lenis = new Lenis();
 
-  lenis.on("scroll", (e) => { });
+  lenis.on("scroll", (e) => {});
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -112,85 +114,173 @@ const menuAnimation = () => {
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0;
     //makeing wheel to initial position
-    document.querySelector("#wheel").style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector(
+      "#wheel"
+    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector(".mtxt1").style.opacity = 1;
     //makeing manuPage visible
-    var otl = gsap.timeline()
+    var otl = gsap.timeline();
     otl
-    .to("#op-line1 ,#op-line2",{
-      width:0,
-      duration:.4
-    })
-    .to("#menu-page", {
-      display: "block",
-      opacity: 1,
-      duration: 0.5,
-    })
-    .to("#cl-line1 , #cl-line2",{
-      height:"100%",
-      duration:.4,
-    })
-   
+      .to("#op-line1 ,#op-line2", {
+        width: 0,
+        duration: 0.4,
+      })
+      .to("#menu-page", {
+        display: "block",
+        opacity: 1,
+        duration: 0.5,
+      })
+      .to("#cl-line1 , #cl-line2", {
+        height: "100%",
+        duration: 0.4,
+      });
   });
 
   document.querySelector(".menu-close").addEventListener("click", function () {
     var mn = gsap.timeline();
-    mn
-    .to(window, {
-      scrollTo: 0,
-      duration: 1,
-      ease: "power1.inOut",
-    },"a")
-    .to("#cl-line1 , #cl-line2",{
-      height:0,
-      duration:1,
-    },"a")
-    .to("#menu-page", {
-      display: "none",
-      opacity: 0,
-      duration: 0.2,
-    })
-    .to("#op-line1",{
-      width:"100%",
-      duration:.4
-    },"a")
-    .to("#op-line2",{
-      width:"100%",
-      duration:.4
-    },"a")
-
+    mn.to(
+      window,
+      {
+        scrollTo: 0,
+        duration: 1,
+        ease: "power1.inOut",
+      },
+      "a"
+    )
+      .to(
+        "#cl-line1 , #cl-line2",
+        {
+          height: 0,
+          duration: 1,
+        },
+        "a"
+      )
+      .to("#menu-page", {
+        display: "none",
+        opacity: 0,
+        duration: 0.2,
+      })
+      .to(
+        "#op-line1",
+        {
+          width: "100%",
+          duration: 0.4,
+        },
+        "a"
+      )
+      .to(
+        "#op-line2",
+        {
+          width: "100%",
+          duration: 0.4,
+        },
+        "a"
+      );
   });
   //wheel movement
   window.addEventListener("wheel", function (event) {
     // Getting the amount of scroll from the events
     let delta = event.deltaY;
     // Increase or decrease the rotation angle by the scroll amount
-    rotationAngle += delta * 0.2;
+    rotationAngle += delta*0.2;
 
     let circle = document.querySelector("#wheel");
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     gsap.to(circle, {
       rotate: rotationAngle,
       scale: 1.2,
-    })
+    });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
       // center value of text in x-axis with respect to window
-      let txtCenter = txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2
+      let txtCenter =
+        txt.getBoundingClientRect().x + txt.getBoundingClientRect().width / 2;
       // condition to check if center value lies b/w (window.innerWidth / 2 - 300) & (window.innerWidth / 2 + 300)
-      if ((window.innerWidth / 2 - 320) < txtCenter && (window.innerWidth / 2 + 320) > txtCenter) {
-        txt.style.opacity = 1
+      if (
+        window.innerWidth / 2 - 335 < txtCenter &&
+        window.innerWidth / 2 + 335 > txtCenter
+      ) {
+        txt.style.opacity = 1;
+      } else {
+        txt.style.opacity = 0.2;
       }
-      else {
-        txt.style.opacity = 0.2
-      }
-    })
-
+    });
   });
 };
 menuAnimation();
 
+// Landing wheel animation
+const landingWheelAnimation = () => {
+  const landingWheel = document.querySelector("#landing-wheel");
+  landingWheel.addEventListener("mousemove", (dets) => {
+    const cursorX = dets.x / window.innerWidth;
+    const cursorY = dets.y / window.innerHeight;
+
+    if (cursorX > 0.5) {
+      gsap.to(".landing-wheel-img > img", {
+        rotate: cursorX * 90,
+        duration: 0.5,
+      });
+    } else {
+      gsap.to(".landing-wheel-img > img", {
+        rotate: (cursorX - 0.5) * 180,
+        duration: 0.5,
+      });
+    }
+  });
+
+  landingWheel.addEventListener("mouseleave", (dets) => {
+    const cursorX = dets.x / window.innerWidth;
+    const cursorY = dets.y / window.innerHeight;
+
+    gsap.to(".landing-wheel-img > img", {
+      rotate: 0,
+      duration: 0.5,
+    });
+  });
+};
+
+landingWheelAnimation();
+
 // Page2 Animation
-const page2Animation = () => {
+const page2Animation = ()=>{
+  const t1 = gsap.timeline({
+    scrollTrigger: {
+      scroller: "body",
+      trigger: "#page2",
+      start: "top 80%",
+      end: "top -10%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  t1.from(".page2-text-para1 p",{
+    y:100,
+    stagger:.2
+  })
+  t1.from(".page2-text>button", {
+    opacity: 0,
+    y: 30,
+  });
+  
+  t1.from(".page2-speed", {
+    opacity: 0,
+    y: 30,
+  });
+  
+  t1.from(".page2-circle>h1", {
+    text: "0.00s",
+  });
+  
+  t1.from(".page2-speed>h3", {
+    opacity: 0,
+    y: 30,
+  });
+  t1.from(".page2-box h1", {
+    text: "",
+    stagger:.2
+  });
+  
   const pin = gsap.timeline({
     scrollTrigger: {
       scroller: "body",
@@ -202,272 +292,94 @@ const page2Animation = () => {
       // markers: true,
     },
   });
-  pin.to(".page2-imgs", {
-    top: "-200vh",
-  });
-
-  const t1 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img1",
-      start: "top 100%",
-      end: "top -30%",
-      scrub: 1,
-      // markers: true,
-    },
-  });
-
-  const t2 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img2",
-      start: "top 70%",
-      end: "top -80%",
-      scrub: 2,
-      // markers: true,
-    },
-  });
-
-  const t3 = gsap.timeline({
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page2-img3",
-      start: "top 40%",
-      end: "top -100%",
-      scrub: 2,
-      // markers: true,
-    },
-  });
-
-  clutterAnimation(".page2-text>h1");
-  t1.from(".page2-text>h1>div", {
-    y: 30,
-    opacity: 0,
-    stagger: {
-      amount: 0.2,
-    },
-    delay: 4,
-  });
-
-  clutterAnimation(".page2-para1");
-  clutterAnimation(".page2-para2");
-  clutterAnimation(".page2-para3");
-
-  t1.to(".page2-para1>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
-  });
-  t1.to(".page2-para2>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
-  });
-  t1.to(".page2-para3>div", {
-    y: -30,
-    opacity: 1,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t1.from(".page2-text>button", {
-    opacity: 0,
-    x: 30,
-  });
-
-  t1.from(".page2-speed", {
-    opacity: 0,
-    x: 30,
-  });
-
-  t1.from(".page2-circle>h1", {
-    text: "0.00s",
-  });
-
-  t1.from(".page2-speed>h3", {
-    opacity: 0,
-    x: 30,
-  });
-
-  t1.from(".page2-elem1>h1", {
-    text: "",
-    delay: 2,
-  });
-
-  t1.from(".page2-elem2>h1", {
-    text: "",
-  });
-
-  t1.from(".page2-elem3>h1", {
-    text: "",
-  });
-
-  t1.from(".page2-elem4>h1", {
-    text: "",
-  });
-
-  t1.to(".page2-para3>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-
-  t1.to(".page2-para2>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-  t1.to(".page2-para1>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-
-  // Model 2
-
-  clutterAnimation(".page2-text-para2 .page2-para1");
-  clutterAnimation(".page2-text-para2 .page2-para2");
-  clutterAnimation(".page2-text-para2 .page2-para3");
-
-  t2.to(".page2-text>h1", {
-    text: "TESLA",
-  });
-
-  t2.to(".page2-text-para2 .page2-para1>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t2.to(".page2-text-para2 .page2-para2>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
-  });
-  t2.to(".page2-text-para2 .page2-para3>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t2.to(".page2-circle>h1", {
+  pin.to(".page2-img1", {
+     clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"a");
+  pin.to(".page2-img2",{
+    clipPath:` polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"a")
+  pin.to(".page2-text-para1 p",{
+    y:-100,
+    delay:.1
+  },"a")
+  pin.from(".page2-text-para2 p",{
+    y:100,
+    delay:.1
+  },"a")
+  pin.to(".page2-circle>h1", {
     text: "1.46s",
-  });
-
-  t2.to(".page2-elem1>h1", {
+    delay:.1
+  },"a");
+  pin.to(".page2-circle>h1", {
+    text: "1.46s",
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem1>h1", {
     text: "259 mi",
-  });
-
-  t2.to(".page2-elem2>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem2>h1", {
     text: "178 mph",
-  });
-
-  t2.to(".page2-elem3>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem3>h1", {
     text: "5 Year",
-  });
-
-  t2.to(".page2-elem4>h1", {
+    delay:.1
+  
+  },"a");
+  
+  pin.to(".page2-elem4>h1", {
     text: "1040 hp",
-  });
-
-  t2.to(".page2-text-para2 .page2-para3>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-
-  t2.to(".page2-text-para2 .page2-para2>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-
-  t2.to(".page2-text-para2 .page2-para1>div", {
-    opacity: 0,
-    y: 10,
-    stagger: {
-      amount: -1,
-    },
-  });
-
-  // Model 2
-
-  clutterAnimation(".page2-text-para3 .page2-para1");
-  clutterAnimation(".page2-text-para3 .page2-para2");
-  clutterAnimation(".page2-text-para3 .page2-para3");
-
-  t3.to(".page2-text>h1", {
-    text: "TESLA",
-  });
-
-  t3.to(".page2-text-para3 .page2-para1>div", {
-    opacity: 1,
-    y: -30,
-    delay: 2,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t3.to(".page2-text-para3 .page2-para2>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t3.to(".page2-text-para3 .page2-para3>div", {
-    opacity: 1,
-    y: -30,
-    stagger: {
-      amount: 1,
-    },
-  });
-
-  t3.to(".page2-circle>h1", {
+    delay:.1
+  
+  },"a");
+  pin.to(".page2-img2",{
+    clipPath:`polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"b")
+  pin.to(".page2-img3",{
+    clipPath:`polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"b")
+  pin.to(".page2-text-para2 p",{
+    y:-100,
+    delay:.1
+  },"b")
+  pin.from(".page2-text-para3 p",{
+    y:100,
+    delay:.1
+  },"b")
+  pin.to(".page2-circle>h1", {
     text: "3.99s",
-  });
-
-  t3.to(".page2-elem1>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem1>h1", {
     text: "259 mi",
-  });
-
-  t3.to(".page2-elem2>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem2>h1", {
     text: "210 mph",
-  });
-
-  t3.to(".page2-elem3>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem3>h1", {
     text: "5 Year",
-  });
-
-  t3.to(".page2-elem4>h1", {
+    delay:.1
+  },"b");
+  
+  pin.to(".page2-elem4>h1", {
     text: "1200 hp",
-  });
-};
-
-page2Animation();
+    delay:.1
+  },"b");
+  
+}
+page2Animation()
 
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
@@ -633,7 +545,6 @@ const threeTeslaModelAnimation = () => {
     })
   );
 
-  overlay.position.z = 2.5;
   scene.add(overlay);
 
   const animationSound = new Audio("/sounds/animation.mp3");
@@ -820,14 +731,25 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  clutterAnimation(".overlay-text1>h1");
-  clutterAnimation(".overlay-text2>h1");
+  const real = gsap.timeline({
+    scrollTrigger: {
+      trigger: ".threejs-models",
+      scroller: "body",
+      start: "top 0",
+      end: "top -300%",
+      // scrub: true,
+      // markers: true,
+    },
+  });
+
+  // clutterAnimation(".overlay-text1>h1");
+  // clutterAnimation(".overlay-text2>h1");
 
   tl.to(".modelS", {
     pointerEvents: "none",
   });
 
-  tl.from(".overlay-text1>h1>div", {
+  tl.from(".overlay-text1>h1", {
     y: 40,
     opacity: 0,
     stagger: {
@@ -836,7 +758,7 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.from(".overlay-text2>h1>div", {
+  tl.from(".overlay-text2>h1", {
     y: 40,
     opacity: 0,
     delay: -0.5,
@@ -846,19 +768,19 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.from(".overlay-line", {
+  real.from(".overlay-line", {
     height: "0",
   });
 
-  tl.from(".overlay-scroller>i", {
+  real.from(".overlay-scroller>i", {
     opacity: 0,
   });
 
-  tl.from(".overlay-scroller>p", {
+  real.from(".overlay-scroller>p", {
     opacity: 0,
   });
 
-  tl.to(".overlay-text1>h1>div", {
+  tl.to(".overlay-text1>h1", {
     y: -40,
     opacity: 0,
     stagger: {
@@ -867,10 +789,9 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  tl.to(".overlay-text2>h1>div", {
+  tl.to(".overlay-text2>h1", {
     y: -40,
     opacity: 0,
-    delay: -0.5,
     stagger: {
       amount: -0.4,
       from: "center",
@@ -895,57 +816,68 @@ const threeTeslaModelAnimation = () => {
   );
 
   tl.to(
-    ".overlay-scroller>i",
+    ".overlay-scroller > i",
     {
-      opacity: 0,
+      opacity: "0",
     },
     "displacement"
   );
 
   tl.to(
-    ".overlay-scroller>p",
+    ".overlay-scroller > p",
     {
-      opacity: 0,
+      opacity: "0",
     },
     "displacement"
   );
 
-  // tl.from(
-  //   camera.position,
-  //   {
-  //     x: -10,
-  //     duration: 5,
-  //     ease: "linear",
-  //   },
-  //   "same"
-  // );
-
-  tl.from(
-    ".models-name>h1",
+  tl.to(
+    ".modelS",
     {
-      opacity: 0,
-      y: 40,
+      pointerEvents: "all",
     },
-    "same"
+    "displacement"
   );
-
-  tl.from(
-    ".model-transition",
-    {
-      opacity: 0,
-      stagger: {
-        amount: 0.5,
-      },
-    },
-    "same"
-  );
-
-  tl.to(".modelS", {
-    pointerEvents: "all",
-  });
 
   tl.from(".model-transition", {
-    duration: 4,
+    duration: 0.3,
+  });
+
+  gsap.to(".models-name>h1", {
+    opacity: 1,
+    y: 40,
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.to(".model-transition", {
+    opacity: 1,
+    stagger: {
+      amount: 0.5,
+    },
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -230%",
+      end: "top -230%",
+      scrub: 1,
+    },
+  });
+
+  gsap.from(".black-over", {
+    opacity: 0,
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".black-over",
+      start: "top -300%",
+      end: "top -400%",
+      scrub: 1,
+    },
   });
 
   /**
@@ -1117,6 +1049,129 @@ const threeTeslaModelAnimation = () => {
 };
 threeTeslaModelAnimation();
 
+// page3Animation
+const page3Animation = () => {
+  var tl3 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "body",
+      start: "top top",
+      end: "top -150%",
+      scrub: true,
+      pin: true,
+      // markers:true
+    },
+  });
+  tl3
+    .to(
+      "#circle1",
+      {
+        top: "50%",
+        scale: 1,
+        duration: 0.5,
+      },
+      "a"
+    )
+    .to(
+      "#circle2",
+      {
+        top: "50%",
+        scale: 1,
+        delay: 0.2,
+        duration: 0.5,
+      },
+      "a"
+    )
+    .to(
+      ".circle3",
+      {
+        left: "50%",
+        duration: 0.2,
+      },
+      "b"
+    )
+    .to(
+      ".circle3 h4",
+      {
+        opacity: 0,
+      },
+      "b"
+    )
+    .to(
+      "#circle2",
+      {
+        opacity: 0,
+      },
+      "c"
+    )
+    .to(
+      "#circle1",
+      {
+        scale: 5,
+        duration: 0.5,
+      },
+      "c"
+    )
+    .to("#energy", {
+      opacity: 1,
+      duration: 0,
+    })
+    .to("#circle1", {
+      opacity: 0,
+      duration: 0,
+    })
+    .to("#energy", {
+      transform: "translateX(-52%)",
+      ease: "linear",
+      duration: 1,
+    });
+
+  var swiper = new Swiper(".mySwiper", {
+    slidesPerView: 3.2,
+    freeMode: true,
+  });
+
+  gsap.from(".swiper-slide", {
+    y: 400,
+    stagger: {
+      amount: 0.8,
+    },
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "body",
+      start: "top -10%",
+      end: "top -60%",
+      scrub: true,
+      // markers:true
+    },
+  });
+
+  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+    slide.addEventListener("mouseenter", function () {
+      gsap.to("#solar-cursor", {
+        scale: 1,
+        duration: 0.5,
+      });
+      gsap.to(slide.querySelector(".solar-overlay"), {
+        opacity: 1,
+        duration: 0.5,
+      });
+    });
+  });
+  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+    slide.addEventListener("mouseleave", function () {
+      gsap.to("#solar-cursor", {
+        scale: 0,
+        duration: 0.5,
+      });
+      gsap.to(slide.querySelector(".solar-overlay"), {
+        opacity: 0,
+        duration: 0.5,
+      });
+    });
+  });
+};
+page3Animation();
 // page5Animation
 
 const page5MarqueeAnimation = () => {
@@ -1227,7 +1282,7 @@ const page7Animation = () => {
     })
     .from(".ig7", {
       y: 10,
-      opacity: 0,
+      display:"none",
       stagger: 0.3,
     });
 
@@ -1263,36 +1318,36 @@ const page7Animation = () => {
 };
 page7Animation();
 
-window.addEventListener("mousemove",function(dets){
-  gsap.to("#dis-cursor",{
-    top:dets.clientY,
-    left:dets.clientX
-  })
-})
-document.querySelectorAll(".ig7").forEach(function(ig){
-  ig.addEventListener("mouseenter",function(){
-    gsap.to("#dis-cursor",{
-      scale:1,
-      duration:.5
-    })
-    gsap.to(ig.querySelector(".overlay7"),{
-      opacity:0,
-      duration:.5
-    })
-  })
-})
-document.querySelectorAll(".ig7").forEach(function(ig){
-  ig.addEventListener("mouseleave",function(){
-    gsap.to("#dis-cursor",{
-      scale:0,
-      duration:.5
-    })
-    gsap.to(ig.querySelector(".overlay7"),{
-      opacity:1,
-      duration:.5
-    })
-  })
-})
+window.addEventListener("mousemove", function (dets) {
+  gsap.to("#dis-cursor , #solar-cursor", {
+    top: dets.clientY,
+    left: dets.clientX,
+  });
+});
+document.querySelectorAll(".ig7").forEach(function (ig) {
+  ig.addEventListener("mouseenter", function () {
+    gsap.to("#dis-cursor", {
+      scale: 1,
+      duration: 0.5,
+    });
+    gsap.to(ig.querySelector(".overlay7"), {
+      opacity: 0,
+      duration: 0.5,
+    });
+  });
+});
+document.querySelectorAll(".ig7").forEach(function (ig) {
+  ig.addEventListener("mouseleave", function () {
+    gsap.to("#dis-cursor", {
+      scale: 0,
+      duration: 0.5,
+    });
+    gsap.to(ig.querySelector(".overlay7"), {
+      opacity: 1,
+      duration: 0.5,
+    });
+  });
+});
 // textEffect animation
 // can be used by giving class .text-effect to parent ,
 // which has two childern
