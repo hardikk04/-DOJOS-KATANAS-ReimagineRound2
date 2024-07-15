@@ -478,53 +478,61 @@ nav > h1 {
   width: 100%;
 }
 
+.page2-text-overflow {
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+}
+
 .page2-text-para1 {
   position: absolute;
   width: 100%;
-  top: 15%;
+  top: -10%;
   left: 0;
 }
 
-.page2-text-para1 > p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
-}
-
-.page2-text-para1 > p > div {
-  opacity: 0;
 }
 
 .page2-text-para2 {
   position: absolute;
   width: 100%;
-  top: 15%;
+  top: -10%;
   left: 0;
 }
 
-.page2-text-para2 > p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
-}
-.page2-text-para2 > p > div {
-  opacity: 0;
 }
 
 .page2-text-para3 {
   position: absolute;
   width: 100%;
-  top: 15%;
+  top: -10%;
   left: 0;
 }
 
-.page2-text-para3 > p {
+.page2-text-para2 .page2-para2 {
+  padding-bottom: 0.1vw;
+}
+
+.page2-text-para3 .page2-para2 {
+  padding-bottom: 0.1vw;
+}
+
+.page2-text-para3 .page2-para3 {
+  padding-bottom: 0.1vw;
+}
+
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
-}
-.page2-text-para3 > p > div {
-  opacity: 0;
 }
 
 .page2-text > button {
@@ -533,7 +541,7 @@ nav > h1 {
   border: none;
   background-color: #000;
   color: #fff;
-  margin-top: 3.5vw;
+  margin-top: 2.5vw;
   border-radius: 0.45vw;
   font-size: 1vw;
   display: flex;
@@ -914,7 +922,6 @@ select {
   opacity: 0;
 }
 
-
 .solar-overlay .top-panel {
   width: 70%;
   height: 20%;
@@ -941,7 +948,7 @@ select {
   line-height: 1;
   font-weight: 500;
   text-align: left;
-} 
+}
 
 /* Page3 end */
 
