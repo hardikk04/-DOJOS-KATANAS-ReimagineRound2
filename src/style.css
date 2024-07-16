@@ -85,6 +85,108 @@ body::-webkit-scrollbar-thumb:active {
   display: inline-block;
 }
 
+
+
+
+
+#loader{
+  background-color: black;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  overflow: hidden;
+  display: block;
+  pointer-events: none;
+  opacity: 1;
+}
+#logo-warpper{
+  position: absolute;
+  top: 250%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#logo-warpper #video-wrapper{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  z-index: 2;
+  background-color: #fff;
+}
+#logo-warpper #video-wrapper video{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+#loading-content{
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%,0);
+  width: 40%;
+  opacity: 0;
+}
+#loading-content h2{
+  font-family: title;
+  text-align: center;
+  margin-bottom: 1vw;
+  font-size: 1vw;
+  animation:blink 2s linear  infinite alternate-reverse;
+}
+@keyframes blink {
+  0%{
+    opacity: .2;
+  }
+  30%{
+    opacity: 1;
+  }
+  40%{
+    opacity: 1;
+  }
+  100%{
+    opacity: .2;
+  }
+  
+}
+#loading-bar{
+  
+  border-radius: 50px;
+  height: 4px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.142);
+  z-index: 2;
+}
+#black-bar{
+  width: 0%;
+  height: 100%;
+  background-color: black;
+}
+#logo-warpper #curve{
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  transform: translate(-50%,0);
+  top: -75vh;
+  width: 110%;
+  height: 200vh;
+  background-color: #fff;
+  border-radius: 50%;
+}
+
+
+
+
+
 /* Main css start */
 
 #main {
@@ -121,6 +223,9 @@ nav {
 }
 
 nav > h1 {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
   font-family: tesla;
   font-weight: 100;
   font-size: 1.4vw;
@@ -319,9 +424,10 @@ nav > h1 {
   display: flex;
   position: relative;
   justify-content: center;
-  width: 100%;
+  width: fit-content;
   white-space: nowrap;
   font-family: title;
+  overflow: hidden;
 }
 
 .landing-wheel-text1 > h1 {
@@ -332,15 +438,17 @@ nav > h1 {
   mix-blend-mode: difference;
   position: relative;
   z-index: 1;
+  transform: translateY(100%);
 }
 
 .landing-wheel-text2 {
   display: flex;
   position: relative;
   justify-content: center;
-  width: 100%;
+  width: fit-content;
   white-space: nowrap;
   font-family: title;
+  overflow: hidden;
 }
 
 .landing-wheel-text2 > h1 {
@@ -351,6 +459,7 @@ nav > h1 {
   font-weight: 600;
   letter-spacing: 5px;
   mix-blend-mode: difference;
+  transform: translateY(100%);
 }
 
 .landing-wheel-img > img {
@@ -385,8 +494,11 @@ nav > h1 {
 }
 
 .landing-footer-line {
-  position: relative;
-  height: 100%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%,0);
+  bottom: 0;
+  height: 80%;
   width: 2px;
   background-color: #00000065;
 }

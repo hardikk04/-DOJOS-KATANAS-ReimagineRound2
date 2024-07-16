@@ -63,6 +63,77 @@ const lenisJs = () => {
 };
 lenisJs();
 
+
+const loaderAnimation = ()=>{
+var video = document.querySelector("video")
+var loader = gsap.timeline()
+
+loader 
+.to("#logo-warpper",{
+    top:"50%",
+    duration:1,
+    delay:.5,
+    onComplete:function(){
+        gsap.to(video,{
+            opacity:1,
+            duration:.2
+        })
+        video.play()
+        gsap.to("#loading-content",{
+          opacity:1,
+          duration:.2,
+          delay:1
+        })
+        gsap.to("#black-bar",{
+          width:"100%",
+          delay:1.8,
+          duration:2
+        })
+    }
+},"a")
+
+.to("#loader",{
+  delay:7,
+  opacity:0,
+  display:"none",
+   duration:.4,
+   onComplete:function(){
+    gsap.to(".landing-wheel-overlay h1",{
+      y:0,
+      duration:1
+    })
+   }
+})
+.from("nav",{
+  opacity:0,
+  y:10,
+  delay:1,
+  duration:.5
+})
+.from(".landing-para h3",{
+  text:"",
+  duration:.8
+})
+.from(".landing-para p",{
+  text:"",
+  duration:.8
+},"s")
+.from(".landing-footer",{
+  opacity:0,
+  duration:.8
+},"s")
+.from(".landing-footer-line",{
+  height:0,
+  duration:.5
+},"s")
+
+}
+
+window.addEventListener("load",loaderAnimation())
+
+
+
+
 // magneticEffect animation
 // can be used by giving class .magnet-effect to parent
 const magneticEffect = () => {
