@@ -57,14 +57,25 @@ if (!isMobileDevice()) {
 
       imageContainer.appendChild(renderer.domElement);
 
+      let resizeTimeout;
       window.addEventListener("resize", () => {
+        // Clear the previous timeout
+        clearTimeout(resizeTimeout);
+
+        // Set a new timeout
+        resizeTimeout = setTimeout(() => {
+          adjustLayout();
+        }, 250);
+      });
+
+      function adjustLayout() {
         camera.aspect =
           imageElement.offsetWidth / planeWidth / imageElement.offsetHeight;
         camera.updateProjectionMatrix();
 
         renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
         renderer.setSize(imageElement.offsetWidth, imageElement.offsetHeight);
-      });
+      }
     }
 
     const t = new THREE.TextureLoader().load(texture);
