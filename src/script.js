@@ -1068,6 +1068,9 @@ const threeTeslaModelAnimation = () => {
     onComplete: () => {
       if (scrollStopFlag) {
         lenis.stop();
+
+        // Hide the scroll bar
+        document.body.style.overflow = "hidden";
         const tl = gsap.timeline();
 
         tl.to(".overlay-line", {
@@ -1092,6 +1095,9 @@ const threeTeslaModelAnimation = () => {
   const scrollDownAnimation = () => {
     scrollDown.addEventListener("click", () => {
       lenis.start();
+
+      // Show the scroll bar
+      document.body.style.overflow = "initial";
 
       const tl = gsap.timeline();
 
@@ -1136,6 +1142,10 @@ const threeTeslaModelAnimation = () => {
   const viewModelAnimation = () => {
     viewModel.addEventListener("click", () => {
       scrollStopFlag = false;
+
+      // Show the scroll bar
+      document.body.style.overflow = "initial";
+
       const viewTl = gsap.timeline();
       viewTl.to(".overlay-text1>h1", {
         y: -20,
@@ -1153,6 +1163,18 @@ const threeTeslaModelAnimation = () => {
         opacity: 0,
         y: -20,
         stagger: 0.1,
+      });
+
+      viewTl.to(".overlay-line", {
+        height: "0vh",
+      });
+
+      viewTl.to(".overlay-scroller>i", {
+        opacity: 0,
+      });
+
+      viewTl.to(".overlay-scroller>p", {
+        opacity: 0,
       });
 
       viewTl.to(".overlay-content", {
