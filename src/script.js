@@ -510,159 +510,77 @@ const threeTeslaModelAnimation = () => {
    * Loader
    */
 
+  let checkLoadingStart = true;
+
   const loaderAnimation = () => {
-    var video = document.querySelector("video");
-    var loader = gsap.timeline();
+    const tl = gsap.timeline();
+    tl.to("#loader", {
+      opacity: 0,
+      duration: 1.5,
+      delay: 1,
+    });
 
-    loader
-      .to(
-        "#logo-warpper",
-        {
-          top: "50%",
-          duration: 1,
-          delay: 0.5,
-          onComplete: function () {
-            gsap.to(video, {
-              opacity: 1,
-              duration: 0.2,
-            });
-            video.play();
-            gsap.to("#loading-content", {
-              opacity: 1,
-              duration: 0.2,
-              delay: 1,
-            });
-            gsap.to("#black-bar", {
-              width: "100%",
-              delay: 1.8,
-              duration: 2,
-            });
-          },
-        },
-        "a"
-      )
+    tl.from(".nav-child", {
+      opacity: 0,
+      y: 10,
+      stagger: {
+        amount: 0.4,
+      },
+    });
 
-      .to("#loader", {
-        delay: 7,
+    tl.to(
+      ".wheel-img",
+      {
+        opacity: 1,
+        top: 0,
+      },
+      "a"
+    );
+
+    tl.to(".landing-wheel-overlay h1", {
+      y: 0,
+      stagger: {
+        amount: 0.2,
+      },
+    });
+
+    tl.from(
+      ".landing-footer-elem",
+      {
         opacity: 0,
-        display: "none",
-        duration: 0.4,
-        onComplete: function () {
-          const tl = gsap.timeline();
-          tl.from(".nav-child", {
-            opacity: 0,
-            y: 10,
-            stagger: {
-              amount: 0.5,
-            },
-          });
-          tl.to(".wheel-img", {
-            opacity: 1,
-            top: 0,
-          });
-          tl.to(".landing-wheel-overlay h1", {
-            y: 0,
-            stagger: 0.3,
-            duration: 1,
-          });
+        stagger: {
+          amount: 0.1,
         },
-      })
+      },
+      "b"
+    );
 
-      .from(".landing-para h3", {
-        text: "",
-        duration: 0.8,
-      })
-      .from(
-        ".landing-para p",
-        {
-          text: "",
-          duration: 0.8,
-        },
-        "s"
-      )
-      .from(
-        ".landing-footer",
-        {
-          opacity: 0,
-          duration: 0.8,
-        },
-        "s"
-      )
-      .from(
-        ".landing-footer-line",
-        {
-          height: 0,
-          duration: 0.5,
-        },
-        "s"
-      );
+    tl.from(
+      ".landing-footer-line",
+      {
+        height: 0,
+      },
+      "b"
+    );
+
+    tl.from(".landing-para>h3", {
+      text: "",
+    });
+
+    tl.from(".landing-para>p", {
+      text: "",
+      onComplete: () => {
+        // Enable scroll
+        document.body.style.overflow = "initial";
+        document.documentElement.style.overflow = "initial";
+      },
+    });
   };
 
-  let checkLoadingStart = true;
   const loadingManager = new THREE.LoadingManager(
     // Loaded
     () => {
-      const tl = gsap.timeline();
-      tl.to("#loader", {
-        opacity: 0,
-        duration: 2,
-      });
-
-      tl.from(".nav-child", {
-        opacity: 0,
-        y: 10,
-        stagger: {
-          amount: 0.4,
-        },
-      });
-
-      tl.to(
-        ".wheel-img",
-        {
-          opacity: 1,
-          top: 0,
-        },
-        "a"
-      );
-
-      tl.to(".landing-wheel-overlay h1", {
-        y: 0,
-        stagger: {
-          amount: 0.2,
-        },
-      });
-
-      tl.from(
-        ".landing-footer-elem",
-        {
-          opacity: 0,
-          stagger: {
-            amount: 0.1,
-          },
-        },
-        "b"
-      );
-
-      tl.from(
-        ".landing-footer-line",
-        {
-          height: 0,
-        },
-        "b"
-      );
-
-      tl.from(".landing-para>h3", {
-        text: "",
-      });
-
-      tl.from(".landing-para>p", {
-        text: "",
-        onComplete: () => {
-          // Enable scroll
-          document.body.style.overflow = "initial";
-          document.documentElement.style.overflow = "initial";
-        },
-      });
+      loaderAnimation();
     },
     // Process
     (itemUrl, itemsLoaded, itemsTotal) => {
@@ -696,7 +614,6 @@ const threeTeslaModelAnimation = () => {
       const progressRatio = itemsLoaded / itemsTotal;
       gsap.to("#black-bar", {
         width: progressRatio * 100 + "%",
-        delay: 2,
       });
     }
   );
@@ -1094,6 +1011,9 @@ const threeTeslaModelAnimation = () => {
   // Scroll down event
   const scrollDownAnimation = () => {
     scrollDown.addEventListener("click", () => {
+      // prevent multiple clicks
+      scrollDown.style.pointerEvents = "none";
+
       lenis.start();
 
       // Show the scroll bar
@@ -1133,6 +1053,10 @@ const threeTeslaModelAnimation = () => {
 
     scrollTl.to(".overlay-scroller>p", {
       opacity: 0,
+      onComplete: () => {
+        // enable the click ag (prevent multiple clicks)
+        scrollDown.style.pointerEvents = "all";
+      },
     });
   };
   scrollDownAnimation();
@@ -1141,6 +1065,9 @@ const threeTeslaModelAnimation = () => {
 
   const viewModelAnimation = () => {
     viewModel.addEventListener("click", () => {
+      // enable the click ag (prevent multiple clicks)
+      viewModel.style.pointerEvents = "none";
+
       scrollStopFlag = false;
 
       // Show the scroll bar
