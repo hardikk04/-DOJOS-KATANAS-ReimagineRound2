@@ -1244,7 +1244,46 @@ const page5MarqueeAnimation = () => {
     }
   });
 };
-page5MarqueeAnimation();
+// page5MarqueeAnimation();
+
+const page5Scroll = () => {
+  var page5 = document.querySelector("#page5")
+var upper = document.querySelector("#page5 #upper")
+var center = document.querySelector("#page5 #center")
+var centerContent = document.querySelector("#page5 #center .content")
+var lower = document.querySelector("#page5 #lower")
+
+var tl = gsap.timeline({
+    scrollTrigger: {
+        trigger: "#page5",
+        scroller: "body",
+        // markers: true,
+        start: "50% 50%",
+        end: "175% 50%",
+        scrub: true,
+        pin: true,
+    }
+    
+})
+
+tl
+.to(upper,{
+    top: "-50%",
+    ease: "power1.in"
+},'a')
+.to(lower,{
+    top: "100%",
+    ease: "power1.in"
+},'a')
+.from(centerContent,{
+    y: 800,
+    opacity: 0,
+    delay: -0.4,
+    ease: "power1.in"
+})
+
+}
+page5Scroll()
 
 // page6Animation
 const page6LeftBtnHover = () => {
