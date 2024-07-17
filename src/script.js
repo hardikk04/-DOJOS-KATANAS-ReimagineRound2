@@ -233,7 +233,6 @@ const landingWheelAnimation = () => {
   const landingWheel = document.querySelector("#landing-wheel");
   landingWheel.addEventListener("mousemove", (dets) => {
     const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
 
     if (cursorX > 0.5) {
       gsap.to(".landing-wheel-img > img", {
@@ -249,9 +248,6 @@ const landingWheelAnimation = () => {
   });
 
   landingWheel.addEventListener("mouseleave", (dets) => {
-    const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
-
     gsap.to(".landing-wheel-img > img", {
       rotate: 0,
       duration: 0.5,
@@ -787,24 +783,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "MODEL S",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.add(models[0]);
         scene.remove(models[1]);
@@ -817,6 +799,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -830,24 +815,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "ROADSTER",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.add(models[1]);
@@ -861,6 +832,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -874,24 +848,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "CYBERTRUCK",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.remove(models[1]);
@@ -905,6 +865,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -914,6 +877,7 @@ const threeTeslaModelAnimation = () => {
 
   // Models click flag
   let clickFlag = true;
+
   carPicker.addEventListener("click", () => {
     // Show all Cars options
     if (clickFlag) {
@@ -948,12 +912,18 @@ const threeTeslaModelAnimation = () => {
   allCarModels.forEach((car, index) => {
     car.addEventListener("click", () => {
       if (index === 0 && carModelIndex !== 0) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
         carModelIndex = 0;
         modelS();
       } else if (index === 1 && carModelIndex !== 1) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
         carModelIndex = 1;
         roadster();
       } else if (index === 2 && carModelIndex !== 2) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
         carModelIndex = 2;
         cybertruck();
       }
