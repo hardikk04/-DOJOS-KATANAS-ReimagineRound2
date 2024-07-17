@@ -48,8 +48,9 @@ html {
 
 /* Hide the default scrollbar */
 body::-webkit-scrollbar {
-  width: 0px; /* Width of the scrollbar */
+  width: 8px;
 }
+
 body:has(.icey_modal.icey_active) {
   overflow-y: hidden;
   padding-right: var(--scrollbar_width);
@@ -85,11 +86,7 @@ body::-webkit-scrollbar-thumb:active {
   display: inline-block;
 }
 
-
-
-
-
-#loader{
+#loader {
   background-color: black;
   height: 100vh;
   width: 100%;
@@ -100,13 +97,12 @@ body::-webkit-scrollbar-thumb:active {
   overflow: hidden;
   display: block;
   pointer-events: none;
-  opacity: 1;
 }
-#logo-warpper{
+#logo-warpper {
   position: absolute;
   top: 250%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   height: 100vh;
   width: 100vw;
   background-color: #fff;
@@ -114,7 +110,7 @@ body::-webkit-scrollbar-thumb:active {
   align-items: center;
   justify-content: center;
 }
-#logo-warpper #video-wrapper{
+#logo-warpper #video-wrapper {
   position: relative;
   height: 100%;
   width: 100%;
@@ -122,60 +118,58 @@ body::-webkit-scrollbar-thumb:active {
   z-index: 2;
   background-color: #fff;
 }
-#logo-warpper #video-wrapper video{
+#logo-warpper #video-wrapper video {
   height: 100%;
   width: 100%;
   object-fit: cover;
   opacity: 0;
 }
-#loading-content{
+#loading-content {
   position: absolute;
   left: 50%;
   top: 70%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   width: 40%;
   opacity: 0;
 }
-#loading-content h2{
+#loading-content h2 {
   font-family: title;
   text-align: center;
   margin-bottom: 1vw;
   font-size: 1vw;
-  animation:blink 2s linear  infinite alternate-reverse;
+  animation: blink 2s linear infinite alternate-reverse;
 }
 @keyframes blink {
-  0%{
-    opacity: .2;
+  0% {
+    opacity: 0.2;
   }
-  30%{
+  30% {
     opacity: 1;
   }
-  40%{
+  40% {
     opacity: 1;
   }
-  100%{
-    opacity: .2;
+  100% {
+    opacity: 0.2;
   }
-  
 }
-#loading-bar{
-  
+#loading-bar {
   border-radius: 50px;
   height: 4px;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.142);
   z-index: 2;
 }
-#black-bar{
+#black-bar {
   width: 0%;
   height: 100%;
   background-color: black;
 }
-#logo-warpper #curve{
+#logo-warpper #curve {
   position: absolute;
   z-index: 1;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   top: -75vh;
   width: 110%;
   height: 200vh;
@@ -183,16 +177,12 @@ body::-webkit-scrollbar-thumb:active {
   border-radius: 50%;
 }
 
-
-
-
-
 /* Main css start */
 
 #main {
   position: relative;
-  height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
 /* Landing wheel start */
@@ -225,7 +215,7 @@ nav {
 nav > h1 {
   position: absolute;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   font-family: tesla;
   font-weight: 100;
   font-size: 1.4vw;
@@ -496,9 +486,12 @@ nav > h1 {
 }
 
 .landing-wheel-img > img {
+  position: relative;
+  top: 50px;
   height: 100%;
   width: 100%;
   object-fit: cover;
+  opacity: 0;
 }
 
 .landing-footer {
@@ -529,7 +522,7 @@ nav > h1 {
 .landing-footer-line {
   position: absolute;
   left: 50%;
-  transform: translate(-50%,0);
+  transform: translate(-50%, 0);
   bottom: 0;
   height: 80%;
   width: 2px;
@@ -625,7 +618,7 @@ nav > h1 {
   position: relative;
 }
 
-#landing-wheel-mobile #last h5{
+#landing-wheel-mobile #last h5 {
   font-weight: 600;
   text-align: center;
 }
@@ -807,7 +800,6 @@ nav > h1 {
   display: none;
 }
 
-
 /* Page1 mobile end */
 
 /* Page2 start */
@@ -817,6 +809,7 @@ nav > h1 {
   height: 100vh;
   width: 100%;
   display: flex;
+  overflow: hidden;
 }
 
 .page2-imgs {
@@ -1129,7 +1122,7 @@ nav > h1 {
 #page2-mobile #main-container .container #upper h1 {
   font-size: 4vh;
   font-family: tesla;
-  background: linear-gradient(to bottom, #EAEAEA, #909090);
+  background: linear-gradient(to bottom, #eaeaea, #909090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1256,12 +1249,12 @@ nav > h1 {
   bottom: 2%;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 9;
+  z-index: 1;
   color: #cccdcd;
   font-family: title;
   text-align: center;
   overflow: hidden;
-  pointer-events: none;
+  /* pointer-events: none; */
 }
 
 .overlay-text {
@@ -1275,6 +1268,40 @@ nav > h1 {
   letter-spacing: 1px;
 }
 
+.models-btn {
+  position: relative;
+  margin-top: 2.5vw;
+  display: flex;
+  justify-content: center;
+  gap: 1vw;
+}
+
+.models-btn > h3 {
+  padding: 0.8vw 2vw;
+  color: #fff;
+  background-color: #31a93e;
+  border: none;
+  border-radius: 0.4vw;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  line-height: 0.9;
+  gap: 0.5vw;
+  font-size: 1vw;
+  font-family: regularFont;
+  cursor: pointer;
+}
+
+.models-btn > h3:nth-child(2) {
+  background-color: #000;
+  border: 1px solid #ffffff83;
+}
+
+.models-btn > h3 > i {
+  font-weight: 100;
+}
+
 .overlay-scroller {
   position: relative;
   display: flex;
@@ -1282,13 +1309,13 @@ nav > h1 {
   align-items: center;
   flex-direction: column;
   height: 12vw;
-  margin-top: 4.5vw;
+  pointer-events: none;
 }
 
 .overlay-line {
   position: relative;
-  margin-top: 4.5vw;
-  height: 8vh;
+  /* margin-top: 4.5vw; */
+  height: 0vh;
   width: 2px;
   background-color: #6a6a6a;
 }
@@ -1296,6 +1323,7 @@ nav > h1 {
 .overlay-scroller > i {
   margin-top: 0.5vw;
   font-size: 1vw;
+  opacity: 0;
   animation: upDown 2s infinite both linear;
 }
 
@@ -1315,14 +1343,16 @@ nav > h1 {
   height: 100vh;
   width: 100%;
   background-color: #000;
-  z-index: 2;
+  z-index: 10;
   pointer-events: none;
+  opacity: 0;
 }
 
 .overlay-scroller > p {
   font-size: 0.4vw;
   letter-spacing: 2px;
   margin-top: 0.2vw;
+  opacity: 0;
 }
 
 .overlay-video {
@@ -1370,6 +1400,10 @@ select {
   background-color: rgba(0, 0, 0, 0.383);
 }
 
+.color-picker {
+  pointer-events: none;
+}
+
 .color-picker-elem {
   position: relative;
   height: 100%;
@@ -1405,6 +1439,7 @@ select {
   position: relative;
   height: 100%;
   width: 100%;
+  pointer-events: none;
 }
 
 /* Threejs model page end */
@@ -1601,7 +1636,7 @@ select {
   position: absolute;
   top: 40%;
   left: 50%;
-  transform: translate(-50%,-50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1616,7 +1651,7 @@ select {
   position: absolute;
   top: 55%;
   left: 50%;
-  transform: translate(-50%,-50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(0.8);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1678,15 +1713,13 @@ select {
 
 /* Solar mobile end */
 
-
 /* Page5 start */
 
-#page5
-{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    cursor: pointer;
+#page5 {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  cursor: pointer;
 }
 
 #page5 #upper
@@ -1699,109 +1732,94 @@ select {
     overflow: hidden;
 }
 
-#page5 #center
-{
-    width: 100%;
-    height: 100vh;
-    background-color: black;
+#page5 #center {
+  width: 100%;
+  height: 100vh;
+  background-color: black;
 }
 
-#page5 #lower
-{
-    width: 100%;
-    height: 50vh;
-    background-color: #fff ;
-    position: absolute;
-    top: 50%;
-    overflow: hidden;
+#page5 #lower {
+  width: 100%;
+  height: 50vh;
+  background-color: #fff;
+  position: absolute;
+  top: 50%;
+  overflow: hidden;
 }
 
-#page5 h1
-{
-    font-size: 20vw;
+#page5 h1 {
+  font-size: 20vw;
 }
 
 #page5 #upper-h1,
-#page5 #lower-h1
-{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
+#page5 #lower-h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
-#page5 #upper-h1
-{
-  font-size: 16vw;
-    top: 95%;
-    font-family: title;
+#page5 #upper-h1 {
+  font-size: 19vw;
+  top: 95%;
+  font-family: title;
 }
 
-#page5 #center
-{
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+#page5 #center {
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#page5 #center .content
-{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+#page5 #center .content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#page5 #center h5
-{
-    font-size: 1.5vw;
-    font-weight: 500;
+#page5 #center h5 {
+  font-size: 1.5vw;
+  font-weight: 500;
 }
 
-
-#page5 #center h2
-{
-    font-size: 5vw;
-    font-weight: 500;
+#page5 #center h2 {
+  font-size: 5vw;
+  font-weight: 500;
 }
 
-#page5 #center h2 span
-{
-    font-style: italic;
+#page5 #center h2 span {
+  font-style: italic;
 }
 
-
-#page5 #center button
-{
-    padding: 1.5vw;
-    border-radius: 50px;
-    color: white;
-    border: 1px solid white;
-    background-color: transparent;
-    margin-top: 3vw;
-    transition: all ease 0.4s;
+#page5 #center button {
+  padding: 1.5vw;
+  border-radius: 50px;
+  color: white;
+  border: 1px solid white;
+  background-color: transparent;
+  margin-top: 3vw;
+  transition: all ease 0.4s;
 }
 
-#page5 #center button:hover
-{
-    cursor: pointer;
-    background-color: white;
-    color: black;
+#page5 #center button:hover {
+  cursor: pointer;
+  background-color: white;
+  color: black;
 }
 
-#page5 #center h1
-{
-    font-size: 18vw;
-    font-weight: 900;
+#page5 #center h1 {
+  font-size: 18vw;
+  font-weight: 900;
 }
 
 #page5 #lower-h1
 {
   font-size: 16vw;
   top: -5%;
-    color: black;
-    font-family: title;
+  color: black;
+  font-family: title;
 }
 
 /* Page5 end */
@@ -2074,12 +2092,15 @@ select {
   position: relative;
 }
 
-
 #page6-mobile #section-2 #overlay {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: linear-gradient(to bottom, rgba(9, 9, 9, 0.312), rgba(0, 0, 0, 0.767));
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 9, 0.312),
+    rgba(0, 0, 0, 0.767)
+  );
   backdrop-filter: blur(3px);
   z-index: 2;
 }
@@ -2410,13 +2431,16 @@ select {
     display: block;
   }
 
-  h1,h2 {
+  h1,
+  h2 {
     font-family: title;
     font-weight: 500;
     font-size: 3vh;
   }
 
-  h3,h5,h6 {
+  h3,
+  h5,
+  h6 {
     font-family: mediumFont;
     font-weight: 500;
     font-size: 2.5vh;

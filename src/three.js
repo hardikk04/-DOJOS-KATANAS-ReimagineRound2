@@ -83,7 +83,7 @@ const vehicleVideoAnimation = (index, prevIndex) => {
     vehicleTextAnimation = false;
     gsap.from(".page1-hero-text-vehicle>h1>span", {
       opacity: 0,
-      y: 90,
+      y: 45,
       stagger: {
         amount: prevIndex <= 0 ? 0.25 : -0.25,
         from: "x",
@@ -119,7 +119,7 @@ const energyVideoAnimation = (index, prevIndex) => {
     energyTextAnimation = false;
     gsap.from(".page1-hero-text-energy>h1>span", {
       opacity: 0,
-      y: 90,
+      y: 45,
       stagger: {
         amount: prevIndex <= 1 ? 0.25 : -0.25,
         from: "x",
@@ -155,7 +155,7 @@ const chargingVideoAnimation = () => {
     chargingTextAnimation = false;
     gsap.from(".page1-hero-text-charging>h1>span", {
       opacity: 0,
-      y: 90,
+      y: 45,
       stagger: {
         amount: 0.25,
         from: "x",
@@ -227,19 +227,6 @@ camera.position.z = 3;
 scene.add(camera);
 
 /**
- * Resize
- */
-window.addEventListener("resize", () => {
-  sizes.width = window.innerWidth;
-  sizes.height = window.innerHeight;
-  camera.aspect = sizes.width / sizes.height;
-  camera.updateProjectionMatrix();
-
-  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-  renderer.setSize(sizes.width, sizes.height);
-});
-
-/**
  * Canvas
  */
 const canvas = document.querySelector(".webgl");
@@ -259,3 +246,25 @@ const tick = () => {
   renderer.render(scene, camera);
 };
 tick();
+
+let resizeTimeout;
+
+window.addEventListener("resize", () => {
+  // Clear the previous timeout
+  clearTimeout(resizeTimeout);
+
+  // Set a new timeout
+  resizeTimeout = setTimeout(() => {
+    adjustLayout();
+  }, 250);
+});
+
+function adjustLayout() {
+  sizes.width = window.innerWidth;
+  sizes.height = window.innerHeight;
+  camera.aspect = sizes.width / sizes.height;
+  camera.updateProjectionMatrix();
+
+  renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+  renderer.setSize(sizes.width, sizes.height);
+}

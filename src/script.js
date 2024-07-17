@@ -16,6 +16,12 @@ import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
 import Swiper from "swiper";
 import "swiper/css";
 
+// Removing the scroll unitl site loaded
+(() => {
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+})();
+
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
 
@@ -46,11 +52,20 @@ const clutterWordAnimation = (element) => {
   htmlTag.innerHTML = clutter;
 };
 
+// Prevent scroll with keyboard navigation
+function preventDefaultForScrollKeys(e) {
+  const keys = [32, 33, 34, 35, 36, 37, 38, 39, 40]; // Space, Page Up, Page Down, End, Home, Arrow keys
+  if (keys.includes(e.keyCode)) {
+    e.preventDefault();
+    return false;
+  }
+}
+
+document.addEventListener("keydown", preventDefaultForScrollKeys);
+
 // Lenis js
-
+const lenis = new Lenis();
 const lenisJs = () => {
-  const lenis = new Lenis();
-
   lenis.on("scroll", (e) => {});
 
   lenis.on("scroll", ScrollTrigger.update);
@@ -63,76 +78,7 @@ const lenisJs = () => {
 };
 lenisJs();
 
-
-const loaderAnimation = ()=>{
-var video = document.querySelector("video")
-var loader = gsap.timeline()
-
-loader 
-.to("#logo-warpper",{
-    top:"50%",
-    duration:1,
-    delay:.5,
-    onComplete:function(){
-        gsap.to(video,{
-            opacity:1,
-            duration:.2
-        })
-        video.play()
-        gsap.to("#loading-content",{
-          opacity:1,
-          duration:.2,
-          delay:1
-        })
-        gsap.to("#black-bar",{
-          width:"100%",
-          delay:1.8,
-          duration:2
-        })
-    }
-},"a")
-
-.to("#loader",{
-  delay:7,
-  opacity:0,
-  display:"none",
-   duration:.4,
-   onComplete:function(){
-    gsap.to(".landing-wheel-overlay h1",{
-      y:0,
-      duration:1
-    })
-   }
-})
-.from("nav",{
-  opacity:0,
-  y:10,
-  delay:1,
-  duration:.5
-})
-.from(".landing-para h3",{
-  text:"",
-  duration:.8
-})
-.from(".landing-para p",{
-  text:"",
-  duration:.8
-},"s")
-.from(".landing-footer",{
-  opacity:0,
-  duration:.8
-},"s")
-.from(".landing-footer-line",{
-  height:0,
-  duration:.5
-},"s")
-
-}
-
-window.addEventListener("load",loaderAnimation())
-
-
-
+// window.addEventListener("load", loaderAnimation);
 
 // magneticEffect animation
 // can be used by giving class .magnet-effect to parent
@@ -556,15 +502,6 @@ const threeTeslaModelAnimation = () => {
   const canvas = document.querySelector(".modelS");
 
   /**
-   * Gui
-   */
-  // const gui = new GUI();
-  const object = {};
-  object.renderColor = "#000000";
-  object.carColor = "#ae0a0a";
-  object.floorColor = "#969696";
-
-  /**
    * Scene
    */
   const scene = new THREE.Scene();
@@ -572,9 +509,118 @@ const threeTeslaModelAnimation = () => {
   /**
    * Loader
    */
-  const textureLoader = new THREE.TextureLoader();
-  const gltfLoader = new GLTFLoader();
-  const rgbeLoader = new RGBELoader();
+
+  let checkLoadingStart = true;
+
+  const loaderAnimation = () => {
+    const tl = gsap.timeline();
+    tl.to("#loader", {
+      opacity: 0,
+      duration: 1.5,
+      delay: 1,
+    });
+
+    tl.from(".nav-child", {
+      opacity: 0,
+      y: 10,
+      stagger: {
+        amount: 0.4,
+      },
+    });
+
+    tl.to(
+      ".wheel-img",
+      {
+        opacity: 1,
+        top: 0,
+      },
+      "a"
+    );
+
+    tl.to(".landing-wheel-overlay h1", {
+      y: 0,
+      stagger: {
+        amount: 0.2,
+      },
+    });
+
+    tl.from(
+      ".landing-footer-elem",
+      {
+        opacity: 0,
+        stagger: {
+          amount: 0.1,
+        },
+      },
+      "b"
+    );
+
+    tl.from(
+      ".landing-footer-line",
+      {
+        height: 0,
+      },
+      "b"
+    );
+
+    tl.from(".landing-para>h3", {
+      text: "",
+    });
+
+    tl.from(".landing-para>p", {
+      text: "",
+      onComplete: () => {
+        // Enable scroll
+        document.body.style.overflow = "initial";
+        document.documentElement.style.overflow = "initial";
+      },
+    });
+  };
+
+  const loadingManager = new THREE.LoadingManager(
+    // Loaded
+    () => {
+      loaderAnimation();
+    },
+    // Process
+    (itemUrl, itemsLoaded, itemsTotal) => {
+      if (checkLoadingStart) {
+        checkLoadingStart = false;
+        var video = document.querySelector("video");
+        var loader = gsap.timeline();
+
+        loader.to(
+          "#logo-warpper",
+          {
+            top: "50%",
+            duration: 1,
+            onComplete: function () {
+              gsap.to(video, {
+                opacity: 1,
+                duration: 0.2,
+              });
+              video.play();
+              video.playbackRate = 1.5;
+              gsap.to("#loading-content", {
+                opacity: 1,
+                duration: 0.2,
+              });
+            },
+          },
+          "a"
+        );
+      }
+
+      const progressRatio = itemsLoaded / itemsTotal;
+      gsap.to("#black-bar", {
+        width: progressRatio * 100 + "%",
+      });
+    }
+  );
+
+  const textureLoader = new THREE.TextureLoader(loadingManager);
+  const gltfLoader = new GLTFLoader(loadingManager);
+  const rgbeLoader = new RGBELoader(loadingManager);
 
   /**
    * DRACO Loader
@@ -590,11 +636,14 @@ const threeTeslaModelAnimation = () => {
   /**
    * HDR (RGBE) equirectangular
    */
+
+  // Car Environment map
   rgbeLoader.load("/environment/modelReflection.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.environment = environmentMap;
   });
 
+  // Background environment
   rgbeLoader.load("/environment/garageBG.hdr", (environmentMap) => {
     environmentMap.mapping = THREE.EquirectangularReflectionMapping;
     scene.background = environmentMap;
@@ -603,13 +652,15 @@ const threeTeslaModelAnimation = () => {
   scene.environmentIntensity = 1;
   scene.backgroundIntensity = 1;
 
-  const carColorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
+  // Custom material for models
+  const carColorMaterial = new THREE.MeshStandardMaterial({
+    color: "rgb(140,140,140)",
+  });
   const carMirrorMaterial = new THREE.MeshStandardMaterial({ color: "black" });
 
   const carRimsMaterial = new THREE.MeshStandardMaterial({ color: "white" });
 
-  const floor = new THREE.MeshStandardMaterial();
-
+  // Update the materials
   const updateMaterial = () => {
     scene.traverse((child) => {
       if (child.isMesh && child.material.isMeshStandardMaterial) {
@@ -652,10 +703,6 @@ const threeTeslaModelAnimation = () => {
     });
   };
 
-  // gui.addColor(object, "carColor").onChange(() => {
-  //   carColorMaterial.color.set(object.carColor);
-  // });
-
   // Loading the garage
   let garage = null;
   gltfLoader.load("/models/garage/garage.glb", (gltf) => {
@@ -693,10 +740,21 @@ const threeTeslaModelAnimation = () => {
   /**
    * Model Overlay
    */
+  // Displacement Texture
   const displacementTexture = textureLoader.load("/images/images.jpg");
+  // Video
   const video = document.querySelector(".overlay-video");
+  video.playbackRate = 2;
   const videoTexture = new THREE.VideoTexture(video);
 
+  // Make sure video always playing
+  document.addEventListener("scroll", () => {
+    if (video.paused) {
+      video.play();
+    }
+  });
+
+  // Overlay shaders
   const overlay = new THREE.Mesh(
     new THREE.PlaneGeometry(2, 2, 1, 1),
     new THREE.ShaderMaterial({
@@ -714,135 +772,148 @@ const threeTeslaModelAnimation = () => {
 
   scene.add(overlay);
 
+  // Animation Sound
   const animationSound = new Audio("/sounds/animation.mp3");
+
+  const modelS = () => {
+    const tl = gsap.timeline();
+    animationSound.play();
+    animationSound.playbackRate = 1.8;
+    tl.to(camera.position, {
+      x: 14,
+      y: 0,
+      z: 0,
+      ease: "expo.in",
+      duration: 2,
+      onStart: () => {
+        gsap.to(".model-transition", {
+          opacity: 0,
+          stagger: {
+            amount: 0.2,
+          },
+        });
+      },
+      onComplete: () => {
+        gsap.to(".models-name>h1", {
+          text: "MODEL S",
+          duration: 0.5,
+        });
+        gsap.to(".model-transition", {
+          opacity: 1,
+          stagger: {
+            amount: -0.2,
+          },
+        });
+        scene.add(models[0]);
+        scene.remove(models[1]);
+        scene.remove(models[2]);
+      },
+    });
+    tl.to(camera.position, {
+      x: 0,
+      y: 0,
+      z: 4,
+      ease: "expo.out",
+      duration: 2,
+    });
+  };
+
+  const roadster = () => {
+    const tl = gsap.timeline();
+    animationSound.play();
+    animationSound.playbackRate = 1.8;
+    tl.to(camera.position, {
+      x: 14,
+      y: 0,
+      z: 0,
+      ease: "expo.in",
+      duration: 2,
+      onStart: () => {
+        gsap.to(".model-transition", {
+          opacity: 0,
+          stagger: {
+            amount: 0.2,
+          },
+        });
+      },
+      onComplete: () => {
+        gsap.to(".models-name>h1", {
+          text: "ROADSTER",
+          duration: 0.5,
+        });
+        gsap.to(".model-transition", {
+          opacity: 1,
+          stagger: {
+            amount: -0.2,
+          },
+        });
+        scene.remove(models[0]);
+        scene.add(models[1]);
+        scene.remove(models[2]);
+        updateMaterial();
+      },
+    });
+    tl.to(camera.position, {
+      x: 0,
+      y: 0,
+      z: 4,
+      ease: "expo.out",
+      duration: 2,
+    });
+  };
+
+  const cybertruck = () => {
+    const tl = gsap.timeline();
+    animationSound.play();
+    animationSound.playbackRate = 1.8;
+    tl.to(camera.position, {
+      x: 14,
+      y: 0,
+      z: 0,
+      ease: "expo.in",
+      duration: 2,
+      onStart: () => {
+        gsap.to(".model-transition", {
+          opacity: 0,
+          stagger: {
+            amount: 0.2,
+          },
+        });
+      },
+      onComplete: () => {
+        gsap.to(".models-name>h1", {
+          text: "CYBERTRUCK",
+          duration: 0.5,
+        });
+        gsap.to(".model-transition", {
+          opacity: 1,
+          stagger: {
+            amount: -0.2,
+          },
+        });
+        scene.remove(models[0]);
+        scene.remove(models[1]);
+        scene.add(models[2]);
+        updateMaterial();
+      },
+    });
+    tl.to(camera.position, {
+      x: 0,
+      y: 0,
+      z: 4,
+      ease: "expo.out",
+      duration: 2,
+    });
+  };
 
   const select = document.querySelector("select");
   select.addEventListener("input", (event) => {
     if (select.value === "MODELS") {
-      const tl = gsap.timeline();
-      animationSound.play();
-      animationSound.playbackRate = 1.8;
-      tl.to(camera.position, {
-        x: 14,
-        y: 0,
-        z: 0,
-        ease: "expo.in",
-        duration: 2,
-        onStart: () => {
-          gsap.to(".model-transition", {
-            opacity: 0,
-            stagger: {
-              amount: 0.2,
-            },
-          });
-        },
-        onComplete: () => {
-          gsap.to(".models-name>h1", {
-            text: "MODEL S",
-            duration: 0.5,
-          });
-          gsap.to(".model-transition", {
-            opacity: 1,
-            stagger: {
-              amount: -0.2,
-            },
-          });
-          scene.add(models[0]);
-          scene.remove(models[1]);
-          scene.remove(models[2]);
-        },
-      });
-      tl.to(camera.position, {
-        x: 0,
-        y: 0,
-        z: 4,
-        ease: "expo.out",
-        duration: 2,
-      });
+      modelS();
     } else if (select.value === "ROADSTER") {
-      const tl = gsap.timeline();
-      animationSound.play();
-      animationSound.playbackRate = 1.8;
-      tl.to(camera.position, {
-        x: 14,
-        y: 0,
-        z: 0,
-        ease: "expo.in",
-        duration: 2,
-        onStart: () => {
-          gsap.to(".model-transition", {
-            opacity: 0,
-            stagger: {
-              amount: 0.2,
-            },
-          });
-        },
-        onComplete: () => {
-          gsap.to(".models-name>h1", {
-            text: "ROADSTER",
-            duration: 0.5,
-          });
-          gsap.to(".model-transition", {
-            opacity: 1,
-            stagger: {
-              amount: -0.2,
-            },
-          });
-          scene.remove(models[0]);
-          scene.add(models[1]);
-          scene.remove(models[2]);
-          updateMaterial();
-        },
-      });
-      tl.to(camera.position, {
-        x: 0,
-        y: 0,
-        z: 4,
-        ease: "expo.out",
-        duration: 2,
-      });
+      roadster();
     } else if (select.value === "CYBERTRUCK") {
-      const tl = gsap.timeline();
-      animationSound.play();
-      animationSound.playbackRate = 1.8;
-      tl.to(camera.position, {
-        x: 14,
-        y: 0,
-        z: 0,
-        ease: "expo.in",
-        duration: 2,
-        onStart: () => {
-          gsap.to(".model-transition", {
-            opacity: 0,
-            stagger: {
-              amount: 0.2,
-            },
-          });
-        },
-        onComplete: () => {
-          gsap.to(".models-name>h1", {
-            text: "CYBERTRUCK",
-            duration: 0.5,
-          });
-          gsap.to(".model-transition", {
-            opacity: 1,
-            stagger: {
-              amount: -0.2,
-            },
-          });
-          scene.remove(models[0]);
-          scene.remove(models[1]);
-          scene.add(models[2]);
-          updateMaterial();
-        },
-      });
-      tl.to(camera.position, {
-        x: 0,
-        y: 0,
-        z: 4,
-        ease: "expo.out",
-        duration: 2,
-      });
+      cybertruck();
     }
   });
 
@@ -873,47 +944,18 @@ const threeTeslaModelAnimation = () => {
 
   scene.add(camera);
 
-  /**
-   * Resize
-   */
-  window.addEventListener("resize", () => {
-    sizes.widht = window.innerWidth;
-    sizes.height = window.innerHeight;
-    camera.aspect = sizes.widht / sizes.height;
-    camera.position.z = 4.0;
-    camera.updateProjectionMatrix();
-    renderer.setSize(sizes.widht, sizes.height);
-    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
-  });
+  // 3d section entry animations
 
   const tl = gsap.timeline({
     scrollTrigger: {
       trigger: ".threejs-models",
       scroller: "body",
-      start: "top 0",
-      end: "top -300%",
+      start: "top 40%",
+      end: "top 0%",
       scrub: true,
       // markers: true,
-      pin: true,
+      // pin: true,
     },
-  });
-
-  const real = gsap.timeline({
-    scrollTrigger: {
-      trigger: ".threejs-models",
-      scroller: "body",
-      start: "top 0",
-      end: "top -300%",
-      // scrub: true,
-      // markers: true,
-    },
-  });
-
-  // clutterAnimation(".overlay-text1>h1");
-  // clutterAnimation(".overlay-text2>h1");
-
-  tl.to(".modelS", {
-    pointerEvents: "none",
   });
 
   tl.from(".overlay-text1>h1", {
@@ -935,131 +977,195 @@ const threeTeslaModelAnimation = () => {
     },
   });
 
-  real.from(".overlay-line", {
-    height: "0",
-  });
-
-  real.from(".overlay-scroller>i", {
+  let scrollStopFlag = true;
+  tl.from(".models-btn>h3", {
     opacity: 0,
-  });
+    y: 10,
+    stagger: 0.1,
+    onComplete: () => {
+      if (scrollStopFlag) {
+        lenis.stop();
 
-  real.from(".overlay-scroller>p", {
-    opacity: 0,
-  });
+        // Hide the scroll bar
+        document.body.style.overflow = "hidden";
+        const tl = gsap.timeline();
 
-  tl.to(".overlay-text1>h1", {
-    y: -40,
-    opacity: 0,
-    stagger: {
-      amount: 0.4,
-      from: "center",
+        tl.to(".overlay-line", {
+          height: "0vh",
+        });
+
+        tl.to(".overlay-scroller>i", {
+          opacity: 0,
+        });
+
+        tl.to(".overlay-scroller>p", {
+          opacity: 0,
+        });
+      }
     },
   });
 
-  tl.to(".overlay-text2>h1", {
-    y: -40,
-    opacity: 0,
-    stagger: {
-      amount: -0.4,
-      from: "center",
-    },
-  });
+  const scrollDown = document.querySelector(".model-scroll-down");
+  const viewModel = document.querySelector(".view-model");
 
-  tl.to(
-    overlay.material.uniforms.uOffset,
-    {
-      value: 1,
-      duration: 3,
-    },
-    "displacement"
-  );
+  // Scroll down event
+  const scrollDownAnimation = () => {
+    scrollDown.addEventListener("click", () => {
+      // prevent multiple clicks
+      scrollDown.style.pointerEvents = "none";
 
-  tl.to(
-    ".overlay-line",
-    {
-      height: "0",
-    },
-    "displacement"
-  );
+      lenis.start();
 
-  tl.to(
-    ".overlay-scroller > i",
-    {
-      opacity: "0",
-    },
-    "displacement"
-  );
+      // Show the scroll bar
+      document.body.style.overflow = "initial";
 
-  tl.to(
-    ".overlay-scroller > p",
-    {
-      opacity: "0",
-    },
-    "displacement"
-  );
+      const tl = gsap.timeline();
 
-  tl.from(".model-transition", {
-    duration: 0.3,
-  });
+      tl.to(".overlay-line", {
+        height: "12vh",
+      });
 
-  gsap.from(".modelS", {
-    pointerEvents: "none",
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".black-over",
-      start: "top -230%",
-      end: "top -230%",
-      scrub: 1,
-    },
-  });
+      tl.to(".overlay-scroller>i", {
+        opacity: 1,
+      });
 
-  gsap.from(".color-picker", {
-    pointerEvents: "none",
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".black-over",
-      start: "top -230%",
-      end: "top -230%",
-      scrub: 1,
-    },
-  });
+      tl.to(".overlay-scroller>p", {
+        opacity: 1,
+      });
+    });
+    const scrollTl = gsap.timeline({
+      scrollTrigger: {
+        scroller: "body",
+        trigger: ".overlay-line",
+        start: "top 30%",
+        end: "top 0",
+        // scrub: 1,
+      },
+    });
 
-  gsap.to(".models-name>h1", {
-    opacity: 1,
-    y: 40,
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".black-over",
-      start: "top -230%",
-      end: "top -230%",
-      scrub: 1,
-    },
-  });
+    scrollTl.to(".overlay-line", {
+      height: "0vh",
+    });
 
-  gsap.to(".model-transition", {
-    opacity: 1,
-    stagger: {
-      amount: 0.5,
-    },
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".black-over",
-      start: "top -230%",
-      end: "top -230%",
-      scrub: 1,
-    },
-  });
+    scrollTl.to(".overlay-scroller>i", {
+      opacity: 0,
+    });
 
-  gsap.from(".black-over", {
-    opacity: 0,
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".black-over",
-      start: "top -300%",
-      end: "top -400%",
-      scrub: 1,
-    },
-  });
+    scrollTl.to(".overlay-scroller>p", {
+      opacity: 0,
+      onComplete: () => {
+        // enable the click ag (prevent multiple clicks)
+        scrollDown.style.pointerEvents = "all";
+      },
+    });
+  };
+  scrollDownAnimation();
+
+  // View model event
+
+  const viewModelAnimation = () => {
+    viewModel.addEventListener("click", () => {
+      // enable the click ag (prevent multiple clicks)
+      viewModel.style.pointerEvents = "none";
+
+      scrollStopFlag = false;
+
+      // Show the scroll bar
+      document.body.style.overflow = "initial";
+
+      const viewTl = gsap.timeline();
+      viewTl.to(".overlay-text1>h1", {
+        y: -20,
+        opacity: 0,
+        duration: 0.2,
+      });
+
+      viewTl.to(".overlay-text2>h1", {
+        y: -20,
+        opacity: 0,
+        duration: 0.2,
+      });
+
+      viewTl.to(".models-btn>h3", {
+        opacity: 0,
+        y: -20,
+        stagger: 0.1,
+      });
+
+      viewTl.to(".overlay-line", {
+        height: "0vh",
+      });
+
+      viewTl.to(".overlay-scroller>i", {
+        opacity: 0,
+      });
+
+      viewTl.to(".overlay-scroller>p", {
+        opacity: 0,
+      });
+
+      viewTl.to(".overlay-content", {
+        display: "none",
+      });
+
+      viewTl.to(overlay.material.uniforms.uOffset, {
+        value: 1,
+        duration: 1.5,
+        onComplete: () => {
+          animationSound.play();
+          animationSound.playbackRate = 2.5;
+        },
+      });
+
+      viewTl.from(camera.position, {
+        x: -13,
+        duration: 1.6,
+      });
+
+      viewTl.to(
+        ".modelS",
+        {
+          pointerEvents: "all",
+        },
+        "pointerEvents"
+      );
+
+      viewTl.to(
+        ".color-picker",
+        {
+          pointerEvents: "all",
+        },
+        "pointerEvents"
+      );
+
+      viewTl.to(".models-name>h1", {
+        opacity: 1,
+        y: 40,
+      });
+
+      viewTl.to(".model-transition", {
+        opacity: 1,
+        stagger: {
+          amount: 0.2,
+        },
+        onComplete: () => {
+          lenis.start();
+        },
+      });
+
+      gsap.to(".black-over", {
+        opacity: 1,
+        scrollTrigger: {
+          scroller: "body",
+          trigger: ".black-over",
+          start: "top 0%",
+          end: "top -100%",
+          scrub: 1,
+        },
+      });
+    });
+  };
+  viewModelAnimation();
 
   /**
    * Lights
@@ -1069,30 +1175,6 @@ const threeTeslaModelAnimation = () => {
   const directionalLight = new THREE.DirectionalLight("#ffffff", 5);
   directionalLight.castShadow = true;
   scene.add(directionalLight);
-  object.LightColor = "#b4a26e";
-
-  // gui.addColor(object, "LightColor").onChange(() => {
-  //   scene.fog.color = new THREE.Color(object.LightColor);
-  // });
-
-  // gui
-  //   .add(directionalLight.position, "x")
-  //   .min(-30)
-  //   .max(30)
-  //   .step(0.001)
-  //   .name("directionalLight X");
-  // gui
-  //   .add(directionalLight.position, "y")
-  //   .min(-30)
-  //   .max(30)
-  //   .step(0.001)
-  //   .name("directionalLight Y");
-  // gui
-  //   .add(directionalLight.position, "z")
-  //   .min(-30)
-  //   .max(30)
-  //   .step(0.001)
-  //   .name("directionalLight Z");
 
   // Shadow
   directionalLight.shadow.mapSize.set(1024, 1024);
@@ -1102,10 +1184,6 @@ const threeTeslaModelAnimation = () => {
   directionalLight.shadow.camera.right = 3;
   directionalLight.shadow.camera.bottom = -3;
   directionalLight.shadow.camera.left = -3;
-  const directionalLightCameraHelper = new THREE.CameraHelper(
-    directionalLight.shadow.camera
-  );
-  // scene.add(directionalLightCameraHelper);
 
   /**
    * Renderer
@@ -1117,15 +1195,30 @@ const threeTeslaModelAnimation = () => {
     antialias: true,
   });
   renderer.setSize(sizes.widht, sizes.height);
-  renderer.setClearColor(object.renderColor);
+  renderer.setClearColor("#000000");
   renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
   renderer.shadowMap.enabled = true;
   renderer.shadowMap.type = THREE.PCFSoftShadowMap;
 
-  // gui.addColor(object, "renderColor").onChange(() => {
-  //   renderer.setClearColor(new THREE.Color(object.renderColor));
-  //   scene.fog.color.setHex(new THREE.Color(object.renderColor));
-  // });
+  let resizeTimeout;
+  window.addEventListener("resize", () => {
+    // Clear the previous timeout
+    clearTimeout(resizeTimeout);
+
+    // Set a new timeout
+    resizeTimeout = setTimeout(() => {
+      adjustLayout();
+    }, 250);
+  });
+
+  function adjustLayout() {
+    sizes.widht = window.innerWidth;
+    sizes.height = window.innerHeight;
+    camera.aspect = sizes.widht / sizes.height;
+    camera.updateProjectionMatrix();
+    renderer.setSize(sizes.widht, sizes.height);
+    renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
+  }
 
   /**
    * Controls
@@ -1199,6 +1292,7 @@ const threeTeslaModelAnimation = () => {
     canvas.style.cursor = "grab";
   });
 
+  // Model color switch animation
   const colorChangeAnimation = () => {
     const colorPickerElem = document.querySelectorAll(".color-picker-elem");
     const allColorPicker = document.querySelectorAll(
@@ -1356,13 +1450,13 @@ page3Animation();
 // page5Animation
 
 const page5Scroll = () => {
-  var page5 = document.querySelector("#page5")
-var upper = document.querySelector("#page5 #upper")
-var center = document.querySelector("#page5 #center")
-var centerContent = document.querySelector("#page5 #center .content")
-var lower = document.querySelector("#page5 #lower")
+  var page5 = document.querySelector("#page5");
+  var upper = document.querySelector("#page5 #upper");
+  var center = document.querySelector("#page5 #center");
+  var centerContent = document.querySelector("#page5 #center .content");
+  var lower = document.querySelector("#page5 #lower");
 
-var tl = gsap.timeline({
+  var tl = gsap.timeline({
     scrollTrigger: {
         trigger: "#page5",
         scroller: "body",
