@@ -1275,6 +1275,7 @@ nav > h1 {
   display: flex;
   justify-content: center;
   gap: 1vw;
+  margin-bottom: 12vw;
 }
 
 .models-btn > h3 {

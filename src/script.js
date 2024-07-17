@@ -988,19 +988,6 @@ const threeTeslaModelAnimation = () => {
 
         // Hide the scroll bar
         document.body.style.overflow = "hidden";
-        const tl = gsap.timeline();
-
-        tl.to(".overlay-line", {
-          height: "0vh",
-        });
-
-        tl.to(".overlay-scroller>i", {
-          opacity: 0,
-        });
-
-        tl.to(".overlay-scroller>p", {
-          opacity: 0,
-        });
       }
     },
   });
@@ -1021,44 +1008,13 @@ const threeTeslaModelAnimation = () => {
 
       const tl = gsap.timeline();
 
-      tl.to(".overlay-line", {
-        height: "12vh",
-      });
-
-      tl.to(".overlay-scroller>i", {
-        opacity: 1,
-      });
-
-      tl.to(".overlay-scroller>p", {
-        opacity: 1,
+      tl.to(window, {
+        duration: 1.5,
+        scrollTo: "#page3",
         onComplete: () => {
-          // enable the click ag (prevent multiple clicks)
           scrollDown.style.pointerEvents = "all";
         },
       });
-      tl.to(window, { duration: 2, scrollTo: "#page3" });
-    });
-
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        scroller: "body",
-        trigger: ".overlay-line",
-        start: "top 30%",
-        end: "top 0",
-        // scrub: 1,
-      },
-    });
-
-    scrollTl.to(".overlay-line", {
-      height: "0vh",
-    });
-
-    scrollTl.to(".overlay-scroller>i", {
-      opacity: 0,
-    });
-
-    scrollTl.to(".overlay-scroller>p", {
-      opacity: 0,
     });
   };
   scrollDownAnimation();
@@ -1092,18 +1048,6 @@ const threeTeslaModelAnimation = () => {
         opacity: 0,
         y: -20,
         stagger: 0.1,
-      });
-
-      viewTl.to(".overlay-line", {
-        height: "0vh",
-      });
-
-      viewTl.to(".overlay-scroller>i", {
-        opacity: 0,
-      });
-
-      viewTl.to(".overlay-scroller>p", {
-        opacity: 0,
       });
 
       viewTl.to(".overlay-content", {
