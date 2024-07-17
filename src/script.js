@@ -614,6 +614,8 @@ const threeTeslaModelAnimation = () => {
       const progressRatio = itemsLoaded / itemsTotal;
       gsap.to("#black-bar", {
         width: progressRatio * 100 + "%",
+        snap: { value: 1 },
+        ease: "linear",
       });
     }
   );
@@ -906,15 +908,66 @@ const threeTeslaModelAnimation = () => {
     });
   };
 
-  const select = document.querySelector("select");
-  select.addEventListener("input", (event) => {
-    if (select.value === "MODELS") {
-      modelS();
-    } else if (select.value === "ROADSTER") {
-      roadster();
-    } else if (select.value === "CYBERTRUCK") {
-      cybertruck();
+  // Car selector Animation
+  const carPicker = document.querySelector(".model-picker");
+  const allCarModels = document.querySelectorAll(".model-car-elem");
+
+  // Models click flag
+  let clickFlag = true;
+  carPicker.addEventListener("click", () => {
+    // Show all Cars options
+    if (clickFlag) {
+      gsap.to(".model-car-elem", {
+        opacity: 1,
+        stagger: -0.1,
+        onComplete: () => {
+          clickFlag = false;
+        },
+      });
+    } else {
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+        onComplete: () => {
+          clickFlag = true;
+        },
+      });
     }
+
+    // Remove if rotate the model
+    canvas.addEventListener("click", () => {
+      clickFlag = true;
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+    });
+  });
+
+  let carModelIndex = 0;
+  allCarModels.forEach((car, index) => {
+    car.addEventListener("click", () => {
+      if (index === 0 && carModelIndex !== 0) {
+        carModelIndex = 0;
+        modelS();
+      } else if (index === 1 && carModelIndex !== 1) {
+        carModelIndex = 1;
+        roadster();
+      } else if (index === 2 && carModelIndex !== 2) {
+        carModelIndex = 2;
+        cybertruck();
+      }
+
+      const tl = gsap.timeline();
+      clickFlag = true;
+      tl.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+      tl.to(".model-picker>h3", {
+        text: `${car.textContent}`,
+      });
+    });
   });
 
   /**
@@ -1251,6 +1304,29 @@ const threeTeslaModelAnimation = () => {
 
         allColorPicker[index].addEventListener("input", function () {
           const colorValue = allColorPicker[index].value;
+
+          if (index === 0) {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-icon", {
+                filter: "invert(1)",
+              });
+            } else {
+              gsap.to(".car-icon", {
+                filter: "invert(0)",
+              });
+            }
+          } else {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(0)",
+              });
+            } else {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(1)",
+              });
+            }
+          }
+
           if (index === 0) {
             carColorMaterial.color = new THREE.Color(colorValue);
             gsap.to(colorPickerElem[index], {

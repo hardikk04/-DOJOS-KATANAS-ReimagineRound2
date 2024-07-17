@@ -1381,25 +1381,56 @@ nav > h1 {
   gap: 1vw;
 }
 
-select {
+.model-change-box {
+  color: #ffffff;
   position: relative;
   height: 100%;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.383);
   font-family: title;
   /* padding: 0vw 0.5vw; */
-  color: #fff;
-  text-align: center;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  outline: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.model-change-box > option {
-  color: #ffffff;
-  /* text-align: center; */
+.model-car-elem {
+  flex-shrink: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: -150%;
   background-color: rgba(0, 0, 0, 0.383);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ffffff52;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.model-car-elem > h3 {
+  font-weight: 100;
+  font-size: 0.8vw;
+}
+
+.model-picker {
+  flex-shrink: 0;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: -150%;
+  background-color: rgba(0, 0, 0, 0.383);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #ffffff52;
+  cursor: pointer;
+}
+
+.model-picker > h3 {
+  font-weight: 100;
+  font-size: 0.8vw;
 }
 
 .color-picker {
@@ -1418,6 +1449,10 @@ select {
   height: 100%;
   width: 100%;
   object-fit: contain;
+}
+
+.car-tier-icon {
+  filter: invert(1);
 }
 
 .color-picker-elem:nth-child(1) > img {
