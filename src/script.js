@@ -741,7 +741,7 @@ const threeTeslaModelAnimation = () => {
    * Model Overlay
    */
   // Displacement Texture
-  const displacementTexture = textureLoader.load("/images/images.jpg");
+  const displacementTexture = textureLoader.load("/images/d2.jpg");
   // Video
   const video = document.querySelector(".overlay-video");
   video.playbackRate = 2;
