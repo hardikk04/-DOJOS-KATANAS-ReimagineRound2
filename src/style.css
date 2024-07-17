@@ -385,10 +385,10 @@ nav > h1 {
   gap: 10vh;
 }
 
-#menu-page-mobile #content>h1 {
+#menu-page-mobile #content > h1 {
   font-size: 4vh;
   font-family: tesla;
-  background: linear-gradient(to bottom, #EAEAEA, #909090);
+  background: linear-gradient(to bottom, #eaeaea, #909090);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1723,14 +1723,13 @@ select {
   cursor: pointer;
 }
 
-#page5 #upper
-{
-    width: 100%;
-    height: 50vh;
-    background-color: #fff;
-    position: absolute;
-    top: 0%;
-    overflow: hidden;
+#page5 #upper {
+  width: 100%;
+  height: 50vh;
+  background-color: #fff;
+  position: absolute;
+  top: 0%;
+  overflow: hidden;
 }
 
 #page5 #center {
@@ -1815,8 +1814,7 @@ select {
   font-weight: 900;
 }
 
-#page5 #lower-h1
-{
+#page5 #lower-h1 {
   font-size: 16vw;
   top: -5%;
   color: black;
@@ -2152,7 +2150,7 @@ select {
   margin-top: 0.5vh;
 }
 
-#page6-mobile #section-2 #swiper-section{
+#page6-mobile #section-2 #swiper-section {
   width: 310vw;
   height: 55vh;
   position: relative;
@@ -2165,7 +2163,11 @@ select {
   width: 33.3%;
   height: 90%;
   position: relative;
-  background: linear-gradient(135deg, rgba(125, 125, 125, 0.416), rgba(169, 169, 169, 0.323));
+  background: linear-gradient(
+    135deg,
+    rgba(125, 125, 125, 0.416),
+    rgba(169, 169, 169, 0.323)
+  );
   backdrop-filter: blur(0px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   padding: 2vh;
@@ -2424,11 +2426,21 @@ select {
 @media (min-width: 601px) and (max-width: 768px) {
 }
 @media (max-width: 600px) {
-  #menu-page, #landing-wheel, #page1 , #page2, #page3, #page6{
+  #menu-page,
+  #landing-wheel,
+  #page1,
+  #page2,
+  #page3,
+  #page6 {
     display: none;
   }
 
-  #landing-wheel-mobile, #page1-mobile , #page2-mobile, #page3-mobile, #solar-mobile, #page6-mobile {
+  #landing-wheel-mobile,
+  #page1-mobile,
+  #page2-mobile,
+  #page3-mobile,
+  #solar-mobile,
+  #page6-mobile {
     display: block;
   }
 

@@ -1031,8 +1031,14 @@ const threeTeslaModelAnimation = () => {
 
       tl.to(".overlay-scroller>p", {
         opacity: 1,
+        onComplete: () => {
+          // enable the click ag (prevent multiple clicks)
+          scrollDown.style.pointerEvents = "all";
+        },
       });
+      tl.to(window, { duration: 2, scrollTo: "#page3" });
     });
+
     const scrollTl = gsap.timeline({
       scrollTrigger: {
         scroller: "body",
@@ -1053,10 +1059,6 @@ const threeTeslaModelAnimation = () => {
 
     scrollTl.to(".overlay-scroller>p", {
       opacity: 0,
-      onComplete: () => {
-        // enable the click ag (prevent multiple clicks)
-        scrollDown.style.pointerEvents = "all";
-      },
     });
   };
   scrollDownAnimation();
@@ -1458,34 +1460,40 @@ const page5Scroll = () => {
 
   var tl = gsap.timeline({
     scrollTrigger: {
-        trigger: "#page5",
-        scroller: "body",
-        // markers: true,
-        start: "50% 50%",
-        end: "300% 50%",
-        scrub: true,
-        pin: true,
-    }
-    
-})
+      trigger: "#page5",
+      scroller: "body",
+      // markers: true,
+      start: "50% 50%",
+      end: "300% 50%",
+      scrub: true,
+      pin: true,
+    },
+  });
 
-tl
-.to(upper,{
-    top: "-50%",
-    ease: "power1.in",
-},'a')
-.to(lower,{
-    top: "100%",
-    ease: "power1.in",
-},'a')
-.from(centerContent,{
-    y: 800,
-    opacity: 0,
-    delay: -0.4,
-    ease: "power1.in"
-})
-}
-page5Scroll()
+  tl.to(
+    upper,
+    {
+      top: "-50%",
+      ease: "power1.in",
+    },
+    "a"
+  )
+    .to(
+      lower,
+      {
+        top: "100%",
+        ease: "power1.in",
+      },
+      "a"
+    )
+    .from(centerContent, {
+      y: 800,
+      opacity: 0,
+      delay: -0.4,
+      ease: "power1.in",
+    });
+};
+page5Scroll();
 
 // page6Animation
 const page6LeftBtnHover = () => {
