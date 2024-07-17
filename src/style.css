@@ -376,6 +376,7 @@ nav > h1 {
   /* padding: 5vh 4vh; */
   /* padding-top: 15vh; */
   color: #fff;
+  display: none;
 }
 
 #menu-page-mobile #content {
