@@ -366,6 +366,40 @@ nav > h1 {
   width: 75%;
 }
 
+#menu-page-mobile {
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  position: absolute;
+  z-index: 2;
+  top: 0%;
+  padding: 5vh 4vh;
+  padding-top: 15vh;
+  color: #fff;
+  display: none;
+}
+
+#menu-page-mobile #content {
+  display: flex;
+  flex-direction: column;
+  gap: 10vh;
+}
+
+#menu-page-mobile #content>h1 {
+  font-size: 4vh;
+  font-family: tesla;
+  background: linear-gradient(to bottom, #EAEAEA, #909090);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+}
+
+#menu-page-mobile #content h1 {
+  font-size: 3.5vh;
+  margin-bottom: 2vh;
+}
+
 .landing-para {
   position: relative;
   padding-top: 6vw;
@@ -1682,65 +1716,6 @@ select {
 
 /* Page5 start */
 
-/* #page5 {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-image: url(/images/page5.jpg);
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-
-#page5 #overlay {
-  width: 100%;
-  height: 100vh;
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.4);
-}
-
-#page5 #main {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#page5 #slide1 {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  z-index: 2;
-  color: #fff;
-}
-
-#page5 #slide1 h2 {
-  font-family: title;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  font-size: 5.5vw;
-  font-weight: 500;
-}
-
-#page5 #slide1 h2 span {
-  display: flex;
-  align-items: center;
-}
-
-#page5 #slide1 h2 span i {
-  font-size: 1.5vw;
-  margin-top: 0.7vw;
-  margin-right: 2vw;
-  margin-left: 2vw;
-  display: flex;
-  align-items: center;
-  font-weight: 500;
-} */
-
 #page5 {
   width: 100%;
   height: 100vh;
@@ -1748,12 +1723,14 @@ select {
   cursor: pointer;
 }
 
-#page5 #upper {
-  width: 100%;
-  height: 50vh;
-  background-color: #fff;
-  position: absolute;
-  top: 0%;
+#page5 #upper
+{
+    width: 100%;
+    height: 50vh;
+    background-color: #fff;
+    position: absolute;
+    top: 0%;
+    overflow: hidden;
 }
 
 #page5 #center {
@@ -1784,7 +1761,7 @@ select {
 }
 
 #page5 #upper-h1 {
-  font-size: 19vw;
+  font-size: 16vw;
   top: 95%;
   font-family: title;
 }
@@ -1838,8 +1815,9 @@ select {
   font-weight: 900;
 }
 
-#page5 #lower-h1 {
-  font-size: 19vw;
+#page5 #lower-h1
+{
+  font-size: 16vw;
   top: -5%;
   color: black;
   font-family: title;
@@ -2111,7 +2089,7 @@ select {
   background-image: url(./images/page6_main.jpg);
   background-size: cover;
   background-position: 57%;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 
@@ -2174,13 +2152,40 @@ select {
   margin-top: 0.5vh;
 }
 
-#page6-mobile #section-2 #swiper-section {
-  width: 100%;
+#page6-mobile #section-2 #swiper-section{
+  width: 310vw;
   height: 55vh;
-  background-color: #ff6a6a;
-  position: absolute;
-  z-index: 5;
-  top: 45%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5vh;
+}
+
+#page6-mobile #section-2 #swiper-section .card {
+  width: 33.3%;
+  height: 90%;
+  position: relative;
+  background: linear-gradient(135deg, rgba(125, 125, 125, 0.416), rgba(169, 169, 169, 0.323));
+  backdrop-filter: blur(0px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  padding: 2vh;
+}
+
+#page6-mobile #section-2 #swiper-section .card #image {
+  width: 100%;
+  height: 80%;
+}
+
+#page6-mobile #section-2 #swiper-section .card #image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 52%;
+}
+
+#page6-mobile #section-2 #swiper-section .card h5 {
+  font-size: 3vh;
+  line-height: 3vh;
 }
 
 /* Page6 mobile end */
@@ -2419,22 +2424,11 @@ select {
 @media (min-width: 601px) and (max-width: 768px) {
 }
 @media (max-width: 600px) {
-  #landing-wheel,
-  #page1,
-  #page2,
-  #page3,
-  #page5,
-  #page6 {
+  #menu-page, #landing-wheel, #page1 , #page2, #page3, #page6{
     display: none;
   }
 
-  #landing-wheel-mobile,
-  #page1-mobile,
-  #page2-mobile,
-  #page3-mobile,
-  #solar-mobile,
-  #page5-mobile,
-  #page6-mobile {
+  #landing-wheel-mobile, #page1-mobile , #page2-mobile, #page3-mobile, #solar-mobile, #page6-mobile {
     display: block;
   }
 
