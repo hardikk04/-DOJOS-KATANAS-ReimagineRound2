@@ -1236,11 +1236,12 @@ nav > h1 {
 .models-name > h1 {
   position: absolute;
   top: 0%;
-  left: 5%;
+  left: 3%;
   color: #cccdcd;
   font-family: title;
   z-index: 1;
-  font-size: 2vw;
+  font-size: 3vw;
+  mix-blend-mode: difference;
   letter-spacing: 2px;
   opacity: 0;
 }
