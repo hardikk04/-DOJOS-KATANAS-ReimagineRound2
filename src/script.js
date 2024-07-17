@@ -1228,7 +1228,7 @@ const threeTeslaModelAnimation = () => {
   };
   colorChangeAnimation();
 };
-threeTeslaModelAnimation();
+// threeTeslaModelAnimation();
 
 // page3Animation
 const page3Animation = () => {
@@ -1355,37 +1355,6 @@ const page3Animation = () => {
 page3Animation();
 // page5Animation
 
-const page5MarqueeAnimation = () => {
-  // Initial animation setup
-  gsap.to("#slide1 h2", {
-    transform: "translateX(-100%)",
-    duration: 10,
-    repeat: -1,
-    ease: "linear",
-  });
-
-  window.addEventListener("wheel", function (dets) {
-    if (dets.deltaY > 0) {
-      // Animation when scrolling up
-      gsap.to("#slide1 h2", {
-        transform: "translateX(-100%)",
-        duration: 10,
-        repeat: -1,
-        ease: "linear",
-      });
-    } else {
-      // Animation when scrolling down
-      gsap.to("#slide1 h2", {
-        transform: "translateX(0%)",
-        duration: 10,
-        repeat: -1,
-        ease: "linear",
-      });
-    }
-  });
-};
-// page5MarqueeAnimation();
-
 const page5Scroll = () => {
   var page5 = document.querySelector("#page5")
 var upper = document.querySelector("#page5 #upper")
@@ -1399,7 +1368,7 @@ var tl = gsap.timeline({
         scroller: "body",
         // markers: true,
         start: "50% 50%",
-        end: "175% 50%",
+        end: "300% 50%",
         scrub: true,
         pin: true,
     }
@@ -1409,11 +1378,11 @@ var tl = gsap.timeline({
 tl
 .to(upper,{
     top: "-50%",
-    ease: "power1.in"
+    ease: "power1.in",
 },'a')
 .to(lower,{
     top: "100%",
-    ease: "power1.in"
+    ease: "power1.in",
 },'a')
 .from(centerContent,{
     y: 800,
@@ -1421,7 +1390,6 @@ tl
     delay: -0.4,
     ease: "power1.in"
 })
-
 }
 page5Scroll()
 
