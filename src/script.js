@@ -1322,7 +1322,7 @@ const threeTeslaModelAnimation = () => {
   };
   colorChangeAnimation();
 };
-// threeTeslaModelAnimation();
+threeTeslaModelAnimation();
 
 // page3Animation
 const page3Animation = () => {

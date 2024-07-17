@@ -368,13 +368,13 @@ nav > h1 {
 
 #menu-page-mobile {
   width: 100vw;
-  /* height: 100vh; */
+  height: 100vh;
   background-color: #000000;
   position: absolute;
-  /* z-index: 2; */
+  z-index: 2;
   top: 0%;
-  /* padding: 5vh 4vh; */
-  /* padding-top: 15vh; */
+  padding: 5vh 4vh;
+  padding-top: 15vh;
   color: #fff;
   display: none;
 }
@@ -1761,7 +1761,7 @@ select {
 }
 
 #page5 #upper-h1 {
-  font-size: 19vw;
+  font-size: 16vw;
   top: 95%;
   font-family: title;
 }
@@ -2428,7 +2428,7 @@ select {
     display: none;
   }
 
-  #menu-page-mobile, #landing-wheel-mobile, #page1-mobile , #page2-mobile, #page3-mobile, #solar-mobile, #page6-mobile {
+  #landing-wheel-mobile, #page1-mobile , #page2-mobile, #page3-mobile, #solar-mobile, #page6-mobile {
     display: block;
   }
 
