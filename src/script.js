@@ -13,14 +13,23 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import overlayVertexShader from "./shaders/overlay/vertex.glsl";
 import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
-import Swiper from "swiper";
-import "swiper/css";
+import Swiper from 'swiper/bundle';
+import 'swiper/css/bundle';
+
+var swiper = new Swiper("#page1-mobile .mySwiper", {
+  loop:true,
+  navigation: {
+    nextEl: "#page1-mobile .swiper-button-next",
+    prevEl: "#page1-mobile .swiper-button-prev",
+  },
+});
+
 
 // Removing the scroll unitl site loaded
-(() => {
-  document.body.style.overflow = "hidden";
-  document.documentElement.style.overflow = "hidden";
-})();
+// (() => {
+//   document.body.style.overflow = "hidden";
+//   document.documentElement.style.overflow = "hidden";
+// })();
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -493,7 +502,36 @@ const page2Animation = () => {
   );
 };
 page2Animation();
+const Page2mobile = ()=>{
+  var pg2mtl = gsap.timeline({
+    scrollTrigger:{
+      trigger:"#page2-mobile",
+      scroller:"body",
+      start:"top top",
+      end:"top -100%",
+      scrub:1,
+      pin:true,
+      // markers:true
+    }
+  })
+  pg2mtl
+  .to("#container-1",{
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"a")
+  .to("#container-2",{
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"a")
+  .to("#container-2",{
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+  },"b")
+  .to("#container-3",{
+    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+  },"b")
 
+}
+if (window.matchMedia("(max-width:600px)").matches) {
+  Page2mobile()
+}
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
   /**
@@ -1268,7 +1306,7 @@ const threeTeslaModelAnimation = () => {
   };
   colorChangeAnimation();
 };
-threeTeslaModelAnimation();
+// threeTeslaModelAnimation();
 
 // page3Animation
 const page3Animation = () => {
@@ -1347,12 +1385,12 @@ const page3Animation = () => {
       duration: 1.5,
     });
 
-  var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper("#page3 .mySwiper", {
     slidesPerView: 3.2,
     freeMode: true,
   });
 
-  gsap.from(".swiper-slide", {
+  gsap.from("#page3 .swiper-slide", {
     y: 400,
     stagger: {
       amount: 0.8,
@@ -1367,7 +1405,7 @@ const page3Animation = () => {
     },
   });
 
-  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+  document.querySelectorAll("#page3 .swiper-slide").forEach(function (slide) {
     slide.addEventListener("mousemove", function () {
       gsap.to("#solar-cursor", {
         scale: 1,
@@ -1379,7 +1417,7 @@ const page3Animation = () => {
       });
     });
   });
-  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+  document.querySelectorAll("#page3 .swiper-slide").forEach(function (slide) {
     slide.addEventListener("mouseleave", function () {
       gsap.to("#solar-cursor", {
         scale: 0,
@@ -1393,6 +1431,61 @@ const page3Animation = () => {
   });
 };
 page3Animation();
+const page3mobile = ()=>{
+  var pg3mtl = gsap.timeline({
+    scrollTrigger:{
+      trigger:"#page3-mobile",
+      scroller:"body",
+      start:"top top",
+      end:"top -120%",
+      scrub:1,
+      pin:true,
+      // markers:true
+    }
+  })
+  pg3mtl
+  .to("#page3-mobile #circle-1",{
+    top:"50%",
+    duration:.8
+  },"a")
+  .to("#page3-mobile #circle-2",{
+    top:"50%",
+    duration:.8
+  },"a")
+  .to("#page3-mobile h5",{
+    opacity:0,
+  })
+  .to("#page3-mobile #circle-1",{
+    scale:10,
+    duration:.8
+  })
+  .to("#page3-mobile #circle-1",{
+    opacity:0,
+    duration:0
+  },"b")
+  .to("#page3-mobile #content #energy",{
+    opacity:1,
+    duration:0
+  },"b")
+  .to("#page3-mobile #content #energy",{
+    transform:"translateX(-78%)",
+    duration:.8
+  })
+}
+if(window.matchMedia("(max-width:600px)").matches){
+  page3mobile()
+}
+const solarmobile = ()=>{
+  var swiper = new Swiper("#solar-mobile .mySwiper", {
+    slidesPerView: 1,
+    spaceBetween:0,
+    centeredSlides: true,
+    freeMode: true,
+  });
+}
+if(window.matchMedia("(max-width:600px)").matches){
+  solarmobile()
+}
 // page5Animation
 
 const page5Scroll = () => {
@@ -1549,39 +1642,40 @@ const page7Animation = () => {
       },
       "a"
     );
+    window.addEventListener("mousemove", function (dets) {
+      gsap.to("#dis-cursor , #solar-cursor", {
+        top: dets.clientY,
+        left: dets.clientX,
+      });
+    });
+    document.querySelectorAll(".ig7").forEach(function (ig) {
+      ig.addEventListener("mousemove", function () {
+        gsap.to("#dis-cursor", {
+          scale: 1,
+          duration: 0.5,
+        });
+        gsap.to(ig.querySelector(".overlay7"), {
+          opacity: 0,
+          duration: 0.5,
+        });
+      });
+    });
+    document.querySelectorAll(".ig7").forEach(function (ig) {
+      ig.addEventListener("mouseleave", function () {
+        gsap.to("#dis-cursor", {
+          scale: 0,
+          duration: 0.5,
+        });
+        gsap.to(ig.querySelector(".overlay7"), {
+          opacity: 1,
+          duration: 0.5,
+        });
+      });
+    });
 };
 page7Animation();
 
-window.addEventListener("mousemove", function (dets) {
-  gsap.to("#dis-cursor , #solar-cursor", {
-    top: dets.clientY,
-    left: dets.clientX,
-  });
-});
-document.querySelectorAll(".ig7").forEach(function (ig) {
-  ig.addEventListener("mousemove", function () {
-    gsap.to("#dis-cursor", {
-      scale: 1,
-      duration: 0.5,
-    });
-    gsap.to(ig.querySelector(".overlay7"), {
-      opacity: 0,
-      duration: 0.5,
-    });
-  });
-});
-document.querySelectorAll(".ig7").forEach(function (ig) {
-  ig.addEventListener("mouseleave", function () {
-    gsap.to("#dis-cursor", {
-      scale: 0,
-      duration: 0.5,
-    });
-    gsap.to(ig.querySelector(".overlay7"), {
-      opacity: 1,
-      duration: 0.5,
-    });
-  });
-});
+
 // textEffect animation
 // can be used by giving class .text-effect to parent ,
 // which has two childern

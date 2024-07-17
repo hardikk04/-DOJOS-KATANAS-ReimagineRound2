@@ -97,6 +97,7 @@ body::-webkit-scrollbar-thumb:active {
   overflow: hidden;
   display: block;
   pointer-events: none;
+  display: none;
 }
 #logo-warpper {
   position: absolute;
@@ -789,18 +790,94 @@ nav > h1 {
 /* Page1 mobile start */
 
 #page1-mobile {
-  width: 400vw;
+  width: 100vw;
   height: 80vh;
   display: none;
-  background-color: #121212;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+}
+#page1-mobile .swiper {
   position: relative;
-  /* overflow: hidden; */
-  display: none;
+  width: 100%;
+  height: 100%;
 }
 
+#page1-mobile .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+#page1-mobile .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: left;
+}
+#page1-mobile .swiper-slide video{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#page1-mobile .swiper-slide .overlay-pg1{
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#page1-mobile .swiper-slide .overlay-pg1 h1{
+  font-family: title;
+  color: #fff;
+  font-size: 10vw;
+  margin-top: 80%;
+}
+#page1-mobile .sl1 .overlay-pg1 #txt-pg1{
+  padding: 1vw;
+  background-color: #ffffffc0;
+  width: 80%;
+  margin-top: 30vw;
+  font-family: boldfont;
+  text-transform: uppercase;
+  border-radius: 5px;
+  font-size: 5vw;
+}
+#page1-mobile .sl1 .overlay-pg1 h3{
+  color: #fff;
+  font-size: 5vw;
+  font-weight: 500;
+  font-family: mediumfont;
+  line-height: 1.2;
+  margin-top: 3vw;
+}
+#page1-mobile #swiper-btn1{
+  height: 15%;
+  width: 40%;
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0);
+  z-index: 2;
+}
+#swiper-btn1 .swiper-icon{
+  height: 12vw;
+  width: 12vw;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 5vw;
+}
+
+#page1-mobile .swiper-button-next::after,#page1-mobile .swiper-button-prev::after{
+  display: none;
+}
 /* Page1 mobile end */
 
 /* Page2 start */
@@ -1183,6 +1260,9 @@ nav > h1 {
   align-items: center;
   justify-content: space-evenly;
 }
+#page2-mobile #container-2  #specs{
+  background-color: transparent;
+}
 
 #page2-mobile #specs .spec {
   display: flex;
@@ -1204,13 +1284,14 @@ nav > h1 {
 
 #page2-mobile #main-container #container-1 {
   background-image: url(/images/page2_1_mobile.png);
-  z-index: 2;
+  clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
 }
 
 #page2-mobile #main-container #container-2 {
   background-image: url(/images/page2_2_mobile.png);
-  z-index: 3;
-  background-position: 73%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
@@ -1218,7 +1299,6 @@ nav > h1 {
   background-image: url(/images/page2_3_mobile.png);
   background-position: 50%;
   background-size: 200%;
-  z-index: 4;
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
@@ -1231,6 +1311,7 @@ nav > h1 {
   height: 100vh;
   width: 100%;
   background-color: #fff;
+  display: none;
 }
 
 .models-name > h1 {
@@ -1610,7 +1691,6 @@ select {
   height: 100vh;
   background-color: rgb(0, 0, 0);
   color: #fff;
-  padding-top: 7vh;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1618,6 +1698,8 @@ select {
 }
 
 #page3-mobile h3 {
+  position: relative;
+  z-index: 6;
   font-size: 4vh;
   line-height: 4vh;
   text-align: center;
@@ -1625,15 +1707,16 @@ select {
 
 #page3-mobile #content {
   width: 100%;
-  height: 85vh;
+  height: 100vh;
   position: relative;
+  padding-top: 7vh;
 }
 
 #page3-mobile #content #circle-1 {
   width: 25vh;
   height: 25vh;
   border-radius: 50%;
-  z-index: 3;
+  z-index: 4;
   background-color: #31a93e;
   position: absolute;
   top: 40%;
@@ -1666,19 +1749,21 @@ select {
 }
 
 #page3-mobile #content #energy {
-  width: 360vw;
+  width: 500%;
   height: 100%;
-  background: linear-gradient(to right, #31a93e 50%, #b2febb);
+  background: linear-gradient(to right, #31a93e 50%, #aafeb4);
   position: absolute;
+  top: 0;
   z-index: 5;
   display: flex;
   align-items: center;
   justify-content: right;
-  display: none;
+  opacity: 0;
+  padding-right: 6vw;
 }
 
 #page3-mobile #content #energy h1 {
-  font-size: 25vh;
+  font-size: 32vh;
 }
 
 /* Page3 mobile end */
@@ -1687,7 +1772,7 @@ select {
 
 #solar-mobile {
   width: 100%;
-  height: 80vh;
+  min-height: 80vh;
   background-color: #fff;
   color: #000;
   display: flex;
@@ -1707,10 +1792,28 @@ select {
 }
 
 #solar-mobile #container {
-  width: 200vh;
-  flex-grow: 1;
-  background-color: aqua;
+  width: 100vw;
+  height: 70vh;
   margin-top: 5vh;
+}
+#solar-mobile #container .swiper {
+  width: 100%;
+  height: 100%;
+}
+
+#solar-mobile #container .swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#solar-mobile #container .swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Solar mobile end */
@@ -2072,7 +2175,6 @@ select {
 }
 
 #page6-mobile #section-1 h5 {
-  line-height: 3vh;
   color: #000;
 }
 
@@ -2457,6 +2559,57 @@ select {
   h6 {
     font-family: mediumFont;
     font-weight: 500;
-    font-size: 2.5vh;
+    font-size: 2vh;
   }
+  #page7 #discovery {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 2vw;
+}
+#page7 #discovery #dis-text {
+  align-items: center;
+}
+#discovery #dis-text #container7 h1 {
+  font-size: 70vw;
+}
+
+#footer {
+  position: relative;
+  min-height: 50vh;
+  width: 100%;
+  background-color: black;
+}
+#footer-pt1 {
+  width: 100%;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content:start;
+  padding-left: 3vw;
+}
+#footer-pt1 .foottxt-wrap {
+  height: 7vw;
+  overflow: hidden;
+  cursor: pointer;
+  margin-bottom: 4vw;
+}
+#footer-pt1 h4 {
+  font-family: regularfont;
+  font-size: 7vw;
+  font-weight: 500;
+  white-space: nowrap;
+  color: #fff;
+  line-height: 1;
+}
+#footer #line-ft {
+  background-color: #fff;
+  width: 96%;
+  height: 1px;
+  margin-top: 13vw;
+}
 }
