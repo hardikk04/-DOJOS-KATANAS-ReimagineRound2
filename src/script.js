@@ -16,20 +16,20 @@ import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
 
-var swiper = new Swiper("#page1-mobile .mySwiper", {
-  loop:true,
+var swiper = new Swiper(".mySwiper", {
+  loop: true,
   navigation: {
-    nextEl: "#page1-mobile .swiper-button-next",
-    prevEl: "#page1-mobile .swiper-button-prev",
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
   },
 });
 
 
 // Removing the scroll unitl site loaded
-// (() => {
-//   document.body.style.overflow = "hidden";
-//   document.documentElement.style.overflow = "hidden";
-// })();
+(() => {
+  document.body.style.overflow = "hidden";
+  document.documentElement.style.overflow = "hidden";
+})();
 
 // Scroll Trigger
 gsap.registerPlugin(ScrollTrigger, TextPlugin, ScrollToPlugin);
@@ -75,7 +75,7 @@ document.addEventListener("keydown", preventDefaultForScrollKeys);
 // Lenis js
 const lenis = new Lenis();
 const lenisJs = () => {
-  lenis.on("scroll", (e) => {});
+  lenis.on("scroll", (e) => { });
 
   lenis.on("scroll", ScrollTrigger.update);
 
@@ -136,13 +136,10 @@ magneticEffect();
 //menu animation
 const menuAnimation = () => {
   let rotationAngle = 0;
-
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0;
     //makeing wheel to initial position
-    document.querySelector(
-      "#wheel"
-    ).style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
+    document.querySelector( "#wheel").style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     document.querySelector(".mtxt1").style.opacity = 1;
     //makeing manuPage visible
     var otl = gsap.timeline();
@@ -159,7 +156,8 @@ const menuAnimation = () => {
       .to("#cl-line1 , #cl-line2", {
         height: "100%",
         duration: 0.4,
-      });
+      })
+      
   });
 
   document.querySelector(".menu-close").addEventListener("click", function () {
@@ -216,7 +214,7 @@ const menuAnimation = () => {
       rotate: rotationAngle,
       scale: 1.2,
       ease: "linear",
-      duration: 0.5,
+      duration: 0.2,
     });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
@@ -236,6 +234,26 @@ const menuAnimation = () => {
   });
 };
 menuAnimation();
+
+const menuMobile = () => {
+  var mmtl = gsap.timeline({ paused: true })
+  mmtl
+    .to("#menu-page-mobile", {
+      clipPath: `polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)`
+    })
+    .from("#menu-page-mobile #headings h1", {
+      y: "100%"
+    })
+  document.querySelector("#menu-btn").addEventListener("click", function () {
+    mmtl.play()
+  })
+  document.querySelector("#m-close").addEventListener("click", function () {
+    mmtl.reverse()
+  })
+}
+if (window.matchMedia("(max-width:600px)").matches) {
+  menuMobile()
+}
 
 // Landing wheel animation
 const landingWheelAnimation = () => {
@@ -502,31 +520,32 @@ const page2Animation = () => {
   );
 };
 page2Animation();
-const Page2mobile = ()=>{
+
+const Page2mobile = () => {
   var pg2mtl = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#page2-mobile",
-      scroller:"body",
-      start:"top top",
-      end:"top -100%",
-      scrub:1,
-      pin:true,
+    scrollTrigger: {
+      trigger: "#page2-mobile",
+      scroller: "body",
+      start: "top top",
+      end: "top -100%",
+      scrub: 1,
+      pin: true,
       // markers:true
     }
   })
   pg2mtl
-  .to("#container-1",{
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"a")
-  .to("#container-2",{
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"a")
-  .to("#container-2",{
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-  },"b")
-  .to("#container-3",{
-    clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-  },"b")
+    .to("#container-1", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    }, "a")
+    .to("#container-2", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    }, "a")
+    .to("#container-2", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    }, "b")
+    .to("#container-3", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    }, "b")
 
 }
 if (window.matchMedia("(max-width:600px)").matches) {
@@ -1306,7 +1325,7 @@ const threeTeslaModelAnimation = () => {
   };
   colorChangeAnimation();
 };
-// threeTeslaModelAnimation();
+threeTeslaModelAnimation();
 
 // page3Animation
 const page3Animation = () => {
@@ -1431,59 +1450,59 @@ const page3Animation = () => {
   });
 };
 page3Animation();
-const page3mobile = ()=>{
+const page3mobile = () => {
   var pg3mtl = gsap.timeline({
-    scrollTrigger:{
-      trigger:"#page3-mobile",
-      scroller:"body",
-      start:"top top",
-      end:"top -120%",
-      scrub:1,
-      pin:true,
+    scrollTrigger: {
+      trigger: "#page3-mobile",
+      scroller: "body",
+      start: "top top",
+      end: "top -120%",
+      scrub: 1,
+      pin: true,
       // markers:true
     }
   })
   pg3mtl
-  .to("#page3-mobile #circle-1",{
-    top:"50%",
-    duration:.8
-  },"a")
-  .to("#page3-mobile #circle-2",{
-    top:"50%",
-    duration:.8
-  },"a")
-  .to("#page3-mobile h5",{
-    opacity:0,
-  })
-  .to("#page3-mobile #circle-1",{
-    scale:10,
-    duration:.8
-  })
-  .to("#page3-mobile #circle-1",{
-    opacity:0,
-    duration:0
-  },"b")
-  .to("#page3-mobile #content #energy",{
-    opacity:1,
-    duration:0
-  },"b")
-  .to("#page3-mobile #content #energy",{
-    transform:"translateX(-78%)",
-    duration:.8
-  })
+    .to("#page3-mobile #circle-1", {
+      top: "50%",
+      duration: .8
+    }, "a")
+    .to("#page3-mobile #circle-2", {
+      top: "50%",
+      duration: .8
+    }, "a")
+    .to("#page3-mobile h5", {
+      opacity: 0,
+    })
+    .to("#page3-mobile #circle-1", {
+      scale: 10,
+      duration: 1
+    })
+    .to("#page3-mobile #circle-1,#page3-mobile #circle-2", {
+      opacity: 0,
+      duration: 0
+    }, "b")
+    .to("#page3-mobile #content #energy", {
+      opacity: 1,
+      duration: 0
+    }, "b")
+    .to("#page3-mobile #content #energy", {
+      transform: "translateX(-78%)",
+      duration: 2
+    })
 }
-if(window.matchMedia("(max-width:600px)").matches){
+if (window.matchMedia("(max-width:600px)").matches) {
   page3mobile()
 }
-const solarmobile = ()=>{
+const solarmobile = () => {
   var swiper = new Swiper("#solar-mobile .mySwiper", {
     slidesPerView: 1,
-    spaceBetween:0,
+    spaceBetween: 0,
     centeredSlides: true,
     freeMode: true,
   });
 }
-if(window.matchMedia("(max-width:600px)").matches){
+if (window.matchMedia("(max-width:600px)").matches) {
   solarmobile()
 }
 // page5Animation
@@ -1642,36 +1661,36 @@ const page7Animation = () => {
       },
       "a"
     );
-    window.addEventListener("mousemove", function (dets) {
-      gsap.to("#dis-cursor , #solar-cursor", {
-        top: dets.clientY,
-        left: dets.clientX,
+  window.addEventListener("mousemove", function (dets) {
+    gsap.to("#dis-cursor , #solar-cursor", {
+      top: dets.clientY,
+      left: dets.clientX,
+    });
+  });
+  document.querySelectorAll(".ig7").forEach(function (ig) {
+    ig.addEventListener("mousemove", function () {
+      gsap.to("#dis-cursor", {
+        scale: 1,
+        duration: 0.5,
+      });
+      gsap.to(ig.querySelector(".overlay7"), {
+        opacity: 0,
+        duration: 0.5,
       });
     });
-    document.querySelectorAll(".ig7").forEach(function (ig) {
-      ig.addEventListener("mousemove", function () {
-        gsap.to("#dis-cursor", {
-          scale: 1,
-          duration: 0.5,
-        });
-        gsap.to(ig.querySelector(".overlay7"), {
-          opacity: 0,
-          duration: 0.5,
-        });
+  });
+  document.querySelectorAll(".ig7").forEach(function (ig) {
+    ig.addEventListener("mouseleave", function () {
+      gsap.to("#dis-cursor", {
+        scale: 0,
+        duration: 0.5,
+      });
+      gsap.to(ig.querySelector(".overlay7"), {
+        opacity: 1,
+        duration: 0.5,
       });
     });
-    document.querySelectorAll(".ig7").forEach(function (ig) {
-      ig.addEventListener("mouseleave", function () {
-        gsap.to("#dis-cursor", {
-          scale: 0,
-          duration: 0.5,
-        });
-        gsap.to(ig.querySelector(".overlay7"), {
-          opacity: 1,
-          duration: 0.5,
-        });
-      });
-    });
+  });
 };
 page7Animation();
 
@@ -1797,4 +1816,6 @@ const textAnimation = () => {
       duration: 2,
     });
 };
-textAnimation();
+if (!window.matchMedia("(max-width:600px)").matches) {
+  textAnimation();
+}
