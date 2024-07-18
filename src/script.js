@@ -251,7 +251,7 @@ const menuMobile = () => {
     mmtl.reverse()
   })
 }
-if (window.matchMedia("(max-width:600px)").matches) {
+if (window.matchMedia("(max-width:768px)").matches) {
   menuMobile()
 }
 
@@ -548,7 +548,7 @@ const Page2mobile = () => {
     }, "b")
 
 }
-if (window.matchMedia("(max-width:600px)").matches) {
+if (window.matchMedia("(max-width:768px)").matches) {
   Page2mobile()
 }
 // Three tesla model animation
@@ -1491,7 +1491,7 @@ const page3mobile = () => {
       duration: 2
     })
 }
-if (window.matchMedia("(max-width:600px)").matches) {
+if (window.matchMedia("(max-width:768px)").matches) {
   page3mobile()
 }
 const solarmobile = () => {
@@ -1502,7 +1502,7 @@ const solarmobile = () => {
     freeMode: true,
   });
 }
-if (window.matchMedia("(max-width:600px)").matches) {
+if (window.matchMedia("(max-width:768px)").matches) {
   solarmobile()
 }
 // page5Animation
@@ -1816,6 +1816,6 @@ const textAnimation = () => {
       duration: 2,
     });
 };
-if (!window.matchMedia("(max-width:600px)").matches) {
+if (!window.matchMedia("(max-width:768px)").matches) {
   textAnimation();
 }
