@@ -1631,7 +1631,6 @@ const page5Hover = () => {
 
 page5Hover();
 
-
 // page6Animation
 const page6ScrollAnimation = () => {
   var tl6 = gsap.timeline({
