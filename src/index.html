@@ -137,15 +137,15 @@
     </div>
     <div id="landing-wheel-mobile">
       <div id="nav">
-        <h1>TESLA</h1>
-        <div id="menu-btn"><i class="ri-menu-line"></i></div>
+        <h1 class="mobile-nav-div">TESLA</h1>
+        <div class="mobile-nav-div" id="menu-btn"><i class="ri-menu-line"></i></div>
       </div>
       <div id="content">
         <div id="heading">
-          <div id="head-1">
+          <div id="head-1" class="overflow">
             <h1>THE FUTURE IS</h1>
           </div>
-          <div id="head-2">
+          <div id="head-2" class="overflow">
             <h1>SUSTAINABLE ENERGY</h1>
           </div>
         </div>
@@ -246,15 +246,15 @@
       <div class="page2-imgs">
         <div class="page2-img1">
           <img src="/images/page2_1.png" alt="" />
-          <h1>model s</h1>
+          <h1>model <span class="model-diff">s</span></h1>
         </div>
         <div class="page2-img2">
           <img src="/images/page2_2.png" alt="" />
-          <h1>model 3</h1>
+          <h1>model <span class="model-diff">3</span></h1>
         </div>
         <div class="page2-img3">
           <img src="/images/page2_3.png" alt="" />
-          <h1>model x</h1>
+          <h1>model <span class="model-diff">x</span></h1>
         </div>
       </div>
       <div class="page2-content">
@@ -530,17 +530,18 @@
         <h1>MODEL S</h1>
       </div>
       <div class="color-picker">
-        <select class="model-change-box model-transition">
-          <option value="MODELS">MODELS</option>
-          <option value="ROADSTER">ROADSTER</option>
-          <option value="CYBERTRUCK">CYBERTRUCK</option>
-        </select>
+        <div class="model-change-box model-transition">
+          <div class="model-car-elem"><h3>MODEL S</h3></div>
+          <div class="model-car-elem"><h3>ROADSTER</h3></div>
+          <div class="model-car-elem"><h3>CYBERTRUCK</h3></div>
+          <div class="model-picker"><h3>MODEL S</h3></div>
+        </div>
         <div class="color-picker-elem model-transition">
-          <img src="/images/carColor.png" alt="" />
+          <img class="car-icon" src="/images/carColor.png" alt="" />
           <input type="color" class="car-color" value="ae0a0a" />
         </div>
         <div class="color-picker-elem model-transition">
-          <img src="/images/carRims.png" alt="" />
+          <img class="car-tier-icon" src="/images/carRims.png" alt="" />
           <input type="color" class="car-rims" />
         </div>
       </div>
