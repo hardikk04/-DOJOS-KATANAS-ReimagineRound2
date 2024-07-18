@@ -257,11 +257,11 @@ const menuMobile = () => {
     mmtl.play();
   });
   document.querySelector("#m-close").addEventListener("click", function () {
-    mmtl.reverse();
-  });
-};
-if (window.matchMedia("(max-width:600px)").matches) {
-  menuMobile();
+    mmtl.reverse()
+  })
+}
+if (window.matchMedia("(max-width:768px)").matches) {
+  menuMobile()
 }
 
 // Landing wheel animation
@@ -541,37 +541,22 @@ const Page2mobile = () => {
     },
   });
   pg2mtl
-    .to(
-      "#container-1",
-      {
-        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-      },
-      "a"
-    )
-    .to(
-      "#container-2",
-      {
-        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-      },
-      "a"
-    )
-    .to(
-      "#container-2",
-      {
-        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-      },
-      "b"
-    )
-    .to(
-      "#container-3",
-      {
-        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-      },
-      "b"
-    );
-};
-if (window.matchMedia("(max-width:600px)").matches) {
-  Page2mobile();
+    .to("#container-1", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    }, "a")
+    .to("#container-2", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    }, "a")
+    .to("#container-2", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+    }, "b")
+    .to("#container-3", {
+      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    }, "b")
+
+}
+if (window.matchMedia("(max-width:768px)").matches) {
+  Page2mobile()
 }
 
 // Loader Animation for PC / Laptops
@@ -1680,11 +1665,11 @@ const page3mobile = () => {
     )
     .to("#page3-mobile #content #energy", {
       transform: "translateX(-78%)",
-      duration: 2,
-    });
-};
-if (window.matchMedia("(max-width:600px)").matches) {
-  page3mobile();
+      duration: 2
+    })
+}
+if (window.matchMedia("(max-width:768px)").matches) {
+  page3mobile()
 }
 const solarmobile = () => {
   var swiper = new Swiper("#solar-mobile .mySwiper", {
@@ -1693,9 +1678,9 @@ const solarmobile = () => {
     centeredSlides: true,
     freeMode: true,
   });
-};
-if (window.matchMedia("(max-width:600px)").matches) {
-  solarmobile();
+}
+if (window.matchMedia("(max-width:768px)").matches) {
+  solarmobile()
 }
 // page5Animation
 
@@ -2027,6 +2012,6 @@ const textAnimation = () => {
       duration: 2,
     });
 };
-if (!window.matchMedia("(max-width:600px)").matches) {
+if (!window.matchMedia("(max-width:768px)").matches) {
   textAnimation();
 }
