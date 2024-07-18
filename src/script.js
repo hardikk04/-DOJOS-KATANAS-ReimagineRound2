@@ -634,8 +634,10 @@ const loaderAnimation = () => {
     text: "",
     onComplete: () => {
       // Enable scroll
+
       document.body.style.overflow = "initial";
       document.documentElement.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
     },
   });
 };
@@ -731,7 +733,6 @@ const mobileLoaderAnimation = () => {
     },
   });
 };
-
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
   /**
@@ -861,7 +862,8 @@ const threeTeslaModelAnimation = () => {
 
         if (
           child.material.name === "Rims" ||
-          child.material.name === "Material.010"
+          child.material.name === "Material.010" ||
+          child.material.name === "spoke"
         ) {
           child.material = carRimsMaterial;
         }
@@ -1205,6 +1207,7 @@ const threeTeslaModelAnimation = () => {
 
       // Show the scroll bar
       document.body.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
 
       const tl = gsap.timeline();
 
@@ -1230,6 +1233,7 @@ const threeTeslaModelAnimation = () => {
 
       // Show the scroll bar
       document.body.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
 
       const viewTl = gsap.timeline();
       viewTl.to(".overlay-text1>h1", {
