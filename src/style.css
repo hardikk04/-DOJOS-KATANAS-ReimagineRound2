@@ -2,32 +2,32 @@
 
 @font-face {
   font-family: tesla;
-  src: url("/fonts/TESLA.ttf");
+  src: url("/fonts/TESLA.woff2");
 }
 
 @font-face {
   font-family: title;
-  src: url("/fonts/pigarnos-neue-regular.ttf");
+  src: url("/fonts/pigarnos-neue-regular.woff2");
 }
 
 @font-face {
   font-family: boldFont;
-  src: url("/fonts/DarkerGrotesque-Bold.ttf");
+  src: url("/fonts/DarkerGrotesque-Bold.woff2");
 }
 
 @font-face {
   font-family: lightFont;
-  src: url("/fonts/DarkerGrotesque-Light.ttf");
+  src: url("/fonts/DarkerGrotesque-Light.woff2");
 }
 
 @font-face {
   font-family: mediumFont;
-  src: url("/fonts/DarkerGrotesque-Medium.ttf");
+  src: url("/fonts/DarkerGrotesque-Medium.woff2");
 }
 
 @font-face {
   font-family: regularFont;
-  src: url("/fonts/DarkerGrotesque-Regular.ttf");
+  src: url("/fonts/DarkerGrotesque-Regular.woff2");
 }
 
 * {
