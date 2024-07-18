@@ -1,857 +1,780 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tesla | Electric Cars, Solar &amp; Clean Energy</title>
-    <link
-      rel="shortcut icon"
-      href="https://www.tesla.com/themes/custom/tesla_frontend/assets/favicons/favicon.ico"
-      type="image/x-icon"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="loader">
-      <div id="logo-warpper">
-        <div id="video-wrapper">
-          <div id="loading-content">
-            <h2>engine is activating</h2>
-            <div id="loading-bar">
-              <div id="black-bar"></div>
-            </div>
-          </div>
-          <video muted src="/videos/loader-video.mp4"></video>
-        </div>
-        <div id="curve"></div>
-      </div>
-    </div>
-    <div id="menu-page">
-      <div id="menu-nav">
-        <h1>TESLA</h1>
-        <div id="menu-nav-rt" class="magnet-effect menu-close">
-          <div id="close-container">
-            <div id="cl-line1"></div>
-            <div id="cl-line2"></div>
-          </div>
-        </div>
-      </div>
-      <div id="wheel">
-        <img id="tier" src="/images/tire.jpg" alt="" />
 
-        <img
-          class="mtxt mtxt1"
-          id="contactus"
-          src="/images/Contact us.png"
-          alt=""
-        />
-        <img class="mtxt" id="aboutus" src="/images/about us.png" alt="" />
-        <img class="mtxt" id="locateus" src="/images/LOcate us.png" alt="" />
-        <img class="mtxt" id="event" src="/images/Contact us.png" alt="" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tesla | Electric Cars, Solar &amp; Clean Energy</title>
+  <link rel="shortcut icon" href="https://www.tesla.com/themes/custom/tesla_frontend/assets/favicons/favicon.ico"
+    type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="loader">
+    <div id="logo-warpper">
+      <div id="video-wrapper">
+        <div id="loading-content">
+          <h2>engine is activating</h2>
+          <div id="loading-bar">
+            <div id="black-bar"></div>
+          </div>
+        </div>
+        <video muted src="/videos/loader-video.mp4"></video>
+      </div>
+      <div id="curve"></div>
+    </div>
+  </div>
+  <div id="menu-page">
+    <div id="menu-nav">
+      <h1>TESLA</h1>
+      <div id="menu-nav-rt" class="magnet-effect menu-close">
+        <div id="close-container">
+          <div id="cl-line1"></div>
+          <div id="cl-line2"></div>
+        </div>
       </div>
     </div>
-    <div id="menu-page-mobile">
-      <div id="content">
+    <div id="menu-text">
+      <div class="elems">
+        <h2>Sales</h2>
+        <h4>Visit our Find Us page to locate your nearest Tesla location.</h4>
+        <h2 id="cust">Customer</h2>
+        <h4>Support Visit our Support page to find answers and learn about our products.</h4>
+      </div>
+      <div class="elems">
+        <div class="one">
+          <h4>Americas <br> press@tesla.com</h4>
+        </div>
+        <div class="one">
+          <h4>Europe & Middle East <br> eupress@tesla.com</h4>
+        </div>
+        <div class="one">
+          <h4>Australia & Asia <br> apacpress@tesla.com</h4>
+        </div>
+        <div class="one">
+          <h4>China  <br> china-press@tesla.com</h4>
+        </div>
+      </div>
+    </div>
+    <div id="wheel">
+      <img id="tier" src="/images/tire.jpg" alt="" />
+      <img class="mtxt mtxt1" id="contactus" src="/images/Contact us.png" alt="" />
+      <img class="mtxt" id="aboutus" src="/images/about us.png" alt="" />
+      <img class="mtxt" id="locateus" src="/images/LOcate us.png" alt="" />
+      <img class="mtxt" id="event" src="/images/Layer 2.png" alt="" />
+    </div>
+  </div>
+  <div id="menu-page-mobile">
+    <div id="content">
+      <div id="menu-mobile-nav">
         <h1>TESLA</h1>
-        <div id="headings">
-          <div id="head-1"><h1>CONTACT US</h1></div>
-          <div id="head-2"><h1>LOCATE US</h1></div>
-          <div id="head-3"><h1>ABOUT US</h1></div>
+        <div id="m-close">
+          <i class="ri-close-large-fill"></i>
+        </div>
+      </div>
+      <div id="headings">
+        <div class="head">
+          <h1>CONTACT US</h1>
+        </div>
+        <div class="head">
+          <h1>LOCATE US</h1>
+        </div>
+        <div class="head">
+          <h1>ABOUT US</h1>
+        </div>
+        <div class="head">
+          <h1>VIDEO GUIDES</h1>
         </div>
       </div>
     </div>
-    <div id="dis-cursor">Explore</div>
-    <div id="solar-cursor">Drag</div>
-    <div id="cursor"></div>
-    <div id="main">
-      <div id="landing-wheel">
-        <nav>
-          <div class="nav-chil dnav-logo"></div>
-          <h1 class="nav-child">TESLA</h1>
-          <div class="nav-child nav-right magnet-effect menu-open">
-            <div id="open-container">
-              <div id="op-line1" class="op-line"></div>
-              <div id="op-line2" class="op-line"></div>
-            </div>
-          </div>
-        </nav>
-        <div class="landing-para">
-          <h3>The Future is Sustainable energy</h3>
-          <p>
-            We’re Building a World Powered By Solar Energy, Running On Batteries
-            And Transported By Electric Vehicles.
-          </p>
-        </div>
-        <div class="landing-wheel-img">
-          <div class="landing-wheel-overlay">
-            <div class="landing-wheel-text1">
-              <h1>ONE MISSION</h1>
-            </div>
-            <div class="landing-wheel-text2">
-              <h1>SUSTAINABLE ENERGY</h1>
-            </div>
-          </div>
-          <img class="wheel-img" src="/images/wheel.png" alt="" />
-        </div>
-        <div class="landing-footer">
-          <div class="landing-footer-elem">
-            <h3>100k+</h3>
-            <p>Employees</p>
-          </div>
-          <div class="landing-footer-line"></div>
-          <div class="landing-footer-elem">
-            <h3>20.4 Mmt¹</h3>
-            <p>CO2e Avoided in 2023</p>
+  </div>
+  <div id="dis-cursor">Explore</div>
+  <div id="solar-cursor">Drag</div>
+  <div id="cursor"></div>
+  <div id="main">
+    <div id="landing-wheel">
+      <nav>
+        <div class="nav-chil dnav-logo"></div>
+        <h1 class="nav-child">TESLA</h1>
+        <div class="nav-child nav-right magnet-effect menu-open">
+          <div id="open-container">
+            <div id="op-line1" class="op-line"></div>
+            <div id="op-line2" class="op-line"></div>
           </div>
         </div>
+      </nav>
+      <div class="landing-para">
+        <h3>The Future is Sustainable energy</h3>
+        <p>
+          We’re Building a World Powered By Solar Energy, Running On Batteries
+          And Transported By Electric Vehicles.
+        </p>
       </div>
-      <div id="landing-wheel-mobile">
-        <div id="nav">
-          <h1>TESLA</h1>
-          <div id="menu-btn"><i class="ri-menu-line"></i></div>
-        </div>
-        <div id="content">
-          <div id="heading">
-            <div id="head-1">
-              <h1>THE FUTURE IS</h1>
-            </div>
-            <div id="head-2">
-              <h1>SUSTAINABLE ENERGY</h1>
-            </div>
-          </div>
-          <div id="text">
-            <h5>We’re building a world powered by solar</h5>
-            <h5>energy, running on batteries and</h5>
-            <h5>transported by electric vehicles.</h5>
-          </div>
-          <div id="image">
-            <img src="/images/wheel.png" alt="" />
-          </div>
-          <div id="heading-2">
+      <div class="landing-wheel-img">
+        <div class="landing-wheel-overlay">
+          <div class="landing-wheel-text1">
             <h1>ONE MISSION</h1>
-            <h1><span>SUSTAINABLE</span></h1>
-            <h1><span>ENERGY</span></h1>
           </div>
-          <div id="last">
-            <div id="left">
-              <h5>100k+</h5>
-              <h6>Employees</h6>
-            </div>
-            <div id="right">
-              <h5>20.4 Mmt¹+</h5>
-              <h6>CO2e Avoided In 2023</h6>
-            </div>
+          <div class="landing-wheel-text2">
+            <h1>SUSTAINABLE ENERGY</h1>
+          </div>
+        </div>
+        <img class="wheel-img" src="/images/wheel.png" alt="" />
+      </div>
+      <div class="landing-footer">
+        <div class="landing-footer-elem">
+          <h3>100k+</h3>
+          <p>Employees</p>
+        </div>
+        <div class="landing-footer-line"></div>
+        <div class="landing-footer-elem">
+          <h3>20.4 Mmt¹</h3>
+          <p>CO2e Avoided in 2023</p>
+        </div>
+      </div>
+    </div>
+    <div id="landing-wheel-mobile">
+      <div id="nav">
+        <h1>TESLA</h1>
+        <div id="menu-btn"><i class="ri-menu-line"></i></div>
+      </div>
+      <div id="content">
+        <div id="heading">
+          <div id="head-1">
+            <h1>THE FUTURE IS</h1>
+          </div>
+          <div id="head-2">
+            <h1>SUSTAINABLE ENERGY</h1>
+          </div>
+        </div>
+        <div id="text">
+          <h5>We’re building a world powered by solar</h5>
+          <h5>energy, running on batteries and</h5>
+          <h5>transported by electric vehicles.</h5>
+        </div>
+        <div id="image">
+          <img src="/images/wheel.png" alt="" />
+        </div>
+        <div id="heading-2">
+          <h1>ONE MISSION</h1>
+          <h1><span>SUSTAINABLE</span></h1>
+          <h1><span>ENERGY</span></h1>
+        </div>
+        <div id="last">
+          <div id="left">
+            <h5>100k+</h5>
+            <h6>Employees</h6>
+          </div>
+          <div id="right">
+            <h5>20.4 Mmt¹+</h5>
+            <h6>CO2e Avoided In 2023</h6>
           </div>
         </div>
       </div>
-      <div id="page1">
-        <canvas class="webgl"></canvas>
-        <div class="page1-overlay">
-          <div class="page1-blur"></div>
-          <video
-            class="page1-video3"
-            muted
-            autoplay
-            loop
-            src="/videos/vehiclee.mp4"
-          ></video>
-          <video
-            class="page1-video2"
-            muted
-            autoplay
-            loop
-            src="/videos/energy.mp4"
-          ></video>
-          <video
-            class="page1-video1"
-            muted
-            autoplay
-            loop
-            src="/videos/charging.mp4"
-          ></video>
-          <div class="page1-vehicle page1-hero">
-            <div class="page1-hero-text-vehicle">
-              <h1>VEHICLE</h1>
-            </div>
-          </div>
-          <div class="page1-energy page1-hero">
-            <div class="page1-energy-text">
-              <div class="page1-energy-line"></div>
-              <div class="page1-energy-button">
-                <h3>THE DIVERSE FIELD WE WORK ON</h3>
-              </div>
-              <p>Accelerating the World's Transition to Sustainable Energy</p>
-            </div>
-            <div class="page1-hero-text-energy">
-              <h1>ENERGY</h1>
-            </div>
-          </div>
-          <div class="page1-charging page1-hero">
-            <div class="page1-hero-text-charging">
-              <h1>CHARGING</h1>
-            </div>
+    </div>
+    <div id="page1">
+      <canvas class="webgl"></canvas>
+      <div class="page1-overlay">
+        <div class="page1-blur"></div>
+        <video class="page1-video3" muted autoplay loop src="/videos/vehiclee.mp4"></video>
+        <video class="page1-video2" muted autoplay loop src="/videos/energy.mp4"></video>
+        <video class="page1-video1" muted autoplay loop src="/videos/charging.mp4"></video>
+        <div class="page1-vehicle page1-hero">
+          <div class="page1-hero-text-vehicle">
+            <h1>VEHICLE</h1>
           </div>
         </div>
-      </div>
-      <div id="page1-mobile"></div>
-      <div id="page2">
-        <div class="page2-imgs">
-          <div class="page2-img1">
-            <img src="/images/page2_1.png" alt="" />
-            <h1>model s</h1>
-          </div>
-          <div class="page2-img2">
-            <img src="/images/page2_2.png" alt="" />
-            <h1>model 3</h1>
-          </div>
-          <div class="page2-img3">
-            <img src="/images/page2_3.png" alt="" />
-            <h1>model x</h1>
-          </div>
-        </div>
-        <div class="page2-content">
-          <div class="page2-text">
-            <h1>TESLA</h1>
-            <div class="page2-text-para">
-              <div class="page2-text-para1">
-                <div class="page2-text-overflow">
-                  <p class="page2-para1">
-                    Model S Plaid has the quickest acceleration of
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para2">
-                    any vehicle in production. Updated battery
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para3">architecture for all Model S</p>
-                </div>
-              </div>
-              <div class="page2-text-para2">
-                <div class="page2-text-overflow">
-                  <p class="page2-para1">
-                    The most powerful ever fitted to Model 3,
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para2">
-                    enabling more than 500 horsepower and 0 to 60,
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para3">mph in as little as 2.9 seconds.,</p>
-                </div>
-              </div>
-              <div class="page2-text-para3">
-                <div class="page2-text-overflow">
-                  <p class="page2-para1">
-                    Model X platforms unite powertrain and battery
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para2">
-                    technologies for an unrivaled combination of
-                  </p>
-                </div>
-                <div class="page2-text-overflow">
-                  <p class="page2-para3">performance, range and efficiency.</p>
-                </div>
-              </div>
+        <div class="page1-energy page1-hero">
+          <div class="page1-energy-text">
+            <div class="page1-energy-line"></div>
+            <div class="page1-energy-button">
+              <h3>THE DIVERSE FIELD WE WORK ON</h3>
             </div>
-            <button>Explore more <i class="ri-arrow-right-line"></i></button>
+            <p>Accelerating the World's Transition to Sustainable Energy</p>
           </div>
-          <div class="page2-speed">
-            <div class="page2-circle">
-              <h1>1.99s</h1>
-              <h3>0-60 Mph</h3>
-            </div>
-            <h3>The riding future</h3>
-          </div>
-
-          <div class="page2-box">
-            <div class="page2-box-elem page2-elem1">
-              <h1>359 mi</h1>
-              <h3>range (EPA est.)</h3>
-            </div>
-            <div class="page2-box-elem page2-elem2">
-              <h1>200 mph</h1>
-              <h3>Top speed</h3>
-            </div>
-            <div class="page2-box-elem page2-elem3">
-              <h1>5 Year</h1>
-              <h3>Battery warranty</h3>
-            </div>
-            <div class="page2-box-elem page2-elem4">
-              <h1>1020 hp</h1>
-              <h3>Peak power</h3>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="page2-mobile">
-        <div id="main-container">
-          <div id="container-1" class="container">
-            <div id="upper">
-              <h1>TESLA</h1>
-              <div id="speed-div">
-                <h3>1.99s</h3>
-                <h5>0-60 Mph</h5>
-              </div>
-            </div>
-            <div id="lower">
-              <div id="content">
-                <div id="head">
-                  <h1>MODEL S</h1>
-                </div>
-                <div id="text">
-                  <div id="text-1">
-                    <h5>Model S Plaid has the quickest acceleration</h5>
-                  </div>
-                  <div id="text-2">
-                    <h5>of any vehicle in production. Updated</h5>
-                  </div>
-                  <div id="text-3">
-                    <h5>battery architecture for all Model S</h5>
-                  </div>
-                </div>
-              </div>
-              <div id="specs">
-                <div id="spec-1" class="spec">
-                  <h5>359 mi</h5>
-                  <h6>range(EPA est.)</h6>
-                </div>
-                <div id="spec-2" class="spec">
-                  <h5>200 <span>mph</span></h5>
-                  <h6>Top speed</h6>
-                </div>
-                <div id="spec-3" class="spec">
-                  <h5>5 <span>Years</span></h5>
-                  <h6>Battery warranty*</h6>
-                </div>
-                <div id="spec-4" class="spec">
-                  <h5>1020 hp</h5>
-                  <h6>Peak power</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="container-2" class="container">
-            <div id="upper">
-              <h1>TESLA</h1>
-              <div id="speed-div">
-                <h3>1.99s</h3>
-                <h5>0-60 Mph</h5>
-              </div>
-            </div>
-            <div id="lower">
-              <div id="content">
-                <div id="head">
-                  <h1>MODEL S</h1>
-                </div>
-                <div id="text">
-                  <div id="text-1">
-                    <h5>Model S Plaid has the quickest acceleration</h5>
-                  </div>
-                  <div id="text-2">
-                    <h5>of any vehicle in production. Updated</h5>
-                  </div>
-                  <div id="text-3">
-                    <h5>battery architecture for all Model S</h5>
-                  </div>
-                </div>
-              </div>
-              <div id="specs">
-                <div id="spec-1" class="spec">
-                  <h5>359 mi</h5>
-                  <h6>range(EPA est.)</h6>
-                </div>
-                <div id="spec-2" class="spec">
-                  <h5>200 <span>mph</span></h5>
-                  <h6>Top speed</h6>
-                </div>
-                <div id="spec-3" class="spec">
-                  <h5>5 <span>Years</span></h5>
-                  <h6>Battery warranty*</h6>
-                </div>
-                <div id="spec-4" class="spec">
-                  <h5>1020 hp</h5>
-                  <h6>Peak power</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="container-3" class="container">
-            <div id="upper">
-              <h1>TESLA</h1>
-              <div id="speed-div">
-                <h3>1.9s</h3>
-                <h5>0-60 Mph</h5>
-              </div>
-            </div>
-            <div id="lower">
-              <div id="content">
-                <div id="head">
-                  <h1>MODEL S</h1>
-                </div>
-                <div id="text">
-                  <div id="text-1">
-                    <h5>Model S Plaid has the quickest acceleration</h5>
-                  </div>
-                  <div id="text-2">
-                    <h5>of any vehicle in production. Updated</h5>
-                  </div>
-                  <div id="text-3">
-                    <h5>battery architecture for all Model S</h5>
-                  </div>
-                </div>
-              </div>
-              <div id="specs">
-                <div id="spec-1" class="spec">
-                  <h5>359 mi</h5>
-                  <h6>range(EPA est.)</h6>
-                </div>
-                <div id="spec-2" class="spec">
-                  <h5>200 <span>mph</span></h5>
-                  <h6>Top speed</h6>
-                </div>
-                <div id="spec-3" class="spec">
-                  <h5>5 <span>Years</span></h5>
-                  <h6>Battery warranty*</h6>
-                </div>
-                <div id="spec-4" class="spec">
-                  <h5>1020 hp</h5>
-                  <h6>Peak power</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="threejs-models">
-        <div class="black-over"></div>
-        <div class="overlay-content">
-          <div class="overlay-text overlay-text1">
-            <h1>THE PERSONAL</h1>
-          </div>
-          <div class="overlay-text overlay-text2">
-            <h1>TESLA SHOW ROOM</h1>
-          </div>
-          <div class="models-btn">
-            <h3 class="view-model">
-              View Models <i class="ri-arrow-right-line"></i>
-            </h3>
-            <h3 class="model-scroll-down">
-              Scroll down
-              <i class="ri-mouse-line"></i>
-            </h3>
-          </div>
-        </div>
-        <video
-          class="overlay-video"
-          autoplay
-          muted
-          loop
-          src="/videos/3d-model-overlay1.mp4"
-        ></video>
-        <div class="models-name">
-          <h1>MODEL S</h1>
-        </div>
-        <div class="color-picker">
-          <div class="model-change-box model-transition">
-            <div class="model-car-elem"><h3>MODEL S</h3></div>
-            <div class="model-car-elem"><h3>ROADSTER</h3></div>
-            <div class="model-car-elem"><h3>CYBERTRUCK</h3></div>
-            <div class="model-picker"><h3>MODEL S</h3></div>
-          </div>
-          <div class="color-picker-elem model-transition">
-            <img class="car-icon" src="/images/carColor.png" alt="" />
-            <input type="color" class="car-color" value="ae0a0a" />
-          </div>
-          <div class="color-picker-elem model-transition">
-            <img class="car-tier-icon" src="/images/carRims.png" alt="" />
-            <input type="color" class="car-rims" />
-          </div>
-        </div>
-        <canvas class="modelS"></canvas>
-      </div>
-      <div id="page3">
-        <div id="energy-container">
-          <div id="circle1" class="circle3">
-            <h4>Solar</h4>
-          </div>
-          <div id="circle2" class="circle3">
-            <h4>Tesla</h4>
-          </div>
-          <div id="energy-text">
-            <h4>
-              the motive to <br />
-              save earth
-            </h4>
-          </div>
-          <div id="energy">
+          <div class="page1-hero-text-energy">
             <h1>ENERGY</h1>
           </div>
         </div>
-        <div id="solar-text">
-          <h1>types</h1>
-          <h1>of solar</h1>
-        </div>
-        <div id="solar-container">
-          <div class="swiper mySwiper">
-            <div class="swiper-wrapper">
-              <div class="swiper-slide">
-                <img src="/images/solar1.png" alt="" />
-                <div class="solar-overlay">
-                  <div class="top-panel">
-                    <h3>solar<br />panel</h3>
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.25 51.75L51.75 17.25"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M23.7188 17.25H51.75V45.2812"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="/images/solar2.png" alt="" />
-                <div class="solar-overlay">
-                  <div class="top-panel">
-                    <h3>solar<br />roof</h3>
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.25 51.75L51.75 17.25"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M23.7188 17.25H51.75V45.2812"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="/images/solar3.png" alt="" />
-                <div class="solar-overlay">
-                  <div class="top-panel">
-                    <h3>power<br />wall</h3>
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.25 51.75L51.75 17.25"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M23.7188 17.25H51.75V45.2812"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="swiper-slide">
-                <img src="/images/solar4.png" alt="" />
-                <div class="solar-overlay">
-                  <div class="top-panel">
-                    <h3>mega<br />pack</h3>
-                    <svg
-                      width="69"
-                      height="69"
-                      viewBox="0 0 69 69"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path
-                        d="M17.25 51.75L51.75 17.25"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M23.7188 17.25H51.75V45.2812"
-                        stroke="white"
-                        stroke-width="3"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="page1-charging page1-hero">
+          <div class="page1-hero-text-charging">
+            <h1>CHARGING</h1>
           </div>
         </div>
       </div>
-      <div id="page3-mobile">
-        <div id="head-1" class="title">
-          <h3>The Motive To</h3>
-        </div>
-        <div id="head-2" class="title">
-          <h3>Save Earth</h3>
-        </div>
-        <div id="content">
-          <div id="circle-1"><h5>Solar</h5></div>
-          <div id="circle-2"><h5>Tesla</h5></div>
-          <div id="energy"><h1>ENERGY</h1></div>
-        </div>
-      </div>
-      <div id="solar-mobile">
-        <div id="head-1"><h1>TYPES</h1></div>
-        <div id="head-2"><h1>OF SOLAR</h1></div>
-        <div id="container">
-          <div id="section1" class="section"></div>
-          <div id="section2" class="section"></div>
-          <div id="section3" class="section"></div>
-          <div id="section4" class="section"></div>
-        </div>
-      </div>
-      <div id="page5">
-        <div id="upper">
-          <h1 id="upper-h1">CHARGING</h1>
-        </div>
-        <div id="center">
-          <div id="section-1" class="section">
-            <div id="image-1" class="image">
-              <img src="/images/page5_1.png" alt="">
-              <div id="overlay">
-                <div id="text"><h5>While You Sleep</h5></div>
-              </div>
-            </div>
-          </div>
-          <div id="section-2" class="section">
-            <h5>CHARGING</h5>
-            <div id="middle">
-              <h3>Charging With Convenience</h3>
-              <h3>& Available Anywhere With</h3>
-              <h2>ELECTRICITY</h2>
-              <button>Explore more <i class="ri-arrow-right-line"></i></button>
-            </div>
-            <h1>10K+</h1>
-          </div>
-          <div id="section-3" class="section">
-            <div id="image-2" class="image">
-              <img src="/images/page5_2.png" alt="">
-              <div id="overlay">
-                <div id="text"><h5>During The Day</h5></div>
-              </div>
-            </div>
-            <div id="image-3" class="image">
-              <img src="/images/page5_3.png" alt="">
-              <div id="overlay">
-                <div id="text"><h5>On Road Trips</h5></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div id="lower">
-          <h1 id="lower-h1">CHARGING</h1>
-        </div>
     </div>
-      <div id="page6">
-        <div id="section1">
-          <div id="heading">
-            <h1>PLUG IN, CHARGE AND GO</h1>
+    <div id="page1-mobile">
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide sl1">
+            <img src="/images/page1-mobile.jpg" alt="">
+            <div class="overlay-pg1">
+              <div id="txt-pg1">
+                <h4>The diverse field we work on</h4>
+              </div>
+              <h3>Accelerating the World's Transition <br> to Sustainable Energy</h3>
+            </div>
           </div>
-          <div id="description-1" class="section1-dis">
-            <h3>
-              With plenty of range for both daily drives and road trips, Tesla
-              vehicles get
-            </h3>
+          <div class="swiper-slide sl2">
+            <video autoplay muted loop src="/videos/vehiclee.mp4"></video>
+            <div class="overlay-pg1">
+              <h1>vehicle</h1>
+            </div>
           </div>
-          <div id="description-2" class="section1-dis">
-            <h3>
-              you where you want to go. Charging is fast, convenient and
-              available
-            </h3>
+          <div class="swiper-slide sl3">
+            <video autoplay muted loop src="/videos/energy.mp4"></video>
+            <div class="overlay-pg1">
+              <h1>energy</h1>
+            </div>
           </div>
-          <div id="description-3" class="section1-dis">
-            <h3>anywhere with electricity.</h3>
+          <div class="swiper-slide sl4">
+            <video autoplay muted loop src="/videos/charging.mp4"></video>
+            <div class="overlay-pg1">
+              <h1>Charging</h1>
+            </div>
           </div>
         </div>
-        <div id="overlay"></div>
-        <div id="section2">
-          <div id="main">
-            <div id="left">
-              <div id="heading">
-                <div id="heading-1" class="heading-sec2">
-                  <h1>CHARGING</h1>
-                </div>
-                <div id="heading-2" class="heading-sec2">
-                  <h1>STATION</h1>
-                </div>
-                <div id="heading-3" class="heading-sec2">
-                  <h1>FINDER</h1>
-                  <div id="line"></div>
-                </div>
+        <div id="swiper-btn1">
+          <div class="swiper-button-next swiper-icon"><i class="ri-arrow-right-line"></i></div>
+          <div class="swiper-button-prev swiper-icon"><i class="ri-arrow-left-line"></i></div>
+        </div>
+      </div>
+    </div>
+    <div id="page2">
+      <div class="page2-imgs">
+        <div class="page2-img1">
+          <img src="/images/page2_1.png" alt="" />
+          <h1>model s</h1>
+        </div>
+        <div class="page2-img2">
+          <img src="/images/page2_2.png" alt="" />
+          <h1>model 3</h1>
+        </div>
+        <div class="page2-img3">
+          <img src="/images/page2_3.png" alt="" />
+          <h1>model x</h1>
+        </div>
+      </div>
+      <div class="page2-content">
+        <div class="page2-text">
+          <h1>TESLA</h1>
+          <div class="page2-text-para">
+            <div class="page2-text-para1">
+              <div class="page2-text-overflow">
+                <p class="page2-para1">
+                  Model S Plaid has the quickest acceleration of
+                </p>
               </div>
-              <div class="description" id="desc-1">
-                <h3>Our Tesla automatically finds the best routes and suggests charging stations along the way</h3>
+              <div class="page2-text-overflow">
+                <p class="page2-para2">
+                  any vehicle in production. Updated battery
+                </p>
               </div>
-              <button>Explore more <i class="ri-arrow-right-line"></i></button>
+              <div class="page2-text-overflow">
+                <p class="page2-para3">architecture for all Model S</p>
+              </div>
             </div>
-            
-            <div id="right">
-              <div id="card1" class="card">
-                <div id="image">
-                  <img src="./images/page6_1.png" alt="" />
+            <div class="page2-text-para2">
+              <div class="page2-text-overflow">
+                <p class="page2-para1">
+                  The most powerful ever fitted to Model 3,
+                </p>
+              </div>
+              <div class="page2-text-overflow">
+                <p class="page2-para2">
+                  enabling more than 500 horsepower and 0 to 60,
+                </p>
+              </div>
+              <div class="page2-text-overflow">
+                <p class="page2-para3">mph in as little as 2.9 seconds.,</p>
+              </div>
+            </div>
+            <div class="page2-text-para3">
+              <div class="page2-text-overflow">
+                <p class="page2-para1">
+                  Model X platforms unite powertrain and battery
+                </p>
+              </div>
+              <div class="page2-text-overflow">
+                <p class="page2-para2">
+                  technologies for an unrivaled combination of
+                </p>
+              </div>
+              <div class="page2-text-overflow">
+                <p class="page2-para3">performance, range and efficiency.</p>
+              </div>
+            </div>
+          </div>
+          <button>Explore more <i class="ri-arrow-right-line"></i></button>
+        </div>
+        <div class="page2-speed">
+          <div class="page2-circle">
+            <h1>1.99s</h1>
+            <h3>0-60 Mph</h3>
+          </div>
+          <h3>The riding future</h3>
+        </div>
+
+        <div class="page2-box">
+          <div class="page2-box-elem page2-elem1">
+            <h1>359 mi</h1>
+            <h3>range (EPA est.)</h3>
+          </div>
+          <div class="page2-box-elem page2-elem2">
+            <h1>200 mph</h1>
+            <h3>Top speed</h3>
+          </div>
+          <div class="page2-box-elem page2-elem3">
+            <h1>5 Year</h1>
+            <h3>Battery warranty</h3>
+          </div>
+          <div class="page2-box-elem page2-elem4">
+            <h1>1020 hp</h1>
+            <h3>Peak power</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page2-mobile">
+      <div id="main-container">
+        <div id="container-1" class="container">
+          <div id="upper">
+            <h1>TESLA</h1>
+            <div id="speed-div">
+              <h3>1.99s</h3>
+              <h5>0-60 Mph</h5>
+            </div>
+          </div>
+          <div id="lower">
+            <div id="content">
+              <div id="head">
+                <h1>MODEL S</h1>
+              </div>
+              <div id="text">
+                <div id="text-1">
+                  <h5>Model S Plaid has the quickest acceleration</h5>
                 </div>
-                <div id="text">
-                  <div id="heading">
-                    <h3>Optimize route</h3>
-                  </div>
-                  <div id="description">
-                    <h5>
-                      Finds the best route to avoid traffic and charge if needed. Ensures a smooth and efficient journey by providing real-time updates
-                    </h5>
-                  </div>
+                <div id="text-2">
+                  <h5>of any vehicle in production. Updated</h5>
+                </div>
+                <div id="text-3">
+                  <h5>battery architecture for all Model S</h5>
                 </div>
               </div>
-              <div id="card2" class="card">
-                <div id="image">
-                  <img src="./images/page6_2.png" alt="" />
+            </div>
+            <div id="specs">
+              <div id="spec-1" class="spec">
+                <h5>359 mi</h5>
+                <h6>range(EPA est.)</h6>
+              </div>
+              <div id="spec-2" class="spec">
+                <h5>200 <span>mph</span></h5>
+                <h6>Top speed</h6>
+              </div>
+              <div id="spec-3" class="spec">
+                <h5>5 <span>Years</span></h5>
+                <h6>Battery warranty*</h6>
+              </div>
+              <div id="spec-4" class="spec">
+                <h5>1020 hp</h5>
+                <h6>Peak power</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="container-2" class="container">
+          <div id="upper">
+            <h1>TESLA</h1>
+            <div id="speed-div">
+              <h3>1.46s</h3>
+              <h5>0-60 Mph</h5>
+            </div>
+          </div>
+          <div id="lower">
+            <div id="content">
+              <div id="head">
+                <h1>MODEL 3</h1>
+              </div>
+              <div id="text">
+                <div id="text-1">
+                  <h5>The most powerful ever fitted to Model 3, </h5>
                 </div>
-                <div id="text">
-                  <div id="heading">
-                    <h3>Measures battery</h3>
-                  </div>
-                  <div id="description">
-                    <h5>
-                      Gives real-time battery estimates based on your driving
-                      style. Optimizes battery life by adapting to your driving patterns and conditions.
-                    </h5>
-                  </div>
+                <div id="text-2">
+                  <h5>enabling more than 500 horsepower and 0 to 60</h5>
+                </div>
+                <div id="text-3">
+                  <h5>mph in as little as 2.9 seconds.</h5>
                 </div>
               </div>
-              <div id="card3" class="card">
-                <div id="image">
-                  <img src="./images/page6_3.png" alt="" />
+            </div>
+            <div id="specs">
+              <div id="spec-1" class="spec">
+                <h5>259 mi</h5>
+                <h6>range(EPA est.)</h6>
+              </div>
+              <div id="spec-2" class="spec">
+                <h5>178 <span>mph</span></h5>
+                <h6>Top speed</h6>
+              </div>
+              <div id="spec-3" class="spec">
+                <h5>5 <span>Years</span></h5>
+                <h6>Battery warranty*</h6>
+              </div>
+              <div id="spec-4" class="spec">
+                <h5>1040 hp</h5>
+                <h6>Peak power</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="container-3" class="container">
+          <div id="upper">
+            <h1>TESLA</h1>
+            <div id="speed-div">
+              <h3>9.99s</h3>
+              <h5>0-60 Mph</h5>
+            </div>
+          </div>
+          <div id="lower">
+            <div id="content">
+              <div id="head">
+                <h1>MODEL X</h1>
+              </div>
+              <div id="text">
+                <div id="text-1">
+                  <h5>Model X platforms unite powertrain and battery </h5>
                 </div>
-                <div id="text">
-                  <div id="heading">
-                    <h3>Recommends chargers</h3>
-                  </div>
-                  <div id="description">
-                    <h5>
-                      Offers charging location recommendations along your route. Prioritizes fast and convenient charging stations to minimize downtime.
-                    </h5>
-                  </div>
+                <div id="text-2">
+                  <h5>technologies for an unrivaled combination of</h5>
+                </div>
+                <div id="text-3">
+                  <h5>performance, range and efficiency.</h5>
+                </div>
+              </div>
+            </div>
+            <div id="specs">
+              <div id="spec-1" class="spec">
+                <h5>259 mi</h5>
+                <h6>range(EPA est.)</h6>
+              </div>
+              <div id="spec-2" class="spec">
+                <h5>210 <span>mph</span></h5>
+                <h6>Top speed</h6>
+              </div>
+              <div id="spec-3" class="spec">
+                <h5>5 <span>Years</span></h5>
+                <h6>Battery warranty*</h6>
+              </div>
+              <div id="spec-4" class="spec">
+                <h5>1020 hp</h5>
+                <h6>Peak power</h6>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="threejs-models">
+      <div class="black-over"></div>
+      <div class="overlay-content">
+        <div class="overlay-text overlay-text1">
+          <h1>THE PERSONAL</h1>
+        </div>
+        <div class="overlay-text overlay-text2">
+          <h1>TESLA SHOW ROOM</h1>
+        </div>
+        <div class="models-btn">
+          <h3 class="view-model">
+            View Models <i class="ri-arrow-right-line"></i>
+          </h3>
+          <h3 class="model-scroll-down">
+            Scroll down
+            <i class="ri-mouse-line"></i>
+          </h3>
+        </div>
+      </div>
+      <video class="overlay-video" autoplay muted loop src="/videos/3d-model-overlay1.mp4"></video>
+      <div class="models-name">
+        <h1>MODEL S</h1>
+      </div>
+      <div class="color-picker">
+        <select class="model-change-box model-transition">
+          <option value="MODELS">MODELS</option>
+          <option value="ROADSTER">ROADSTER</option>
+          <option value="CYBERTRUCK">CYBERTRUCK</option>
+        </select>
+        <div class="color-picker-elem model-transition">
+          <img src="/images/carColor.png" alt="" />
+          <input type="color" class="car-color" value="ae0a0a" />
+        </div>
+        <div class="color-picker-elem model-transition">
+          <img src="/images/carRims.png" alt="" />
+          <input type="color" class="car-rims" />
+        </div>
+      </div>
+      <canvas class="modelS"></canvas>
+    </div>
+    <div id="page3">
+      <div id="energy-container">
+        <div id="circle1" class="circle3">
+          <h4>Solar</h4>
+        </div>
+        <div id="circle2" class="circle3">
+          <h4>Tesla</h4>
+        </div>
+        <div id="energy-text">
+          <h4>
+            the motive to <br />
+            save earth
+          </h4>
+        </div>
+        <div id="energy">
+          <h1>ENERGY</h1>
+        </div>
+      </div>
+      <div id="solar-text">
+        <h1>types</h1>
+        <h1>of solar</h1>
+      </div>
+      <div id="solar-container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/images/solar1.png" alt="" />
+              <div class="solar-overlay">
+                <div class="top-panel">
+                  <h3>solar<br />panel</h3>
+                  <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 51.75L51.75 17.25" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M23.7188 17.25H51.75V45.2812" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar2.png" alt="" />
+              <div class="solar-overlay">
+                <div class="top-panel">
+                  <h3>solar<br />roof</h3>
+                  <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 51.75L51.75 17.25" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M23.7188 17.25H51.75V45.2812" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar3.png" alt="" />
+              <div class="solar-overlay">
+                <div class="top-panel">
+                  <h3>power<br />wall</h3>
+                  <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 51.75L51.75 17.25" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M23.7188 17.25H51.75V45.2812" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar4.png" alt="" />
+              <div class="solar-overlay">
+                <div class="top-panel">
+                  <h3>mega<br />pack</h3>
+                  <svg width="69" height="69" viewBox="0 0 69 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.25 51.75L51.75 17.25" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                    <path d="M23.7188 17.25H51.75V45.2812" stroke="white" stroke-width="3" stroke-linecap="round"
+                      stroke-linejoin="round" />
+                  </svg>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div id="page6-mobile">
-        <div id="section-1">
-          <div id="heading">
-            <div id="head-1"><h1>PLUG IN, CHARGE</h1></div>
-            <div id="head-2"><h1>AND GO</h1></div>
+    </div>
+    <div id="page3-mobile">
+      <div id="content">
+        <div>
+          <div id="head-1" class="title">
+            <h3>The Motive To</h3>
           </div>
-          <div id="text">
-            <div id="text-1"><h5>With plenty of range for both daily</h5></div>
-            <div id="text-2">
-              <h5>drives and road trips, Tesla vehicles get</h5>
-            </div>
-            <div id="text-3">
-              <h5>you where you want to go. Charging is</h5>
-            </div>
-            <div id="text-4">
-              <h5>fast, convenient and available anywhere</h5>
-            </div>
-            <div id="text-5"><h5>with electricity.</h5></div>
+          <div id="head-2" class="title">
+            <h3>Save Earth</h3>
           </div>
         </div>
-        <div id="section-2">
-          <div id="overlay"></div>
-          <div id="content">
+        <div id="circle-1">
+          <h5>Solar</h5>
+        </div>
+        <div id="circle-2">
+          <h5>Tesla</h5>
+        </div>
+        <div id="energy">
+          <h1>ENERGY</h1>
+        </div>
+      </div>
+    </div>
+    <div id="solar-mobile">
+      <div id="head-1">
+        <h1>TYPES</h1>
+      </div>
+      <div id="head-2">
+        <h1>OF SOLAR</h1>
+      </div>
+      <div id="container">
+        <div class="swiper mySwiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <img src="/images/solar1.png" alt="">
+              <div class="m-solar-overlay">
+                <div class="solar-txt">
+                  <h2>solar panel</h2>
+                  <i class="ri-arrow-right-up-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar2.png" alt="">
+              <div class="m-solar-overlay">
+                <div class="solar-txt">
+                  <h2>solar roof</h2>
+                  <i class="ri-arrow-right-up-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar3.png" alt="">
+              <div class="m-solar-overlay">
+                <div class="solar-txt">
+                  <h2>power wall</h2>
+                  <i class="ri-arrow-right-up-line"></i>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <img src="/images/solar4.png" alt="">
+              <div class="m-solar-overlay">
+                <div class="solar-txt">
+                  <h2>mega pack</h2>
+                  <i class="ri-arrow-right-up-line"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="page5">
+      <div id="upper">
+        <h1 id="upper-h1">CHARGING</h1>
+      </div>
+      <div id="center">
+        <div class="content">
+          <h5>GALLERY</h5>
+          <h2>
+            <span>Browse</span> the work that <br />
+            defined a <span>movement</span> <br />
+            and created a <span>craft</span> .
+          </h2>
+          <button>ENTER GALLERY</button>
+          <h1>(17)</h1>
+        </div>
+      </div>
+      <div id="lower">
+        <h1 id="lower-h1">CHARGING</h1>
+      </div>
+    </div>
+    <div id="page6">
+      <div id="section1">
+        <div id="heading">
+          <h1>PLUG IN, CHARGE AND GO</h1>
+        </div>
+        <div id="description-1" class="section1-dis">
+          <h3>
+            With plenty of range for both daily drives and road trips, Tesla
+            vehicles get
+          </h3>
+        </div>
+        <div id="description-2" class="section1-dis">
+          <h3>
+            you where you want to go. Charging is fast, convenient and
+            available
+          </h3>
+        </div>
+        <div id="description-3" class="section1-dis">
+          <h3>anywhere with electricity.</h3>
+        </div>
+      </div>
+      <div id="overlay"></div>
+      <div id="section2">
+        <div id="main">
+          <div id="left">
             <div id="heading">
-              <div id="head-1"><h1>CHARGING</h1></div>
-              <div id="head-2"><h1>STATION</h1></div>
-              <div id="head-3">
+              <div id="heading-1" class="heading-sec2">
+                <h1>CHARGING</h1>
+              </div>
+              <div id="heading-2" class="heading-sec2">
+                <h1>STATION</h1>
+              </div>
+              <div id="heading-3" class="heading-sec2">
                 <h1>FINDER</h1>
                 <div id="line"></div>
               </div>
             </div>
-            <div id="text">
-              <div id="text-1">
-                <h5>Our Tesla automatically finds the best</h5>
-              </div>
-              <div id="text-2">
-                <h5>route and suggests charging stations</h5>
-              </div>
-              <div id="text-3"><h5>along the way.</h5></div>
+            <div class="description">
+              <h3>
+                Our Tesla automatically finds the best routes and suggests
+              </h3>
             </div>
-            <div id="button">
-              <h5>Find Station</h5>
-              <i class="ri-arrow-right-line"></i>
+            <div class="description">
+              <h3>charging stations along the way</h3>
             </div>
-            <div id="swiper-section">
-              <div id="card1" class="card">
-                <div id="image">
-                  <img src="/images/page6_1.png" alt="" />
-                </div>
+            <button>Explore more <i class="ri-arrow-right-line"></i></button>
+          </div>
+          <div id="right">
+            <div id="card1" class="card">
+              <div id="image">
+                <img src="./images/page6_1.png" alt="" />
+              </div>
+              <div id="heading">
+                <h3>Optimize route</h3>
+              </div>
+              <div id="description">
                 <h5>
                   Finds the best route to avoid traffic and charge if needed.
                 </h5>
               </div>
-              <div id="card2" class="card">
-                <div id="image">
-                  <img src="/images/page6_2.png" alt="" />
-                </div>
+            </div>
+            <div id="card2" class="card">
+              <div id="image">
+                <img src="./images/page6_2.png" alt="" />
+              </div>
+              <div id="heading">
+                <h3>Measures battery</h3>
+              </div>
+              <div id="description">
                 <h5>
-                  Gives real-time battery estimates based on your driving style.
+                  Gives real-time battery estimates based on your driving
+                  style.
                 </h5>
               </div>
-              <div id="card3" class="card">
-                <div id="image">
-                  <img src="/images/page6_3.png" alt="" />
-                </div>
+            </div>
+            <div id="card3" class="card">
+              <div id="image">
+                <img src="./images/page6_3.png" alt="" />
+              </div>
+              <div id="heading">
+                <h3>Recommends chargers</h3>
+              </div>
+              <div id="description">
                 <h5>
                   Offers charging location recommendations along your route.
                 </h5>
@@ -860,113 +783,195 @@
           </div>
         </div>
       </div>
-      <div id="page7">
-        <div id="pg7-text-container">
-          <div class="tx-lf">
-            <div id="head-wrap7">
-              <h1>Help Me Charge</h1>
-            </div>
-            <div class="para-wrap7">
-              <p>Find the charging solution that meets your needs by</p>
-            </div>
-            <div class="para-wrap7">
-              <p>answering questions about your home, driving habits and</p>
-            </div>
-            <div class="para-wrap7">
-              <p>lifestyle.</p>
-            </div>
+    </div>
+    <div id="page6-mobile">
+      <div id="section-1">
+        <div id="heading">
+          <div id="head-1">
+            <h1>PLUG IN, CHARGE</h1>
           </div>
-          <div class="tx-rt">
-            <button>Explore more <i class="ri-arrow-right-line"></i></button>
+          <div id="head-2">
+            <h1>AND GO</h1>
           </div>
         </div>
-        <div id="discovery">
-          <div id="dis-text">
-            <div id="container7">
-              <h1>discovery</h1>
-              <div class="ig7" id="ig71">
-                <img src="/images/page7_1.png" alt="" />
-                <div class="overlay7">
-                  <div class="overlay7-wrap">
-                    <h4>Demo Drive</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="ig7" id="ig72">
-                <img src="/images/page7_2.png" alt="" />
-                <div class="overlay7">
-                  <div class="overlay7-wrap">
-                    <h4>Insurance</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="ig7" id="ig73">
-                <img src="/images/page7_3.png" alt="" />
-                <div class="overlay7">
-                  <div class="overlay7-wrap">
-                    <h4>Costumer stories</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="ig7" id="ig74">
-                <img src="/images/page7_4.png" alt="" />
-                <div class="overlay7">
-                  <div class="overlay7-wrap">
-                    <h4>Events</h4>
-                  </div>
-                </div>
-              </div>
-              <div class="ig7" id="ig75">
-                <img src="/images/page7_1.png" alt="" />
-                <div class="overlay7">
-                  <div class="overlay7-wrap">
-                    <h4>Location service</h4>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div id="text">
+          <div id="text-1">
+            <h5>With plenty of range for both daily</h5>
+          </div>
+          <div id="text-2">
+            <h5>drives and road trips, Tesla vehicles get</h5>
+          </div>
+          <div id="text-3">
+            <h5>you where you want to go. Charging is</h5>
+          </div>
+          <div id="text-4">
+            <h5>fast, convenient and available anywhere</h5>
+          </div>
+          <div id="text-5">
+            <h5>with electricity.</h5>
           </div>
         </div>
       </div>
-      <div id="footer">
-        <div id="footer-pt1">
-          <div class="foottxt-wrap text-effect">
-            <h4>Privacy &nbsp; & &nbsp; legal</h4>
-            <h4>Privacy &nbsp; & &nbsp; legal</h4>
+      <div id="section-2">
+        <div id="overlay"></div>
+        <div id="content">
+          <div id="heading">
+            <div id="head-1">
+              <h1>CHARGING</h1>
+            </div>
+            <div id="head-2">
+              <h1>STATION</h1>
+            </div>
+            <div id="head-3">
+              <h1>FINDER</h1>
+              <div id="line"></div>
+            </div>
           </div>
-          <div class="foottxt-wrap text-effect">
-            <h4>Vehicle &nbsp; Recalls</h4>
-            <h4>Vehicle &nbsp; Recalls</h4>
+          <div id="text">
+            <div id="text-1">
+              <h5>Our Tesla automatically finds the best</h5>
+            </div>
+            <div id="text-2">
+              <h5>route and suggests charging stations</h5>
+            </div>
+            <div id="text-3">
+              <h5>along the way.</h5>
+            </div>
           </div>
-          <div class="foottxt-wrap text-effect">
-            <h4>Contact</h4>
-            <h4>Contact</h4>
-          </div>
-          <div class="foottxt-wrap text-effect">
-            <h4>News</h4>
-            <h4>News</h4>
-          </div>
-          <div class="foottxt-wrap text-effect">
-            <h4>Get &nbsp; update</h4>
-            <h4>Get &nbsp; update</h4>
-          </div>
-          <div class="foottxt-wrap text-effect">
-            <h4>Locations</h4>
-            <h4>Locations</h4>
-          </div>
-          <div id="line-ft"></div>
-        </div>
-        <div id="footer-pt2">
-          <div id="foot-video">
-            <video autoplay muted loop src="/videos/energy.mp4"></video>
-            <div id="video-overlay"></div>
+          <button>Find station <i class="ri-arrow-right-line"></i></button>
+          <div id="swiper-section">
+            <div class="swiper mySwiper">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide sl1">
+                  <img src="/images/page6_1.png" alt="">
+                  <h3>Finds the best route to avoid traffic and charge if needed.</h3>
+                </div>
+                <div class="swiper-slide sl2">
+                  <img src="/images/page6_2.png" alt="">
+                  <h3>Finds the best route to avoid traffic and charge if needed.</h3>
+                </div>
+                <div class="swiper-slide sl3">
+                  <img src="/images/page6_3.png" alt="">
+                  <h3>Finds the best route to avoid traffic and charge if needed.</h3>
+                </div>
+              </div>
+              <div id="swiper-btn1">
+                <div class="swiper-button-next swiper-icon"><i class="ri-arrow-right-line"></i></div>
+                <div class="swiper-button-prev swiper-icon"><i class="ri-arrow-left-line"></i></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="module" src="script.js"></script>
-    <script type="module" src="webgl.js"></script>
-    <script type="module" src="three.js"></script>
-  </body>
+    <div id="page7">
+      <div id="pg7-text-container">
+        <div class="tx-lf">
+          <div id="head-wrap7">
+            <h1>Help Me Charge</h1>
+          </div>
+          <div class="para-wrap7">
+            <p>Find the charging solution that meets your needs by</p>
+          </div>
+          <div class="para-wrap7">
+            <p>answering questions about your home, driving habits and</p>
+          </div>
+          <div class="para-wrap7">
+            <p>lifestyle.</p>
+          </div>
+        </div>
+        <div class="tx-rt">
+          <button>Explore more <i class="ri-arrow-right-line"></i></button>
+        </div>
+      </div>
+      <div id="discovery">
+        <div id="dis-text">
+          <div id="container7">
+            <h1>discovery</h1>
+            <div class="ig7" id="ig71">
+              <img src="/images/page7_1.png" alt="" />
+              <div class="overlay7">
+                <div class="overlay7-wrap">
+                  <h4>Demo Drive</h4>
+                </div>
+              </div>
+            </div>
+            <div class="ig7" id="ig72">
+              <img src="/images/page7_2.png" alt="" />
+              <div class="overlay7">
+                <div class="overlay7-wrap">
+                  <h4>Insurance</h4>
+                </div>
+              </div>
+            </div>
+            <div class="ig7" id="ig73">
+              <img src="/images/page7_3.png" alt="" />
+              <div class="overlay7">
+                <div class="overlay7-wrap">
+                  <h4>Costumer stories</h4>
+                </div>
+              </div>
+            </div>
+            <div class="ig7" id="ig74">
+              <img src="/images/page7_4.png" alt="" />
+              <div class="overlay7">
+                <div class="overlay7-wrap">
+                  <h4>Events</h4>
+                </div>
+              </div>
+            </div>
+            <div class="ig7" id="ig75">
+              <img src="/images/page7_1.png" alt="" />
+              <div class="overlay7">
+                <div class="overlay7-wrap">
+                  <h4>Location service</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="footer">
+      <div id="footer-pt1">
+        <div class="foottxt-wrap text-effect">
+          <h4>Privacy &nbsp; & &nbsp; legal</h4>
+          <h4>Privacy &nbsp; & &nbsp; legal</h4>
+        </div>
+        <div class="foottxt-wrap text-effect">
+          <h4>Vehicle &nbsp; Recalls</h4>
+          <h4>Vehicle &nbsp; Recalls</h4>
+        </div>
+        <div class="foottxt-wrap text-effect">
+          <h4>Contact</h4>
+          <h4>Contact</h4>
+        </div>
+        <div class="foottxt-wrap text-effect">
+          <h4>News</h4>
+          <h4>News</h4>
+        </div>
+        <div class="foottxt-wrap text-effect">
+          <h4>Get &nbsp; update</h4>
+          <h4>Get &nbsp; update</h4>
+        </div>
+        <div class="foottxt-wrap text-effect">
+          <h4>Locations</h4>
+          <h4>Locations</h4>
+        </div>
+        <div id="line-ft"></div>
+      </div>
+      <div id="footer-pt2">
+        <div id="foot-video">
+          <video autoplay muted loop src="/videos/energy.mp4"></video>
+          <div id="video-overlay"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="module" src="script.js"></script>
+  <script type="module" src="webgl.js"></script>
+  <script type="module" src="three.js"></script>
+</body>
+
 </html>
