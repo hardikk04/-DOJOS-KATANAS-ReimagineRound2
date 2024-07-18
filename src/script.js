@@ -260,7 +260,6 @@ const landingWheelAnimation = () => {
   const landingWheel = document.querySelector("#landing-wheel");
   landingWheel.addEventListener("mousemove", (dets) => {
     const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
 
     if (cursorX > 0.5) {
       gsap.to(".landing-wheel-img > img", {
@@ -276,9 +275,6 @@ const landingWheelAnimation = () => {
   });
 
   landingWheel.addEventListener("mouseleave", (dets) => {
-    const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
-
     gsap.to(".landing-wheel-img > img", {
       rotate: 0,
       duration: 0.5,
@@ -671,6 +667,8 @@ const threeTeslaModelAnimation = () => {
       const progressRatio = itemsLoaded / itemsTotal;
       gsap.to("#black-bar", {
         width: progressRatio * 100 + "%",
+        snap: { value: 1 },
+        ease: "linear",
       });
     }
   );
@@ -842,24 +840,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "MODEL S",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.add(models[0]);
         scene.remove(models[1]);
@@ -872,6 +856,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -885,24 +872,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "ROADSTER",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.add(models[1]);
@@ -916,6 +889,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -929,24 +905,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "CYBERTRUCK",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.remove(models[1]);
@@ -960,18 +922,79 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
-  const select = document.querySelector("select");
-  select.addEventListener("input", (event) => {
-    if (select.value === "MODELS") {
-      modelS();
-    } else if (select.value === "ROADSTER") {
-      roadster();
-    } else if (select.value === "CYBERTRUCK") {
-      cybertruck();
+  // Car selector Animation
+  const carPicker = document.querySelector(".model-picker");
+  const allCarModels = document.querySelectorAll(".model-car-elem");
+
+  // Models click flag
+  let clickFlag = true;
+
+  carPicker.addEventListener("click", () => {
+    // Show all Cars options
+    if (clickFlag) {
+      gsap.to(".model-car-elem", {
+        opacity: 1,
+        stagger: -0.1,
+        onComplete: () => {
+          clickFlag = false;
+        },
+      });
+    } else {
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+        onComplete: () => {
+          clickFlag = true;
+        },
+      });
     }
+
+    // Remove if rotate the model
+    canvas.addEventListener("click", () => {
+      clickFlag = true;
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+    });
+  });
+
+  let carModelIndex = 0;
+  allCarModels.forEach((car, index) => {
+    car.addEventListener("click", () => {
+      if (index === 0 && carModelIndex !== 0) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 0;
+        modelS();
+      } else if (index === 1 && carModelIndex !== 1) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 1;
+        roadster();
+      } else if (index === 2 && carModelIndex !== 2) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 2;
+        cybertruck();
+      }
+
+      const tl = gsap.timeline();
+      clickFlag = true;
+      tl.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+      tl.to(".model-picker>h3", {
+        text: `${car.textContent}`,
+      });
+    });
   });
 
   /**
@@ -1308,6 +1331,29 @@ const threeTeslaModelAnimation = () => {
 
         allColorPicker[index].addEventListener("input", function () {
           const colorValue = allColorPicker[index].value;
+
+          if (index === 0) {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-icon", {
+                filter: "invert(1)",
+              });
+            } else {
+              gsap.to(".car-icon", {
+                filter: "invert(0)",
+              });
+            }
+          } else {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(0)",
+              });
+            } else {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(1)",
+              });
+            }
+          }
+
           if (index === 0) {
             carColorMaterial.color = new THREE.Color(colorValue);
             gsap.to(colorPickerElem[index], {
@@ -1508,93 +1554,92 @@ if (window.matchMedia("(max-width:600px)").matches) {
 // page5Animation
 
 const page5Scroll = () => {
-  var page5 = document.querySelector("#page5");
   var upper = document.querySelector("#page5 #upper");
-  var center = document.querySelector("#page5 #center");
-  var centerContent = document.querySelector("#page5 #center .content");
   var lower = document.querySelector("#page5 #lower");
 
   var tl = gsap.timeline({
     scrollTrigger: {
-      trigger: "#page5",
-      scroller: "body",
-      // markers: true,
-      start: "50% 50%",
-      end: "300% 50%",
-      scrub: true,
-      pin: true,
-    },
-  });
+        trigger: "#page5",
+        scroller: "body",
+        // markers: true,
+        start: "50% 50%",
+        end: "300% 50%",
+        scrub: true,
+        pin: true,
+    }
+    
+})
 
-  tl.to(
-    upper,
-    {
-      top: "-50%",
-      ease: "power1.in",
-    },
-    "a"
-  )
-    .to(
-      lower,
-      {
-        top: "100%",
-        ease: "power1.in",
-      },
-      "a"
-    )
-    .from(centerContent, {
-      y: 800,
-      opacity: 0,
-      delay: -0.4,
-      ease: "power1.in",
+tl
+.to(upper,{
+    top: "-50%",
+    ease: "power1.in",
+},'a')
+.to(lower,{
+    top: "100%",
+    ease: "power1.in",
+},'a')
+.from("#page5 #section-2", {
+  opacity: 0,
+},"a")
+.from("#page5 #image-1", {
+  x: -300,
+  delay: 0.2
+},"a")
+.from("#page5 #image-2", {
+  y: -300,
+  delay: 0.2
+},"a")
+.from("#page5 #image-3", {
+  x: 300,
+  delay: 0.2
+},"a")
+}
+page5Scroll()
+
+const page5Hover = () => {
+  const imageDivs = document.querySelectorAll("#page5 #center .section .image");
+
+  imageDivs.forEach((imageDiv) => {
+    const overlay = imageDiv.querySelector('#overlay');
+
+    imageDiv.addEventListener("mouseenter", () => {
+      gsap.to(overlay, {
+        opacity: 1,
+        duration: 0.1
+      });
     });
+
+    imageDiv.addEventListener("mousemove", () => {
+      document.body.style.cursor = "none";
+      gsap.to("#dis-cursor", { scale: 1, duration: 0.5 });
+    });
+
+    imageDiv.addEventListener("mouseleave", () => {
+      document.body.style.cursor = "auto";
+      gsap.to(overlay, {
+        opacity: 0,
+        duration: 0.1
+      })
+      gsap.to("#dis-cursor", {
+        scale: 0,
+        duration: 0.5,
+      });
+    });
+  });
 };
-page5Scroll();
+
+page5Hover();
+
 
 // page6Animation
-const page6LeftBtnHover = () => {
-  var btn = document.querySelector("#page6 #button");
-  var heads = document.querySelectorAll("#page6 #button h5");
-  var arrows = document.querySelectorAll("#page6 #button #arrow i");
-
-  heads.forEach(function (head) {
-    btn.addEventListener("mouseenter", function () {
-      gsap.to(head, {
-        y: "-33",
-        duration: 0.3,
-      });
-    });
-    btn.addEventListener("mouseleave", function () {
-      gsap.to(head, {
-        y: "0",
-        duration: 0.3,
-      });
-    });
-  });
-  arrows.forEach(function (arrow) {
-    btn.addEventListener("mouseenter", function () {
-      gsap.to(arrow, {
-        y: "-30",
-        duration: 0.3,
-      });
-    });
-    btn.addEventListener("mouseleave", function () {
-      gsap.to(arrow, {
-        y: "0",
-        duration: 0.3,
-      });
-    });
-  });
-};
-page6LeftBtnHover();
-
 const page6ScrollAnimation = () => {
   var tl6 = gsap.timeline({
     scrollTrigger: {
       trigger: "#page6",
       scroller: "body",
       start: "64.4% 50%",
-      end: "250% 50%",
+      end: "380% 50%",
       pin: true,
       scrub: 1,
       // markers: true
@@ -1602,7 +1647,7 @@ const page6ScrollAnimation = () => {
   });
 
   tl6.to("#page6 #section2 #right", {
-    y: "-168%",
+    y: "-68%",
   });
 };
 page6ScrollAnimation();
