@@ -13,8 +13,22 @@ import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 import { TextPlugin } from "gsap/TextPlugin";
 import overlayVertexShader from "./shaders/overlay/vertex.glsl";
 import overlayFragmentShader from "./shaders/overlay/fragment.glsl";
-import Swiper from "swiper";
-import "swiper/css";
+import Swiper from "swiper/bundle";
+import "swiper/css/bundle";
+
+function isMobileDevice() {
+  return /Mobi|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini|Android/i.test(
+    navigator.userAgent
+  );
+}
+
+var swiper = new Swiper(".mySwiper", {
+  loop: true,
+  navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+  },
+});
 
 // Removing the scroll unitl site loaded
 (() => {
@@ -125,9 +139,9 @@ const magneticEffect = () => {
 magneticEffect();
 
 //menu animation
+
 const menuAnimation = () => {
   let rotationAngle = 0;
-
   document.querySelector(".menu-open").addEventListener("click", function () {
     rotationAngle = 0;
     //makeing wheel to initial position
@@ -207,7 +221,7 @@ const menuAnimation = () => {
       rotate: rotationAngle,
       scale: 1.2,
       ease: "linear",
-      duration: 0.5,
+      duration: 0.2,
     });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
@@ -226,7 +240,29 @@ const menuAnimation = () => {
     });
   });
 };
-menuAnimation();
+if (!isMobileDevice()) {
+  menuAnimation();
+}
+
+const menuMobile = () => {
+  var mmtl = gsap.timeline({ paused: true });
+  mmtl
+    .to("#menu-page-mobile", {
+      clipPath: `polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)`,
+    })
+    .from("#menu-page-mobile #headings h1", {
+      y: "100%",
+    });
+  document.querySelector("#menu-btn").addEventListener("click", function () {
+    mmtl.play();
+  });
+  document.querySelector("#m-close").addEventListener("click", function () {
+    mmtl.reverse();
+  });
+};
+if (window.matchMedia("(max-width:600px)").matches) {
+  menuMobile();
+}
 
 // Landing wheel animation
 const landingWheelAnimation = () => {
@@ -488,8 +524,215 @@ const page2Animation = () => {
     "b"
   );
 };
-page2Animation();
+if (!isMobileDevice()) {
+  page2Animation();
+}
 
+const Page2mobile = () => {
+  var pg2mtl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page2-mobile",
+      scroller: "body",
+      start: "top top",
+      end: "top -100%",
+      scrub: 1,
+      pin: true,
+      // markers:true
+    },
+  });
+  pg2mtl
+    .to(
+      "#container-1",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+      },
+      "a"
+    )
+    .to(
+      "#container-2",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+      },
+      "a"
+    )
+    .to(
+      "#container-2",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+      },
+      "b"
+    )
+    .to(
+      "#container-3",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+      },
+      "b"
+    );
+};
+if (window.matchMedia("(max-width:600px)").matches) {
+  Page2mobile();
+}
+
+// Loader Animation for PC / Laptops
+const loaderAnimation = () => {
+  const tl = gsap.timeline();
+  tl.to("#loader", {
+    opacity: 0,
+    duration: 1.5,
+    delay: 1,
+  });
+
+  tl.from(".nav-child", {
+    opacity: 0,
+    y: 10,
+    stagger: {
+      amount: 0.4,
+    },
+  });
+
+  tl.to(
+    ".wheel-img",
+    {
+      opacity: 1,
+      top: 0,
+    },
+    "a"
+  );
+
+  tl.to(".landing-wheel-overlay h1", {
+    y: 0,
+    stagger: {
+      amount: 0.2,
+    },
+  });
+
+  tl.from(
+    ".landing-footer-elem",
+    {
+      opacity: 0,
+      stagger: {
+        amount: 0.1,
+      },
+    },
+    "b"
+  );
+
+  tl.from(
+    ".landing-footer-line",
+    {
+      height: 0,
+    },
+    "b"
+  );
+
+  tl.from(".landing-para>h3", {
+    text: "",
+  });
+
+  tl.from(".landing-para>p", {
+    text: "",
+    onComplete: () => {
+      // Enable scroll
+
+      document.body.style.overflow = "initial";
+      document.documentElement.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
+    },
+  });
+};
+
+// Loader Animation for mobile devices
+const mobileLoaderAnimation = () => {
+  var video = document.querySelector("video");
+  var loader = gsap.timeline();
+
+  loader.to(
+    "#logo-warpper",
+    {
+      top: "50%",
+      duration: 1,
+    },
+    "a"
+  );
+  loader.to(video, {
+    opacity: 1,
+    duration: 0.2,
+  });
+  video.play();
+  video.playbackRate = 1.5;
+  loader.to("#loading-content", {
+    opacity: 1,
+    duration: 0.2,
+  });
+
+  loader.to("#black-bar", {
+    width: "100%",
+    snap: { value: 1 },
+    ease: "linear",
+    duration: 5,
+  });
+
+  loader.to("#loader", {
+    opacity: 0,
+    duration: 1.5,
+  });
+
+  loader.from("#nav > .mobile-nav-div", {
+    opacity: 0,
+    y: 10,
+    stagger: {
+      amount: 0.4,
+    },
+  });
+
+  loader.from(
+    "#head-1>h1",
+    {
+      opacity: 0,
+      y: 30,
+    },
+    "head"
+  );
+
+  loader.from(
+    "#head-2>h1",
+    {
+      opacity: 0,
+      y: 30,
+      delay: 0.2,
+    },
+    "head"
+  );
+
+  loader.from("#text>h5", {
+    opacity: 0,
+    y: 10,
+    stagger: 0.1,
+  });
+
+  loader.from("#image > img", {
+    opacity: 0,
+    y: 10,
+  });
+
+  loader.from("#heading-2>h1", {
+    opacity: 0,
+    y: 10,
+    stagger: 0.1,
+  });
+
+  loader.from("#last>div", {
+    opacity: 0,
+    y: 10,
+    stagger: 0.1,
+    onStart: () => {
+      // Enable scroll
+      document.body.style.overflow = "initial";
+      document.documentElement.style.overflow = "initial";
+    },
+  });
+};
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
   /**
@@ -507,71 +750,6 @@ const threeTeslaModelAnimation = () => {
    */
 
   let checkLoadingStart = true;
-
-  const loaderAnimation = () => {
-    const tl = gsap.timeline();
-    tl.to("#loader", {
-      opacity: 0,
-      duration: 1.5,
-      delay: 1,
-    });
-
-    tl.from(".nav-child", {
-      opacity: 0,
-      y: 10,
-      stagger: {
-        amount: 0.4,
-      },
-    });
-
-    tl.to(
-      ".wheel-img",
-      {
-        opacity: 1,
-        top: 0,
-      },
-      "a"
-    );
-
-    tl.to(".landing-wheel-overlay h1", {
-      y: 0,
-      stagger: {
-        amount: 0.2,
-      },
-    });
-
-    tl.from(
-      ".landing-footer-elem",
-      {
-        opacity: 0,
-        stagger: {
-          amount: 0.1,
-        },
-      },
-      "b"
-    );
-
-    tl.from(
-      ".landing-footer-line",
-      {
-        height: 0,
-      },
-      "b"
-    );
-
-    tl.from(".landing-para>h3", {
-      text: "",
-    });
-
-    tl.from(".landing-para>p", {
-      text: "",
-      onComplete: () => {
-        // Enable scroll
-        document.body.style.overflow = "initial";
-        document.documentElement.style.overflow = "initial";
-      },
-    });
-  };
 
   const loadingManager = new THREE.LoadingManager(
     // Loaded
@@ -684,7 +862,8 @@ const threeTeslaModelAnimation = () => {
 
         if (
           child.material.name === "Rims" ||
-          child.material.name === "Material.010"
+          child.material.name === "Material.010" ||
+          child.material.name === "spoke"
         ) {
           child.material = carRimsMaterial;
         }
@@ -1028,6 +1207,7 @@ const threeTeslaModelAnimation = () => {
 
       // Show the scroll bar
       document.body.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
 
       const tl = gsap.timeline();
 
@@ -1053,6 +1233,7 @@ const threeTeslaModelAnimation = () => {
 
       // Show the scroll bar
       document.body.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
 
       const viewTl = gsap.timeline();
       viewTl.to(".overlay-text1>h1", {
@@ -1314,8 +1495,11 @@ const threeTeslaModelAnimation = () => {
   };
   colorChangeAnimation();
 };
-threeTeslaModelAnimation();
-
+if (!isMobileDevice()) {
+  threeTeslaModelAnimation();
+} else {
+  mobileLoaderAnimation();
+}
 // page3Animation
 const page3Animation = () => {
   var tl3 = gsap.timeline({
@@ -1393,12 +1577,12 @@ const page3Animation = () => {
       duration: 1.5,
     });
 
-  var swiper = new Swiper(".mySwiper", {
+  var swiper = new Swiper("#page3 .mySwiper", {
     slidesPerView: 3.2,
     freeMode: true,
   });
 
-  gsap.from(".swiper-slide", {
+  gsap.from("#page3 .swiper-slide", {
     y: 400,
     stagger: {
       amount: 0.8,
@@ -1413,7 +1597,7 @@ const page3Animation = () => {
     },
   });
 
-  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+  document.querySelectorAll("#page3 .swiper-slide").forEach(function (slide) {
     slide.addEventListener("mousemove", function () {
       gsap.to("#solar-cursor", {
         scale: 1,
@@ -1425,7 +1609,7 @@ const page3Animation = () => {
       });
     });
   });
-  document.querySelectorAll(".swiper-slide").forEach(function (slide) {
+  document.querySelectorAll("#page3 .swiper-slide").forEach(function (slide) {
     slide.addEventListener("mouseleave", function () {
       gsap.to("#solar-cursor", {
         scale: 0,
@@ -1438,7 +1622,81 @@ const page3Animation = () => {
     });
   });
 };
-page3Animation();
+if (!isMobileDevice()) {
+  page3Animation();
+}
+
+const page3mobile = () => {
+  var pg3mtl = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page3-mobile",
+      scroller: "body",
+      start: "top top",
+      end: "top -120%",
+      scrub: 1,
+      pin: true,
+      // markers:true
+    },
+  });
+  pg3mtl
+    .to(
+      "#page3-mobile #circle-1",
+      {
+        top: "50%",
+        duration: 0.8,
+      },
+      "a"
+    )
+    .to(
+      "#page3-mobile #circle-2",
+      {
+        top: "50%",
+        duration: 0.8,
+      },
+      "a"
+    )
+    .to("#page3-mobile h5", {
+      opacity: 0,
+    })
+    .to("#page3-mobile #circle-1", {
+      scale: 10,
+      duration: 1,
+    })
+    .to(
+      "#page3-mobile #circle-1,#page3-mobile #circle-2",
+      {
+        opacity: 0,
+        duration: 0,
+      },
+      "b"
+    )
+    .to(
+      "#page3-mobile #content #energy",
+      {
+        opacity: 1,
+        duration: 0,
+      },
+      "b"
+    )
+    .to("#page3-mobile #content #energy", {
+      transform: "translateX(-78%)",
+      duration: 2,
+    });
+};
+if (window.matchMedia("(max-width:600px)").matches) {
+  page3mobile();
+}
+const solarmobile = () => {
+  var swiper = new Swiper("#solar-mobile .mySwiper", {
+    slidesPerView: 1,
+    spaceBetween: 0,
+    centeredSlides: true,
+    freeMode: true,
+  });
+};
+if (window.matchMedia("(max-width:600px)").matches) {
+  solarmobile();
+}
 // page5Animation
 
 const page5Scroll = () => {
@@ -1447,54 +1705,76 @@ const page5Scroll = () => {
 
   var tl = gsap.timeline({
     scrollTrigger: {
-        trigger: "#page5",
-        scroller: "body",
-        // markers: true,
-        start: "50% 50%",
-        end: "300% 50%",
-        scrub: true,
-        pin: true,
-    }
-    
-})
+      trigger: "#page5",
+      scroller: "body",
+      // markers: true,
+      start: "50% 50%",
+      end: "300% 50%",
+      scrub: true,
+      pin: true,
+    },
+  });
 
-tl
-.to(upper,{
-    top: "-50%",
-    ease: "power1.in",
-},'a')
-.to(lower,{
-    top: "100%",
-    ease: "power1.in",
-},'a')
-.from("#page5 #section-2", {
-  opacity: 0,
-},"a")
-.from("#page5 #image-1", {
-  x: -300,
-  delay: 0.2
-},"a")
-.from("#page5 #image-2", {
-  y: -300,
-  delay: 0.2
-},"a")
-.from("#page5 #image-3", {
-  x: 300,
-  delay: 0.2
-},"a")
-}
-page5Scroll()
+  tl.to(
+    upper,
+    {
+      top: "-50%",
+      ease: "power1.in",
+    },
+    "a"
+  )
+    .to(
+      lower,
+      {
+        top: "100%",
+        ease: "power1.in",
+      },
+      "a"
+    )
+    .from(
+      "#page5 #section-2",
+      {
+        opacity: 0,
+      },
+      "a"
+    )
+    .from(
+      "#page5 #image-1",
+      {
+        x: -300,
+        delay: 0.2,
+      },
+      "a"
+    )
+    .from(
+      "#page5 #image-2",
+      {
+        y: -300,
+        delay: 0.2,
+      },
+      "a"
+    )
+    .from(
+      "#page5 #image-3",
+      {
+        x: 300,
+        delay: 0.2,
+      },
+      "a"
+    );
+};
+page5Scroll();
 
 const page5Hover = () => {
   const imageDivs = document.querySelectorAll("#page5 #center .section .image");
 
   imageDivs.forEach((imageDiv) => {
-    const overlay = imageDiv.querySelector('#overlay');
+    const overlay = imageDiv.querySelector("#overlay");
 
     imageDiv.addEventListener("mouseenter", () => {
       gsap.to(overlay, {
         opacity: 1,
-        duration: 0.1
+        duration: 0.1,
       });
     });
 
@@ -1507,8 +1787,8 @@ const page5Hover = () => {
       document.body.style.cursor = "auto";
       gsap.to(overlay, {
         opacity: 0,
-        duration: 0.1
-      })
+        duration: 0.1,
+      });
       gsap.to("#dis-cursor", {
         scale: 0,
         duration: 0.5,
@@ -1518,7 +1798,6 @@ const page5Hover = () => {
 };
 
 page5Hover();
-
 
 // page6Animation
 const page6ScrollAnimation = () => {
@@ -1594,39 +1873,39 @@ const page7Animation = () => {
       },
       "a"
     );
+  window.addEventListener("mousemove", function (dets) {
+    gsap.to("#dis-cursor , #solar-cursor", {
+      top: dets.clientY,
+      left: dets.clientX,
+    });
+  });
+  document.querySelectorAll(".ig7").forEach(function (ig) {
+    ig.addEventListener("mousemove", function () {
+      gsap.to("#dis-cursor", {
+        scale: 1,
+        duration: 0.5,
+      });
+      gsap.to(ig.querySelector(".overlay7"), {
+        opacity: 0,
+        duration: 0.5,
+      });
+    });
+  });
+  document.querySelectorAll(".ig7").forEach(function (ig) {
+    ig.addEventListener("mouseleave", function () {
+      gsap.to("#dis-cursor", {
+        scale: 0,
+        duration: 0.5,
+      });
+      gsap.to(ig.querySelector(".overlay7"), {
+        opacity: 1,
+        duration: 0.5,
+      });
+    });
+  });
 };
 page7Animation();
 
-window.addEventListener("mousemove", function (dets) {
-  gsap.to("#dis-cursor , #solar-cursor", {
-    top: dets.clientY,
-    left: dets.clientX,
-  });
-});
-document.querySelectorAll(".ig7").forEach(function (ig) {
-  ig.addEventListener("mousemove", function () {
-    gsap.to("#dis-cursor", {
-      scale: 1,
-      duration: 0.5,
-    });
-    gsap.to(ig.querySelector(".overlay7"), {
-      opacity: 0,
-      duration: 0.5,
-    });
-  });
-});
-document.querySelectorAll(".ig7").forEach(function (ig) {
-  ig.addEventListener("mouseleave", function () {
-    gsap.to("#dis-cursor", {
-      scale: 0,
-      duration: 0.5,
-    });
-    gsap.to(ig.querySelector(".overlay7"), {
-      opacity: 1,
-      duration: 0.5,
-    });
-  });
-});
 // textEffect animation
 // can be used by giving class .text-effect to parent ,
 // which has two childern
@@ -1748,7 +2027,6 @@ const textAnimation = () => {
       duration: 2,
     });
 };
-textAnimation();
-
-
-
+if (!window.matchMedia("(max-width:600px)").matches) {
+  textAnimation();
+}
