@@ -233,7 +233,6 @@ const landingWheelAnimation = () => {
   const landingWheel = document.querySelector("#landing-wheel");
   landingWheel.addEventListener("mousemove", (dets) => {
     const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
 
     if (cursorX > 0.5) {
       gsap.to(".landing-wheel-img > img", {
@@ -249,9 +248,6 @@ const landingWheelAnimation = () => {
   });
 
   landingWheel.addEventListener("mouseleave", (dets) => {
-    const cursorX = dets.x / window.innerWidth;
-    const cursorY = dets.y / window.innerHeight;
-
     gsap.to(".landing-wheel-img > img", {
       rotate: 0,
       duration: 0.5,
@@ -614,6 +610,8 @@ const threeTeslaModelAnimation = () => {
       const progressRatio = itemsLoaded / itemsTotal;
       gsap.to("#black-bar", {
         width: progressRatio * 100 + "%",
+        snap: { value: 1 },
+        ease: "linear",
       });
     }
   );
@@ -741,7 +739,7 @@ const threeTeslaModelAnimation = () => {
    * Model Overlay
    */
   // Displacement Texture
-  const displacementTexture = textureLoader.load("/images/images.jpg");
+  const displacementTexture = textureLoader.load("/images/d2.jpg");
   // Video
   const video = document.querySelector(".overlay-video");
   video.playbackRate = 2;
@@ -785,24 +783,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "MODEL S",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.add(models[0]);
         scene.remove(models[1]);
@@ -815,6 +799,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -828,24 +815,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "ROADSTER",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.add(models[1]);
@@ -859,6 +832,9 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
@@ -872,24 +848,10 @@ const threeTeslaModelAnimation = () => {
       z: 0,
       ease: "expo.in",
       duration: 2,
-      onStart: () => {
-        gsap.to(".model-transition", {
-          opacity: 0,
-          stagger: {
-            amount: 0.2,
-          },
-        });
-      },
       onComplete: () => {
         gsap.to(".models-name>h1", {
           text: "CYBERTRUCK",
           duration: 0.5,
-        });
-        gsap.to(".model-transition", {
-          opacity: 1,
-          stagger: {
-            amount: -0.2,
-          },
         });
         scene.remove(models[0]);
         scene.remove(models[1]);
@@ -903,18 +865,79 @@ const threeTeslaModelAnimation = () => {
       z: 4,
       ease: "expo.out",
       duration: 2,
+      onComplete: () => {
+        document.querySelector(".model-change-box").style.pointerEvents = "all";
+      },
     });
   };
 
-  const select = document.querySelector("select");
-  select.addEventListener("input", (event) => {
-    if (select.value === "MODELS") {
-      modelS();
-    } else if (select.value === "ROADSTER") {
-      roadster();
-    } else if (select.value === "CYBERTRUCK") {
-      cybertruck();
+  // Car selector Animation
+  const carPicker = document.querySelector(".model-picker");
+  const allCarModels = document.querySelectorAll(".model-car-elem");
+
+  // Models click flag
+  let clickFlag = true;
+
+  carPicker.addEventListener("click", () => {
+    // Show all Cars options
+    if (clickFlag) {
+      gsap.to(".model-car-elem", {
+        opacity: 1,
+        stagger: -0.1,
+        onComplete: () => {
+          clickFlag = false;
+        },
+      });
+    } else {
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+        onComplete: () => {
+          clickFlag = true;
+        },
+      });
     }
+
+    // Remove if rotate the model
+    canvas.addEventListener("click", () => {
+      clickFlag = true;
+      gsap.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+    });
+  });
+
+  let carModelIndex = 0;
+  allCarModels.forEach((car, index) => {
+    car.addEventListener("click", () => {
+      if (index === 0 && carModelIndex !== 0) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 0;
+        modelS();
+      } else if (index === 1 && carModelIndex !== 1) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 1;
+        roadster();
+      } else if (index === 2 && carModelIndex !== 2) {
+        document.querySelector(".model-change-box").style.pointerEvents =
+          "none";
+        carModelIndex = 2;
+        cybertruck();
+      }
+
+      const tl = gsap.timeline();
+      clickFlag = true;
+      tl.to(".model-car-elem", {
+        opacity: 0,
+        stagger: 0.1,
+      });
+      tl.to(".model-picker>h3", {
+        text: `${car.textContent}`,
+      });
+    });
   });
 
   /**
@@ -988,19 +1011,6 @@ const threeTeslaModelAnimation = () => {
 
         // Hide the scroll bar
         document.body.style.overflow = "hidden";
-        const tl = gsap.timeline();
-
-        tl.to(".overlay-line", {
-          height: "0vh",
-        });
-
-        tl.to(".overlay-scroller>i", {
-          opacity: 0,
-        });
-
-        tl.to(".overlay-scroller>p", {
-          opacity: 0,
-        });
       }
     },
   });
@@ -1021,42 +1031,13 @@ const threeTeslaModelAnimation = () => {
 
       const tl = gsap.timeline();
 
-      tl.to(".overlay-line", {
-        height: "12vh",
+      tl.to(window, {
+        duration: 1.5,
+        scrollTo: "#page3",
+        onComplete: () => {
+          scrollDown.style.pointerEvents = "all";
+        },
       });
-
-      tl.to(".overlay-scroller>i", {
-        opacity: 1,
-      });
-
-      tl.to(".overlay-scroller>p", {
-        opacity: 1,
-      });
-    });
-    const scrollTl = gsap.timeline({
-      scrollTrigger: {
-        scroller: "body",
-        trigger: ".overlay-line",
-        start: "top 30%",
-        end: "top 0",
-        // scrub: 1,
-      },
-    });
-
-    scrollTl.to(".overlay-line", {
-      height: "0vh",
-    });
-
-    scrollTl.to(".overlay-scroller>i", {
-      opacity: 0,
-    });
-
-    scrollTl.to(".overlay-scroller>p", {
-      opacity: 0,
-      onComplete: () => {
-        // enable the click ag (prevent multiple clicks)
-        scrollDown.style.pointerEvents = "all";
-      },
     });
   };
   scrollDownAnimation();
@@ -1090,18 +1071,6 @@ const threeTeslaModelAnimation = () => {
         opacity: 0,
         y: -20,
         stagger: 0.1,
-      });
-
-      viewTl.to(".overlay-line", {
-        height: "0vh",
-      });
-
-      viewTl.to(".overlay-scroller>i", {
-        opacity: 0,
-      });
-
-      viewTl.to(".overlay-scroller>p", {
-        opacity: 0,
       });
 
       viewTl.to(".overlay-content", {
@@ -1305,6 +1274,29 @@ const threeTeslaModelAnimation = () => {
 
         allColorPicker[index].addEventListener("input", function () {
           const colorValue = allColorPicker[index].value;
+
+          if (index === 0) {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-icon", {
+                filter: "invert(1)",
+              });
+            } else {
+              gsap.to(".car-icon", {
+                filter: "invert(0)",
+              });
+            }
+          } else {
+            if (colorValue === "#ffffff") {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(0)",
+              });
+            } else {
+              gsap.to(".car-tier-icon", {
+                filter: "invert(1)",
+              });
+            }
+          }
+
           if (index === 0) {
             carColorMaterial.color = new THREE.Color(colorValue);
             gsap.to(colorPickerElem[index], {
