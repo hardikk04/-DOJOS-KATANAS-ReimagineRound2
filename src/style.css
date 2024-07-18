@@ -1720,7 +1720,7 @@ select {
   width: 100%;
   height: 100vh;
   position: relative;
-  cursor: pointer;
+  overflow: hidden;
 }
 
 #page5 #upper
@@ -1731,12 +1731,7 @@ select {
     position: absolute;
     top: 0%;
     overflow: hidden;
-}
-
-#page5 #center {
-  width: 100%;
-  height: 100vh;
-  background-color: black;
+    z-index: 2;
 }
 
 #page5 #lower {
@@ -1746,10 +1741,6 @@ select {
   position: absolute;
   top: 50%;
   overflow: hidden;
-}
-
-#page5 h1 {
-  font-size: 20vw;
 }
 
 #page5 #upper-h1,
@@ -1767,52 +1758,144 @@ select {
 }
 
 #page5 #center {
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
   color: white;
+  display: flex;
+  position: relative;
+}
+
+#page5 #center .section {
+  width: 33.3%;
+  height: 100%;
+}
+
+#page5 #center .section .image {
+  width: 23vw;
+  height: 18vw;
+  position: relative;
+}
+
+#page5 #center .section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#page5 #center .section .image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+#page5 #center .section .image #overlay {
+  width: 100%;
+  height: 100%;
+  background: #5c5c5c32;
   display: flex;
   align-items: center;
   justify-content: center;
+  backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: all ease 0.5s;
+  position: absolute;
+  top: 0%;
 }
 
-#page5 #center .content {
+#page5 #center .section .image #overlay h5 {
+  font-size: 2vw;
+  font-family: mediumFont;
+  font-weight: 500;
+  color: #fff;
+}
+
+#page5 #center .section .image #overlay #text {
+  height: fit-content;
+  overflow: hidden;
+}
+
+#page5 #center #section-1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2vw;
+}
+
+#page5 #center #section-2 {
+  width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  padding: 2vw 0vw;
+  padding-top: 4vw;
 }
 
-#page5 #center h5 {
+#page5 #center #section-2 #middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page5 #center #section-2>h5 {
+  font-size: 3vw;
+  font-weight: 500;
+  font-family: title;
+}
+
+#page5 #center #section-2 h3 {
+  font-size: 4vw;
+  line-height: 4vw;
+  font-weight: 500;
+  font-family: mediumFont;
+}
+
+#page5 #center #section-2 h2 {
+  font-size: 4vw;
+  line-height: 4vw;
+  font-weight: 500;
+  text-align: center;
+  font-family: title;
+}
+
+#page5 #center #section-2 button {
+  position: relative;
+  padding: 0.8vw 2vw;
+  border: none;
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 2.5vw;
+  border-radius: 0.45vw;
+  font-size: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5vw;
+}
+
+#page5 #center #section-2 #button h5, 
+#page5 #center #section-2 #button i {
   font-size: 1.5vw;
-  font-weight: 500;
+  font-family: mediumFont;
+}
+#page5 #center #section-2 #button i {
+  margin-top: 0.4vw;
 }
 
-#page5 #center h2 {
-  font-size: 5vw;
-  font-weight: 500;
-}
-
-#page5 #center h2 span {
-  font-style: italic;
-}
-
-#page5 #center button {
-  padding: 1.5vw;
-  border-radius: 50px;
-  color: white;
-  border: 1px solid white;
-  background-color: transparent;
-  margin-top: 3vw;
-  transition: all ease 0.4s;
-}
-
-#page5 #center button:hover {
-  cursor: pointer;
-  background-color: white;
-  color: black;
-}
-
-#page5 #center h1 {
+#page5 #center #section-2>h1 {
   font-size: 18vw;
-  font-weight: 900;
+  font-family: title;
+  font-weight: 500;
+}
+
+#page5 #center #section-3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  padding-right: 2vw;
 }
 
 #page5 #lower-h1
@@ -1824,18 +1907,6 @@ select {
 }
 
 /* Page5 end */
-
-/* Page5 mobile start */
-
-#page5-mobile {
-  width: 100%;
-  height: 100vh;
-  background-color: blue;
-  display: none;
-  color: #fff;
-}
-
-/* Page5 mobile end */
 
 /* Page6 start */
 
@@ -1986,31 +2057,29 @@ select {
 
 #page6 #section2 #right {
   width: 38%;
-  height: 100%;
+  height: fit-content;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 5vw;
-  padding-top: 8vw;
+  padding-top: 5vw;
 }
 
 #page6 #section2 #right .card {
   width: 100%;
-  height: 70vh;
+  height: 85vh;
   display: flex;
   flex-direction: column;
-  gap: 2vw;
   position: relative;
   background: linear-gradient
     (135deg, rgba(125, 125, 125, 0), rgba(169, 169, 169, 0));
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(13px);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-  padding-bottom: 2vw;
 }
 
 #page6 #section2 #right .card #image {
   width: 100%;
-  height: 28vw;
+  height: 60%;
   position: relative;
 }
 
@@ -2018,6 +2087,15 @@ select {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+#page6 #section2 #right .card #text {
+  width: 100%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1vw;
 }
 
 #page6 #section2 #right .card #heading {
@@ -2035,8 +2113,6 @@ select {
 }
 
 #page6 #section2 #right .card #description {
-  height: 4vw;
-  margin-top: -1.5vw;
   padding-left: 1vw;
 }
 
@@ -2045,6 +2121,7 @@ select {
   line-height: 1;
   font-family: lightFont;
   color: #fff;
+  font-weight: 500;
 }
 
 /* Page6 end */
@@ -2419,6 +2496,228 @@ select {
 @media (min-width: 993px) and (max-width: 1200px) {
 }
 @media (min-width: 769px) and (max-width: 992px) {
+  nav > h1 {
+    font-size: 3vw;
+  }
+
+  .landing-para > h3 {
+    font-size: 2.5vw;
+  }
+  
+  .landing-para > p {
+    font-size: 2vw;
+  }
+
+  .landing-wheel-text1 > h1,
+  .landing-wheel-text2 > h1 {
+    font-size: 6vw;
+  }
+
+  .landing-footer-elem {
+    width: 20vw;
+    text-align: center;
+  }
+
+  .landing-footer-elem > h3 {
+    font-size: 2.5vw;
+  }
+  
+  .landing-footer-elem > p {
+    font-size: 2vw;
+  }
+
+  .page1-energy-button {
+    width: 45vw;
+    position: absolute;
+    z-index: 2;
+    top: 30%;
+    background-color: #bbbbbbd8;
+    padding: 0.8vw 5vw;
+    border-radius: 0.5vw;
+  }
+
+  .page1-energy-button > h3 {
+    font-size: 2.5vw;
+  }
+  
+  .page1-energy-text > p {
+    font-size: 2vw;
+    margin-top: 5vw;
+  }
+
+  .page2-text > h1 {
+    font-size: 3vw;
+  }
+
+  .page2-text-overflow > p {
+    font-size: 2.5vw;
+  }
+
+  .page2-text > button {
+    font-size: 2vw;
+  }
+
+  .page2-speed {
+    height: 20vw;
+  }
+
+  .page2-circle {
+    height: 15vw;
+    width: 15vw;
+  }
+
+  .page2-circle > h1 {
+    font-size: 3.5vw;
+  }
+  
+  .page2-circle > h3 {
+    font-size: 2vw;
+  }
+
+  .page2-speed > h3 {
+    font-size: 2.5vw;
+  }
+
+  .page2-box-elem > h1 {
+    font-size: 2.5vw;
+    height: 3vw;
+  }
+  
+  .page2-box-elem > h3 {
+    font-size: 2vw;
+  }
+
+  .overlay-text > h1 {
+    font-size: 3vw;
+    letter-spacing: 1px;
+  }
+
+  .models-btn > h3 {
+    font-size: 2vw;
+    padding: 1vw 2vw;
+    gap: 0.5vw;
+  }
+
+  .overlay-scroller > i {
+    font-size: 2vw;
+  }
+
+  .overlay-scroller > p {
+    font-size: 2vw;
+  }
+
+  #energy-text h4 {
+    font-size: 4vw;
+    line-height: 0.9;
+  }
+
+  #energy-container .circle3 h4 {
+    font-size: 5.5vw;
+  }
+
+  #energy-container #energy h1 {
+    font-size: 28vw;
+  }
+
+  #energy-container #energy {
+    display: flex;
+    align-items: center;
+  }
+
+  .solar-overlay .top-panel h3 {
+    font-size: 3.5vw;
+  }
+
+  #page5 #center .section .image {
+    width: 26vw;
+    height: 20vw;
+  }
+  
+  #page5 #center #section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 5vw;
+    padding-top: 20vw;
+  }
+
+  #page5 #center #section-2 button {
+    font-size: 2vw;
+  }
+
+  #page5 #center #section-2>h1 {
+    margin-top: 4vw;
+  }
+
+  #page6 #section1 h1 {
+    font-size: 6vw;
+  }
+  
+  #page6 #section1 h3 {
+    font-size: 3vw;
+  }
+
+  #page6 #section2 #left {
+    width: 55%;
+    padding-right: 2vw;
+  }
+
+  #page6 #section2 #left #heading h1 {
+    font-size:6vw;
+  }
+
+  #page6 #section2 #left #heading-3 #line {
+    width: 47% !important;
+  }
+
+  #page6 #section2 #left h3 {
+    font-size: 3vw;
+  }
+
+  #page6 #section2 #left button {
+    font-size: 2vw;
+    padding: 1.5vw 2vw;
+    border-radius: 0.45vw;
+  }
+
+  #page6 #section2 #right {
+    width: 45%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 5vw;
+    padding-top: 5vw;
+  }
+
+  #page6 #section2 #right .card #heading h3 {
+    font-size: 4vw;
+  }
+
+  #page6 #section2 #right .card #description h5 {
+    font-size: 3vw;
+  }
+
+  #pg7-text-container .tx-lf h1 {
+    font-size: 6vw;
+  }
+
+  #pg7-text-container .tx-lf p {
+    font-size: 3vw;
+  }
+
+  #pg7-text-container .tx-rt button {
+    padding: 1.5vw 2vw;
+    font-size: 2vw;
+  }
+
+  #discovery #dis-text #container7 h1 {
+    margin-bottom: 20vw;
+  }
+
+  #footer-pt1 h4 {
+    font-size: 2.5vw;
+  }
 }
 
 @media (min-width: 601px) and (max-width: 768px) {

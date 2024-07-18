@@ -1450,10 +1450,7 @@ page3Animation();
 // page5Animation
 
 const page5Scroll = () => {
-  var page5 = document.querySelector("#page5");
   var upper = document.querySelector("#page5 #upper");
-  var center = document.querySelector("#page5 #center");
-  var centerContent = document.querySelector("#page5 #center .content");
   var lower = document.querySelector("#page5 #lower");
 
   var tl = gsap.timeline({
@@ -1478,59 +1475,67 @@ tl
     top: "100%",
     ease: "power1.in",
 },'a')
-.from(centerContent,{
-    y: 800,
-    opacity: 0,
-    delay: -0.4,
-    ease: "power1.in"
-})
+.from("#page5 #section-2", {
+  opacity: 0,
+},"a")
+.from("#page5 #image-1", {
+  x: -300,
+  delay: 0.2
+},"a")
+.from("#page5 #image-2", {
+  y: -300,
+  delay: 0.2
+},"a")
+.from("#page5 #image-3", {
+  x: 300,
+  delay: 0.2
+},"a")
 }
 page5Scroll()
 
-// page6Animation
-const page6LeftBtnHover = () => {
-  var btn = document.querySelector("#page6 #button");
-  var heads = document.querySelectorAll("#page6 #button h5");
-  var arrows = document.querySelectorAll("#page6 #button #arrow i");
+const page5Hover = () => {
+  const imageDivs = document.querySelectorAll("#page5 #center .section .image");
 
-  heads.forEach(function (head) {
-    btn.addEventListener("mouseenter", function () {
-      gsap.to(head, {
-        y: "-33",
-        duration: 0.3,
+  imageDivs.forEach((imageDiv) => {
+    const overlay = imageDiv.querySelector('#overlay');
+
+    imageDiv.addEventListener("mouseenter", () => {
+      gsap.to(overlay, {
+        opacity: 1,
+        duration: 0.1
       });
     });
-    btn.addEventListener("mouseleave", function () {
-      gsap.to(head, {
-        y: "0",
-        duration: 0.3,
-      });
+
+    imageDiv.addEventListener("mousemove", () => {
+      document.body.style.cursor = "none";
+      gsap.to("#dis-cursor", { scale: 1, duration: 0.5 });
     });
-  });
-  arrows.forEach(function (arrow) {
-    btn.addEventListener("mouseenter", function () {
-      gsap.to(arrow, {
-        y: "-30",
-        duration: 0.3,
-      });
-    });
-    btn.addEventListener("mouseleave", function () {
-      gsap.to(arrow, {
-        y: "0",
-        duration: 0.3,
+
+    imageDiv.addEventListener("mouseleave", () => {
+      document.body.style.cursor = "auto";
+      gsap.to(overlay, {
+        opacity: 0,
+        duration: 0.1
+      })
+      gsap.to("#dis-cursor", {
+        scale: 0,
+        duration: 0.5,
       });
     });
   });
 };
-page6LeftBtnHover();
 
+page5Hover();
+
+
+// page6Animation
 const page6ScrollAnimation = () => {
   var tl6 = gsap.timeline({
     scrollTrigger: {
       trigger: "#page6",
       scroller: "body",
       start: "64.4% 50%",
-      end: "250% 50%",
+      end: "380% 50%",
       pin: true,
       scrub: 1,
       // markers: true
@@ -1538,7 +1543,7 @@ const page6ScrollAnimation = () => {
   });
 
   tl6.to("#page6 #section2 #right", {
-    y: "-168%",
+    y: "-68%",
   });
 };
 page6ScrollAnimation();
@@ -1752,3 +1757,6 @@ const textAnimation = () => {
     });
 };
 textAnimation();
+
+
+
