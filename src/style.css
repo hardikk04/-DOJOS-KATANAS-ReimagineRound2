@@ -41,7 +41,7 @@ html {
   width: 100%;
   height: 100%;
 }
-body{
+body {
   overflow: hidden;
 }
 
@@ -68,10 +68,7 @@ body::-webkit-scrollbar-track {
 
 /* Customize scrollbar handle */
 body::-webkit-scrollbar-thumb {
-  background-color: rgba(0,
-      0,
-      0,
-      0.5);
+  background-color: rgba(0, 0, 0, 0.5);
   /* Adjust handle color and transparency */
   border-radius: 3px;
   /* Adjust border radius to match the design */
@@ -86,6 +83,10 @@ body::-webkit-scrollbar-thumb:hover {
 body::-webkit-scrollbar-thumb:active {
   background-color: rgba(0, 0, 0, 1);
   /* Adjust handle color on active state */
+}
+
+.overflow {
+  overflow: hidden;
 }
 
 .inline-block {
@@ -231,7 +232,7 @@ nav {
   position: relative;
 }
 
-nav>h1 {
+nav > h1 {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0);
@@ -312,7 +313,7 @@ nav>h1 {
   padding: 0.4vw;
   cursor: pointer;
 }
-#menu-text{
+#menu-text {
   width: 100%;
   height: 40%;
   padding: 0 3vw;
@@ -320,21 +321,21 @@ nav>h1 {
   justify-content: space-between;
   color: #ffffffb5;
 }
-#menu-text h2{
-  font-family:title;
+#menu-text h2 {
+  font-family: title;
   font-size: 1vw;
 }
-#cust{
+#cust {
   margin-top: 2vw;
 }
-#menu-text h4{
+#menu-text h4 {
   font-family: regularfont;
   font-weight: 500;
 }
-#menu-text .elems{
+#menu-text .elems {
   width: 15%;
 }
-#menu-text .elems .one{
+#menu-text .elems .one {
   text-align: right;
   width: 100%;
   height: 20%;
@@ -461,7 +462,7 @@ nav>h1 {
   gap: 20vh;
 }
 
-#menu-page-mobile #content>h1 {
+#menu-page-mobile #content > h1 {
   font-size: 4vh;
   font-family: tesla;
   background: linear-gradient(to bottom, #eaeaea, #909090);
@@ -491,7 +492,7 @@ nav>h1 {
   padding-left: 3vw;
 }
 
-.landing-para>h3 {
+.landing-para > h3 {
   font-family: title;
   color: #121212;
   font-size: 1.25vw;
@@ -499,7 +500,7 @@ nav>h1 {
   letter-spacing: 1px;
 }
 
-.landing-para>p {
+.landing-para > p {
   font-family: mediumFont;
   font-size: 1.1vw;
   width: 28%;
@@ -539,7 +540,7 @@ nav>h1 {
   overflow: hidden;
 }
 
-.landing-wheel-text1>h1 {
+.landing-wheel-text1 > h1 {
   font-size: 4.7vw;
   color: #fff;
   font-weight: 500;
@@ -560,7 +561,7 @@ nav>h1 {
   overflow: hidden;
 }
 
-.landing-wheel-text2>h1 {
+.landing-wheel-text2 > h1 {
   position: relative;
   z-index: 1;
   font-size: 4.7vw;
@@ -571,7 +572,7 @@ nav>h1 {
   transform: translateY(100%);
 }
 
-.landing-wheel-img>img {
+.landing-wheel-img > img {
   position: relative;
   top: 50px;
   height: 100%;
@@ -596,12 +597,12 @@ nav>h1 {
   text-align: center;
 }
 
-.landing-footer-elem>h3 {
+.landing-footer-elem > h3 {
   font-size: 1.5vw;
   letter-spacing: 1px;
 }
 
-.landing-footer-elem>p {
+.landing-footer-elem > p {
   font-size: 1vw;
 }
 
@@ -681,6 +682,7 @@ nav>h1 {
 }
 
 #landing-wheel-mobile #image img {
+  position: relative;
   height: 30vh;
   object-fit: cover;
   mix-blend-mode: difference;
@@ -749,7 +751,7 @@ nav>h1 {
   background-color: #0000003d;
 }
 
-.page1-overlay>video {
+.page1-overlay > video {
   position: absolute;
   top: 0;
   left: 0;
@@ -809,14 +811,14 @@ nav>h1 {
   margin-top: 2vw;
 }
 
-.page1-energy-button>h3 {
+.page1-energy-button > h3 {
   font-family: boldFont;
   font-weight: 1000;
   font-size: 1.3vw;
   color: #3e3e3e;
 }
 
-.page1-energy-text>p {
+.page1-energy-text > p {
   margin-top: 1.2vw;
   color: #fafafa;
   font-size: 1.9vw;
@@ -824,7 +826,7 @@ nav>h1 {
   line-height: 1;
 }
 
-.page1-hero-text-vehicle>h1 {
+.page1-hero-text-vehicle > h1 {
   color: #fff;
   font-family: title;
   font-size: 3.6vw;
@@ -839,7 +841,7 @@ nav>h1 {
   transform: translate(-50%, -50%);
 }
 
-.page1-hero-text-energy>h1 {
+.page1-hero-text-energy > h1 {
   white-space: nowrap;
   color: #fff;
   font-family: title;
@@ -852,7 +854,7 @@ nav>h1 {
   position: relative;
 }
 
-.page1-hero-text-charging>h1 {
+.page1-hero-text-charging > h1 {
   color: #fff;
   font-family: title;
   font-size: 3.6vw;
@@ -1000,7 +1002,7 @@ nav>h1 {
   clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }
 
-.page2-img1>img {
+.page2-img1 > img {
   position: relative;
   height: 100%;
   width: 100%;
@@ -1021,7 +1023,7 @@ nav>h1 {
   z-index: 2;
 }
 
-.page2-img1>canvas {
+.page2-img1 > canvas {
   position: absolute;
   top: 0%;
   left: 0;
@@ -1038,7 +1040,7 @@ nav>h1 {
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
-.page2-img2>img {
+.page2-img2 > img {
   position: relative;
   height: 100%;
   width: 100%;
@@ -1047,7 +1049,7 @@ nav>h1 {
   opacity: 0;
 }
 
-.page2-img2>canvas {
+.page2-img2 > canvas {
   position: absolute;
   top: 0%;
   left: 0;
@@ -1064,7 +1066,7 @@ nav>h1 {
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
 }
 
-.page2-img3>img {
+.page2-img3 > img {
   position: relative;
   height: 100%;
   width: 100%;
@@ -1073,7 +1075,7 @@ nav>h1 {
   opacity: 0;
 }
 
-.page2-img3>canvas {
+.page2-img3 > canvas {
   position: absolute;
   top: 0%;
   left: 0;
@@ -1102,7 +1104,7 @@ nav>h1 {
   width: 100%;
 }
 
-.page2-text>h1 {
+.page2-text > h1 {
   font-size: 1.8vw;
   font-family: tesla;
   letter-spacing: 6px;
@@ -1129,7 +1131,7 @@ nav>h1 {
   left: 0;
 }
 
-.page2-text-overflow>p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -1142,7 +1144,7 @@ nav>h1 {
   left: 0;
 }
 
-.page2-text-overflow>p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -1167,13 +1169,13 @@ nav>h1 {
   padding-bottom: 0.1vw;
 }
 
-.page2-text-overflow>p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
 }
 
-.page2-text>button {
+.page2-text > button {
   position: relative;
   padding: 0.8vw 2vw;
   border: none;
@@ -1211,16 +1213,16 @@ nav>h1 {
   color: #31a93e;
 }
 
-.page2-circle>h1 {
+.page2-circle > h1 {
   font-size: 3vw;
   font-weight: 500;
 }
 
-.page2-circle>h3 {
+.page2-circle > h3 {
   font-weight: 100;
 }
 
-.page2-speed>h3 {
+.page2-speed > h3 {
   margin-top: 1vw;
   font-size: 1.4vw;
   letter-spacing: 1px;
@@ -1241,13 +1243,13 @@ nav>h1 {
   text-align: center;
 }
 
-.page2-box-elem>h1 {
+.page2-box-elem > h1 {
   font-size: 2vw;
   height: 3vw;
   font-weight: 500;
 }
 
-.page2-box-elem>h3 {
+.page2-box-elem > h3 {
   font-size: 1.2vw;
   font-weight: 100;
 }
@@ -1408,7 +1410,7 @@ nav>h1 {
   background-color: #fff;
 }
 
-.models-name>h1 {
+.models-name > h1 {
   position: absolute;
   top: 0%;
   left: 3%;
@@ -1439,7 +1441,7 @@ nav>h1 {
   overflow: hidden;
 }
 
-.overlay-text>h1 {
+.overlay-text > h1 {
   font-weight: 100;
   font-size: 2.5vw;
   letter-spacing: 1px;
@@ -1454,7 +1456,7 @@ nav>h1 {
   margin-bottom: 12vw;
 }
 
-.models-btn>h3 {
+.models-btn > h3 {
   padding: 0.8vw 2vw;
   color: #fff;
   background-color: #31a93e;
@@ -1471,12 +1473,12 @@ nav>h1 {
   cursor: pointer;
 }
 
-.models-btn>h3:nth-child(2) {
+.models-btn > h3:nth-child(2) {
   background-color: #000;
   border: 1px solid #ffffff83;
 }
 
-.models-btn>h3>i {
+.models-btn > h3 > i {
   font-weight: 100;
 }
 
@@ -1498,7 +1500,7 @@ nav>h1 {
   background-color: #6a6a6a;
 }
 
-.overlay-scroller>i {
+.overlay-scroller > i {
   margin-top: 0.5vw;
   font-size: 1vw;
   opacity: 0;
@@ -1527,7 +1529,7 @@ nav>h1 {
   opacity: 0;
 }
 
-.overlay-scroller>p {
+.overlay-scroller > p {
   font-size: 0.4vw;
   letter-spacing: 2px;
   margin-top: 0.2vw;
@@ -1621,7 +1623,7 @@ nav>h1 {
   padding: 0.5vw;
 }
 
-.color-picker-elem>img {
+.color-picker-elem > img {
   position: relative;
   height: 100%;
   width: 100%;
@@ -2128,7 +2130,7 @@ nav>h1 {
   align-items: center;
 }
 
-#page5 #center #section-2>h5 {
+#page5 #center #section-2 > h5 {
   font-size: 3vw;
   font-weight: 500;
   font-family: title;
@@ -2164,7 +2166,7 @@ nav>h1 {
   gap: 0.5vw;
 }
 
-#page5 #center #section-2 #button h5, 
+#page5 #center #section-2 #button h5,
 #page5 #center #section-2 #button i {
   font-size: 1.5vw;
   font-family: mediumFont;
@@ -2173,7 +2175,7 @@ nav>h1 {
   margin-top: 0.4vw;
 }
 
-#page5 #center #section-2>h1 {
+#page5 #center #section-2 > h1 {
   font-size: 18vw;
   font-family: title;
   font-weight: 500;
@@ -2465,9 +2467,11 @@ nav>h1 {
   width: 100%;
   height: 100%;
   position: absolute;
-  background: linear-gradient(to bottom,
-      rgba(9, 9, 9, 0.312),
-      rgba(0, 0, 0, 0.767));
+  background: linear-gradient(
+    to bottom,
+    rgba(9, 9, 9, 0.312),
+    rgba(0, 0, 0, 0.767)
+  );
   backdrop-filter: blur(3px);
   z-index: 2;
 }
@@ -2518,7 +2522,6 @@ nav>h1 {
   font-size: 1.5vh;
   gap: 2vw;
 }
-
 
 #page6-mobile #section-2 #swiper-section {
   width: 100%;
@@ -2573,8 +2576,6 @@ nav>h1 {
 #page6-mobile .swiper-button-prev::after {
   display: none;
 }
-
-
 
 #page6-mobile #section-2 #swiper-section h3 {
   text-align: left;
@@ -2851,7 +2852,7 @@ nav>h1 {
   .landing-para > h3 {
     font-size: 2.5vw;
   }
-  
+
   .landing-para > p {
     font-size: 2vw;
   }
@@ -2869,7 +2870,7 @@ nav>h1 {
   .landing-footer-elem > h3 {
     font-size: 2.5vw;
   }
-  
+
   .landing-footer-elem > p {
     font-size: 2vw;
   }
@@ -2887,7 +2888,7 @@ nav>h1 {
   .page1-energy-button > h3 {
     font-size: 2.5vw;
   }
-  
+
   .page1-energy-text > p {
     font-size: 2vw;
     margin-top: 5vw;
@@ -2917,7 +2918,7 @@ nav>h1 {
   .page2-circle > h1 {
     font-size: 3.5vw;
   }
-  
+
   .page2-circle > h3 {
     font-size: 2vw;
   }
@@ -2930,7 +2931,7 @@ nav>h1 {
     font-size: 2.5vw;
     height: 3vw;
   }
-  
+
   .page2-box-elem > h3 {
     font-size: 2vw;
   }
@@ -2980,7 +2981,7 @@ nav>h1 {
     width: 26vw;
     height: 20vw;
   }
-  
+
   #page5 #center #section-2 {
     display: flex;
     flex-direction: column;
@@ -2993,14 +2994,14 @@ nav>h1 {
     font-size: 2vw;
   }
 
-  #page5 #center #section-2>h1 {
+  #page5 #center #section-2 > h1 {
     margin-top: 4vw;
   }
 
   #page6 #section1 h1 {
     font-size: 6vw;
   }
-  
+
   #page6 #section1 h3 {
     font-size: 3vw;
   }
@@ -3011,7 +3012,7 @@ nav>h1 {
   }
 
   #page6 #section2 #left #heading h1 {
-    font-size:6vw;
+    font-size: 6vw;
   }
 
   #page6 #section2 #left #heading-3 #line {
@@ -3071,6 +3072,9 @@ nav>h1 {
 @media (min-width: 601px) and (max-width: 768px) {
 }
 @media (max-width: 600px) {
+  .threejs-models {
+    display: none;
+  }
 
   #menu-page,
   #landing-wheel,
