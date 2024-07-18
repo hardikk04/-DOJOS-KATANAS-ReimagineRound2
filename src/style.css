@@ -488,7 +488,7 @@ nav > h1 {
 
 .landing-para {
   position: relative;
-  padding-top: 6vw;
+  padding-top: 5vw;
   padding-left: 3vw;
 }
 
@@ -504,8 +504,8 @@ nav > h1 {
   font-family: mediumFont;
   font-size: 1.1vw;
   width: 28%;
-  line-height: 1;
-  margin-top: 0.3vw;
+  line-height: 1.3;
+  margin-top: .4vw;
   color: #676767;
 }
 
@@ -1017,10 +1017,25 @@ nav > h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 4vw;
-  color: #fff;
+  color: #919191;
   font-family: title;
   font-weight: 500;
   z-index: 2;
+}
+
+.page2-img1>h1>.model-diff{
+    color: #ffffff;
+
+}
+
+.page2-img2>h1>.model-diff{
+    color: #ffffff;
+
+}
+
+.page2-img3>h1>.model-diff{
+    color: #ffffff;
+
 }
 
 .page2-img1 > canvas {
@@ -1131,7 +1146,17 @@ nav > h1 {
   left: 0;
 }
 
-.page2-text-overflow > p {
+.page2-text-para2-ipad,
+.page2-text-para3-ipad {
+  display: none;
+}
+
+.page2-text-para2-ipad,
+.page2-text-para3-ipad {
+  display: none;
+}
+
+.page2-text-overflow>p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -2005,13 +2030,16 @@ nav > h1 {
   height: 100vh;
   position: relative;
   overflow: hidden;
+  overflow: hidden;
 }
 
 #page5 #upper {
   width: 100%;
   height: 50vh;
   background-color: #ffffff;
+  background-color: #ffffff;
   position: absolute;
+  z-index: 2;
   z-index: 2;
   top: 0%;
   overflow: hidden;
@@ -2030,6 +2058,7 @@ nav > h1 {
   position: absolute;
   top: 50%;
   overflow: hidden;
+  z-index: 2;
   z-index: 2;
 }
 
@@ -2051,14 +2080,17 @@ nav > h1 {
   width: 100%;
   height: 100%;
   background-color: rgb(0, 0, 0);
+  width: 100%;
+  height: 100%;
+  background-color: rgb(0, 0, 0);
   color: white;
   display: flex;
   position: relative;
 }
 
 #page5 #center .section {
-  width: 33.3%;
   height: 100%;
+  border-radius: 2px solid black;
 }
 
 #page5 #center .section .image {
@@ -2127,23 +2159,31 @@ nav > h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 2vw 0vw;
+  padding-top: 4vw;
 }
 
-#page5 #center #section-2 > h5 {
+#page5 #center #section-2 #middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#page5 #center #section-2>h5 {
   font-size: 3vw;
   font-weight: 500;
   font-family: title;
 }
 
 #page5 #center #section-2 h3 {
-  font-size: 4vw;
-  line-height: 4vw;
+  font-size: 2.6vw;
+  line-height: 1;
   font-weight: 500;
   font-family: mediumFont;
 }
 
 #page5 #center #section-2 h2 {
-  font-size: 4vw;
+  font-size: 3vw;
   line-height: 4vw;
   font-weight: 500;
   text-align: center;
@@ -2165,17 +2205,14 @@ nav > h1 {
   gap: 0.5vw;
 }
 
-#page5 #center #section-2 #button h5,
+#page5 #center #section-2 #button h5, 
 #page5 #center #section-2 #button i {
   font-size: 1.5vw;
   font-family: mediumFont;
 }
-#page5 #center #section-2 #button i {
-  margin-top: 0.4vw;
-}
 
-#page5 #center #section-2 > h1 {
-  font-size: 18vw;
+#page5 #center #section-2>h1 {
+  font-size: 15vw;
   font-family: title;
   font-weight: 500;
 }
@@ -2183,9 +2220,32 @@ nav > h1 {
 #page5 #center #section-3 {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-evenly;
-  padding-right: 2vw;
+  padding-right: 0.5vw;
+}
+
+#page5 #center #section-1 #image-1{
+  margin-left: -2vw;
+}
+
+#page5 #center #section-3 #image-2{
+  margin-left: 5vw;
+}
+
+#page5 #center #section-3 #image-3{
+  margin-left: -1vw;
+}
+
+#page5 #center #section-1 {
+  width: 30%;
+}
+
+#page5 #center #section-2 {
+  width: 40%;
+}
+
+#page5 #center #section-3 {
+  width: 30%;
 }
 
 #page5 #lower-h1 {
@@ -2194,7 +2254,6 @@ nav > h1 {
   color: black;
   font-family: title;
 }
-
 /* Page5 end */
 
 /* Page6 start */
@@ -2270,37 +2329,41 @@ nav > h1 {
   display: flex;
 }
 
-#page6 #section2 #left {
+#page6 #section2 .left {
   width: 62%;
   display: flex;
   flex-direction: column;
 }
 
-#page6 #section2 #left #heading {
+#page6 #section2 #left-ipad {
+  display: none;
+}
+
+#page6 #section2 .left #heading {
   margin-bottom: 2vw;
 }
 
-#page6 #section2 #left #heading h1 {
+#page6 #section2 .left #heading h1 {
   font-size: 5.5vw;
   font-family: title;
   font-weight: 500;
   color: #fff;
 }
 
-#page6 #section2 #left #heading-3 {
+#page6 #section2 .left #heading-3 {
   display: flex;
   align-items: center;
   gap: 1vw;
 }
 
-#page6 #section2 #left #heading-3 #line {
+#page6 #section2 .left #heading-3 #line {
   width: 57%;
   height: 0.1vw;
   background-color: #fff;
   margin-top: 0.8vw;
 }
 
-#page6 #section2 #left h3 {
+#page6 #section2 .left h3 {
   font-family: lightfont;
   font-weight: 500;
   color: #fff;
@@ -2308,7 +2371,7 @@ nav > h1 {
   line-height: 1;
 }
 
-#page6 #section2 #left button {
+#page6 #section2 .left button {
   position: relative;
   padding: 0.8vw 2vw;
   border: none;
@@ -2325,24 +2388,24 @@ nav > h1 {
   margin-top: 2vw;
 }
 
-#page6 #section2 #left #button #text {
+#page6 #section2 .left #button #text {
   height: 2vw;
   overflow: hidden;
 }
 
-#page6 #section2 #left #button #text h5 {
+#page6 #section2 .left #button #text h5 {
   font-size: 1.5vw;
   font-family: regularFont;
   color: #fff;
 }
 
-#page6 #section2 #left #button #arrow {
+#page6 #section2 .left #button #arrow {
   width: 1.5vw;
   height: 1.5vw;
   overflow: hidden;
 }
 
-#page6 #section2 #left #button #arrow i {
+#page6 #section2 .left #button #arrow i {
   font-size: 1.8vw;
   color: #fff;
   display: inline-block;
@@ -2785,7 +2848,7 @@ nav > h1 {
 }
 
 #footer-pt1 .foottxt-wrap {
-  height: 2.2vw;
+  height: 2.5vw;
   overflow: hidden;
   cursor: pointer;
 }
@@ -2842,8 +2905,337 @@ nav > h1 {
 /* Responsive */
 
 @media (min-width: 993px) and (max-width: 1200px) {
+  #menu-nav {
+    padding: 2vw;
+  }
+
+  #menu-nav h1 {
+    font-size: 2.5vw;
+  }
+
+  #menu-text {
+    height: 40%;
+    padding: 1vw 2vw;
+    display: flex;
+  }
+
+  #menu-text h2 {
+    font-size: 2vw;
+  }
+
+  #menu-text h4 {
+    font-size: 1.7vw;
+  }
+
+  #menu-text .elems {
+    width: 25%;
+  }
+
+  #cust {
+    margin-top: 1.5vw;
+  }
+
+  #wheel {
+    position: absolute;
+    left: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) rotate(0) scale(1.1);
+    bottom: -70vh;
+    height: 105vh;
+    width: 105vh;
+  }
+
+  nav > h1 {
+    font-size: 2.5vw;
+  }
+
+  .landing-para > h3 {
+    font-size: 2vw;
+  }
+
+  .landing-para > p {
+    font-size: 1.7vw;
+  }
+
+  .landing-wheel-text1 > h1,
+  .landing-wheel-text2 > h1 {
+    font-size: 6vw;
+  }
+
+  .landing-footer-elem {
+    width: 18vw;
+    text-align: center;
+  }
+
+  .landing-footer-elem > h3 {
+    font-size: 2vw;
+  }
+
+  .landing-footer-elem > p {
+    font-size: 1.7vw;
+  }
+
+  .page1-energy-button {
+    width: 40vw;
+    position: absolute;
+    z-index: 2;
+    top: 40%;
+    background-color: #bbbbbbd8;
+    padding: 0.7vw 4vw;
+    border-radius: 0.4vw;
+  }
+
+  .page1-energy-button > h3 {
+    font-size: 2vw;
+  }
+
+  .page1-energy-text > p {
+    font-size: 2vw;
+    margin-top: 6vw;
+  }
+
+  .page2-text-para {
+    height: 8vw;
+  }
+
+  .page2-text > h1 {
+    font-size: 2.5vw;
+  }
+
+  .page2-text-overflow > p {
+    font-size: 2.3vw;
+  }
+
+  .page2-text > button {
+    font-size: 1.5vw;
+    margin-top: 4vw;
+  }
+
+  .page2-text-para1 {
+    top: 0%;
+  }
+
+  .page2-speed {
+    height: 18vw;
+  }
+
+  .page2-circle {
+    height: 13vw;
+    width: 13vw;
+  }
+
+  .page2-circle > h1 {
+    font-size: 3vw;
+  }
+
+  .page2-circle > h3 {
+    font-size: 1.7vw;
+  }
+
+  .page2-speed > h3 {
+    font-size: 2vw;
+  }
+
+  .page2-box {
+    height: 14vh;
+  }
+
+  .page2-box-elem > h1 {
+    font-size: 2.2vw;
+    height: 2.5vw;
+  }
+
+  .page2-box-elem > h3 {
+    font-size: 1.6vw;
+  }
+
+  .overlay-text > h1 {
+    font-size: 2.5vw;
+    letter-spacing: 1px;
+  }
+
+  .models-btn > h3 {
+    font-size: 1.7vw;
+    padding: 1vw 1.5vw;
+    gap: 0.4vw;
+  }
+
+  .overlay-scroller > i {
+    font-size: 1.7vw;
+  }
+
+  .overlay-scroller > p {
+    font-size: 1.7vw;
+  }
+
+  #energy-text h4 {
+    font-size: 3.5vw;
+    line-height: 0.9;
+  }
+
+  #energy-container .circle3 h4 {
+    font-size: 3.5vw;
+  }
+
+  #energy-container #energy h1 {
+    font-size: 24vw;
+  }
+
+  #energy-container #energy {
+    display: flex;
+    align-items: center;
+  }
+
+  .solar-overlay .top-panel h3 {
+    font-size: 3vw;
+  }
+
+  #page5 #center .section .image {
+    width: 23vw;
+    height: 18vw;
+  }
+
+  #page5 #center #section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 4vw;
+    padding-top: 18vw;
+  }
+
+  #page5 #center #section-2 button {
+    font-size: 1.4vw;
+  }
+
+  #page5 #center #section-2 > h1 {
+    margin-top: 3.5vw;
+  }
+
+  #page6 #section1 h1 {
+    font-size: 5vw;
+  }
+
+  #page6 #section1 h3 {
+    font-size: 2.6vw;
+  }
+
+  #page6 #section2 #left {
+    width: 50%;
+    padding-right: 1.5vw;
+    display: none;
+  }
+
+  #page6 #section2 #left-ipad {
+    display: block;
+  }
+
+  #page6 #section2 .left #heading h1 {
+    font-size: 5vw;
+  }
+
+  #page6 #section2 #left #heading-3 #line {
+    width: 45% !important;
+  }
+
+  #page6 #section2 #left h3 {
+    font-size: 2.5vw;
+  }
+
+  #page6 #section2 .left button {
+    font-size: 1.5vw;
+    padding: 1.2vw 1.7vw;
+    border-radius: 0.4vw;
+  }
+
+  #page6 #section2 #right {
+    width: 40%;
+    height: fit-content;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4vw;
+    padding-top: 4vw;
+  }
+
+  #page6 #section2 #right .card #heading h3 {
+    font-size: 3.5vw;
+  }
+
+  #page6 #section2 #right .card #description h5 {
+    font-size: 2.5vw;
+  }
+
+  #pg7-text-container .tx-lf h1 {
+    font-size: 5vw;
+  }
+
+  #pg7-text-container .tx-lf p {
+    font-size: 2.5vw;
+  }
+
+  #pg7-text-container .tx-rt button {
+    padding: 1.2vw 1.7vw;
+    font-size: 1.4vw;
+  }
+
+  #container7 .ig7 .overlay7 h4 {
+    font-size: 2.5vw;
+  }
+
+  #discovery #dis-text #container7 h1 {
+    margin-bottom: 18vw;
+  }
+
+  #footer-pt1 .foottxt-wrap {
+    height: 2.6vw;
+  }
+
+  #footer-pt1 h4 {
+    font-size: 2.5vw;
+  }
 }
+
 @media (min-width: 769px) and (max-width: 992px) {
+  #menu-nav {
+    padding: 3vw;
+  }
+
+  #menu-nav h1 {
+    font-size: 3vw;
+  }
+
+  #menu-text{
+    height: 45%;
+    padding: 1vw 3vw;
+    display: flex;
+  }
+
+  #menu-text h2{
+    font-size: 2.5vw;
+  }
+
+  #menu-text h4{
+    font-size: 2vw;
+  }
+
+  #menu-text .elems{
+    width: 30%;
+  }
+
+  #cust{
+    margin-top: 2vw;
+  }
+
+  #wheel {
+    position: absolute;
+    left: 50%;
+    transform-origin: center;
+    transform: translateX(-50%) rotate(0) scale(1.2);
+    bottom: -83vh;
+    height: 110vh;
+    width: 110vh;
+  }
+
   nav > h1 {
     font-size: 3vw;
   }
@@ -2851,7 +3243,7 @@ nav > h1 {
   .landing-para > h3 {
     font-size: 2.5vw;
   }
-
+  
   .landing-para > p {
     font-size: 2vw;
   }
@@ -2869,7 +3261,7 @@ nav > h1 {
   .landing-footer-elem > h3 {
     font-size: 2.5vw;
   }
-
+  
   .landing-footer-elem > p {
     font-size: 2vw;
   }
@@ -2887,13 +3279,17 @@ nav > h1 {
   .page1-energy-button > h3 {
     font-size: 2.5vw;
   }
-
+  
   .page1-energy-text > p {
     font-size: 2vw;
     margin-top: 5vw;
   }
 
-  .page2-text > h1 {
+  .page2-text-para {
+    height: 9vw;
+  }
+
+  .page2-text>h1 {
     font-size: 3vw;
   }
 
@@ -2902,7 +3298,28 @@ nav > h1 {
   }
 
   .page2-text > button {
-    font-size: 2vw;
+    font-size: 1.6vw;
+    margin-top: 5vw;
+  }
+
+  .page2-text-para1 {
+    top: 0%;
+  }
+
+  #page2-text-para2 {
+    display: none;
+  }
+
+  .page2-text-para2-ipad {
+    display: block;
+  }
+
+  #page2-text-para3 {
+    display: none;
+  }
+
+  .page2-text-para3-ipad {
+    display: block;
   }
 
   .page2-speed {
@@ -2917,7 +3334,7 @@ nav > h1 {
   .page2-circle > h1 {
     font-size: 3.5vw;
   }
-
+  
   .page2-circle > h3 {
     font-size: 2vw;
   }
@@ -2926,13 +3343,17 @@ nav > h1 {
     font-size: 2.5vw;
   }
 
-  .page2-box-elem > h1 {
-    font-size: 2.5vw;
-    height: 3vw;
+  .page2-box {
+    height: 13vh;
   }
 
+  .page2-box-elem > h1 {
+    font-size: 2.2vw;
+    height: 3vw;
+  }
+  
   .page2-box-elem > h3 {
-    font-size: 2vw;
+    font-size: 1.8vw;
   }
 
   .overlay-text > h1 {
@@ -2960,7 +3381,7 @@ nav > h1 {
   }
 
   #energy-container .circle3 h4 {
-    font-size: 5.5vw;
+    font-size: 4vw;
   }
 
   #energy-container #energy h1 {
@@ -2980,7 +3401,7 @@ nav > h1 {
     width: 26vw;
     height: 20vw;
   }
-
+  
   #page5 #center #section-2 {
     display: flex;
     flex-direction: column;
@@ -2990,17 +3411,17 @@ nav > h1 {
   }
 
   #page5 #center #section-2 button {
-    font-size: 2vw;
+    font-size: 1.6vw;
   }
 
-  #page5 #center #section-2 > h1 {
+  #page5 #center #section-2>h1 {
     margin-top: 4vw;
   }
 
   #page6 #section1 h1 {
     font-size: 6vw;
   }
-
+  
   #page6 #section1 h3 {
     font-size: 3vw;
   }
@@ -3008,10 +3429,15 @@ nav > h1 {
   #page6 #section2 #left {
     width: 55%;
     padding-right: 2vw;
+    display: none;
+  }
+
+  #page6 #section2 #left-ipad {
+    display: block;
   }
 
   #page6 #section2 #left #heading h1 {
-    font-size: 6vw;
+    font-size:6vw;
   }
 
   #page6 #section2 #left #heading-3 #line {
@@ -3023,7 +3449,7 @@ nav > h1 {
   }
 
   #page6 #section2 #left button {
-    font-size: 2vw;
+    font-size: 1.6vw;
     padding: 1.5vw 2vw;
     border-radius: 0.45vw;
   }
@@ -3056,7 +3482,7 @@ nav > h1 {
 
   #pg7-text-container .tx-rt button {
     padding: 1.5vw 2vw;
-    font-size: 2vw;
+    font-size: 1.6vw;
   }
 
   #discovery #dis-text #container7 h1 {

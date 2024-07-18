@@ -143,6 +143,10 @@ magneticEffect();
 const menuAnimation = () => {
   let rotationAngle = 0;
   document.querySelector(".menu-open").addEventListener("click", function () {
+    // Scroll bar hidden
+
+    document.body.style.overflow = "hidden";
+
     rotationAngle = 0;
     //makeing wheel to initial position
     document.querySelector(
@@ -159,7 +163,7 @@ const menuAnimation = () => {
       .to("#menu-page", {
         display: "block",
         opacity: 1,
-        duration: 0.5,
+        duration: 1,
       })
       .to("#cl-line1 , #cl-line2", {
         height: "100%",
@@ -189,7 +193,7 @@ const menuAnimation = () => {
       .to("#menu-page", {
         display: "none",
         opacity: 0,
-        duration: 0.2,
+        duration: 1,
       })
       .to(
         "#op-line1",
@@ -204,6 +208,12 @@ const menuAnimation = () => {
         {
           width: "100%",
           duration: 0.4,
+
+          onComplete: () => {
+            // Show the scroll bar
+            document.body.style.overflow = "initial";
+            document.body.style.overflowX = "hidden";
+          },
         },
         "a"
       );
@@ -218,10 +228,10 @@ const menuAnimation = () => {
 
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     gsap.to(circle, {
-      rotate: rotationAngle,
+      rotate: rotationAngle * 0.2,
       scale: 1.2,
       ease: "linear",
-      duration: 0.2,
+      duration: 1,
     });
 
     document.querySelectorAll(".mtxt").forEach(function (txt) {
@@ -257,11 +267,11 @@ const menuMobile = () => {
     mmtl.play();
   });
   document.querySelector("#m-close").addEventListener("click", function () {
-    mmtl.reverse()
-  })
-}
+    mmtl.reverse();
+  });
+};
 if (window.matchMedia("(max-width:768px)").matches) {
-  menuMobile()
+  menuMobile();
 }
 
 // Landing wheel animation
@@ -541,22 +551,37 @@ const Page2mobile = () => {
     },
   });
   pg2mtl
-    .to("#container-1", {
-      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-    }, "a")
-    .to("#container-2", {
-      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-    }, "a")
-    .to("#container-2", {
-      clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-    }, "b")
-    .to("#container-3", {
-      clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-    }, "b")
-
-}
+    .to(
+      "#container-1",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+      },
+      "a"
+    )
+    .to(
+      "#container-2",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+      },
+      "a"
+    )
+    .to(
+      "#container-2",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+      },
+      "b"
+    )
+    .to(
+      "#container-3",
+      {
+        clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+      },
+      "b"
+    );
+};
 if (window.matchMedia("(max-width:768px)").matches) {
-  Page2mobile()
+  Page2mobile();
 }
 
 // Loader Animation for PC / Laptops
@@ -1107,7 +1132,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Fog
    */
-  const fog = new THREE.Fog("#040b10", 3, 8);
+  const fog = new THREE.Fog("#040b10", 3, 26);
   scene.fog = fog;
 
   /**
@@ -1665,11 +1690,11 @@ const page3mobile = () => {
     )
     .to("#page3-mobile #content #energy", {
       transform: "translateX(-78%)",
-      duration: 2
-    })
-}
+      duration: 2,
+    });
+};
 if (window.matchMedia("(max-width:768px)").matches) {
-  page3mobile()
+  page3mobile();
 }
 const solarmobile = () => {
   var swiper = new Swiper("#solar-mobile .mySwiper", {
@@ -1678,9 +1703,9 @@ const solarmobile = () => {
     centeredSlides: true,
     freeMode: true,
   });
-}
+};
 if (window.matchMedia("(max-width:768px)").matches) {
-  solarmobile()
+  solarmobile();
 }
 // page5Animation
 
@@ -1781,7 +1806,6 @@ const page5Hover = () => {
     });
   });
 };
-
 page5Hover();
 
 // page6Animation
@@ -1908,7 +1932,6 @@ const textEffect = () => {
   //animation for mousemove
   document.querySelectorAll(".text-effect").forEach(function (e) {
     e.addEventListener("mouseenter", function () {
-      console.log(e.children[0]);
       gsap.to(e.children[0].querySelectorAll("span"), {
         y: "-106%",
         stagger: {
