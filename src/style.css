@@ -1407,12 +1407,12 @@ nav > h1 {
 }
 
 #page2-mobile #main-container #container-1 {
-  background-image: url(/images/page2_1_mobile.png);
+  background-image: url(/images/page2_1_mobile.webp);
   clip-path: polygon(0 100%, 100% 100%, 100% 0, 0 0);
 }
 
 #page2-mobile #main-container #container-2 {
-  background-image: url(/images/page2_2_mobile.png);
+  background-image: url(/images/page2_2_mobile.webp);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: bottom;
@@ -1420,7 +1420,7 @@ nav > h1 {
 }
 
 #page2-mobile #main-container #container-3 {
-  background-image: url(/images/page2_3_mobile.png);
+  background-image: url(/images/page2_3_mobile.webp);
   background-position: 50%;
   background-size: 200%;
   clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0% 100%);
@@ -2322,7 +2322,7 @@ nav > h1 {
 #page6 #section2 {
   width: 100%;
   height: 100.2vh;
-  background-image: url(/images/page6_main.jpg);
+  background-image: url(/images/page6_main.webp);
   background-size: cover;
   padding: 2vw 3vw;
   display: flex;
@@ -2538,7 +2538,7 @@ nav > h1 {
 #page6-mobile #section-2 {
   width: 100%;
   height: 100vh;
-  background-image: url(./images/page6_main.jpg);
+  background-image: url(./images/page6_main.webp);
   background-size: cover;
   background-position: 57%;
   /* overflow: hidden; */

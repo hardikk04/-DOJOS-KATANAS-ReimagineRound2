@@ -960,7 +960,7 @@ const threeTeslaModelAnimation = () => {
    * Model Overlay
    */
   // Displacement Texture
-  const displacementTexture = textureLoader.load("/images/d2.jpg");
+  const displacementTexture = textureLoader.load("/images/d2.webp");
   // Video
   const video = document.querySelector(".overlay-video");
   video.playbackRate = 2;
@@ -1304,16 +1304,17 @@ const threeTeslaModelAnimation = () => {
       viewTl.to(overlay.material.uniforms.uOffset, {
         value: 1,
         duration: 1.5,
-        onComplete: () => {
-          animationSound.play();
-          animationSound.playbackRate = 2.5;
-        },
-      });
+        
+      },'camera');
 
       viewTl.from(camera.position, {
-        x: -13,
-        duration: 1.6,
-      });
+        x: -16,
+        duration:2.2,
+        onStart: () => {
+          animationSound.play();
+          animationSound.playbackRate = 2;
+        },
+      },'camera');
 
       viewTl.to(
         ".modelS",
