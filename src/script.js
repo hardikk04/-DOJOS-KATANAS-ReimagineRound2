@@ -289,12 +289,20 @@ const menuMobile = () => {
     .to("#menu-page-mobile", {
       clipPath: `polygon(0 0%, 100% 0%, 100% 100%, 0% 100%)`,
     })
-    .from("#menu-page-mobile #headings h1", {
-      y: "100%",
-    },"a")
-    .from("#menu-page-mobile img", {
-      y: "50%",
-    },"a");
+    .from(
+      "#menu-page-mobile #headings h1",
+      {
+        y: "100%",
+      },
+      "a"
+    )
+    .from(
+      "#menu-page-mobile img",
+      {
+        y: "50%",
+      },
+      "a"
+    );
   document.querySelector("#menu-btn").addEventListener("click", function () {
     document.querySelector("body").style.overflow = "hidden";
     mmtl.play();
@@ -589,7 +597,7 @@ const Page2mobile = () => {
       "#container-1",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-        duration:1
+        duration: 1,
       },
       "a"
     )
@@ -597,7 +605,7 @@ const Page2mobile = () => {
       "#container-2",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-        duration:1
+        duration: 1,
       },
       "a"
     )
@@ -605,7 +613,7 @@ const Page2mobile = () => {
       "#container-2",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
-        duration:1
+        duration: 1,
       },
       "b"
     )
@@ -613,7 +621,7 @@ const Page2mobile = () => {
       "#container-3",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
-        duration:1
+        duration: 1,
       },
       "b"
     );
@@ -1013,7 +1021,7 @@ const threeTeslaModelAnimation = () => {
       duration: 2,
       onComplete: () => {
         gsap.to(".models-name>h1", {
-          text: "MODEL S",
+          text: "ROADSTER",
           duration: 0.5,
         });
         scene.add(models[0]);
@@ -1024,7 +1032,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 5.5,
+      z: 6,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1045,7 +1053,7 @@ const threeTeslaModelAnimation = () => {
       duration: 2,
       onComplete: () => {
         gsap.to(".models-name>h1", {
-          text: "ROADSTER",
+          text: "MODIFIED",
           duration: 0.5,
         });
         scene.remove(models[0]);
@@ -1057,7 +1065,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 5.5,
+      z: 6,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1090,7 +1098,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 5.5,
+      z: 6,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1191,6 +1199,7 @@ const threeTeslaModelAnimation = () => {
     1,
     100
   );
+
   camera.position.z = 6;
 
   scene.add(camera);
@@ -1929,8 +1938,8 @@ const page7Animation = () => {
       duration: 1,
     })
     .to("#discovery", {
-      backgroundColor:"#000"
-    })
+      backgroundColor: "#000",
+    });
 
   var tl72 = gsap
     .timeline({
