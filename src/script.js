@@ -22,22 +22,22 @@ function isMobileDevice() {
   );
 }
 
-  var swiper = new Swiper("#page1-mobile .mySwiper", {
-    loop: true,
-    navigation: {
-      nextEl: "#page1-mobile .swiper-button-next",
-      prevEl: "#page1-mobile .swiper-button-prev",
-    },
-  });
+var swiper = new Swiper("#page1-mobile .mySwiper", {
+  // loop: true,
+  navigation: {
+    nextEl: "#page1-mobile .swiper-button-next",
+    prevEl: "#page1-mobile .swiper-button-prev",
+  },
+});
 
-  var swiper = new Swiper("#page6-mobile .mySwiper", {
-    loop: true,
-    navigation: {
-      nextEl: "#page6-mobile .swiper-button-next",
-      prevEl: "#page6-mobile .swiper-button-prev",
-    },
-  });  
-  
+var swiper = new Swiper("#page6-mobile .mySwiper", {
+  // loop: true,
+  navigation: {
+    nextEl: "#page6-mobile .swiper-button-next",
+    prevEl: "#page6-mobile .swiper-button-prev",
+  },
+});
+
 // Removing the scroll unitl site loaded
 (() => {
   document.body.style.overflow = "hidden";
@@ -171,7 +171,7 @@ const menuAnimation = () => {
       .to("#menu-page", {
         display: "block",
         opacity: 1,
-        duration: .7,
+        duration: 0.7,
       })
       .to("#cl-line1 , #cl-line2", {
         height: "100%",
@@ -293,11 +293,11 @@ const menuMobile = () => {
       y: "100%",
     });
   document.querySelector("#menu-btn").addEventListener("click", function () {
-    document.querySelector("body").style.overflow ="hidden"
+    document.querySelector("body").style.overflow = "hidden";
     mmtl.play();
   });
   document.querySelector("#m-close").addEventListener("click", function () {
-    document.querySelector("body").style.overflow ="initial"
+    document.querySelector("body").style.overflow = "initial";
     mmtl.reverse();
   });
 };
@@ -622,6 +622,13 @@ const loaderAnimation = () => {
     opacity: 0,
     duration: 1.5,
     delay: 1,
+    onComplete: () => {
+      // Enable scroll
+
+      document.body.style.overflow = "initial";
+      document.documentElement.style.overflow = "initial";
+      document.body.style.overflowX = "hidden";
+    },
   });
 
   tl.from(".nav-child", {
@@ -673,13 +680,6 @@ const loaderAnimation = () => {
 
   tl.from(".landing-para>p", {
     text: "",
-    onComplete: () => {
-      // Enable scroll
-
-      document.body.style.overflow = "initial";
-      document.documentElement.style.overflow = "initial";
-      document.body.style.overflowX = "hidden";
-    },
   });
 };
 
@@ -717,6 +717,11 @@ const mobileLoaderAnimation = () => {
   loader.to("#loader", {
     opacity: 0,
     duration: 1.5,
+    onComplete: () => {
+      // Enable scroll
+      document.body.style.overflow = "initial";
+      document.documentElement.style.overflow = "initial";
+    },
   });
 
   loader.from("#nav > .mobile-nav-div", {
@@ -767,13 +772,9 @@ const mobileLoaderAnimation = () => {
     opacity: 0,
     y: 10,
     stagger: 0.1,
-    onStart: () => {
-      // Enable scroll
-      document.body.style.overflow = "initial";
-      document.documentElement.style.overflow = "initial";
-    },
   });
 };
+
 // Three tesla model animation
 const threeTeslaModelAnimation = () => {
   /**
@@ -1016,7 +1017,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 4,
+      z: 5.5,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1049,7 +1050,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 4,
+      z: 5.5,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1082,7 +1083,7 @@ const threeTeslaModelAnimation = () => {
     tl.to(camera.position, {
       x: 0,
       y: 0,
-      z: 4,
+      z: 5.5,
       ease: "expo.out",
       duration: 2,
       onComplete: () => {
@@ -1163,7 +1164,7 @@ const threeTeslaModelAnimation = () => {
   /**
    * Fog
    */
-  const fog = new THREE.Fog("#040b10", 3, 26);
+  const fog = new THREE.Fog("#040b10", 3, 27);
   scene.fog = fog;
 
   /**
@@ -1178,12 +1179,12 @@ const threeTeslaModelAnimation = () => {
    */
 
   const camera = new THREE.PerspectiveCamera(
-    75,
+    30,
     sizes.widht / sizes.height,
     1,
     100
   );
-  camera.position.z = 3.8;
+  camera.position.z = 5.5;
 
   scene.add(camera);
 
@@ -1227,10 +1228,11 @@ const threeTeslaModelAnimation = () => {
     stagger: 0.1,
     onComplete: () => {
       if (scrollStopFlag) {
-        lenis.stop();
-
-        // Hide the scroll bar
-        document.body.style.overflow = "hidden";
+        if (!window.matchMedia("(max-width:768px)").matches) {
+          lenis.stop();
+          // Hide the scroll bar
+          document.body.style.overflow = "hidden";
+        }
       }
     },
   });
@@ -1403,6 +1405,10 @@ const threeTeslaModelAnimation = () => {
   });
 
   function adjustLayout() {
+    if (window.matchMedia("(max-width:768px)").matches) {
+      location.reload();
+    }
+
     sizes.widht = window.innerWidth;
     sizes.height = window.innerHeight;
     camera.aspect = sizes.widht / sizes.height;
@@ -1554,16 +1560,16 @@ const page3Animation = () => {
     },
   });
   tltxt3
-  .from(".energy-wrap h4",{
-    y:"100",
-    stagger:.4,
-    duration:1
-  })
-  .from(".solar-wraptxt h1",{
-    y:"100",
-    stagger:.4,
-    duration:1
-  })
+    .from(".energy-wrap h4", {
+      y: "100",
+      stagger: 0.4,
+      duration: 1,
+    })
+    .from(".solar-wraptxt h1", {
+      y: "100",
+      stagger: 0.4,
+      duration: 1,
+    });
 
   var tl3 = gsap.timeline({
     scrollTrigger: {
@@ -1878,7 +1884,6 @@ const page6ScrollAnimation = () => {
   tl6.to("#page6 #section2 #right", {
     y: "-68%",
   });
-
 };
 page6ScrollAnimation();
 
@@ -1903,10 +1908,10 @@ const page7Animation = () => {
     })
     .from(".ig7", {
       y: 10,
-      opacity:0,
+      opacity: 0,
       display: "none",
       stagger: 0.3,
-      duration:1
+      duration: 1,
     });
 
   var tl72 = gsap
