@@ -42,7 +42,7 @@ if (!isMobileDevice()) {
 
   const videoTextures = [video2, video3, video1];
 
-  const displacmentTexture = textureLoader.load("images/d3.jpg");
+  const displacmentTexture = textureLoader.load("images/d3.webp");
 
   const loadedHeroTextures = videoTextures.map((texture) => {
     const t = new THREE.VideoTexture(texture);

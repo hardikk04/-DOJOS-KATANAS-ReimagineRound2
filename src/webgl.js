@@ -173,20 +173,21 @@ if (!isMobileDevice()) {
 
   img1.addEventListener(
     "mouseenter",
-    webGLEffect(".page2-img1", ".page2-img1>img", "/images/page2_1.png")
+    webGLEffect(".page2-img1", ".page2-img1>img", "/images/page2_1.webp")
   );
 
   img2.addEventListener(
     "mouseenter",
-    webGLEffect(".page2-img2", ".page2-img2>img", "/images/page2_2.png")
+    webGLEffect(".page2-img2", ".page2-img2>img", "/images/page2_2.webp")
   );
 
   img3.addEventListener(
     "mouseenter",
-    webGLEffect(".page2-img3", ".page2-img3>img", "/images/page2_3.png")
+    webGLEffect(".page2-img3", ".page2-img3>img", "/images/page2_3.webp")
   );
 } else {
   document.querySelector(".page2-img1>img").style.opacity = 1;
   document.querySelector(".page2-img2>img").style.opacity = 1;
   document.querySelector(".page2-img3>img").style.opacity = 1;
 }
+
