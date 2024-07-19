@@ -1184,7 +1184,7 @@ const threeTeslaModelAnimation = () => {
     1,
     100
   );
-  camera.position.z = 5.5;
+  camera.position.z = 6;
 
   scene.add(camera);
 
@@ -1301,20 +1301,27 @@ const threeTeslaModelAnimation = () => {
         display: "none",
       });
 
-      viewTl.to(overlay.material.uniforms.uOffset, {
-        value: 1,
-        duration: 1.5,
-        
-      },'camera');
-
-      viewTl.from(camera.position, {
-        x: -16,
-        duration:2.2,
-        onStart: () => {
-          animationSound.play();
-          animationSound.playbackRate = 2;
+      viewTl.to(
+        overlay.material.uniforms.uOffset,
+        {
+          value: 1,
+          duration: 1.5,
         },
-      },'camera');
+        "camera"
+      );
+
+      viewTl.from(
+        camera.position,
+        {
+          x: -16,
+          duration: 2.2,
+          onStart: () => {
+            animationSound.play();
+            animationSound.playbackRate = 2;
+          },
+        },
+        "camera"
+      );
 
       viewTl.to(
         ".modelS",
@@ -1454,7 +1461,7 @@ const threeTeslaModelAnimation = () => {
       speed += deltaTime * 0.000025;
     }
 
-    if (models[0] && models[1] && models[2]) {
+    if (models[0] && models[1] && models[2] && garage) {
       models[0].rotation.y = speed;
       models[1].rotation.y = speed;
       models[2].rotation.y = speed;
