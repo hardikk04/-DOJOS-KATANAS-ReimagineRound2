@@ -431,7 +431,7 @@ nav > h1 {
   width: 100vw;
   height: 100vh;
   background-color: #000000;
-  position:fixed;
+  position: fixed;
   z-index: 2;
   top: 0%;
   padding: 5vh 2vh;
@@ -488,14 +488,14 @@ nav > h1 {
 #menu-page-mobile #content h1 {
   font-size: 3vh;
 }
-#menu-page-mobile img{
+#menu-page-mobile img {
   position: absolute;
   left: 50%;
   bottom: -25%;
-  transform: translate(-50%,0%);
+  transform: translate(-50%, 0%);
   z-index: 2;
   width: 110%;
-  opacity: .4;
+  opacity: 0.4;
 }
 
 .landing-para {
@@ -517,7 +517,7 @@ nav > h1 {
   font-size: 1.1vw;
   width: 28%;
   line-height: 1.3;
-  margin-top: .4vw;
+  margin-top: 0.4vw;
   color: #676767;
 }
 
@@ -1037,19 +1037,16 @@ nav > h1 {
   z-index: 2;
 }
 
-.page2-img1>h1>.model-diff{
-    color: #ffffff;
-
+.page2-img1 > h1 > .model-diff {
+  color: #ffffff;
 }
 
-.page2-img2>h1>.model-diff{
-    color: #ffffff;
-
+.page2-img2 > h1 > .model-diff {
+  color: #ffffff;
 }
 
-.page2-img3>h1>.model-diff{
-    color: #ffffff;
-
+.page2-img3 > h1 > .model-diff {
+  color: #ffffff;
 }
 
 .page2-img1 > canvas {
@@ -1170,7 +1167,7 @@ nav > h1 {
   display: none;
 }
 
-.page2-text-overflow>p {
+.page2-text-overflow > p {
   font-size: 2.5vw;
   letter-spacing: 1px;
   line-height: 1;
@@ -1227,6 +1224,14 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
+  transition: all ease 0.5s;
+  cursor: pointer;
+}
+
+.page2-text > button:hover {
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
 }
 
 .page2-speed {
@@ -1509,11 +1514,22 @@ nav > h1 {
   font-size: 1vw;
   font-family: regularFont;
   cursor: pointer;
+  transition: all ease 0.5s;
 }
 
 .models-btn > h3:nth-child(2) {
   background-color: #000;
   border: 1px solid #ffffff83;
+}
+
+.models-btn > h3:nth-child(1):hover {
+  background-color: #fff;
+  color: #000;
+}
+
+.models-btn > h3:nth-child(2):hover {
+  background-color: #fff;
+  color: #000;
 }
 
 .models-btn > h3 > i {
@@ -1624,11 +1640,16 @@ nav > h1 {
   border-top: 1px solid #ffffff52;
   cursor: pointer;
   opacity: 0;
+  transition: all ease 0.3s;
 }
 
 .model-car-elem > h3 {
   font-weight: 100;
   font-size: 0.8vw;
+}
+
+.model-car-elem:hover {
+  background-color: rgba(0, 0, 0, 0.636);
 }
 
 .model-picker {
@@ -1762,7 +1783,7 @@ nav > h1 {
   z-index: 3;
   padding: 1.7vw 3vw;
 }
-.energy-wrap{
+.energy-wrap {
   height: 3.2vw;
   overflow: hidden;
 }
@@ -1798,7 +1819,7 @@ nav > h1 {
   padding: 1vw 3vw;
   padding-bottom: 4vw;
 }
-.solar-wraptxt{
+.solar-wraptxt {
   height: 5.5vw;
   overflow: hidden;
 }
@@ -1815,26 +1836,26 @@ nav > h1 {
   user-select: none;
 }
 
-#solar-container  .swiper {
+#solar-container .swiper {
   width: 100%;
   height: 100%;
 }
 
-#solar-container  .swiper-slide {
+#solar-container .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
   position: relative;
 }
 
-#solar-container  .swiper-slide img {
+#solar-container .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-#solar-container  .swiper-slide .solar-overlay {
+#solar-container .swiper-slide .solar-overlay {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -1844,7 +1865,7 @@ nav > h1 {
   opacity: 0;
 }
 
-#solar-container  .solar-overlay .top-panel {
+#solar-container .solar-overlay .top-panel {
   width: 70%;
   height: 20%;
   background-color: #31a93e;
@@ -2186,7 +2207,7 @@ nav > h1 {
   margin-top: -10vw;
 }
 
-#page5 #center #section-2>h5 {
+#page5 #center #section-2 > h5 {
   font-size: 4.5vw;
   font-weight: 500;
   font-family: title;
@@ -2226,6 +2247,15 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
+  transition: all ease 0.5s;
+  cursor: pointer;
+  border: 1px solid #fff;
+}
+
+#page5 #center #section-2 button:hover {
+  border: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
 }
 
 #page5 #center #section-2 #bottom {
@@ -2234,7 +2264,7 @@ nav > h1 {
   align-items: center;
 }
 
-#page5 #center #section-2 #button h5, 
+#page5 #center #section-2 #button h5,
 #page5 #center #section-2 #button i {
   font-size: 1.5vw;
   font-family: mediumFont;
@@ -2254,15 +2284,15 @@ nav > h1 {
   padding-right: 0.5vw;
 }
 
-#page5 #center #section-1 #image-1{
+#page5 #center #section-1 #image-1 {
   margin-left: -2vw;
 }
 
-#page5 #center #section-3 #image-2{
+#page5 #center #section-3 #image-2 {
   margin-left: 5vw;
 }
 
-#page5 #center #section-3 #image-3{
+#page5 #center #section-3 #image-3 {
   margin-left: -1vw;
 }
 
@@ -2416,6 +2446,12 @@ nav > h1 {
   width: fit-content;
   cursor: pointer;
   margin-top: 2vw;
+  transition: all ease 0.5s;
+}
+
+#page6 #section2 .left button:hover {
+  background-color: #fff;
+  color: #000;
 }
 
 #page6 #section2 .left #button #text {
@@ -2740,6 +2776,13 @@ nav > h1 {
   justify-content: center;
   gap: 0.5vw;
   cursor: pointer;
+  transition: all ease .5s;
+}
+
+#pg7-text-container .tx-rt button:hover {
+  background-color: #fff;
+  border: 1px solid #000;
+  color: #000;
 }
 
 #page7 #discovery {
@@ -2929,7 +2972,6 @@ nav > h1 {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.166);
 }
-
 
 /* footer end */
 
@@ -3246,25 +3288,25 @@ nav > h1 {
     font-size: 3vw;
   }
 
-  #menu-text{
+  #menu-text {
     height: 45%;
     padding: 1vw 3vw;
     display: flex;
   }
 
-  #menu-text h2{
+  #menu-text h2 {
     font-size: 2.5vw;
   }
 
-  #menu-text h4{
+  #menu-text h4 {
     font-size: 2vw;
   }
 
-  #menu-text .elems{
+  #menu-text .elems {
     width: 30%;
   }
 
-  #cust{
+  #cust {
     margin-top: 2vw;
   }
 
@@ -3285,7 +3327,7 @@ nav > h1 {
   .landing-para > h3 {
     font-size: 2.5vw;
   }
-  
+
   .landing-para > p {
     font-size: 2vw;
   }
@@ -3303,7 +3345,7 @@ nav > h1 {
   .landing-footer-elem > h3 {
     font-size: 2.5vw;
   }
-  
+
   .landing-footer-elem > p {
     font-size: 2vw;
   }
@@ -3321,7 +3363,7 @@ nav > h1 {
   .page1-energy-button > h3 {
     font-size: 2.5vw;
   }
-  
+
   .page1-energy-text > p {
     font-size: 2vw;
     margin-top: 5vw;
@@ -3331,7 +3373,7 @@ nav > h1 {
     height: 9vw;
   }
 
-  .page2-text>h1 {
+  .page2-text > h1 {
     font-size: 3vw;
   }
 
@@ -3376,7 +3418,7 @@ nav > h1 {
   .page2-circle > h1 {
     font-size: 3.5vw;
   }
-  
+
   .page2-circle > h3 {
     font-size: 2vw;
   }
@@ -3393,7 +3435,7 @@ nav > h1 {
     font-size: 2.2vw;
     height: 3vw;
   }
-  
+
   .page2-box-elem > h3 {
     font-size: 1.8vw;
   }
@@ -3443,7 +3485,7 @@ nav > h1 {
     width: 26vw;
     height: 20vw;
   }
-  
+
   #page5 #center #section-2 {
     display: flex;
     flex-direction: column;
@@ -3470,18 +3512,18 @@ nav > h1 {
     font-size: 1.6vw;
   }
 
-  #page5 #center #section-2>h1 {
+  #page5 #center #section-2 > h1 {
     margin-top: 4vw;
   }
 
-  #page5 #center #section-3 #image-2{
+  #page5 #center #section-3 #image-2 {
     margin-left: 2vw;
   }
 
   #page6 #section1 h1 {
     font-size: 6vw;
   }
-  
+
   #page6 #section1 h3 {
     font-size: 3vw;
   }
@@ -3497,7 +3539,7 @@ nav > h1 {
   }
 
   #page6 #section2 #left #heading h1 {
-    font-size:6vw;
+    font-size: 6vw;
   }
 
   #page6 #section2 #left #heading-3 #line {
@@ -3555,7 +3597,6 @@ nav > h1 {
 }
 
 @media (min-width: 601px) and (max-width: 768px) {
-  
   #menu-page,
   #landing-wheel,
   #page1,
@@ -3613,66 +3654,67 @@ nav > h1 {
   }
   #menu-page-mobile #content {
     gap: 20vh;
-}
-#menu-page-mobile #content h1 {
-  font-size: 5vh;
-}
+  }
+  #menu-page-mobile #content h1 {
+    font-size: 5vh;
+  }
   #menu-page-mobile img {
     bottom: -70%;
-}
-#page1-mobile {
-  width: 100vw;
-  height: 100vh;
-}
+  }
+  #page1-mobile {
+    width: 100vw;
+    height: 100vh;
+  }
   #page1-mobile .sl1 .overlay-pg1 #txt-pg1 {
     width: 60%;
     margin-top: 10vw;
     font-size: 3vw;
-}
-#page1-mobile .sl1 .overlay-pg1 h3 {
-  font-size: 3.2vw;
-  line-height: 1.1;
-  margin-top: 2.5vw;
-}
-#page1-mobile #swiper-btn1 {
-  height: 25%;
-  width: 25%;
-}
-#swiper-btn1 .swiper-icon {
-  height: 8vw;
-  width: 8vw;
-}
-#page1-mobile .swiper-slide .overlay-pg1 h1 {
-  font-size: 8vw;
-}
-#page2-mobile #main-container .container #lower h5 {
-  font-size: 2.5vh;
-}
-#page2-mobile #specs .spec h5 span {
-  font-size: 2vh;
-}
-#page2-mobile #specs .spec h6 {
-  font-size: 2.5vh;
-}
-#page2-mobile #specs {
-  justify-content: space-between;
-  padding: 0 2vh;
-}
-.model-picker > h3 ,.model-car-elem > h3{
-  font-size: 2vw;
-}
-.models-btn {
-  gap: 2vw;
-  margin-top: 3.5vw;
-}
-.models-btn > h3 {
-  padding: 2vw 4vw;
-  border-radius: 2vw;
-  font-size: 2vh;
-}
-.overlay-content {
-  bottom: 10%;
-}
+  }
+  #page1-mobile .sl1 .overlay-pg1 h3 {
+    font-size: 3.2vw;
+    line-height: 1.1;
+    margin-top: 2.5vw;
+  }
+  #page1-mobile #swiper-btn1 {
+    height: 25%;
+    width: 25%;
+  }
+  #swiper-btn1 .swiper-icon {
+    height: 8vw;
+    width: 8vw;
+  }
+  #page1-mobile .swiper-slide .overlay-pg1 h1 {
+    font-size: 8vw;
+  }
+  #page2-mobile #main-container .container #lower h5 {
+    font-size: 2.5vh;
+  }
+  #page2-mobile #specs .spec h5 span {
+    font-size: 2vh;
+  }
+  #page2-mobile #specs .spec h6 {
+    font-size: 2.5vh;
+  }
+  #page2-mobile #specs {
+    justify-content: space-between;
+    padding: 0 2vh;
+  }
+  .model-picker > h3,
+  .model-car-elem > h3 {
+    font-size: 2vw;
+  }
+  .models-btn {
+    gap: 2vw;
+    margin-top: 3.5vw;
+  }
+  .models-btn > h3 {
+    padding: 2vw 4vw;
+    border-radius: 2vw;
+    font-size: 2vh;
+  }
+  .overlay-content {
+    bottom: 10%;
+  }
   #page5 #upper-h1 {
     font-size: 16vw;
     top: 99%;
@@ -3689,75 +3731,73 @@ nav > h1 {
   #page5 #center #section-2 {
     justify-content: start;
     padding-top: 12vh;
-}
-#page5 #center #section-2>h5 {
-  font-size: 6vh;
-}
-#page5 #center #section-2 #middle {
-  padding: 10vw 0vw;
-  padding-top: 13vw;
-  padding-bottom: 20vw;
-}
-#page5 #center #section-2 h3 {
-  font-size: 4vw;
-  white-space: nowrap;
-  line-height: 1.1;
+  }
+  #page5 #center #section-2 > h5 {
+    font-size: 6vh;
+  }
+  #page5 #center #section-2 #middle {
+    padding: 10vw 0vw;
+    padding-top: 13vw;
+    padding-bottom: 20vw;
+  }
+  #page5 #center #section-2 h3 {
+    font-size: 4vw;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+  #page5 #center #section-2 h2 {
+    font-size: 4vw;
+    line-height: 1.1;
+  }
+  #page5 #center #section-2 h1 {
+    font-size: 15vw;
+  }
+  #page5 #center #section-2 h4 {
+    font-size: 2.5vw;
+    white-space: nowrap;
+    font-weight: 400;
+    font-family: mediumFont;
+  }
+  #page5 #center .section .image {
+    width: 32vw;
+    height: 28vw;
+    position: relative;
+  }
 
-}
-#page5 #center #section-2 h2 {
-  font-size: 4vw;
-  line-height: 1.1;
-}
-#page5 #center #section-2 h1 {
-  font-size: 15vw;
-}
-#page5 #center #section-2 h4 {
-  font-size: 2.5vw;
-  white-space: nowrap;
-  font-weight: 400;
-  font-family: mediumFont;
-}
-#page5 #center .section .image {
-  width: 32vw;
-  height: 28vw;
-  position: relative;
-}
-
-#page5 #center #section-2 button {
-  padding: 2.5vw 4.5vw;
-  border-radius: 2vw;
-  font-size: 1.5vh;
-}
-
+  #page5 #center #section-2 button {
+    padding: 2.5vw 4.5vw;
+    border-radius: 2vw;
+    font-size: 1.5vh;
+  }
 
   #page6-mobile #section-1 h1 {
     font-size: 4vh;
-}
-#page6-mobile #section-1 h5 {
-  color: #000;
-  line-height: 1;
-  font-size: 2.2vh;
-}
-#page6-mobile #section-2 #content #head-3 #line {
-  width: 98%;
-  height: 0.2vh;
-  background-color: #fff;
-}
-#page6-mobile #section-2 #content button {
-  padding: 2.5vw 4.5vw;
-  border-radius: 2vw;
-}
-#page6-mobile #swiper-btn1 {
-  height: 25%;
-  width: 25%;
-}
-#page6-mobile #swiper-btn1 .swiper-icon {
-  height: 8vw;
-  width: 8vw;
-}
-#page6-mobile #section-2 #swiper-section {
-  margin-top: 2vw;
-}
+  }
+  #page6-mobile #section-1 h5 {
+    color: #000;
+    line-height: 1;
+    font-size: 2.2vh;
+  }
+  #page6-mobile #section-2 #content #head-3 #line {
+    width: 98%;
+    height: 0.2vh;
+    background-color: #fff;
+  }
+  #page6-mobile #section-2 #content button {
+    padding: 2.5vw 4.5vw;
+    border-radius: 2vw;
+  }
+  #page6-mobile #swiper-btn1 {
+    height: 25%;
+    width: 25%;
+  }
+  #page6-mobile #swiper-btn1 .swiper-icon {
+    height: 8vw;
+    width: 8vw;
+  }
+  #page6-mobile #section-2 #swiper-section {
+    margin-top: 2vw;
+  }
   #pg7-text-container {
     flex-direction: column;
     align-items: flex-start;
@@ -3793,7 +3833,7 @@ nav > h1 {
 
   #pg7-text-container .tx-rt button {
     padding: 2.5vw 4.5vw;
-   border-radius: 2vw;
+    border-radius: 2vw;
     white-space: nowrap;
     border-radius: 2vw;
     font-size: 1.5vh;
@@ -3816,10 +3856,10 @@ nav > h1 {
   #container7 .ig7 {
     height: 25vw;
     width: 33vw;
-}
-#container7 .ig7 .overlay7 h4 {
-  font-size: 3vw;
-}
+  }
+  #container7 .ig7 .overlay7 h4 {
+    font-size: 3vw;
+  }
   #footer {
     min-height: 50vh;
   }
@@ -3846,11 +3886,11 @@ nav > h1 {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     width: 96%;
     margin-top: 6vw;
   }
-  #footer #line-ft::after{
+  #footer #line-ft::after {
     content: "TESLA";
     position: absolute;
     top: -5vh;
@@ -3938,57 +3978,56 @@ nav > h1 {
   #page5 #center #section-2 {
     justify-content: start;
     padding-top: 12vh;
-}
-#page5 #center #section-2>h5 {
-  font-size: 3.5vh;
-}
-#page5 #center #section-2 #middle {
-  padding: 10vw 0vw;
-  padding-top: 13vw;
-  padding-bottom: 20vw;
-}
-#page5 #center #section-2 h3 {
-  font-size: 5vw;
-  white-space: nowrap;
-  line-height: 1.1;
+  }
+  #page5 #center #section-2 > h5 {
+    font-size: 3.5vh;
+  }
+  #page5 #center #section-2 #middle {
+    padding: 10vw 0vw;
+    padding-top: 13vw;
+    padding-bottom: 20vw;
+  }
+  #page5 #center #section-2 h3 {
+    font-size: 5vw;
+    white-space: nowrap;
+    line-height: 1.1;
+  }
+  #page5 #center #section-2 h2 {
+    font-size: 5vw;
+    line-height: 1.1;
+  }
+  #page5 #center #section-2 h1 {
+    font-size: 15vw;
+  }
+  #page5 #center #section-2 h4 {
+    font-size: 2.5vw;
+    white-space: nowrap;
+    font-weight: 400;
+    font-family: mediumFont;
+  }
+  #page5 #center .section .image {
+    width: 32vw;
+    height: 28vw;
+    position: relative;
+  }
 
-}
-#page5 #center #section-2 h2 {
-  font-size: 5vw;
-  line-height: 1.1;
-}
-#page5 #center #section-2 h1 {
-  font-size: 15vw;
-}
-#page5 #center #section-2 h4 {
-  font-size: 2.5vw;
-  white-space: nowrap;
-  font-weight: 400;
-  font-family: mediumFont;
-}
-#page5 #center .section .image {
-  width: 32vw;
-  height: 28vw;
-  position: relative;
-}
-
-#page5 #center #section-2 button {
-  background-color: #ffffff;
-  color: #000000;
-  margin-top: 6vw;
-  position: relative;
-  width: fit-content;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 3vw 5vw;
-  white-space: nowrap;
-  border-radius: 2vw;
-  font-size: 1.5vh;
-  gap: 2vw;
-}
+  #page5 #center #section-2 button {
+    background-color: #ffffff;
+    color: #000000;
+    margin-top: 6vw;
+    position: relative;
+    width: fit-content;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 3vw 5vw;
+    white-space: nowrap;
+    border-radius: 2vw;
+    font-size: 1.5vh;
+    gap: 2vw;
+  }
 
   #pg7-text-container {
     flex-direction: column;
@@ -4024,11 +4063,11 @@ nav > h1 {
   #container7 .ig7 {
     height: 30vw;
     width: 38vw;
-}
+  }
   #container7 .ig7 .overlay7 h4 {
     font-size: 5vw;
     font-weight: 400;
-}
+  }
 
   #pg7-text-container .tx-rt button {
     padding: 3vw 5vw;
@@ -4078,11 +4117,11 @@ nav > h1 {
     position: absolute;
     top: 0;
     left: 50%;
-    transform: translate(-50%,0);
+    transform: translate(-50%, 0);
     width: 96%;
     margin-top: 13vw;
   }
-  #footer #line-ft::after{
+  #footer #line-ft::after {
     content: "TESLA";
     position: absolute;
     top: -5vh;
