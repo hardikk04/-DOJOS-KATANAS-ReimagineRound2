@@ -163,15 +163,28 @@ const menuAnimation = () => {
       .to("#menu-page", {
         display: "block",
         opacity: 1,
-        duration: 1,
+        duration: .7,
       })
       .to("#cl-line1 , #cl-line2", {
         height: "100%",
         duration: 0.4,
+      })
+      .from(".elems", {
+        opacity: 0,
+        y: -10,
+        stagger: {
+          amount: 0.5,
+        },
+      })
+      .from("#wheel", {
+        opacity: 0,
+        y: -10,
       });
   });
 
   document.querySelector(".menu-close").addEventListener("click", function () {
+    lenis.start();
+
     var mn = gsap.timeline();
     mn.to(
       window,
@@ -208,14 +221,22 @@ const menuAnimation = () => {
         {
           width: "100%",
           duration: 0.4,
-
-          onComplete: () => {
-            // Show the scroll bar
-            document.body.style.overflow = "initial";
-            document.body.style.overflowX = "hidden";
-          },
         },
         "a"
+      )
+      .to(
+        "body",
+        {
+          overflow: "initial",
+        },
+        "b"
+      )
+      .to(
+        "body",
+        {
+          overflowX: "hidden",
+        },
+        "b"
       );
   });
   //wheel movement
