@@ -257,7 +257,7 @@ const menuAnimation = () => {
 
     // circle.style.transform = `translateX(-50%) rotate(${rotationAngle}deg) scale(1.2)`;
     gsap.to(circle, {
-      rotate: rotationAngle * 0.2,
+      rotate: rotationAngle * 0.6,
       scale: 1.2,
       ease: "linear",
       duration: 1,
@@ -291,7 +291,10 @@ const menuMobile = () => {
     })
     .from("#menu-page-mobile #headings h1", {
       y: "100%",
-    });
+    },"a")
+    .from("#menu-page-mobile img", {
+      y: "50%",
+    },"a");
   document.querySelector("#menu-btn").addEventListener("click", function () {
     document.querySelector("body").style.overflow = "hidden";
     mmtl.play();
@@ -575,7 +578,7 @@ const Page2mobile = () => {
       trigger: "#page2-mobile",
       scroller: "body",
       start: "top top",
-      end: "top -100%",
+      end: "top -250%",
       scrub: 1,
       pin: true,
       // markers:true
@@ -586,6 +589,7 @@ const Page2mobile = () => {
       "#container-1",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+        duration:1
       },
       "a"
     )
@@ -593,6 +597,7 @@ const Page2mobile = () => {
       "#container-2",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+        duration:1
       },
       "a"
     )
@@ -600,6 +605,7 @@ const Page2mobile = () => {
       "#container-2",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)`,
+        duration:1
       },
       "b"
     )
@@ -607,6 +613,7 @@ const Page2mobile = () => {
       "#container-3",
       {
         clipPath: `polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)`,
+        duration:1
       },
       "b"
     );
@@ -1920,7 +1927,10 @@ const page7Animation = () => {
       display: "none",
       stagger: 0.3,
       duration: 1,
-    });
+    })
+    .to("#discovery", {
+      backgroundColor:"#000"
+    })
 
   var tl72 = gsap
     .timeline({

@@ -444,6 +444,7 @@ nav > h1 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 #m-close {
@@ -460,7 +461,8 @@ nav > h1 {
 #menu-page-mobile #content {
   display: flex;
   flex-direction: column;
-  gap: 20vh;
+  align-items: center;
+  gap: 28vh;
 }
 
 #menu-page-mobile #content > h1 {
@@ -470,12 +472,12 @@ nav > h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  text-align: center;
 }
 
 #menu-page-mobile #headings {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 3vh;
 }
 
@@ -485,6 +487,15 @@ nav > h1 {
 
 #menu-page-mobile #content h1 {
   font-size: 3vh;
+}
+#menu-page-mobile img{
+  position: absolute;
+  left: 50%;
+  bottom: -25%;
+  transform: translate(-50%,0%);
+  z-index: 2;
+  width: 110%;
+  opacity: .4;
 }
 
 .landing-para {
@@ -2156,7 +2167,7 @@ nav > h1 {
   align-items: center;
   justify-content: space-between;
   padding: 2vw 0vw;
-  padding-top: 5.4vw;
+  padding-top: 3vw;
   padding-bottom: 5.8vw;
 }
 
@@ -2165,7 +2176,7 @@ nav > h1 {
   flex-direction: column;
   align-items: center;
   padding: 2vw 0vw;
-  padding-top: 4vw;
+  padding-top: 5vw;
 }
 
 #page5 #center #section-2 #middle {
@@ -2176,23 +2187,22 @@ nav > h1 {
 }
 
 #page5 #center #section-2>h5 {
-  font-size: 2.5vw;
+  font-size: 4.5vw;
   font-weight: 500;
   font-family: title;
 }
 
 #page5 #center #section-2 h3 {
-  font-size: 2.5vw;
+  font-size: 2.2vw;
   line-height: 1;
-  font-weight: 500;
+  font-weight: 400;
   font-family: mediumFont;
 }
 
 #page5 #center #section-2 h4 {
-  font-size: 1.5vw;
-  line-height: 2vw;
-  font-weight: 500;
-  font-family: title;
+  font-size: 2.2vw;
+  font-weight: 400;
+  font-family: mediumFont;
 }
 
 #page5 #center #section-2 h2 {
@@ -2231,7 +2241,7 @@ nav > h1 {
 }
 
 #page5 #center #section-2 h1 {
-  font-size: 12vw;
+  font-size: 11vw;
   line-height: 1;
   font-family: title;
   font-weight: 500;
@@ -2920,6 +2930,7 @@ nav > h1 {
   background-color: rgba(0, 0, 0, 0.166);
 }
 
+
 /* footer end */
 
 /* Responsive */
@@ -3120,7 +3131,7 @@ nav > h1 {
     flex-direction: column;
     justify-content: flex-start;
     gap: 4vw;
-    padding-top: 12vw;
+    padding-top: 8vw;
   }
 
   #page5 #center #section-2 button {
@@ -3135,11 +3146,11 @@ nav > h1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: -4vw;
+    margin-top: -6vw;
   }
 
   #page5 #section-2 #bottom {
-    margin-top: 8.2vw;
+    margin-top: 4vw;
   }
 
   #page6 #section1 h1 {
@@ -3600,6 +3611,19 @@ nav > h1 {
     margin-bottom: 3vw;
     font-size: 4vw;
   }
+  #menu-page-mobile #content {
+    gap: 20vh;
+}
+#menu-page-mobile #content h1 {
+  font-size: 5vh;
+}
+  #menu-page-mobile img {
+    bottom: -70%;
+}
+#page1-mobile {
+  width: 100vw;
+  height: 100vh;
+}
   #page1-mobile .sl1 .overlay-pg1 #txt-pg1 {
     width: 60%;
     margin-top: 10vw;
@@ -3620,7 +3644,6 @@ nav > h1 {
 }
 #page1-mobile .swiper-slide .overlay-pg1 h1 {
   font-size: 8vw;
-  margin-top: 40%;
 }
 #page2-mobile #main-container .container #lower h5 {
   font-size: 2.5vh;
@@ -3635,6 +3658,21 @@ nav > h1 {
   justify-content: space-between;
   padding: 0 2vh;
 }
+.model-picker > h3 ,.model-car-elem > h3{
+  font-size: 2vw;
+}
+.models-btn {
+  gap: 2vw;
+  margin-top: 3.5vw;
+}
+.models-btn > h3 {
+  padding: 2vw 4vw;
+  border-radius: 2vw;
+  font-size: 2vh;
+}
+.overlay-content {
+  bottom: 10%;
+}
   #page5 #upper-h1 {
     font-size: 16vw;
     top: 99%;
@@ -3647,6 +3685,51 @@ nav > h1 {
     color: black;
     font-family: title;
   }
+
+  #page5 #center #section-2 {
+    justify-content: start;
+    padding-top: 12vh;
+}
+#page5 #center #section-2>h5 {
+  font-size: 6vh;
+}
+#page5 #center #section-2 #middle {
+  padding: 10vw 0vw;
+  padding-top: 13vw;
+  padding-bottom: 20vw;
+}
+#page5 #center #section-2 h3 {
+  font-size: 4vw;
+  white-space: nowrap;
+  line-height: 1.1;
+
+}
+#page5 #center #section-2 h2 {
+  font-size: 4vw;
+  line-height: 1.1;
+}
+#page5 #center #section-2 h1 {
+  font-size: 15vw;
+}
+#page5 #center #section-2 h4 {
+  font-size: 2.5vw;
+  white-space: nowrap;
+  font-weight: 400;
+  font-family: mediumFont;
+}
+#page5 #center .section .image {
+  width: 32vw;
+  height: 28vw;
+  position: relative;
+}
+
+#page5 #center #section-2 button {
+  padding: 2.5vw 4.5vw;
+  border-radius: 2vw;
+  font-size: 1.5vh;
+}
+
+
   #page6-mobile #section-1 h1 {
     font-size: 4vh;
 }
@@ -3698,7 +3781,8 @@ nav > h1 {
 
   #pg7-text-container .tx-lf p {
     font-size: 2.5vh;
-    font-weight: 600;
+    font-weight: 500;
+    font-family: mediumFont;
   }
 
   #pg7-text-container .tx-lf .para-wrap7 {
@@ -3729,30 +3813,52 @@ nav > h1 {
   #discovery #dis-text #container7 h1 {
     font-size: 70vw;
   }
-
+  #container7 .ig7 {
+    height: 25vw;
+    width: 33vw;
+}
+#container7 .ig7 .overlay7 h4 {
+  font-size: 3vw;
+}
   #footer {
     min-height: 50vh;
   }
 
   #footer-pt1 {
-    height: 40vh;
+    height: 50vh;
+    position: relative;
     flex-direction: column;
     align-items: start;
     justify-content: start;
+    padding-top: 10vh;
   }
 
   #footer-pt1 .foottxt-wrap {
-    height: 3vh;
-    margin-bottom: 2vw;
+    height: 4.5vh;
+    margin-bottom: 3vw;
   }
 
   #footer-pt1 h4 {
-    font-size: 3vh;
+    font-size: 4.2vh;
   }
 
   #footer #line-ft {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
     width: 96%;
     margin-top: 6vw;
+  }
+  #footer #line-ft::after{
+    content: "TESLA";
+    position: absolute;
+    top: -5vh;
+    font-weight: 500;
+    left: 1.5%;
+    color: #fff;
+    font-family: tesla;
+    font-size: 3vh;
   }
 }
 
@@ -3829,6 +3935,60 @@ nav > h1 {
     color: black;
     font-family: title;
   }
+  #page5 #center #section-2 {
+    justify-content: start;
+    padding-top: 12vh;
+}
+#page5 #center #section-2>h5 {
+  font-size: 3.5vh;
+}
+#page5 #center #section-2 #middle {
+  padding: 10vw 0vw;
+  padding-top: 13vw;
+  padding-bottom: 20vw;
+}
+#page5 #center #section-2 h3 {
+  font-size: 5vw;
+  white-space: nowrap;
+  line-height: 1.1;
+
+}
+#page5 #center #section-2 h2 {
+  font-size: 5vw;
+  line-height: 1.1;
+}
+#page5 #center #section-2 h1 {
+  font-size: 15vw;
+}
+#page5 #center #section-2 h4 {
+  font-size: 2.5vw;
+  white-space: nowrap;
+  font-weight: 400;
+  font-family: mediumFont;
+}
+#page5 #center .section .image {
+  width: 32vw;
+  height: 28vw;
+  position: relative;
+}
+
+#page5 #center #section-2 button {
+  background-color: #ffffff;
+  color: #000000;
+  margin-top: 6vw;
+  position: relative;
+  width: fit-content;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 3vw 5vw;
+  white-space: nowrap;
+  border-radius: 2vw;
+  font-size: 1.5vh;
+  gap: 2vw;
+}
 
   #pg7-text-container {
     flex-direction: column;
@@ -3851,8 +4011,9 @@ nav > h1 {
   }
 
   #pg7-text-container .tx-lf p {
+    font-family: mediumFont;
+    font-weight: 500;
     font-size: 2vh;
-    font-weight: 600;
   }
 
   #pg7-text-container .tx-lf .para-wrap7 {
@@ -3860,6 +4021,14 @@ nav > h1 {
     overflow: hidden;
     margin-bottom: 1vw;
   }
+  #container7 .ig7 {
+    height: 30vw;
+    width: 38vw;
+}
+  #container7 .ig7 .overlay7 h4 {
+    font-size: 5vw;
+    font-weight: 400;
+}
 
   #pg7-text-container .tx-rt button {
     padding: 3vw 5vw;
@@ -3888,15 +4057,17 @@ nav > h1 {
   }
 
   #footer-pt1 {
-    height: 40vh;
+    height: 50vh;
     flex-direction: column;
     align-items: start;
     justify-content: start;
+    padding-top: 13vh;
+    position: relative;
   }
 
   #footer-pt1 .foottxt-wrap {
-    height: 7vw;
-    margin-bottom: 4vw;
+    height: 8.2vw;
+    margin-bottom: 4.5vw;
   }
 
   #footer-pt1 h4 {
@@ -3904,7 +4075,21 @@ nav > h1 {
   }
 
   #footer #line-ft {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%,0);
     width: 96%;
     margin-top: 13vw;
+  }
+  #footer #line-ft::after{
+    content: "TESLA";
+    position: absolute;
+    top: -5vh;
+    font-weight: 500;
+    left: 3%;
+    color: #fff;
+    font-family: tesla;
+    font-size: 3vh;
   }
 }
