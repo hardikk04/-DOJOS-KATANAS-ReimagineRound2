@@ -431,7 +431,7 @@ nav > h1 {
   width: 100vw;
   height: 100vh;
   background-color: #000000;
-  position: absolute;
+  position:fixed;
   z-index: 2;
   top: 0%;
   padding: 5vh 2vh;
@@ -922,12 +922,14 @@ nav > h1 {
   flex-direction: column;
   align-items: center;
 }
-
 #page1-mobile .swiper-slide .overlay-pg1 h1 {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   font-family: title;
   color: #fff;
   font-size: 10vw;
-  margin-top: 80%;
 }
 
 #page1-mobile .sl1 .overlay-pg1 #txt-pg1 {
@@ -1749,6 +1751,10 @@ nav > h1 {
   z-index: 3;
   padding: 1.7vw 3vw;
 }
+.energy-wrap{
+  height: 3.2vw;
+  overflow: hidden;
+}
 
 #energy-text h4 {
   font-size: 3.2vw;
@@ -1781,7 +1787,10 @@ nav > h1 {
   padding: 1vw 3vw;
   padding-bottom: 4vw;
 }
-
+.solar-wraptxt{
+  height: 5.5vw;
+  overflow: hidden;
+}
 #solar-text h1 {
   font-size: 5.5vw;
   font-weight: 500;
@@ -1793,29 +1802,28 @@ nav > h1 {
   height: 85vh;
   width: 100%;
   user-select: none;
-  cursor: none;
 }
 
-.swiper {
+#solar-container  .swiper {
   width: 100%;
   height: 100%;
 }
 
-.swiper-slide {
+#solar-container  .swiper-slide {
   text-align: center;
   font-size: 18px;
   background: #fff;
   position: relative;
 }
 
-.swiper-slide img {
+#solar-container  .swiper-slide img {
   display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.swiper-slide .solar-overlay {
+#solar-container  .swiper-slide .solar-overlay {
   height: 100%;
   width: 100%;
   position: absolute;
@@ -1825,7 +1833,7 @@ nav > h1 {
   opacity: 0;
 }
 
-.solar-overlay .top-panel {
+#solar-container  .solar-overlay .top-panel {
   width: 70%;
   height: 20%;
   background-color: #31a93e;

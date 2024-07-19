@@ -22,14 +22,22 @@ function isMobileDevice() {
   );
 }
 
-var swiper = new Swiper(".mySwiper", {
-  loop: true,
-  navigation: {
-    nextEl: ".swiper-button-next",
-    prevEl: ".swiper-button-prev",
-  },
-});
+  var swiper = new Swiper("#page1-mobile .mySwiper", {
+    loop: true,
+    navigation: {
+      nextEl: "#page1-mobile .swiper-button-next",
+      prevEl: "#page1-mobile .swiper-button-prev",
+    },
+  });
 
+  var swiper = new Swiper("#page6-mobile .mySwiper", {
+    loop: true,
+    navigation: {
+      nextEl: "#page6-mobile .swiper-button-next",
+      prevEl: "#page6-mobile .swiper-button-prev",
+    },
+  });  
+  
 // Removing the scroll unitl site loaded
 (() => {
   document.body.style.overflow = "hidden";
@@ -285,9 +293,11 @@ const menuMobile = () => {
       y: "100%",
     });
   document.querySelector("#menu-btn").addEventListener("click", function () {
+    document.querySelector("body").style.overflow ="hidden"
     mmtl.play();
   });
   document.querySelector("#m-close").addEventListener("click", function () {
+    document.querySelector("body").style.overflow ="initial"
     mmtl.reverse();
   });
 };
@@ -1533,6 +1543,28 @@ if (!isMobileDevice()) {
 }
 // page3Animation
 const page3Animation = () => {
+  var tltxt3 = gsap.timeline({
+    scrollTrigger: {
+      trigger: "#page3",
+      scroller: "body",
+      start: "top 30%",
+      end: "top 0%",
+      scrub: true,
+      // markers:true
+    },
+  });
+  tltxt3
+  .from(".energy-wrap h4",{
+    y:"100",
+    stagger:.4,
+    duration:1
+  })
+  .from(".solar-wraptxt h1",{
+    y:"100",
+    stagger:.4,
+    duration:1
+  })
+
   var tl3 = gsap.timeline({
     scrollTrigger: {
       trigger: "#page3",
@@ -1846,6 +1878,7 @@ const page6ScrollAnimation = () => {
   tl6.to("#page6 #section2 #right", {
     y: "-68%",
   });
+
 };
 page6ScrollAnimation();
 
@@ -1870,8 +1903,10 @@ const page7Animation = () => {
     })
     .from(".ig7", {
       y: 10,
+      opacity:0,
       display: "none",
       stagger: 0.3,
+      duration:1
     });
 
   var tl72 = gsap
