@@ -46,7 +46,7 @@ Start the server
 **Navigation Menu**: 
 We created a unique menu inspired by Tesla's tier system, using GSAP and core JavaScript functions. This feature was developed by Ayush.
 
-**Loader**: A creative loader was implemented to enhance the user experience with engaging animations. This was developed by Hardik.
+**Loader**: A creative loader was implemented to enhance the user experience with engaging animations. This was developed by Hardik and Ayush.
 
 **Homepage**: Our unique homepage features Tesla cars' wheels, offering users a realistic experience. GSAP and JavaScript event listeners were used for animations, developed by Hardik.
 
@@ -67,6 +67,8 @@ We created a unique menu inspired by Tesla's tier system, using GSAP and core Ja
 **Help**: A section for user support, highlighting Tesla's commitment to user convenience with GSAP and core JavaScript functions. Developed by Ayush.
 
 **Footer**: Provides information about terms, legal, privacy, contact, and social media. Developed by Ayush.
+
+**Responsiveness**: All the responsive design aspects were handled by Ayush and Dhruv.
 ## Key Features💡
 
 **Modern Animations**: We used the latest animation techniques to create an engaging and immersive experience for users. The animations enhance the website's aesthetic appeal and interactivity, making every interaction feel fluid and responsive.

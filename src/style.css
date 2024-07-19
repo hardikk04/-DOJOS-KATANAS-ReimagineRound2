@@ -1224,14 +1224,7 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
-  transition: all ease 0.5s;
   cursor: pointer;
-}
-
-.page2-text > button:hover {
-  background-color: #fff;
-  color: #000;
-  border: 1px solid #000;
 }
 
 .page2-speed {
@@ -1514,22 +1507,11 @@ nav > h1 {
   font-size: 1vw;
   font-family: regularFont;
   cursor: pointer;
-  transition: all ease 0.5s;
 }
 
 .models-btn > h3:nth-child(2) {
   background-color: #000;
   border: 1px solid #ffffff83;
-}
-
-.models-btn > h3:nth-child(1):hover {
-  background-color: #fff;
-  color: #000;
-}
-
-.models-btn > h3:nth-child(2):hover {
-  background-color: #fff;
-  color: #000;
 }
 
 .models-btn > h3 > i {
@@ -1643,13 +1625,13 @@ nav > h1 {
   transition: all ease 0.3s;
 }
 
+.model-car-elem:hover {
+  background-color: rgba(0, 0, 0, 0.549);
+}
+
 .model-car-elem > h3 {
   font-weight: 100;
   font-size: 0.8vw;
-}
-
-.model-car-elem:hover {
-  background-color: rgba(0, 0, 0, 0.636);
 }
 
 .model-picker {
@@ -2156,7 +2138,6 @@ nav > h1 {
   justify-content: center;
   backdrop-filter: blur(8px);
   opacity: 0;
-  transition: all ease 0.5s;
   position: absolute;
   top: 0%;
 }
@@ -2247,15 +2228,8 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
-  transition: all ease 0.5s;
   cursor: pointer;
   border: 1px solid #fff;
-}
-
-#page5 #center #section-2 button:hover {
-  border: 1px solid #fff;
-  background-color: transparent;
-  color: #fff;
 }
 
 #page5 #center #section-2 #bottom {
@@ -2446,12 +2420,6 @@ nav > h1 {
   width: fit-content;
   cursor: pointer;
   margin-top: 2vw;
-  transition: all ease 0.5s;
-}
-
-#page6 #section2 .left button:hover {
-  background-color: #fff;
-  color: #000;
 }
 
 #page6 #section2 .left #button #text {
@@ -2776,13 +2744,6 @@ nav > h1 {
   justify-content: center;
   gap: 0.5vw;
   cursor: pointer;
-  transition: all ease .5s;
-}
-
-#pg7-text-container .tx-rt button:hover {
-  background-color: #fff;
-  border: 1px solid #000;
-  color: #000;
 }
 
 #page7 #discovery {
