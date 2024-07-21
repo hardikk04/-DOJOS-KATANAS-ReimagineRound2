@@ -1224,7 +1224,12 @@ nav > h1 {
   align-items: center;
   justify-content: center;
   gap: 0.5vw;
+  white-space: nowrap;
   cursor: pointer;
+}
+
+.page2-text > button i {
+  position: relative;
 }
 
 .page2-speed {
@@ -1514,6 +1519,14 @@ nav > h1 {
   border: 1px solid #ffffff83;
 }
 
+.models-btn > h3:nth-child(1) i {
+  position: relative;
+}
+
+.models-btn > h3:nth-child(2) i {
+  animation: upDown 2s infinite both linear;
+}
+
 .models-btn > h3 > i {
   font-weight: 100;
 }
@@ -1544,8 +1557,17 @@ nav > h1 {
 }
 
 @keyframes upDown {
-  50% {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
     transform: translateY(-15%);
+  }
+  50% {
+    transform: translateY(0%);
+  }
+  75% {
+    transform: translateY(15%);
   }
 
   100% {
@@ -2232,6 +2254,10 @@ nav > h1 {
   border: 1px solid #fff;
 }
 
+#page5 #center #section-2 button i {
+  position: relative;
+}
+
 #page5 #center #section-2 #bottom {
   display: flex;
   flex-direction: column;
@@ -2420,6 +2446,10 @@ nav > h1 {
   width: fit-content;
   cursor: pointer;
   margin-top: 2vw;
+}
+
+#page6 #section2 .left button i {
+  position: relative;
 }
 
 #page6 #section2 .left #button #text {
@@ -2744,6 +2774,10 @@ nav > h1 {
   justify-content: center;
   gap: 0.5vw;
   cursor: pointer;
+}
+
+#pg7-text-container .tx-rt button i {
+  position: relative;
 }
 
 #page7 #discovery {
