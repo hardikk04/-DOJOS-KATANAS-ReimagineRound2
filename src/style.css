@@ -3957,6 +3957,10 @@ nav > h1 {
     font-size: 2vh;
   }
 
+  #menu-page-mobile img {
+    bottom: -45%;
+  }
+
   #logo-warpper #curve {
     position: absolute;
     z-index: 1;
