@@ -2126,3 +2126,131 @@ const textAnimation = () => {
 if (!window.matchMedia("(max-width:768px)").matches) {
   textAnimation();
 }
+
+const buttonsAnimation = () => {
+  const page2Button = document.querySelector(".page2-text>button");
+  page2Button.addEventListener("mouseenter", () => {
+    gsap.to(".page2-text>button", {
+      border: "1px solid black",
+      color: "#000",
+      backgroundColor: "transparent",
+    });
+
+    gsap.to(".page2-text>button>i", {
+      right: "-5%",
+      scale: 1.2,
+    });
+  });
+
+  page2Button.addEventListener("mouseleave", () => {
+    gsap.to(".page2-text>button", {
+      border: "1px solid #000",
+      color: "#fff",
+      backgroundColor: "#000",
+    });
+    gsap.to(".page2-text>button>i", {
+      right: "0%",
+      scale: 1,
+    });
+  });
+
+  const carsModelButtonFirst = document.querySelector(
+    ".models-btn > h3:nth-child(1)"
+  );
+  carsModelButtonFirst.addEventListener("mouseenter", () => {
+    gsap.to(".models-btn > h3:nth-child(1)", {
+      color: "#000",
+      backgroundColor: "#fff",
+    });
+
+    gsap.to(".models-btn > h3:nth-child(1)>i", {
+      right: "-5%",
+      scale: 1.2,
+    });
+  });
+
+  carsModelButtonFirst.addEventListener("mouseleave", () => {
+    gsap.to(".models-btn > h3:nth-child(1)", {
+      color: "#fff",
+      backgroundColor: "#31a93e",
+    });
+
+    gsap.to(".models-btn > h3:nth-child(1)>i", {
+      right: "0%",
+      scale: 1,
+    });
+  });
+
+  const chargingButton = document.querySelector("#middle>button");
+  chargingButton.addEventListener("mouseenter", () => {
+    gsap.to("#middle>button", {
+      backgroundColor: "#000",
+      color: "#fff",
+    });
+    gsap.to("#middle>button>i", {
+      right: "-5%",
+      scale: 1.2,
+    });
+  });
+
+  chargingButton.addEventListener("mouseleave", () => {
+    gsap.to("#middle>button", {
+      backgroundColor: "#fff",
+      color: "#000",
+    });
+    gsap.to("#middle>button>i", {
+      right: "0%",
+      scale: 1,
+    });
+  });
+
+  const stationButton = document.querySelector("#left>button");
+  stationButton.addEventListener("mouseenter", () => {
+    gsap.to("#left>button", {
+      backgroundColor: "#fff",
+      color: "#000",
+    });
+    gsap.to("#left>button>i", {
+      right: "-5%",
+      scale: 1.2,
+    });
+  });
+
+  stationButton.addEventListener("mouseleave", () => {
+    gsap.to("#left>button", {
+      backgroundColor: "#000",
+      color: "#fff",
+    });
+    gsap.to("#left>button>i", {
+      right: "0%",
+      scale: 1,
+    });
+  });
+
+  const helpButton = document.querySelector(".tx-rt>button");
+  helpButton.addEventListener("mouseenter", () => {
+    gsap.to(".tx-rt>button", {
+      backgroundColor: "#fff",
+      border: "1px solid #000",
+      color: "#000",
+    });
+    gsap.to(".tx-rt>button>i", {
+      right: "-5%",
+      scale: 1.2,
+    });
+  });
+
+  helpButton.addEventListener("mouseleave", () => {
+    gsap.to(".tx-rt>button", {
+      border: "none",
+      backgroundColor: "#000",
+      color: "#fff",
+    });
+    gsap.to(".tx-rt>button>i", {
+      right: "0%",
+      scale: 1,
+    });
+  });
+};
+
+buttonsAnimation();
