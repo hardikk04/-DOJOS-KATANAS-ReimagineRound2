@@ -465,8 +465,9 @@ nav > h1 {
   gap: 28vh;
 }
 
-#menu-page-mobile #content > h1 {
-  font-size: 4vh;
+
+#menu-page-mobile #content #menu-mobile-nav h1 {
+  font-size: 3.5vh;
   font-family: tesla;
   background: linear-gradient(to bottom, #eaeaea, #909090);
   -webkit-background-clip: text;
@@ -478,7 +479,7 @@ nav > h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3vh;
+  gap: 3.5vh;
 }
 
 #menu-page-mobile #headings .head {
@@ -2985,6 +2986,8 @@ nav > h1 {
     height: 40%;
     padding: 1vw 2vw;
     display: flex;
+    position: relative;
+    z-index: 5;
   }
 
   #menu-text h2 {
@@ -3287,6 +3290,8 @@ nav > h1 {
     height: 45%;
     padding: 1vw 3vw;
     display: flex;
+    position: relative;
+    z-index: 5;
   }
 
   #menu-text h2 {
@@ -3519,6 +3524,21 @@ nav > h1 {
     font-size: 6vw;
   }
 
+  #page6 #section2 .left button {
+    position: relative;
+    padding: 1.5vw 2.5vw;
+    border: none;
+    background-color: #000000;
+    color: #fff;
+    border-radius: 0.45vw;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
+    cursor: pointer;
+  }
+
   #page6 #section1 h3 {
     font-size: 3vw;
   }
@@ -3650,9 +3670,11 @@ nav > h1 {
   #menu-page-mobile #content {
     gap: 20vh;
   }
-  #menu-page-mobile #content h1 {
-    font-size: 5vh;
+  
+  #menu-page-mobile #headings h1 {
+    font-size: 4.5vw;
   }
+
   #menu-page-mobile img {
     bottom: -70%;
   }
