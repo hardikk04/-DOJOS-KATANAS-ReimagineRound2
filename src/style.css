@@ -3919,6 +3919,12 @@ nav > h1 {
   }
 }
 
+@media (min-width: 470px) and (max-width: 600px) {
+  #menu-page-mobile img {
+    bottom: -40%;
+  }
+}
+
 @media (max-width: 600px) {
   .threejs-models {
     display: none;
@@ -3955,10 +3961,6 @@ nav > h1 {
     font-family: mediumFont;
     font-weight: 500;
     font-size: 2vh;
-  }
-
-  #menu-page-mobile img {
-    bottom: -45%;
   }
 
   #logo-warpper #curve {
